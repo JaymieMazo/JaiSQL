@@ -1,0 +1,3129 @@
+From: <Saved by Windows Internet Explorer 8>
+Subject: SQL - FULL JOINS
+Date: Fri, 1 Feb 2013 10:59:41 +0800
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0000_01CE006B.3C583F00"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.3350
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0000_01CE006B.3C583F00
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.tutorialspoint.com/sql/sql-full-joins.htm
+
+=EF=BB=BF<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!--[if lt IE 7 ]> <html lang=3D"en" class=3D"no-js ie6"> =
+<![endif]--><!--[if IE 7 ]> <html lang=3D"en" class=3D"no-js ie7"> =
+<![endif]--><!--[if IE 8 ]><HTML=20
+lang=3Den class=3D"no-js ie8"><![endif]--><!--[if IE 9 ]> <html =
+lang=3D"en" class=3D"no-js ie9"> <![endif]--><!--[if (gt IE =
+9)|!(IE)]><!--><html lang=3D"en"><!--<![endif]--><HEAD><TITLE>SQL - FULL =
+JOINS</TITLE>
+<META charset=3Dutf-8><LINK rel=3D"shortcut icon" type=3Dimage/x-icon=20
+href=3D"/favicon.ico">
+<META name=3DKeywords=20
+content=3D"Learning, SQL, Structured, Programming, Language, Syntax, =
+Database, Clauses, database concepts, SQL Syntax, SELECT, INSERT, =
+DELETE, UPDATE, DROP, TRUNCATE, DISTINCT, ORDER BY, GROUP BY, WHERE">
+<META name=3Ddescription=20
+content=3D"SQL FULL JOINS - Learn SQL (Structured Programming Language) =
+in simple and easy steps starting from basics to advanced concepts. This =
+tutorial would give you complete understanding on database concepts, SQL =
+Syntax, SELECT, INSERT, DELETE, UPDATE, DROP, TRUNCATE, DISTINCT, ORDER =
+BY, GROUP BY, WHERE clauses."><LINK=20
+rel=3Dstylesheet type=3Dtext/css=20
+href=3D"http://www.tutorialspoint.com/scripts/style.css"><LINK =
+rel=3Dstylesheet=20
+type=3Dtext/css =
+href=3D"http://www.tutorialspoint.com/scripts/prettify.css">
+<SCRIPT type=3Dtext/javascript=20
+src=3D"http://www.tutorialspoint.com/scripts/prettify.js"></SCRIPT>
+
+<STYLE type=3Dtext/css media=3Dscreen>#topmenu A:link {
+	BACKGROUND-COLOR: transparent; COLOR: #fff !important; FONT-WEIGHT: =
+bold; TEXT-DECORATION: none
+}
+#topmenu A:visited {
+	BACKGROUND-COLOR: transparent; COLOR: #fff !important; FONT-WEIGHT: =
+bold; TEXT-DECORATION: none
+}
+#topmenu A:hover {
+	BACKGROUND-COLOR: transparent; COLOR: #36b8d7 !important; FONT-WEIGHT: =
+bold; TEXT-DECORATION: none
+}
+#header {
+	BACKGROUND: #36b8d7
+}
+#topmenu {
+	BACKGROUND-COLOR: #005c71 !important
+}
+#leftcol UL.menu LI.heading {
+	BORDER-BOTTOM: #005c71 1px solid; BORDER-LEFT: #005c71 1px solid; =
+BACKGROUND: #36b8d7; BORDER-TOP: #005c71 1px solid; BORDER-RIGHT: =
+#005c71 1px solid
+}
+#leftcol {
+	PADDING-BOTTOM: 0px; MIN-HEIGHT: 1650px; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#middlecol {
+	PADDING-BOTTOM: 0px; MIN-HEIGHT: 1650px; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#rightcol {
+	PADDING-BOTTOM: 0px; MIN-HEIGHT: 1650px; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+</STYLE>
+
+<SCRIPT type=3Dtext/javascript=20
+src=3D"http://www.google-analytics.com/urchin.js">=0A=
+</SCRIPT>
+
+<SCRIPT type=3Dtext/javascript>=0A=
+_uacct =3D "UA-232293-6";=0A=
+urchinTracker();=0A=
+</SCRIPT>
+
+<META name=3DGENERATOR content=3D"MSHTML 8.00.6001.18702"></HEAD>
+<BODY onload=3DprettyPrint()>
+<DIV id=3Dheader>
+<DIV class=3Dwrapper>
+<H1 class=3Dlogo><A =
+href=3D"http://www.tutorialspoint.com/index.htm">Tutorials Point=20
+- Simply Easy Learning</A></H1>
+<DIV id=3Dsearch>
+<FORM id=3Dsearchform method=3Dget name=3Dsearchform=20
+action=3Dhttp://www.google.com/search target=3D_blank><INPUT=20
+value=3Dwww.tutorialspoint.com type=3Dhidden name=3Dsitesearch> <INPUT=20
+onblur=3D"if (this.value =3D=3D '') {this.value =3D 'Search this =
+site...';}" id=3Ds=20
+onfocus=3D"if (this.value =3D=3D 'Search this site...') {this.value =3D =
+'';}"=20
+value=3D"Search this site..." type=3Dtext name=3Das_q> <INPUT =
+value=3DFORID:11=20
+type=3Dhidden name=3Dcof> <INPUT value=3DISO-8859-1 type=3Dhidden =
+name=3Die> <INPUT=20
+class=3D"submit btn" alt=3DGo=20
+src=3D"http://www.tutorialspoint.com/images/icon-search.png" =
+type=3Dimage>=20
+</FORM></DIV></DIV></DIV>
+<DIV id=3Dtopmenu>
+<DIV class=3Dwrapper>
+<DIV id=3Dleft><A href=3D"http://www.tutorialspoint.com/index.htm" =
+target=3D_top>HOME=20
+</A><A href=3D"http://www.tutorialspoint.com/java/index.htm" =
+target=3D_top>JAVA=20
+</A><A href=3D"http://www.tutorialspoint.com/php/index.htm" =
+target=3D_top>PHP </A><A=20
+href=3D"http://www.tutorialspoint.com/python/index.htm" =
+target=3D_top>Python </A><A=20
+href=3D"http://www.tutorialspoint.com/ruby/index.htm" target=3D_top>Ruby =
+</A><A=20
+href=3D"http://www.tutorialspoint.com/perl/index.htm" target=3D_top>Perl =
+</A><A=20
+href=3D"http://www.tutorialspoint.com/html/index.htm" target=3D_top>HTML =
+</A><A=20
+href=3D"http://www.tutorialspoint.com/css/index.htm" target=3D_top>CSS =
+</A><A=20
+href=3D"http://www.tutorialspoint.com/javascript/index.htm" =
+target=3D_top>Javascript=20
+</A><A href=3D"http://www.tutorialspoint.com/mysql/index.htm" =
+target=3D_top>MySQL=20
+</A><A href=3D"http://www.tutorialspoint.com/cplusplus/index.htm" =
+target=3D_top>C++=20
+</A><A href=3D"http://www.tutorialspoint.com/unix/index.htm" =
+target=3D_top>UNIX=20
+</A><A href=3D"http://www.tutorialspoint.com/more.htm" =
+target=3D_top>MORE...</A>=20
+</DIV>
+<DIV id=3Dright><A href=3D"http://www.tutorialspoint.com/references.htm" =
+
+target=3D_top>REFERENCES</A> | <A=20
+href=3D"http://www.tutorialspoint.com/forums/index.php" =
+target=3D_top>FORUM</A> | <A=20
+href=3D"http://www.tutorialspoint.com/about/index.htm" =
+target=3D_top>ABOUT</A> | <A=20
+href=3D"http://www.tutorialspoint.com/about/contact_us.htm"=20
+target=3D_top>CONTACT</A> </DIV></DIV></DIV>
+<DIV class=3Dwrapper>
+<DIV id=3Dleftcol>
+<DIV class=3Dmini-logo><IMG alt=3D"SQL Tutorial"=20
+src=3D"http://www.tutorialspoint.com/images/sql-mini-logo.png"> </DIV>
+<UL class=3Dmenu>
+  <LI class=3Dheading>Basic SQL</LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/index.htm" =
+target=3D_top>SQL -=20
+  Home</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-overview.htm"=20
+  target=3D_top>SQL - Overview</A></LI>
+  <LI><A =
+href=3D"http://www.tutorialspoint.com/sql/sql-rdbms-concepts.htm"=20
+  target=3D_top>SQL - RDBMS Concepts</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-databases.htm"=20
+  target=3D_top>SQL - Databases</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-syntax.htm" =
+target=3D_top>SQL=20
+  - Syntax</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-data-types.htm"=20
+  target=3D_top>SQL - Data Types</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-operators.htm"=20
+  target=3D_top>SQL - Operators</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-expressions.htm"=20
+  target=3D_top>SQL - Expressions</A></LI>
+  <LI><A =
+href=3D"http://www.tutorialspoint.com/sql/sql-create-database.htm"=20
+  target=3D_top>SQL - Create Database</A></LI>
+  <LI><A =
+href=3D"http://www.tutorialspoint.com/sql/sql-drop-database.htm"=20
+  target=3D_top>SQL - Drop Database</A></LI>
+  <LI><A =
+href=3D"http://www.tutorialspoint.com/sql/sql-select-database.htm"=20
+  target=3D_top>SQL - Select Database</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-create-table.htm" =
+
+  target=3D_top>SQL - Create Table</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-drop-table.htm"=20
+  target=3D_top>SQL - Drop Table</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-insert-query.htm" =
+
+  target=3D_top>SQL - Insert Query</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-select-query.htm" =
+
+  target=3D_top>SQL - Select Query</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-where-clause.htm" =
+
+  target=3D_top>SQL - Where Clause</A></LI>
+  <LI><A =
+href=3D"http://www.tutorialspoint.com/sql/sql-and-or-clauses.htm"=20
+  target=3D_top>SQL - AND &amp; OR Clauses</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-update-query.htm" =
+
+  target=3D_top>SQL - Update Query</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-delete-query.htm" =
+
+  target=3D_top>SQL - Delete Query</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-like-clause.htm"=20
+  target=3D_top>SQL - Like Clause</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-top-clause.htm"=20
+  target=3D_top>SQL - Top Clause</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-order-by.htm"=20
+  target=3D_top>SQL - Order By</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-group-by.htm"=20
+  target=3D_top>SQL - Group By</A></LI>
+  <LI><A =
+href=3D"http://www.tutorialspoint.com/sql/sql-distinct-keyword.htm"=20
+  target=3D_top>SQL - Distinct Keyword</A></LI>
+  <LI><A =
+href=3D"http://www.tutorialspoint.com/sql/sql-sorting-results.htm"=20
+  target=3D_top>SQL - Sorting Results</A></LI></UL>
+<UL class=3Dmenu>
+  <LI class=3Dheading>Advanced SQL</LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-constraints.htm"=20
+  target=3D_top>SQL - Constraints</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-using-joins.htm"=20
+  target=3D_top><B>SQL - Using Joins</B></A></LI>
+  <LI><A =
+href=3D"http://www.tutorialspoint.com/sql/sql-unions-clause.htm"=20
+  target=3D_top>SQL - Unions Clause</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-null-values.htm"=20
+  target=3D_top>SQL - NULL Values</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-alias-syntax.htm" =
+
+  target=3D_top>SQL - Alias Syntax</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-indexes.htm"=20
+  target=3D_top>SQL - Indexes</A></LI>
+  <LI><A =
+href=3D"http://www.tutorialspoint.com/sql/sql-alter-command.htm"=20
+  target=3D_top>SQL - Alter Command</A></LI>
+  <LI><A =
+href=3D"http://www.tutorialspoint.com/sql/sql-truncate-table.htm"=20
+  target=3D_top>SQL - Truncate Table</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-using-views.htm"=20
+  target=3D_top>SQL - Using Views</A></LI>
+  <LI><A =
+href=3D"http://www.tutorialspoint.com/sql/sql-having-clause.htm"=20
+  target=3D_top>SQL - Having Clause</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-transactions.htm" =
+
+  target=3D_top>SQL - Transactions</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-wildcards.htm"=20
+  target=3D_top>SQL - Wildcards</A></LI>
+  <LI><A =
+href=3D"http://www.tutorialspoint.com/sql/sql-date-functions.htm"=20
+  target=3D_top>SQL - Date Functions</A></LI>
+  <LI><A =
+href=3D"http://www.tutorialspoint.com/sql/sql-temporary-tables.htm"=20
+  target=3D_top>SQL - Temporary Tables</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-clone-tables.htm" =
+
+  target=3D_top>SQL - Clone Tables</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-sub-queries.htm"=20
+  target=3D_top>SQL - Sub Queries</A></LI>
+  <LI><A =
+href=3D"http://www.tutorialspoint.com/sql/sql-using-sequences.htm"=20
+  target=3D_top>SQL - Using Sequences</A></LI>
+  <LI><A =
+href=3D"http://www.tutorialspoint.com/sql/sql-handling-duplicates.htm"=20
+  target=3D_top>SQL - Handling Duplicates</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-injection.htm"=20
+  target=3D_top>SQL - Injection</A></LI></UL>
+<UL class=3Dmenu>
+  <LI class=3Dheading>SQL Useful Resources</LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/sql/sql-quick-guide.htm"=20
+  target=3D_top>SQL - Quick Guide</A></LI>
+  <LI><A =
+href=3D"http://www.tutorialspoint.com/sql/sql-useful-functions.htm"=20
+  target=3D_top>SQL - Useful Functions</A></LI>
+  <LI><A =
+href=3D"http://www.tutorialspoint.com/sql/sql-useful-resources.htm"=20
+  target=3D_top>SQL - Useful Resources</A></LI></UL>
+<UL class=3Dmenu>
+  <LI class=3Dsreading>Selected Reading</LI>
+  <LI><A=20
+  =
+href=3D"http://www.tutorialspoint.com/developers_best_practices/index.htm=
+"=20
+  target=3D_top>Developer's Best Practices</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/computer_glossary.htm"=20
+  target=3D_top>Computer Glossary</A></LI>
+  <LI><A href=3D"http://www.tutorialspoint.com/computer_whoiswho.htm"=20
+  target=3D_top>Who is Who</A></LI></UL></DIV><!-- leftcol -->
+<DIV id=3Dmiddlecol><!-- PRINTING STARTS HERE -->
+<DIV class=3Dcontent>
+<H1>SQL - FULL JOINS</H1>
+<DIV class=3Dtopgooglead>
+<DIV style=3D"PADDING-BOTTOM: 5px; PADDING-LEFT: =
+10px">Advertisements</DIV>
+<SCRIPT type=3Dtext/javascript><!--=0A=
+google_ad_client =3D "pub-7133395778201029";=0A=
+google_ad_width =3D 468;=0A=
+google_ad_height =3D 60;=0A=
+google_ad_format =3D "468x60_as";=0A=
+google_ad_type =3D "image";=0A=
+google_ad_channel =3D "";=0A=
+//--></SCRIPT>
+
+<SCRIPT type=3Dtext/javascript=20
+src=3D"http://pagead2.googlesyndication.com/pagead/show_ads.js"> =0A=
+</SCRIPT>
+</DIV>
+<HR>
+
+<DIV class=3Dpre-btn><A=20
+href=3D"http://www.tutorialspoint.com/sql/sql-using-joins.htm">Previous =
+Page</A>=20
+</DIV>
+<DIV class=3Dnxt-btn><A=20
+href=3D"http://www.tutorialspoint.com/sql/sql-using-joins.htm">Next =
+Page</A>=20
+</DIV>
+<DIV class=3Dclearer></DIV>
+<HR>
+
+<P>The SQL <B>FULL JOIN</B> combines the results of both left and right =
+outer=20
+joins.</P>
+<P>The joined table will contain all records from both tables, and fill =
+in NULLs=20
+for missing matches on either side.</P>
+<H2>Syntax:</H2>
+<P>The basic syntax of <B>FULL JOIN</B> is as follows:</P><PRE =
+class=3Dprettyprint>SELECT table1.column1, table2.column2...
+FROM table1
+FULL JOIN table2
+ON table1.common_filed =3D table2.common_field;
+</PRE>
+<P>Here given condition could be any given expression based on your=20
+requirement.</P>
+<H2>Example:</H2>
+<P>Consider following two tables, (a) CUSTOMERS table is as =
+follows:</P><PRE =
+class=3Dprettyprint>+----+----------+-----+-----------+----------+
+| ID | NAME     | AGE | ADDRESS   | SALARY   |
++----+----------+-----+-----------+----------+
+|  1 | Ramesh   |  32 | Ahmedabad |  2000.00 |
+|  2 | Khilan   |  25 | Delhi     |  1500.00 |
+|  3 | kaushik  |  23 | Kota      |  2000.00 |
+|  4 | Chaitali |  25 | Mumbai    |  6500.00 |
+|  5 | Hardik   |  27 | Bhopal    |  8500.00 |
+|  6 | Komal    |  22 | MP        |  4500.00 |
+|  7 | Muffy    |  24 | Indore    | 10000.00 |
++----+----------+-----+-----------+----------+
+</PRE>
+<P>(b) Another table is ORDERS as follows:</P><PRE =
+class=3Dprettyprint>+-----+---------------------+-------------+--------+
+|OID  | DATE                | CUSTOMER_ID | AMOUNT |
++-----+---------------------+-------------+--------+
+| 102 | 2009-10-08 00:00:00 |           3 |   3000 |
+| 100 | 2009-10-08 00:00:00 |           3 |   1500 |
+| 101 | 2009-11-20 00:00:00 |           2 |   1560 |
+| 103 | 2008-05-20 00:00:00 |           4 |   2060 |
++-----+---------------------+-------------+--------+
+</PRE>
+<P>Now let us join these two tables using FULL JOIN as follows:</P><PRE =
+class=3Dprettyprint>SQL&gt; SELECT  ID, NAME, AMOUNT, DATE
+     FROM CUSTOMERS
+     FULL JOIN ORDERS
+     ON CUSTOMERS.ID =3D ORDERS.CUSTOMER_ID;
+</PRE>
+<P>This would produce following result:</P><PRE =
+class=3Dprettyprint>+------+----------+--------+---------------------+
+| ID   | NAME     | AMOUNT | DATE                |
++------+----------+--------+---------------------+
+|    1 | Ramesh   |   NULL | NULL                |
+|    2 | Khilan   |   1560 | 2009-11-20 00:00:00 |
+|    3 | kaushik  |   3000 | 2009-10-08 00:00:00 |
+|    3 | kaushik  |   1500 | 2009-10-08 00:00:00 |
+|    4 | Chaitali |   2060 | 2008-05-20 00:00:00 |
+|    5 | Hardik   |   NULL | NULL                |
+|    6 | Komal    |   NULL | NULL                |
+|    7 | Muffy    |   NULL | NULL                |
+|    3 | kaushik  |   3000 | 2009-10-08 00:00:00 |
+|    3 | kaushik  |   1500 | 2009-10-08 00:00:00 |
+|    2 | Khilan   |   1560 | 2009-11-20 00:00:00 |
+|    4 | Chaitali |   2060 | 2008-05-20 00:00:00 |
++------+----------+--------+---------------------+
+</PRE>
+<P>If your Database does not support FULL JOIN like MySQL does not =
+support FULL=20
+JOIN, then you can use <B>UNION ALL</B> clause to combile two JOINS as=20
+follows:</P><PRE class=3Dprettyprint>SQL&gt; SELECT  ID, NAME, AMOUNT, =
+DATE
+     FROM CUSTOMERS
+     LEFT JOIN ORDERS
+     ON CUSTOMERS.ID =3D ORDERS.CUSTOMER_ID
+UNION ALL
+     SELECT  ID, NAME, AMOUNT, DATE
+     FROM CUSTOMERS
+     RIGHT JOIN ORDERS
+     ON CUSTOMERS.ID =3D ORDERS.CUSTOMER_ID
+</PRE>
+<HR>
+
+<DIV class=3Dpre-btn><A=20
+href=3D"http://www.tutorialspoint.com/sql/sql-using-joins.htm">Previous =
+Page</A>=20
+</DIV>
+<DIV class=3Dprint-btn><A=20
+href=3D"http://www.tutorialspoint.com/cgi-bin/printpage.cgi" =
+target=3D_blank>Print=20
+Version</A> </DIV>
+<DIV class=3Dpdf-btn><A=20
+href=3D"http://www.tutorialspoint.com/sql/pdf/sql-full-joins.pdf" =
+target=3D_blank=20
+alt=3D"SQL - FULL JOINS">PDF Version</A> </DIV>
+<DIV class=3Dnxt-btn><A=20
+href=3D"http://www.tutorialspoint.com/sql/sql-using-joins.htm">Next =
+Page</A>=20
+</DIV>
+<DIV class=3Dclearer></DIV>
+<HR>
+</DIV><!-- PRINTING ENDS HERE -->
+<DIV class=3Dbottomgooglead>
+<DIV style=3D"PADDING-BOTTOM: 5px; PADDING-LEFT: =
+10px">Advertisements</DIV>
+<SCRIPT type=3Dtext/javascript><!--=0A=
+google_ad_client =3D "pub-7133395778201029";=0A=
+google_ad_width =3D 336;=0A=
+google_ad_height =3D 280;=0A=
+google_ad_format =3D "336x280_as";=0A=
+google_ad_type =3D "text";=0A=
+google_ad_channel =3D"9030538898";=0A=
+google_color_border=3D"ffffff";=0A=
+google_color_link=3D"900b09";=0A=
+google_color_url=3D"000000";=0A=
+google_color_text=3D"000000";=0A=
+//--></SCRIPT>
+
+<SCRIPT type=3Dtext/javascript=20
+src=3D"http://pagead2.googlesyndication.com/pagead/show_ads.js"></SCRIPT>=
+
+</DIV></DIV><!-- middlecol -->
+<DIV id=3Drightcol><!-- AddThis Button BEGIN -->
+<DIV class=3Daddthis>
+<DIV class=3D"addthis_toolbox addthis_default_style"><A=20
+class=3Daddthis_button_facebook></A><A =
+class=3Daddthis_button_twitter></A>
+<SCRIPT type=3Dtext/javascript>=0A=
+<!--=0A=
+ document.write('<a class=3D"addthis_button_google_plusone" =
+g:plusone:count=3D"false"></a>');=0A=
+//-->=0A=
+</SCRIPT>
+<A class=3Daddthis_button_linkedin></A><A =
+class=3Daddthis_button_email></A><A=20
+class=3Daddthis_button_compact></A></DIV>
+<SCRIPT type=3Dtext/javascript src=3D""></SCRIPT>
+</DIV><!-- AddThis Button END -->
+<DIV class=3Dlocalad><A title=3D"Modern Baby Names"=20
+href=3D"http://www.modernindianbabynames.com/" rel=3Dnofollow =
+target=3D_blank>Modern=20
+Baby Names</A> </DIV>
+<DIV class=3Dlocalad><A title=3D"Online Photo Editing"=20
+href=3D"http://www.photofuntoos.com/" rel=3Dnofollow =
+target=3D_blank>Online Photo=20
+Editing</A> </DIV>
+<DIV class=3Drightgooglead>
+<DIV style=3D"PADDING-BOTTOM: 5px; PADDING-LEFT: =
+10px">Advertisements</DIV>
+<SCRIPT type=3Dtext/javascript><!--=0A=
+google_ad_client =3D "pub-7133395778201029";=0A=
+google_ad_width =3D 160;=0A=
+google_ad_height =3D 600;=0A=
+google_ad_format =3D "160x600_as";=0A=
+google_ad_type =3D "image";=0A=
+google_ad_channel =3D"";=0A=
+//--></SCRIPT>
+
+<SCRIPT type=3Dtext/javascript=20
+src=3D"http://pagead2.googlesyndication.com/pagead/show_ads.js"> =0A=
+</SCRIPT>
+</DIV></DIV><!-- rightcol -->
+<DIV style=3D"CLEAR: both"></DIV></DIV><!-- wrapper -->
+<DIV id=3Dfooter>
+<DIV class=3Dwrapper>
+<DIV id=3Dbottommenu><A =
+href=3D"http://www.tutorialspoint.com/asp.net/index.htm"=20
+target=3D_top>ASP.NET </A>| <A=20
+href=3D"http://www.tutorialspoint.com/jquery/index.htm" =
+target=3D_top>jQuery </A>|=20
+<A href=3D"http://www.tutorialspoint.com/ajax/index.htm" =
+target=3D_top>AJAX </A>| <A=20
+href=3D"http://www.tutorialspoint.com/ant/index.htm" =
+target=3D_top>ANT</A> | <A=20
+href=3D"http://www.tutorialspoint.com/jsp/index.htm" target=3D_top>JSP =
+</A>| <A=20
+href=3D"http://www.tutorialspoint.com/servlets/index.htm" =
+target=3D_top>Servlets=20
+</A>| <A href=3D"http://www.tutorialspoint.com/log4j/index.htm" =
+target=3D_top>log4j=20
+</A>| <A href=3D"http://www.tutorialspoint.com/ibatis/index.htm"=20
+target=3D_top>iBATIS </A>| <A=20
+href=3D"http://www.tutorialspoint.com/hibernate/index.htm" =
+target=3D_top>Hibernate=20
+</A>| <A href=3D"http://www.tutorialspoint.com/jdbc/index.htm" =
+target=3D_top>JDBC=20
+</A>| <A href=3D"http://www.tutorialspoint.com/struts_2/index.htm"=20
+target=3D_top>Struts </A>| <A =
+href=3D"http://www.tutorialspoint.com/html5/index.htm"=20
+target=3D_top>HTML5 </A>| <A =
+href=3D"http://www.tutorialspoint.com/sql/index.htm"=20
+target=3D_top>SQL </A>| <A =
+href=3D"http://www.tutorialspoint.com/mysql/index.htm"=20
+target=3D_top>MySQL </A>| <A=20
+href=3D"http://www.tutorialspoint.com/cplusplus/index.htm" =
+target=3D_top>C++ </A>|=20
+<A href=3D"http://www.tutorialspoint.com/unix/index.htm" =
+target=3D_top>UNIX=20
+</A></DIV>
+<DIV id=3Dcopyright>
+<P>Copyright =C2=A9 2013 by tutorialspoint. All Rights=20
+Reserved.</P></DIV></DIV></DIV></BODY></HTML>
+
+------=_NextPart_000_0000_01CE006B.3C583F00
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: http://www.tutorialspoint.com/images/sql-mini-logo.png
+
+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
+
+------=_NextPart_000_0000_01CE006B.3C583F00
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: http://www.tutorialspoint.com/images/icon-search.png
+
+iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+AAAcIAAAHCABzQ+bngAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTM5jWRgMAAAQR
+dEVYdFhNTDpjb20uYWRvYmUueG1wADw/eHBhY2tldCBiZWdpbj0iICAgIiBpZD0iVzVNME1wQ2Vo
+aUh6cmVTek5UY3prYzlkIj8+Cjx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6
+eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDQuMS1jMDM0IDQ2LjI3Mjk3NiwgU2F0IEphbiAyNyAyMDA3
+IDIyOjExOjQxICAgICAgICAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMu
+b3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJk
+ZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp4YXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFw
+LzEuMC8iPgogICAgICAgICA8eGFwOkNyZWF0b3JUb29sPkFkb2JlIEZpcmV3b3JrcyBDUzM8L3hh
+cDpDcmVhdG9yVG9vbD4KICAgICAgICAgPHhhcDpDcmVhdGVEYXRlPjIwMTAtMDQtMjRUMTg6MTk6
+NDFaPC94YXA6Q3JlYXRlRGF0ZT4KICAgICAgICAgPHhhcDpNb2RpZnlEYXRlPjIwMTAtMDQtMjRU
+MTg6MTk6NTFaPC94YXA6TW9kaWZ5RGF0ZT4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgICAg
+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICAgICAgICAgIHhtbG5zOmRjPSJodHRw
+Oi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyI+CiAgICAgICAgIDxkYzpmb3JtYXQ+aW1hZ2Uv
+cG5nPC9kYzpmb3JtYXQ+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+Cjwv
+eDp4bXBtZXRhPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgINFH2b8AAAJ0SURBVCiRhZI9aBNxGMaf//3vcpf0kkuubWqhYFXI
+UC1J61Coi6AgFKurujgoTiLqIi4KgoPgUIqrCjZ1cbFKPxQrOHRxUlwsjkXtV5JLLneX+/q/LuYo
+CPaBF57h/b3P+8LLsEfvlhZH1Yx+JZ1WTzEmGSIWdc9zVz3XmZs6O/0FAIgo6Wdds7K0dDlvmo/T
+Rr6PcQWMSQAIse/Dsa3t5u7Oranpcy/3wjIAvF9ZPp/Wc88pYzCzOIDeQh4SAwQB9aaNaFstZmPx
+dPnNggvgdRfmbxcWJnQ9O6vmzeLw4UPoN3S0/RAdX0AIgqmnoWUNNGxHprBT+vTxw6vK+PEOAEha
+On1NVtURvdCLfI+GLTtAOxQIiOBEMRpuiFxKglEcgODK+MGhoYlusiTL8giXOeSUhpZPAAgAQ0wA
+iCEkQtMXUFIqeEqDIBpMbmZEFmNAFIZoBQJRFENTOCgGQhDcQEBRJARBDCIBReZuAnfCYFELo0m/
+3crxXAG7AYBOCIkIXkwAA/q5gqbVgCyiTVmRvydrW43GvOc4L+A7CK0aDEWGYArsWALjMnQ1hcbu
+LmJrC5qEZ5MnT39N4AsXLzWabfth5DqrZG0jrv9EXjgY4CFysQNR/41UcwtHBouwO4HBGEt+IzFP
+ZmfN0dFj9zM9+hnG+TAkrqY1zYt8/8fO5i+73rJP1Go1rK2tPapWq3eJiBK4q/nq3NED/X3lbC6X
+abdsO5/VP1+9edsKXPdBqVS6PjY2ho2NjZlqtXrvH/g/YqZpzpTL5RuVSgXr6+t3+D6ACiALoBdA
+wfO8b/V6PbAsy6jVaov7JfM9pQDwAUh/Bzb+AI0oGqvkOyHVAAAAAElFTkSuQmCC
+
+------=_NextPart_000_0000_01CE006B.3C583F00
+Content-Type: text/css;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.tutorialspoint.com/scripts/style.css
+
+HTML {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+BODY {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+ADDRESS {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+BLOCKQUOTE {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+DIV {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+DL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+FORM {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+H1 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+H2 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+H3 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+H4 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+H5 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+H6 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+OL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+P {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+PRE {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+TABLE {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+UL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+DD {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+DT {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+LI {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+TBODY {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+TD {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+TFOOT {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+TH {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+THEAD {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+TR {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+BUTTON {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+DEL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+INS {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+MAP {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+OBJECT {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+A {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+ABBR {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+ACRONYM {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+B {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+BDO {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+BIG {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+BR {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+CITE {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+CODE {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+DFN {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+EM {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+I {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+IMG {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+KBD {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+Q {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+SAMP {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+SMALL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+SPAN {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+STRONG {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+SUB {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+SUP {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+TT {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+VAR {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+LEGEND {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+FIELDSET {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+HTML {
+	PADDING-BOTTOM: 0px; OVERFLOW-X: hidden; MARGIN: 0px; PADDING-LEFT: =
+0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+BODY {
+	PADDING-BOTTOM: 0px; OVERFLOW-X: hidden; MARGIN: 0px; PADDING-LEFT: =
+0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+IMG {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: =
+0px
+}
+FIELDSET {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: =
+0px
+}
+IMG {
+	DISPLAY: block; MAX-WIDTH: 560px; HEIGHT: auto
+}
+.content IMG {
+	PADDING-BOTTOM: 10px; MARGIN: auto
+}
+.ie8 IMG {
+	WIDTH: auto; HEIGHT: auto
+}
+article {
+	DISPLAY: block
+}
+aside {
+	DISPLAY: block
+}
+details {
+	DISPLAY: block
+}
+figcaption {
+	DISPLAY: block
+}
+figure {
+	DISPLAY: block
+}
+footer {
+	DISPLAY: block
+}
+header {
+	DISPLAY: block
+}
+hgroup {
+	DISPLAY: block
+}
+MENU {
+	DISPLAY: block
+}
+nav {
+	DISPLAY: block
+}
+section {
+	DISPLAY: block
+}
+BODY {
+	OVERFLOW-X: hidden; WIDTH: 100%; FONT-FAMILY: Helvetica, Arial, =
+Sans-Serif; BACKGROUND: #eee; MARGIN-LEFT: auto; FONT-SIZE: 75%; =
+MARGIN-RIGHT: auto
+}
+H1 {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 0.2em; MARGIN-BOTTOM: 1em; =
+FONT-WEIGHT: normal; text-shadow: 2px 2px 3px #ccc
+}
+H2 {
+	PADDING-BOTTOM: 0.1em; LINE-HEIGHT: 1.5em; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0px; MARGIN-BOTTOM: 0.5em; FONT-SIZE: 1.6em; FONT-WEIGHT: =
+normal; PADDING-TOP: 0.5em; text-shadow: 1px 1px 2px #ccc
+}
+H3 {
+	LINE-HEIGHT: 1.5em; TEXT-TRANSFORM: uppercase; FONT-SIZE: 1.2em; =
+FONT-WEIGHT: bold; text-shadow: 1px 1px 2px #ccc
+}
+H4 {
+	FONT-SIZE: 12px
+}
+H5 {
+	FONT-SIZE: 15px
+}
+H6 {
+	FONT-SIZE: 13px
+}
+IMG {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; =
+PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+A {
+	COLOR: #000; TEXT-DECORATION: none
+}
+A:link {
+	BACKGROUND-COLOR: transparent; COLOR: #900b09
+}
+A:visited {
+	BACKGROUND-COLOR: transparent; COLOR: #900b09
+}
+A:active {
+	BACKGROUND-COLOR: transparent; COLOR: #ff0000
+}
+A:hover {
+	BACKGROUND-COLOR: transparent; COLOR: #ff0000
+}
+A:hover {
+	BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: red; =
+TEXT-DECORATION: underline
+}
+H1 {
+	PADDING-BOTTOM: 0px; MARGIN: 0.2em 0.2em 0.2em 0px; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0px; FONT-WEIGHT: normal; PADDING-TOP: 0px
+}
+H2 {
+	PADDING-BOTTOM: 0px; MARGIN: 0.2em 0.2em 0.2em 0px; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0px; FONT-WEIGHT: normal; PADDING-TOP: 0px
+}
+H3 {
+	PADDING-BOTTOM: 0px; MARGIN: 0.2em 0.2em 0.2em 0px; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0px; FONT-WEIGHT: normal; PADDING-TOP: 0px
+}
+P {
+	TEXT-ALIGN: justify; PADDING-BOTTOM: 0px; MARGIN: 0.8em 0px 1em; =
+PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+TABLE.src {
+	BORDER-BOTTOM: #d6d6d6 1px solid; BORDER-LEFT: #d6d6d6 1px solid; =
+BACKGROUND-COLOR: #f7f7f7; MARGIN-TOP: 8px; WIDTH: 100%; =
+BORDER-COLLAPSE: collapse; MARGIN-BOTTOM: 8px; VERTICAL-ALIGN: top; =
+BORDER-TOP: #d6d6d6 1px solid; BORDER-RIGHT: #d6d6d6 1px solid
+}
+TABLE.src TD {
+	BORDER-BOTTOM: #d6d6d6 1px solid; BORDER-LEFT: #d6d6d6 1px solid; =
+PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; =
+BORDER-COLLAPSE: collapse; BORDER-TOP: #d6d6d6 1px solid; BORDER-RIGHT: =
+#d6d6d6 1px solid; PADDING-TOP: 5px
+}
+TABLE.src TH {
+	BORDER-BOTTOM: #d6d6d6 1px solid; TEXT-ALIGN: left; BORDER-LEFT: =
+#d6d6d6 1px solid; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: #eee; =
+PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BORDER-COLLAPSE: collapse; =
+BORDER-TOP: #d6d6d6 1px solid; BORDER-RIGHT: #d6d6d6 1px solid; =
+PADDING-TOP: 5px
+}
+TABLE.right {
+	BORDER-BOTTOM: #d6d6d6 1px solid; BORDER-LEFT: #d6d6d6 1px solid; =
+BACKGROUND-COLOR: #f7f7f7; MARGIN-TOP: 8px; WIDTH: 95%; BORDER-COLLAPSE: =
+collapse; MARGIN-BOTTOM: 8px; MARGIN-LEFT: 5px; VERTICAL-ALIGN: top; =
+BORDER-TOP: #d6d6d6 1px solid; BORDER-RIGHT: #d6d6d6 1px solid
+}
+TABLE.right TD {
+	BORDER-BOTTOM: #d6d6d6 1px solid; BORDER-LEFT: #d6d6d6 1px solid; =
+PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; =
+BORDER-COLLAPSE: collapse; BORDER-TOP: #d6d6d6 1px solid; BORDER-RIGHT: =
+#d6d6d6 1px solid; PADDING-TOP: 5px
+}
+TABLE.right TH {
+	BORDER-BOTTOM: #000 1px solid; TEXT-ALIGN: center; BORDER-LEFT: #000 =
+1px solid; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: #000; PADDING-LEFT: =
+3px; PADDING-RIGHT: 3px; BORDER-COLLAPSE: collapse; COLOR: white; =
+BORDER-TOP: #000 1px solid; BORDER-RIGHT: #000 1px solid; PADDING-TOP: =
+3px
+}
+TABLE.tlist {
+	BORDER-BOTTOM: #d6d6d6 1px solid; BORDER-LEFT: #d6d6d6 1px solid; =
+BACKGROUND-COLOR: #f7f7f7; MARGIN-TOP: 8px; WIDTH: 95%; BORDER-COLLAPSE: =
+collapse; MARGIN-BOTTOM: 8px; MARGIN-LEFT: 5px; VERTICAL-ALIGN: top; =
+BORDER-TOP: #d6d6d6 1px solid; BORDER-RIGHT: #d6d6d6 1px solid
+}
+TABLE.tlist TD {
+	BORDER-BOTTOM: #d6d6d6 1px solid; TEXT-ALIGN: left; BORDER-LEFT: =
+#d6d6d6 1px solid; PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; =
+PADDING-RIGHT: 5px; BORDER-COLLAPSE: collapse; FONT-SIZE: 90%; =
+BORDER-TOP: #d6d6d6 1px solid; BORDER-RIGHT: #d6d6d6 1px solid; =
+PADDING-TOP: 5px
+}
+TABLE.tlist TH {
+	BORDER-BOTTOM: #000 1px solid; TEXT-ALIGN: center; BORDER-LEFT: #000 =
+1px solid; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: #000; PADDING-LEFT: =
+3px; PADDING-RIGHT: 3px; BORDER-COLLAPSE: collapse; COLOR: white; =
+BORDER-TOP: #000 1px solid; BORDER-RIGHT: #000 1px solid; PADDING-TOP: =
+3px
+}
+DIV#left A.front:hover {
+	COLOR: #aaa
+}
+DIV#right A.front:hover {
+	COLOR: #aaa
+}
+A.more:link {
+	COLOR: #667f94
+}
+A.more:visited {
+	COLOR: #667f94
+}
+A.more:active {
+	COLOR: #ff0000
+}
+A.more:hover {
+	COLOR: #ff0000
+}
+A.more {
+	FONT-FAMILY: tahoma, arial; FONT-SIZE: 10px; FONT-WEIGHT: bold; =
+TEXT-DECORATION: underline
+}
+IMG.more {
+	DISPLAY: inline
+}
+TABLE.src TH.fivepct {
+	WIDTH: 5%
+}
+TABLE.src TH.thirtypct {
+	WIDTH: 30%
+}
+TABLE.src TH.twentypct {
+	WIDTH: 20%
+}
+H1.logo A {
+	Z-INDEX: 10; BORDER-BOTTOM: 0px; POSITION: relative; BORDER-LEFT: 0px; =
+PADDING-BOTTOM: 0px; TEXT-INDENT: -9999px; MARGIN: 0px; PADDING-LEFT: =
+0px; WIDTH: 587px; PADDING-RIGHT: 0px; BACKGROUND: =
+url(/images/final-logo.png) no-repeat right 50%; FLOAT: left; OVERFLOW: =
+visible; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 0px; LEFT: 0px
+}
+INPUT {
+	FONT-FAMILY: inherit; FONT-SIZE: 100%
+}
+TEXTAREA {
+	FONT-FAMILY: inherit; FONT-SIZE: 100%
+}
+SELECT {
+	FONT-FAMILY: inherit; FONT-SIZE: 100%
+}
+INPUT[type=3Dtext] {
+	BORDER-BOTTOM: #c8c7b4 1px solid; BORDER-LEFT: medium none; =
+PADDING-BOTTOM: 6px; PADDING-LEFT: 2%; PADDING-RIGHT: 2%; BACKGROUND: =
+#eee; COLOR: #4b423a; BORDER-TOP: medium none; BORDER-RIGHT: medium =
+none; PADDING-TOP: 6px; -webkit-border-radius: 5px; -moz-border-radius: =
+5px; border-radius: 5px; -webkit-appearance: none
+}
+INPUT[type=3Dpassword] {
+	BORDER-BOTTOM: #c8c7b4 1px solid; BORDER-LEFT: medium none; =
+PADDING-BOTTOM: 6px; PADDING-LEFT: 2%; PADDING-RIGHT: 2%; BACKGROUND: =
+#eee; COLOR: #4b423a; BORDER-TOP: medium none; BORDER-RIGHT: medium =
+none; PADDING-TOP: 6px; -webkit-border-radius: 5px; -moz-border-radius: =
+5px; border-radius: 5px; -webkit-appearance: none
+}
+TEXTAREA {
+	BORDER-BOTTOM: #c8c7b4 1px solid; BORDER-LEFT: medium none; =
+PADDING-BOTTOM: 6px; PADDING-LEFT: 2%; PADDING-RIGHT: 2%; BACKGROUND: =
+#eee; COLOR: #4b423a; BORDER-TOP: medium none; BORDER-RIGHT: medium =
+none; PADDING-TOP: 6px; -webkit-border-radius: 5px; -moz-border-radius: =
+5px; border-radius: 5px; -webkit-appearance: none
+}
+INPUT[type=3Dtext] {
+	WIDTH: 240px; MAX-WIDTH: 96%
+}
+#search {
+	WIDTH: 250px; FLOAT: right; HEIGHT: 35px
+}
+#search INPUT.btn {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: =
+0px; MARGIN: 9px 0px -4px -27px; PADDING-LEFT: 0px; WIDTH: auto; =
+PADDING-RIGHT: 0px; BACKGROUND: none transparent scroll repeat 0% 0%; =
+BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px
+}
+#searchform #s {
+	BORDER-BOTTOM: #eee 1px solid; BORDER-LEFT: #eee 1px solid; =
+PADDING-BOTTOM: 3px; PADDING-LEFT: 28px; WIDTH: 210px; PADDING-RIGHT: =
+4px; FONT: italic 105%/110% "Times New Roman", Times, serif; COLOR: =
+#86856f; BORDER-TOP: #eee 1px solid; BORDER-RIGHT: #eee 1px solid; =
+PADDING-TOP: 3px; -webkit-border-radius: 13px; -moz-border-radius: 13px; =
+border-radius: 13px; -webkit-transition: .7s; -moz-transition: .7s; =
+-o-transition: .7s; transition: .7s
+}
+#searchform #s:focus {
+	BACKGROUND-COLOR: #fff; FONT-STYLE: normal; OUTLINE-STYLE: none; =
+OUTLINE-COLOR: invert; OUTLINE-WIDTH: medium; -moz-outline: none
+}
+#header {
+	LINE-HEIGHT: 100px; WIDTH: 100%; BACKGROUND: #c1cc22; HEIGHT: 120px
+}
+#topmenu {
+	POSITION: relative; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: #387b2c; =
+MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 100%; PADDING-RIGHT: 0px; HEIGHT: =
+25px; CLEAR: both; TOP: -6px; PADDING-TOP: 0px
+}
+#topmenu #left {
+	TEXT-ALIGN: left; PADDING-LEFT: 0px; WHITE-SPACE: nowrap; FLOAT: left; =
+FONT-SIZE: 90%; WORD-SPACING: 12px; PADDING-TOP: 6px
+}
+#topmenu #right {
+	TEXT-ALIGN: right; PADDING-RIGHT: 0px; WHITE-SPACE: nowrap; FLOAT: =
+right; COLOR: white; FONT-SIZE: 80%; WORD-SPACING: 6px; PADDING-TOP: 7px
+}
+.handle {
+	WHITE-SPACE: nowrap
+}
+#topmenu A:link {
+	BACKGROUND-COLOR: transparent; COLOR: white; FONT-WEIGHT: bold; =
+TEXT-DECORATION: none
+}
+#topmenu A:visited {
+	BACKGROUND-COLOR: transparent; COLOR: white; TEXT-DECORATION: none
+}
+#topmenu A:hover {
+	BACKGROUND-COLOR: transparent; COLOR: black; FONT-WEIGHT: bold; =
+TEXT-DECORATION: none
+}
+#topmenu A:active {
+	BACKGROUND-COLOR: transparent; COLOR: red; TEXT-DECORATION: none
+}
+.wrapper {
+	PADDING-BOTTOM: 0px; MARGIN: 0px auto; PADDING-LEFT: 0px; WIDTH: 960px; =
+PADDING-RIGHT: 0px; OVERFLOW: hidden; PADDING-TOP: 0px
+}
+.cbse_wrapper {
+	PADDING-BOTTOM: 0px; MARGIN: 0px auto; PADDING-LEFT: 0px; WIDTH: =
+1035px; PADDING-RIGHT: 0px; OVERFLOW: hidden; PADDING-TOP: 0px
+}
+.central {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; =
+PADDING-RIGHT: 5px; MARGIN-LEFT: auto; MARGIN-RIGHT: auto; PADDING-TOP: =
+5px
+}
+#leftcol {
+	BORDER-BOTTOM: #d6d6d6 0px solid; BORDER-LEFT: #d6d6d6 0px solid; =
+WIDTH: 208px; FLOAT: left; HEIGHT: 100%; BORDER-TOP: #d6d6d6 0px solid; =
+BORDER-RIGHT: #d6d6d6 0px solid
+}
+#leftcol B {
+	POSITION: relative; COLOR: #000; FONT-SIZE: 110%; LEFT: 10px
+}
+#leftcol .menu B {
+	POSITION: relative; COLOR: #000; FONT-SIZE: 110%; LEFT: 0px
+}
+#leftcol .mini-logo IMG {
+	TEXT-ALIGN: center; MARGIN: 0px auto
+}
+#middlecol {
+	BORDER-BOTTOM: #d6d6d6 1px solid; BORDER-LEFT: #d6d6d6 1px solid; =
+WIDTH: 575px; BACKGROUND: #fff; FLOAT: left; BORDER-TOP: #d6d6d6 1px =
+solid; BORDER-RIGHT: #d6d6d6 1px solid
+}
+#cbse_middlecol {
+	BORDER-BOTTOM: #d6d6d6 1px solid; BORDER-LEFT: #d6d6d6 1px solid; =
+WIDTH: 653px; BACKGROUND: #fff; FLOAT: left; BORDER-TOP: #d6d6d6 1px =
+solid; BORDER-RIGHT: #d6d6d6 1px solid
+}
+#rightcol {
+	BORDER-BOTTOM: #d6d6d6 0px solid; TEXT-ALIGN: center; BORDER-LEFT: =
+#d6d6d6 0px solid; PADDING-BOTTOM: 2px; MARGIN-TOP: 0px; PADDING-LEFT: =
+2px; WIDTH: 170px; PADDING-RIGHT: 2px; BACKGROUND: none transparent =
+scroll repeat 0% 0%; FLOAT: left; BORDER-TOP: #d6d6d6 0px solid; =
+BORDER-RIGHT: #d6d6d6 0px solid; PADDING-TOP: 2px
+}
+.cleaer {
+	CLEAR: both
+}
+.clearer {
+	CLEAR: both
+}
+#leftcol {
+	PADDING-BOTTOM: 0px; MIN-HEIGHT: 600px; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#middlecol {
+	PADDING-BOTTOM: 0px; MIN-HEIGHT: 600px; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#rightcol {
+	PADDING-BOTTOM: 0px; MIN-HEIGHT: 600px; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#leftcol P {
+	FONT-WEIGHT: bold
+}
+#content P {
+	FONT-WEIGHT: bold
+}
+#rightcol P {
+	FONT-WEIGHT: bold
+}
+#leftcol {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+#content {
+	BACKGROUND: #fff
+}
+UL.list {
+	LIST-STYLE-TYPE: none; PADDING-LEFT: 15px; LIST-STYLE-IMAGE: none
+}
+OL.list {
+	PADDING-LEFT: 35px
+}
+UL.list LI {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 19px; PADDING-RIGHT: 0px; =
+BACKGROUND: url(/images/icon-bullet.png) no-repeat 0px 0px; PADDING-TOP: =
+0px
+}
+#rightcol {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+#rightcol P {
+	TEXT-ALIGN: center; MARGIN: 0.4em 0px 0.8em
+}
+#leftcol UL.menu {
+	LIST-STYLE-TYPE: none; MARGIN-TOP: 5px; MARGIN-BOTTOM: 10px; =
+LIST-STYLE-IMAGE: none; MARGIN-RIGHT: 5px
+}
+#rightcol UL.menu {
+	TEXT-ALIGN: left; LIST-STYLE-TYPE: none; MARGIN-TOP: 5px; =
+MARGIN-BOTTOM: 10px; LIST-STYLE-IMAGE: none; MARGIN-RIGHT: 5px
+}
+UL.menu LI {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 19px; PADDING-RIGHT: =
+0px; BACKGROUND: url(/images/list-icon.png) no-repeat 0px 5px; =
+PADDING-TOP: 0px
+}
+UL.menu LI.expandable {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 19px; PADDING-RIGHT: =
+0px; BACKGROUND: url(/images/list-icon.png) no-repeat 0px 5px; =
+PADDING-TOP: 0px
+}
+UL.menu LI.expanded {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 19px; PADDING-RIGHT: =
+0px; BACKGROUND: url(/images/list-icon-minus.png) no-repeat 0px 5px; =
+PADDING-TOP: 0px
+}
+#leftcol UL.submenu {
+	LIST-STYLE-TYPE: none; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; =
+LIST-STYLE-IMAGE: none; MARGIN-RIGHT: 0px
+}
+UL.submenu LI {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: =
+0px; BACKGROUND: url(/images/sub-menu.gif) no-repeat 0px 8px; =
+PADDING-TOP: 0px
+}
+#leftcol UL.menu LI.heading {
+	BORDER-BOTTOM: #387b2c 1px solid; BORDER-LEFT: #387b2c 1px solid; =
+PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 15px; PADDING-RIGHT: =
+0px; BACKGROUND: #c1cc22; FONT-SIZE: 110%; BORDER-TOP: #387b2c 1px =
+solid; FONT-WEIGHT: bold; BORDER-RIGHT: #387b2c 1px solid; PADDING-TOP: =
+5px
+}
+UL.menu LI.sreading {
+	BORDER-BOTTOM: #aaa 1px solid; BORDER-LEFT: #aaa 1px solid; =
+PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 15px; PADDING-RIGHT: =
+0px; BACKGROUND: #c1c1c1; FONT-SIZE: 110%; BORDER-TOP: #aaa 1px solid; =
+FONT-WEIGHT: bold; BORDER-RIGHT: #aaa 1px solid; PADDING-TOP: 5px
+}
+UL.menu LI A {
+	BORDER-BOTTOM: #bbbbbb 1px dotted; PADDING-BOTTOM: 5px; PADDING-LEFT: =
+0px; PADDING-RIGHT: 0px; DISPLAY: block; PADDING-TOP: 5px
+}
+UL.menu LI A:link {
+	BACKGROUND-COLOR: transparent; COLOR: black; TEXT-DECORATION: none
+}
+UL.menu LI A:visited {
+	BACKGROUND-COLOR: transparent; COLOR: black; TEXT-DECORATION: none
+}
+UL.menu LI A:hover {
+	BORDER-LEFT: #bbbbbb 1px dotted; BACKGROUND-COLOR: #e0e0e0; COLOR: red; =
+BORDER-RIGHT: #bbbbbb 1px dotted; TEXT-DECORATION: none
+}
+UL.menu LI A:active {
+	BACKGROUND-COLOR: #ccc; COLOR: red; TEXT-DECORATION: none
+}
+#middlecol DIV.content {
+	PADDING-BOTTOM: 7px; PADDING-LEFT: 7px; PADDING-RIGHT: 7px; =
+PADDING-TOP: 0px
+}
+DIV.rightgooglead {
+	TEXT-ALIGN: center
+}
+DIV.bottomgooglead {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 15px; PADDING-LEFT: 15px
+}
+DIV.topgooglead {
+	TEXT-ALIGN: center; BORDER-TOP: #d6d6d6 1px solid; PADDING-TOP: 5px
+}
+DIV.localad {
+	BORDER-BOTTOM: #908e8f 1px solid; TEXT-ALIGN: center; BORDER-LEFT: =
+#908e8f 1px solid; PADDING-BOTTOM: 5px; MARGIN: 0px 5px 5px; =
+PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BACKGROUND: none transparent =
+scroll repeat 0% 0%; BORDER-TOP: #908e8f 1px solid; BORDER-RIGHT: =
+#908e8f 1px solid; PADDING-TOP: 5px
+}
+DIV.addthis {
+	BORDER-BOTTOM: #908e8f 1px solid; TEXT-ALIGN: center; BORDER-LEFT: =
+#908e8f 1px solid; PADDING-BOTTOM: 5px; MARGIN: 0px 5px 5px; =
+PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BACKGROUND: none transparent =
+scroll repeat 0% 0%; BORDER-TOP: #908e8f 1px solid; BORDER-RIGHT: =
+#908e8f 1px solid; PADDING-TOP: 5px
+}
+.addthis DIV.addthis_default_style.addthis_toolbox {
+	TEXT-ALIGN: center; PADDING-LEFT: 8px
+}
+.pre-btn {
+	POSITION: relative; TEXT-ALIGN: center; PADDING-BOTTOM: 5px; =
+PADDING-LEFT: 10px; BACKGROUND: none transparent scroll repeat 0% 0%; =
+FLOAT: left
+}
+.pre-btn A:link {
+	PADDING-LEFT: 20px; BACKGROUND: url(/images/sprite.png) no-repeat 0px =
+-27px; COLOR: #000; FONT-SIZE: 115%; TEXT-DECORATION: none
+}
+.pre-btn A:visited {
+	PADDING-LEFT: 20px; BACKGROUND: url(/images/sprite.png) no-repeat 0px =
+-27px; COLOR: #000; FONT-SIZE: 115%; TEXT-DECORATION: none
+}
+.pre-btn A:hover {
+	PADDING-LEFT: 20px; BACKGROUND: url(/images/sprite.png) no-repeat 0px =
+0px; COLOR: #000; FONT-SIZE: 115%; TEXT-DECORATION: none
+}
+.pre-btn A:active {
+	PADDING-LEFT: 20px; BACKGROUND: url(/images/sprite.png) no-repeat 0px =
+0px; COLOR: #000; FONT-SIZE: 115%; TEXT-DECORATION: none
+}
+.nxt-btn {
+	POSITION: relative; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; BACKGROUND: =
+none transparent scroll repeat 0% 0%; FLOAT: right; MARGIN-RIGHT: 20px; =
+LEFT: 0px
+}
+.nxt-btn A:link {
+	PADDING-LEFT: 20px; PADDING-RIGHT: 20px; BACKGROUND: =
+url(/images/sprite.png) no-repeat 88px -52px; COLOR: #000; FONT-SIZE: =
+115%; TEXT-DECORATION: none
+}
+.nxt-btn A:visited {
+	PADDING-LEFT: 20px; PADDING-RIGHT: 20px; BACKGROUND: =
+url(/images/sprite.png) no-repeat 88px -52px; COLOR: #000; FONT-SIZE: =
+115%; TEXT-DECORATION: none
+}
+.nxt-btn A:hover {
+	PADDING-LEFT: 20px; BACKGROUND: url(/images/sprite.png) no-repeat 88px =
+-79px; COLOR: #000; FONT-SIZE: 115%; TEXT-DECORATION: none
+}
+.nxt-btn A:active {
+	PADDING-LEFT: 20px; BACKGROUND: url(/images/sprite.png) no-repeat 88px =
+-79px; COLOR: #000; FONT-SIZE: 115%; TEXT-DECORATION: none
+}
+.print-btn {
+	POSITION: relative; TEXT-ALIGN: center; PADDING-LEFT: 0px; BACKGROUND: =
+none transparent scroll repeat 0% 0%; FLOAT: left; TOP: 0px; LEFT: 45px
+}
+.print-btn A:link {
+	PADDING-LEFT: 20px; BACKGROUND: url(/images/sprite.png) no-repeat 0px =
+-107px; COLOR: #000; FONT-SIZE: 115%; TEXT-DECORATION: none
+}
+.print-btn A:visited {
+	PADDING-LEFT: 20px; BACKGROUND: url(/images/sprite.png) no-repeat 0px =
+-107px; COLOR: #000; FONT-SIZE: 115%; TEXT-DECORATION: none
+}
+.print-btn A:hover {
+	PADDING-LEFT: 20px; BACKGROUND: url(/images/sprite.png) no-repeat 0px =
+-133px; FONT-SIZE: 115%; TEXT-DECORATION: none
+}
+.print-btn A:active {
+	PADDING-LEFT: 20px; BACKGROUND: url(/images/sprite.png) no-repeat 0px =
+-133px; FONT-SIZE: 115%; TEXT-DECORATION: none
+}
+.pdf-btn {
+	POSITION: relative; TEXT-ALIGN: center; PADDING-LEFT: 0px; BACKGROUND: =
+none transparent scroll repeat 0% 0%; FLOAT: left; TOP: 0px; LEFT: 85px
+}
+.pdf-btn A:link {
+	PADDING-LEFT: 20px; BACKGROUND: url(/images/sprite.png) no-repeat 0px =
+-162px; COLOR: #000; FONT-SIZE: 115%; TEXT-DECORATION: none
+}
+.pdf-btn A:visited {
+	PADDING-LEFT: 20px; BACKGROUND: url(/images/sprite.png) no-repeat 0px =
+-162px; COLOR: #000; FONT-SIZE: 115%; TEXT-DECORATION: none
+}
+.pdf-btn A:hover {
+	PADDING-LEFT: 20px; BACKGROUND: url(/images/sprite.png) no-repeat 0px =
+-193px; FONT-SIZE: 115%; TEXT-DECORATION: none
+}
+.pdf-btn A:active {
+	PADDING-LEFT: 20px; BACKGROUND: url(/images/sprite.png) no-repeat 0px =
+-193px; FONT-SIZE: 115%; TEXT-DECORATION: none
+}
+HR {
+	BORDER-BOTTOM: 0px; TEXT-ALIGN: left; BORDER-LEFT: 0px; =
+BACKGROUND-COLOR: #d6d6d6; WIDTH: 100%; HEIGHT: 1px; COLOR: #d6d6d6; =
+BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+#footer {
+	PADDING-BOTTOM: 10px; MARGIN-TOP: 5px; PADDING-LEFT: 10px; WIDTH: 100%; =
+PADDING-RIGHT: 10px; BACKGROUND: url(/images/footer.png) repeat-x; =
+FLOAT: left; HEIGHT: 80px; CLEAR: both; BORDER-TOP: #d6d6d6 1px solid; =
+PADDING-TOP: 10px
+}
+#footer P {
+	PADDING-BOTTOM: 10px; MARGIN: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: =
+10px; PADDING-TOP: 10px
+}
+#bottommenu {
+	POSITION: relative; TEXT-ALIGN: center; PADDING-BOTTOM: 0px; MARGIN: =
+0px; PADDING-LEFT: 0px; WIDTH: 100%; PADDING-RIGHT: 0px; WHITE-SPACE: =
+nowrap; COLOR: #797979; CLEAR: both; FONT-SIZE: 90%; TOP: 4px; =
+WORD-SPACING: 6px; PADDING-TOP: 7px
+}
+#bottommenu A:link {
+	BACKGROUND-COLOR: transparent; COLOR: #616161; FONT-WEIGHT: bold; =
+TEXT-DECORATION: none
+}
+#bottommenu A:visited {
+	BACKGROUND-COLOR: transparent; COLOR: #616161; TEXT-DECORATION: none
+}
+#bottommenu A:hover {
+	BACKGROUND-COLOR: transparent; COLOR: black; FONT-WEIGHT: bold; =
+TEXT-DECORATION: none
+}
+#bottommenu A:active {
+	BACKGROUND-COLOR: transparent; COLOR: red; TEXT-DECORATION: none
+}
+#copyright {
+	WIDTH: 100%; COLOR: #404040; CLEAR: both; PADDING-TOP: 13px
+}
+#copyright P {
+	TEXT-ALIGN: center; MARGIN: 0px auto
+}
+.icons A {
+	PADDING-BOTTOM: 2px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: =
+block; COLOR: #444 !important; TEXT-DECORATION: none; PADDING-TOP: 40px; =
+-webkit-transition: all .2s ease-out; -moz-transition: all .2s ease-out
+}
+.twitter {
+	WIDTH: 60px; BACKGROUND: url(/images/icon-twitter.png) no-repeat center =
+top
+}
+.facebook {
+	WIDTH: 60px; BACKGROUND: url(/images/icon-facebook.png) no-repeat =
+center top
+}
+.rss A {
+	WIDTH: 60px; BACKGROUND: url(/images/icon-rss.png) no-repeat center top
+}
+TABLE.icons {
+	BORDER-BOTTOM: #d6d6d6 1px solid; BORDER-LEFT: #d6d6d6 1px solid; =
+MARGIN-TOP: 0px; WIDTH: 95%; BORDER-COLLAPSE: collapse; MARGIN-BOTTOM: =
+8px; MARGIN-LEFT: 5px; VERTICAL-ALIGN: top; BORDER-TOP: #d6d6d6 1px =
+solid; BORDER-RIGHT: #d6d6d6 1px solid
+}
+SUB {
+	FONT-SIZE: 13px
+}
+SUP {
+	FONT-SIZE: 13px
+}
+.cprogramming {
+	COLOR: #961c36
+}
+.inline {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; DISPLAY: =
+inline; VERTICAL-ALIGN: middle; PADDING-TOP: 5px
+}
+.main-image {
+	PADDING-TOP: 7px
+}
+BLOCKQUOTE {
+	MARGIN: 1em 10px; PADDING-LEFT: 20px; BACKGROUND: =
+url(/images/quote.png) no-repeat
+}
+
+------=_NextPart_000_0000_01CE006B.3C583F00
+Content-Type: text/css;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.tutorialspoint.com/scripts/prettify.css
+
+.pln {
+	COLOR: #000
+}
+
+@media Screen   =20
+{
+.str {
+	COLOR: #080
+}
+.kwd {
+	COLOR: #008
+}
+.com {
+	COLOR: #800
+}
+.typ {
+	COLOR: #7f0055
+}
+.lit {
+	COLOR: #066
+}
+.pun {
+	COLOR: #660
+}
+.opn {
+	COLOR: #660
+}
+.clo {
+	COLOR: #660
+}
+.tag {
+	COLOR: #008
+}
+.atn {
+	COLOR: #7f0055
+}
+.atv {
+	COLOR: #080
+}
+.dec {
+	COLOR: #7f0055
+}
+.var {
+	COLOR: #7f0055
+}
+.fun {
+	COLOR: #ff0000
+}
+
+}
+
+@media Print, Projection   =20
+{
+.str {
+	COLOR: #060
+}
+.kwd {
+	COLOR: #006; FONT-WEIGHT: bold
+}
+.com {
+	FONT-STYLE: italic; COLOR: #600
+}
+.typ {
+	COLOR: #404; FONT-WEIGHT: bold
+}
+.lit {
+	COLOR: #044
+}
+.pun {
+	COLOR: #440
+}
+.opn {
+	COLOR: #440
+}
+.clo {
+	COLOR: #440
+}
+.tag {
+	COLOR: #006; FONT-WEIGHT: bold
+}
+.atn {
+	COLOR: #404
+}
+.atv {
+	COLOR: #060
+}
+    }
+PRE.prettyprint {
+	BORDER-BOTTOM: #d6d6d6 1px solid; BORDER-LEFT: #d6d6d6 1px solid; =
+PADDING-BOTTOM: 5px; BACKGROUND-COLOR: #eee; MARGIN: 0px 0px 10px; =
+PADDING-LEFT: 5px; PADDING-RIGHT: 5px; WHITE-SPACE: pre-wrap; FONT-SIZE: =
+12px; BORDER-TOP: #d6d6d6 1px solid; BORDER-RIGHT: #d6d6d6 1px solid; =
+PADDING-TOP: 5px
+}
+PRE.result {
+	BORDER-BOTTOM: #d6d6d6 1px solid; BORDER-LEFT: #d6d6d6 1px solid; =
+PADDING-BOTTOM: 5px; BACKGROUND-COLOR: #f1f1f1; MARGIN: 0px 0px 10px; =
+PADDING-LEFT: 5px; WIDTH: 98%; PADDING-RIGHT: 5px; WHITE-SPACE: =
+pre-wrap; FONT-SIZE: 12px; BORDER-TOP: #d6d6d6 1px solid; BORDER-RIGHT: =
+#d6d6d6 1px solid; PADDING-TOP: 5px
+}
+PRE.box {
+	BORDER-BOTTOM: #d6d6d6 1px solid; BORDER-LEFT: #d6d6d6 1px solid; =
+PADDING-BOTTOM: 5px; BACKGROUND-COLOR: #f1f1f1; MARGIN: 0px 0px 10px; =
+PADDING-LEFT: 5px; WIDTH: 98%; PADDING-RIGHT: 5px; WHITE-SPACE: =
+pre-wrap; FONT-SIZE: 12px; BORDER-TOP: #d6d6d6 1px solid; BORDER-RIGHT: =
+#d6d6d6 1px solid; PADDING-TOP: 5px
+}
+OL.linenums {
+	MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px
+}
+LI.L0 {
+	LIST-STYLE-TYPE: none
+}
+LI.L1 {
+	LIST-STYLE-TYPE: none
+}
+LI.L2 {
+	LIST-STYLE-TYPE: none
+}
+LI.L3 {
+	LIST-STYLE-TYPE: none
+}
+LI.L5 {
+	LIST-STYLE-TYPE: none
+}
+LI.L6 {
+	LIST-STYLE-TYPE: none
+}
+LI.L7 {
+	LIST-STYLE-TYPE: none
+}
+LI.L8 {
+	LIST-STYLE-TYPE: none
+}
+LI.L1 {
+	BACKGROUND: #eee
+}
+LI.L3 {
+	BACKGROUND: #eee
+}
+LI.L5 {
+	BACKGROUND: #eee
+}
+LI.L7 {
+	BACKGROUND: #eee
+}
+LI.L9 {
+	BACKGROUND: #eee
+}
+
+------=_NextPart_000_0000_01CE006B.3C583F00
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.tutorialspoint.com/scripts/prettify.js
+
+var q=3Dnull;window.PR_SHOULD_USE_CONTINUATION=3D!0;=0A=
+(function(){function L(a){function m(a){var =
+f=3Da.charCodeAt(0);if(f!=3D=3D92)return f;var =
+b=3Da.charAt(1);return(f=3Dr[b])?f:"0"<=3Db&&b<=3D"7"?parseInt(a.substrin=
+g(1),8):b=3D=3D=3D"u"||b=3D=3D=3D"x"?parseInt(a.substring(2),16):a.charCo=
+deAt(1)}function =
+e(a){if(a<32)return(a<16?"\\x0":"\\x")+a.toString(16);a=3DString.fromChar=
+Code(a);if(a=3D=3D=3D"\\"||a=3D=3D=3D"-"||a=3D=3D=3D"["||a=3D=3D=3D"]")a=3D=
+"\\"+a;return a}function h(a){for(var =
+f=3Da.substring(1,a.length-1).match(/\\u[\dA-Fa-f]{4}|\\x[\dA-Fa-f]{2}|\\=
+[0-3][0-7]{0,2}|\\[0-7]{1,2}|\\[\S\s]|[^\\]/g),a=3D=0A=
+[],b=3D[],o=3Df[0]=3D=3D=3D"^",c=3Do?1:0,i=3Df.length;c<i;++c){var =
+j=3Df[c];if(/\\[bdsw]/i.test(j))a.push(j);else{var =
+j=3Dm(j),d;c+2<i&&"-"=3D=3D=3Df[c+1]?(d=3Dm(f[c+2]),c+=3D2):d=3Dj;b.push(=
+[j,d]);d<65||j>122||(d<65||j>90||b.push([Math.max(65,j)|32,Math.min(d,90)=
+|32]),d<97||j>122||b.push([Math.max(97,j)&-33,Math.min(d,122)&-33]))}}b.s=
+ort(function(a,f){return =
+a[0]-f[0]||f[1]-a[1]});f=3D[];j=3D[NaN,NaN];for(c=3D0;c<b.length;++c)i=3D=
+b[c],i[0]<=3Dj[1]+1?j[1]=3DMath.max(j[1],i[1]):f.push(j=3Di);b=3D["["];o&=
+&b.push("^");b.push.apply(b,a);for(c=3D0;c<=0A=
+f.length;++c)i=3Df[c],b.push(e(i[0])),i[1]>i[0]&&(i[1]+1>i[0]&&b.push("-"=
+),b.push(e(i[1])));b.push("]");return b.join("")}function y(a){for(var =
+f=3Da.source.match(/\[(?:[^\\\]]|\\[\S\s])*]|\\u[\dA-Fa-f]{4}|\\x[\dA-Fa-=
+f]{2}|\\\d+|\\[^\dux]|\(\?[!:=3D]|[()^]|[^()[\\^]+/g),b=3Df.length,d=3D[]=
+,c=3D0,i=3D0;c<b;++c){var =
+j=3Df[c];j=3D=3D=3D"("?++i:"\\"=3D=3D=3Dj.charAt(0)&&(j=3D+j.substring(1)=
+)&&j<=3Di&&(d[j]=3D-1)}for(c=3D1;c<d.length;++c)-1=3D=3D=3Dd[c]&&(d[c]=3D=
+++t);for(i=3Dc=3D0;c<b;++c)j=3Df[c],j=3D=3D=3D"("?(++i,d[i]=3D=3D=3Dvoid =
+0&&(f[c]=3D"(?:")):"\\"=3D=3D=3Dj.charAt(0)&&=0A=
+(j=3D+j.substring(1))&&j<=3Di&&(f[c]=3D"\\"+d[i]);for(i=3Dc=3D0;c<b;++c)"=
+^"=3D=3D=3Df[c]&&"^"!=3D=3Df[c+1]&&(f[c]=3D"");if(a.ignoreCase&&s)for(c=3D=
+0;c<b;++c)j=3Df[c],a=3Dj.charAt(0),j.length>=3D2&&a=3D=3D=3D"["?f[c]=3Dh(=
+j):a!=3D=3D"\\"&&(f[c]=3Dj.replace(/[A-Za-z]/g,function(a){a=3Da.charCode=
+At(0);return"["+String.fromCharCode(a&-33,a|32)+"]"}));return =
+f.join("")}for(var t=3D0,s=3D!1,l=3D!1,p=3D0,d=3Da.length;p<d;++p){var =
+g=3Da[p];if(g.ignoreCase)l=3D!0;else =
+if(/[a-z]/i.test(g.source.replace(/\\u[\da-f]{4}|\\x[\da-f]{2}|\\[^UXux]/=
+gi,""))){s=3D!0;l=3D!1;break}}for(var r=3D=0A=
+{b:8,t:9,n:10,v:11,f:12,r:13},n=3D[],p=3D0,d=3Da.length;p<d;++p){g=3Da[p]=
+;if(g.global||g.multiline)throw =
+Error(""+g);n.push("(?:"+y(g)+")")}return =
+RegExp(n.join("|"),l?"gi":"g")}function M(a){function =
+m(a){switch(a.nodeType){case 1:if(e.test(a.className))break;for(var =
+g=3Da.firstChild;g;g=3Dg.nextSibling)m(g);g=3Da.nodeName;if("BR"=3D=3D=3D=
+g||"LI"=3D=3D=3Dg)h[s]=3D"\n",t[s<<1]=3Dy++,t[s++<<1|1]=3Da;break;case =
+3:case =
+4:g=3Da.nodeValue,g.length&&(g=3Dp?g.replace(/\r\n?/g,"\n"):g.replace(/[\=
+t\n\r ]+/g," "),h[s]=3Dg,t[s<<1]=3Dy,y+=3Dg.length,=0A=
+t[s++<<1|1]=3Da)}}var =
+e=3D/(?:^|\s)nocode(?:\s|$)/,h=3D[],y=3D0,t=3D[],s=3D0,l;a.currentStyle?l=
+=3Da.currentStyle.whiteSpace:window.getComputedStyle&&(l=3Ddocument.defau=
+ltView.getComputedStyle(a,q).getPropertyValue("white-space"));var =
+p=3Dl&&"pre"=3D=3D=3Dl.substring(0,3);m(a);return{a:h.join("").replace(/\=
+n$/,""),c:t}}function =
+B(a,m,e,h){m&&(a=3D{a:m,d:a},e(a),h.push.apply(h,a.e))}function =
+x(a,m){function e(a){for(var =
+l=3Da.d,p=3D[l,"pln"],d=3D0,g=3Da.a.match(y)||[],r=3D{},n=3D0,z=3Dg.lengt=
+h;n<z;++n){var f=3Dg[n],b=3Dr[f],o=3Dvoid 0,c;if(typeof b=3D=3D=3D=0A=
+"string")c=3D!1;else{var =
+i=3Dh[f.charAt(0)];if(i)o=3Df.match(i[1]),b=3Di[0];else{for(c=3D0;c<t;++c=
+)if(i=3Dm[c],o=3Df.match(i[1])){b=3Di[0];break}o||(b=3D"pln")}if((c=3Db.l=
+ength>=3D5&&"lang-"=3D=3D=3Db.substring(0,5))&&!(o&&typeof =
+o[1]=3D=3D=3D"string"))c=3D!1,b=3D"src";c||(r[f]=3Db)}i=3Dd;d+=3Df.length=
+;if(c){c=3Do[1];var =
+j=3Df.indexOf(c),k=3Dj+c.length;o[2]&&(k=3Df.length-o[2].length,j=3Dk-c.l=
+ength);b=3Db.substring(5);B(l+i,f.substring(0,j),e,p);B(l+i+j,c,C(b,c),p)=
+;B(l+i+k,f.substring(k),e,p)}else p.push(l+i,b)}a.e=3Dp}var =
+h=3D{},y;(function(){for(var e=3Da.concat(m),=0A=
+l=3D[],p=3D{},d=3D0,g=3De.length;d<g;++d){var =
+r=3De[d],n=3Dr[3];if(n)for(var =
+k=3Dn.length;--k>=3D0;)h[n.charAt(k)]=3Dr;r=3Dr[1];n=3D""+r;p.hasOwnPrope=
+rty(n)||(l.push(r),p[n]=3Dq)}l.push(/[\S\s]/);y=3DL(l)})();var =
+t=3Dm.length;return e}function u(a){var =
+m=3D[],e=3D[];a.tripleQuotedStrings?m.push(["str",/^(?:'''(?:[^'\\]|\\[\S=
+\s]|''?(?=3D[^']))*(?:'''|$)|"""(?:[^"\\]|\\[\S\s]|""?(?=3D[^"]))*(?:"""|=
+$)|'(?:[^'\\]|\\[\S\s])*(?:'|$)|"(?:[^"\\]|\\[\S\s])*(?:"|$))/,q,"'\""]):=
+a.multiLineStrings?m.push(["str",/^(?:'(?:[^'\\]|\\[\S\s])*(?:'|$)|"(?:[^=
+"\\]|\\[\S\s])*(?:"|$)|`(?:[^\\`]|\\[\S\s])*(?:`|$))/,=0A=
+q,"'\"`"]):m.push(["str",/^(?:'(?:[^\n\r'\\]|\\.)*(?:'|$)|"(?:[^\n\r"\\]|=
+\\.)*(?:"|$))/,q,"\"'"]);a.verbatimStrings&&e.push(["str",/^@"(?:[^"]|"")=
+*(?:"|$)/,q]);var =
+h=3Da.hashComments;h&&(a.cStyleComments?(h>1?m.push(["com",/^#(?:##(?:[^#=
+]|#(?!##))*(?:###|$)|.*)/,q,"#"]):m.push(["com",/^#(?:(?:define|elif|else=
+|endif|error|ifdef|include|ifndef|line|pragma|undef|warning)\b|[^\n\r]*)/=
+,q,"#"]),e.push(["str",/^<(?:(?:(?:\.\.\/)*|\/?)(?:[\w-]+(?:\/[\w-]+)+)?[=
+\w-]+\.h|[a-z]\w*)>/,q])):m.push(["com",/^#[^\n\r]*/,=0A=
+q,"#"]));a.cStyleComments&&(e.push(["com",/^\/\/[^\n\r]*/,q]),e.push(["co=
+m",/^\/\*[\S\s]*?(?:\*\/|$)/,q]));a.regexLiterals&&e.push(["lang-regex",/=
+^(?:^^\.?|[!+-]|!=3D|!=3D=3D|#|%|%=3D|&|&&|&&=3D|&=3D|\(|\*|\*=3D|\+=3D|,=
+|-=3D|->|\/|\/=3D|:|::|;|<|<<|<<=3D|<=3D|=3D|=3D=3D|=3D=3D=3D|>|>=3D|>>|>=
+>=3D|>>>|>>>=3D|[?@[^]|\^=3D|\^\^|\^\^=3D|{|\||\|=3D|\|\||\|\|=3D|~|break=
+|case|continue|delete|do|else|finally|instanceof|return|throw|try|typeof)=
+\s*(\/(?=3D[^*/])(?:[^/[\\]|\\[\S\s]|\[(?:[^\\\]]|\\[\S\s])*(?:]|$))+\/)/=
+]);(h=3Da.types)&&e.push(["typ",h]);a=3D(""+a.keywords).replace(/^ | $/g,=0A=
+"");a.length&&e.push(["kwd",RegExp("^(?:"+a.replace(/[\s,]+/g,"|")+")\\b"=
+),q]);m.push(["pln",/^\s+/,q," =
+\r\n\t\xa0"]);e.push(["lit",/^@[$_a-z][\w$@]*/i,q],["typ",/^(?:[@_]?[A-Z]=
++[a-z][\w$@]*|\w+_t\b)/,q],["pln",/^[$_a-z][\w$@]*/i,q],["lit",/^(?:0x[\d=
+a-f]+|(?:\d(?:_\d+)*\d*(?:\.\d*)?|\.\d\+)(?:e[+-]?\d+)?)[a-z]*/i,q,"01234=
+56789"],["pln",/^\\[\S\s]?/,q],["pun",/^.[^\s\w"-$'./@\\`]*/,q]);return =
+x(m,e)}function D(a,m){function e(a){switch(a.nodeType){case =
+1:if(k.test(a.className))break;if("BR"=3D=3D=3Da.nodeName)h(a),=0A=
+a.parentNode&&a.parentNode.removeChild(a);else =
+for(a=3Da.firstChild;a;a=3Da.nextSibling)e(a);break;case 3:case =
+4:if(p){var b=3Da.nodeValue,d=3Db.match(t);if(d){var =
+c=3Db.substring(0,d.index);a.nodeValue=3Dc;(b=3Db.substring(d.index+d[0].=
+length))&&a.parentNode.insertBefore(s.createTextNode(b),a.nextSibling);h(=
+a);c||a.parentNode.removeChild(a)}}}}function h(a){function b(a,d){var =
+e=3Dd?a.cloneNode(!1):a,f=3Da.parentNode;if(f){var =
+f=3Db(f,1),g=3Da.nextSibling;f.appendChild(e);for(var =
+h=3Dg;h;h=3Dg)g=3Dh.nextSibling,f.appendChild(h)}return e}=0A=
+for(;!a.nextSibling;)if(a=3Da.parentNode,!a)return;for(var =
+a=3Db(a.nextSibling,0),e;(e=3Da.parentNode)&&e.nodeType=3D=3D=3D1;)a=3De;=
+d.push(a)}var =
+k=3D/(?:^|\s)nocode(?:\s|$)/,t=3D/\r\n?|\n/,s=3Da.ownerDocument,l;a.curre=
+ntStyle?l=3Da.currentStyle.whiteSpace:window.getComputedStyle&&(l=3Ds.def=
+aultView.getComputedStyle(a,q).getPropertyValue("white-space"));var =
+p=3Dl&&"pre"=3D=3D=3Dl.substring(0,3);for(l=3Ds.createElement("LI");a.fir=
+stChild;)l.appendChild(a.firstChild);for(var =
+d=3D[l],g=3D0;g<d.length;++g)e(d[g]);m=3D=3D=3D(m|0)&&d[0].setAttribute("=
+value",=0A=
+m);var r=3Ds.createElement("OL");r.className=3D"linenums";for(var =
+n=3DMath.max(0,m-1|0)||0,g=3D0,z=3Dd.length;g<z;++g)l=3Dd[g],l.className=3D=
+"L"+(g+n)%10,l.firstChild||l.appendChild(s.createTextNode("\xa0")),r.appe=
+ndChild(l);a.appendChild(r)}function k(a,m){for(var =
+e=3Dm.length;--e>=3D0;){var =
+h=3Dm[e];A.hasOwnProperty(h)?window.console&&console.warn("cannot =
+override language handler %s",h):A[h]=3Da}}function =
+C(a,m){if(!a||!A.hasOwnProperty(a))a=3D/^\s*</.test(m)?"default-markup":"=
+default-code";return A[a]}function E(a){var m=3D=0A=
+a.g;try{var e=3DM(a.h),h=3De.a;a.a=3Dh;a.c=3De.c;a.d=3D0;C(m,h)(a);var =
+k=3D/\bMSIE\b/.test(navigator.userAgent),m=3D/\n/g,t=3Da.a,s=3Dt.length,e=
+=3D0,l=3Da.c,p=3Dl.length,h=3D0,d=3Da.e,g=3Dd.length,a=3D0;d[g]=3Ds;var =
+r,n;for(n=3Dr=3D0;n<g;)d[n]!=3D=3Dd[n+2]?(d[r++]=3Dd[n++],d[r++]=3Dd[n++]=
+):n+=3D2;g=3Dr;for(n=3Dr=3D0;n<g;){for(var =
+z=3Dd[n],f=3Dd[n+1],b=3Dn+2;b+2<=3Dg&&d[b+1]=3D=3D=3Df;)b+=3D2;d[r++]=3Dz=
+;d[r++]=3Df;n=3Db}for(d.length=3Dr;h<p;){var =
+o=3Dl[h+2]||s,c=3Dd[a+2]||s,b=3DMath.min(o,c),i=3Dl[h+1],j;if(i.nodeType!=
+=3D=3D1&&(j=3Dt.substring(e,b))){k&&(j=3Dj.replace(m,"\r"));i.nodeValue=3D=0A=
+j;var =
+u=3Di.ownerDocument,v=3Du.createElement("SPAN");v.className=3Dd[a+1];var =
+x=3Di.parentNode;x.replaceChild(v,i);v.appendChild(i);e<o&&(l[h+1]=3Di=3D=
+u.createTextNode(t.substring(b,o)),x.insertBefore(i,v.nextSibling))}e=3Db=
+;e>=3Do&&(h+=3D2);e>=3Dc&&(a+=3D2)}}catch(w){"console"in =
+window&&console.log(w&&w.stack?w.stack:w)}}var =
+v=3D["break,continue,do,else,for,if,return,while"],w=3D[[v,"auto,case,cha=
+r,const,default,double,enum,extern,float,goto,int,long,register,short,sig=
+ned,sizeof,static,struct,switch,typedef,union,unsigned,void,volatile"],=0A=
+"catch,class,delete,false,import,new,operator,private,protected,public,th=
+is,throw,true,try,typeof"],F=3D[w,"alignof,align_union,asm,axiom,bool,con=
+cept,concept_map,const_cast,constexpr,decltype,dynamic_cast,explicit,expo=
+rt,friend,inline,late_check,mutable,namespace,nullptr,reinterpret_cast,st=
+atic_assert,static_cast,template,typeid,typename,using,virtual,where"],G=3D=
+[w,"abstract,boolean,byte,extends,final,finally,implements,import,instanc=
+eof,null,native,package,strictfp,super,synchronized,throws,transient"],=0A=
+H=3D[G,"as,base,by,checked,decimal,delegate,descending,dynamic,event,fixe=
+d,foreach,from,group,implicit,in,interface,internal,into,is,lock,object,o=
+ut,override,orderby,params,partial,readonly,ref,sbyte,sealed,stackalloc,s=
+tring,select,uint,ulong,unchecked,unsafe,ushort,var"],w=3D[w,"debugger,ev=
+al,export,function,get,null,set,undefined,var,with,Infinity,NaN"],I=3D[v,=
+"and,as,assert,class,def,del,elif,except,exec,finally,from,global,import,=
+in,is,lambda,nonlocal,not,or,pass,print,raise,try,with,yield,False,True,N=
+one"],=0A=
+J=3D[v,"alias,and,begin,case,class,def,defined,elsif,end,ensure,false,in,=
+module,next,nil,not,or,redo,rescue,retry,self,super,then,true,undef,unles=
+s,until,when,yield,BEGIN,END"],v=3D[v,"case,done,elif,esac,eval,fi,functi=
+on,in,local,set,then,until"],K=3D/^(DIR|FILE|vector|(de|priority_)?queue|=
+list|stack|(const_)?iterator|(multi)?(set|map)|bitset|u?(int|float)\d*)/,=
+N=3D/\S/,O=3Du({keywords:[F,H,w,"caller,delete,die,do,dump,elsif,eval,exi=
+t,foreach,for,goto,if,import,last,local,my,next,no,our,print,package,redo=
+,require,sub,undef,unless,until,use,wantarray,while,BEGIN,END"+=0A=
+I,J,v],hashComments:!0,cStyleComments:!0,multiLineStrings:!0,regexLiteral=
+s:!0}),A=3D{};k(O,["default-code"]);k(x([],[["pln",/^[^<?]+/],["dec",/^<!=
+\w[^>]*(?:>|$)/],["com",/^<\!--[\S\s]*?(?:--\>|$)/],["lang-",/^<\?([\S\s]=
++?)(?:\?>|$)/],["lang-",/^<%([\S\s]+?)(?:%>|$)/],["pun",/^(?:<[%?]|[%?]>)=
+/],["lang-",/^<xmp\b[^>]*>([\S\s]+?)<\/xmp\b[^>]*>/i],["lang-js",/^<scrip=
+t\b[^>]*>([\S\s]*?)(<\/script\b[^>]*>)/i],["lang-css",/^<style\b[^>]*>([\=
+S\s]*?)(<\/style\b[^>]*>)/i],["lang-in.tag",/^(<\/?[a-z][^<>]*>)/i]]),=0A=
+["default-markup","htm","html","mxml","xhtml","xml","xsl"]);k(x([["pln",/=
+^\s+/,q," =
+\t\r\n"],["atv",/^(?:"[^"]*"?|'[^']*'?)/,q,"\"'"]],[["tag",/^^<\/?[a-z](?=
+:[\w-.:]*\w)?|\/?>$/i],["atn",/^(?!style[\s=3D]|on)[a-z](?:[\w:-]*\w)?/i]=
+,["lang-uq.val",/^=3D\s*([^\s"'>]*(?:[^\s"'/>]|\/(?=3D\s)))/],["pun",/^[/=
+<->]+/],["lang-js",/^on\w+\s*=3D\s*"([^"]+)"/i],["lang-js",/^on\w+\s*=3D\=
+s*'([^']+)'/i],["lang-js",/^on\w+\s*=3D\s*([^\s"'>]+)/i],["lang-css",/^st=
+yle\s*=3D\s*"([^"]+)"/i],["lang-css",/^style\s*=3D\s*'([^']+)'/i],["lang-=
+css",=0A=
+/^style\s*=3D\s*([^\s"'>]+)/i]]),["in.tag"]);k(x([],[["atv",/^[\S\s]+/]])=
+,["uq.val"]);k(u({keywords:F,hashComments:!0,cStyleComments:!0,types:K}),=
+["c","cc","cpp","cxx","cyc","m"]);k(u({keywords:"null,true,false"}),["jso=
+n"]);k(u({keywords:H,hashComments:!0,cStyleComments:!0,verbatimStrings:!0=
+,types:K}),["cs"]);k(u({keywords:G,cStyleComments:!0}),["java"]);k(u({key=
+words:v,hashComments:!0,multiLineStrings:!0}),["bsh","csh","sh"]);k(u({ke=
+ywords:I,hashComments:!0,multiLineStrings:!0,tripleQuotedStrings:!0}),=0A=
+["cv","py"]);k(u({keywords:"caller,delete,die,do,dump,elsif,eval,exit,for=
+each,for,goto,if,import,last,local,my,next,no,our,print,package,redo,requ=
+ire,sub,undef,unless,until,use,wantarray,while,BEGIN,END",hashComments:!0=
+,multiLineStrings:!0,regexLiterals:!0}),["perl","pl","pm"]);k(u({keywords=
+:J,hashComments:!0,multiLineStrings:!0,regexLiterals:!0}),["rb"]);k(u({ke=
+ywords:w,cStyleComments:!0,regexLiterals:!0}),["js"]);k(u({keywords:"all,=
+and,by,catch,class,else,extends,false,finally,for,if,in,is,isnt,loop,new,=
+no,not,null,of,off,on,or,return,super,then,true,try,unless,until,when,whi=
+le,yes",=0A=
+hashComments:3,cStyleComments:!0,multilineStrings:!0,tripleQuotedStrings:=
+!0,regexLiterals:!0}),["coffee"]);k(x([],[["str",/^[\S\s]+/]]),["regex"])=
+;window.prettyPrintOne=3Dfunction(a,m,e){var =
+h=3Ddocument.createElement("PRE");h.innerHTML=3Da;e&&D(h,e);E({g:m,i:e,h:=
+h});return h.innerHTML};window.prettyPrint=3Dfunction(a){function =
+m(){for(var =
+e=3Dwindow.PR_SHOULD_USE_CONTINUATION?l.now()+250:Infinity;p<h.length&&l.=
+now()<e;p++){var =
+n=3Dh[p],k=3Dn.className;if(k.indexOf("prettyprint")>=3D0){var =
+k=3Dk.match(g),f,b;if(b=3D=0A=
+!k){b=3Dn;for(var o=3Dvoid 0,c=3Db.firstChild;c;c=3Dc.nextSibling)var =
+i=3Dc.nodeType,o=3Di=3D=3D=3D1?o?b:c:i=3D=3D=3D3?N.test(c.nodeValue)?b:o:=
+o;b=3D(f=3Do=3D=3D=3Db?void =
+0:o)&&"CODE"=3D=3D=3Df.tagName}b&&(k=3Df.className.match(g));k&&(k=3Dk[1]=
+);b=3D!1;for(o=3Dn.parentNode;o;o=3Do.parentNode)if((o.tagName=3D=3D=3D"p=
+re"||o.tagName=3D=3D=3D"code"||o.tagName=3D=3D=3D"xmp")&&o.className&&o.c=
+lassName.indexOf("prettyprint")>=3D0){b=3D!0;break}b||((b=3D(b=3Dn.classN=
+ame.match(/\blinenums\b(?::(\d+))?/))?b[1]&&b[1].length?+b[1]:!0:!1)&&D(n=
+,b),d=3D{g:k,h:n,i:b},E(d))}}p<h.length?setTimeout(m,=0A=
+250):a&&a()}for(var =
+e=3D[document.getElementsByTagName("pre"),document.getElementsByTagName("=
+code"),document.getElementsByTagName("xmp")],h=3D[],k=3D0;k<e.length;++k)=
+for(var t=3D0,s=3De[k].length;t<s;++t)h.push(e[k][t]);var =
+e=3Dq,l=3DDate;l.now||(l=3D{now:function(){return+new Date}});var =
+p=3D0,d,g=3D/\blang(?:uage)?-([\w.]+)(?!\S)/;m()};window.PR=3D{createSimp=
+leLexer:x,registerLangHandler:k,sourceDecorator:u,PR_ATTRIB_NAME:"atn",PR=
+_ATTRIB_VALUE:"atv",PR_COMMENT:"com",PR_DECLARATION:"dec",PR_KEYWORD:"kwd=
+",PR_LITERAL:"lit",=0A=
+PR_NOCODE:"nocode",PR_PLAIN:"pln",PR_PUNCTUATION:"pun",PR_SOURCE:"src",PR=
+_STRING:"str",PR_TAG:"tag",PR_TYPE:"typ"}})();=0A=
+
+------=_NextPart_000_0000_01CE006B.3C583F00
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.google-analytics.com/urchin.js
+
+//-- Google Analytics Urchin Module=0A=
+//-- Copyright 2007 Google, All Rights Reserved.=0A=
+=0A=
+//-- Urchin On Demand Settings ONLY=0A=
+var _uacct=3D"";			// set up the Urchin Account=0A=
+var _userv=3D1;			// service mode (0=3Dlocal,1=3Dremote,2=3Dboth)=0A=
+=0A=
+//-- UTM User Settings=0A=
+var _ufsc=3D1;			// set client info flag (1=3Don|0=3Doff)=0A=
+var _udn=3D"auto";		// (auto|none|domain) set the domain name for cookies=0A=
+var _uhash=3D"on";		// (on|off) unique domain hash for cookies=0A=
+var _utimeout=3D"1800";   	// set the inactive session timeout in seconds=0A=
+var _ugifpath=3D"/__utm.gif";	// set the web path to the __utm.gif file=0A=
+var _utsp=3D"|";			// transaction field separator=0A=
+var _uflash=3D1;			// set flash version detect option (1=3Don|0=3Doff)=0A=
+var _utitle=3D1;			// set the document title detect option =
+(1=3Don|0=3Doff)=0A=
+var _ulink=3D0;			// enable linker functionality (1=3Don|0=3Doff)=0A=
+var _uanchor=3D0;			// enable use of anchors for campaign =
+(1=3Don|0=3Doff)=0A=
+var _utcp=3D"/";			// the cookie path for tracking=0A=
+var _usample=3D100;		// The sampling % of visitors to track (1-100).=0A=
+=0A=
+//-- UTM Campaign Tracking Settings=0A=
+var _uctm=3D1;			// set campaign tracking module (1=3Don|0=3Doff)=0A=
+var _ucto=3D"15768000";		// set timeout in seconds (6 month default)=0A=
+var _uccn=3D"utm_campaign";	// name=0A=
+var _ucmd=3D"utm_medium";		// medium (cpc|cpm|link|email|organic)=0A=
+var _ucsr=3D"utm_source";		// source=0A=
+var _uctr=3D"utm_term";		// term/keyword=0A=
+var _ucct=3D"utm_content";	// content=0A=
+var _ucid=3D"utm_id";		// id number=0A=
+var _ucno=3D"utm_nooverride";	// don't override=0A=
+=0A=
+//-- Auto/Organic Sources and Keywords=0A=
+var _uOsr=3Dnew Array();=0A=
+var _uOkw=3Dnew Array();=0A=
+_uOsr[0]=3D"google";	_uOkw[0]=3D"q";=0A=
+_uOsr[1]=3D"yahoo";	_uOkw[1]=3D"p";=0A=
+_uOsr[2]=3D"msn";		_uOkw[2]=3D"q";=0A=
+_uOsr[3]=3D"aol";		_uOkw[3]=3D"query";=0A=
+_uOsr[4]=3D"aol";		_uOkw[4]=3D"encquery";=0A=
+_uOsr[5]=3D"lycos";	_uOkw[5]=3D"query";=0A=
+_uOsr[6]=3D"ask";		_uOkw[6]=3D"q";=0A=
+_uOsr[7]=3D"altavista";	_uOkw[7]=3D"q";=0A=
+_uOsr[8]=3D"netscape";	_uOkw[8]=3D"query";=0A=
+_uOsr[9]=3D"cnn";	_uOkw[9]=3D"query";=0A=
+_uOsr[10]=3D"looksmart";	_uOkw[10]=3D"qt";=0A=
+_uOsr[11]=3D"about";	_uOkw[11]=3D"terms";=0A=
+_uOsr[12]=3D"mamma";	_uOkw[12]=3D"query";=0A=
+_uOsr[13]=3D"alltheweb";	_uOkw[13]=3D"q";=0A=
+_uOsr[14]=3D"gigablast";	_uOkw[14]=3D"q";=0A=
+_uOsr[15]=3D"voila";	_uOkw[15]=3D"rdata";=0A=
+_uOsr[16]=3D"virgilio";	_uOkw[16]=3D"qs";=0A=
+_uOsr[17]=3D"live";	_uOkw[17]=3D"q";=0A=
+_uOsr[18]=3D"baidu";	_uOkw[18]=3D"wd";=0A=
+_uOsr[19]=3D"alice";	_uOkw[19]=3D"qs";=0A=
+_uOsr[20]=3D"yandex";	_uOkw[20]=3D"text";=0A=
+_uOsr[21]=3D"najdi";	_uOkw[21]=3D"q";=0A=
+_uOsr[22]=3D"aol";	_uOkw[22]=3D"q";=0A=
+_uOsr[23]=3D"club-internet"; _uOkw[23]=3D"query";=0A=
+_uOsr[24]=3D"mama";	_uOkw[24]=3D"query";=0A=
+_uOsr[25]=3D"seznam";	_uOkw[25]=3D"q";=0A=
+_uOsr[26]=3D"search";	_uOkw[26]=3D"q";=0A=
+_uOsr[27]=3D"wp";	_uOkw[27]=3D"szukaj";=0A=
+_uOsr[28]=3D"onet";	_uOkw[28]=3D"qt";=0A=
+_uOsr[29]=3D"netsprint";	_uOkw[29]=3D"q";=0A=
+_uOsr[30]=3D"google.interia";	_uOkw[30]=3D"q";=0A=
+_uOsr[31]=3D"szukacz";	_uOkw[31]=3D"q";=0A=
+_uOsr[32]=3D"yam";	_uOkw[32]=3D"k";=0A=
+_uOsr[33]=3D"pchome";	_uOkw[33]=3D"q";=0A=
+_uOsr[34]=3D"kvasir";	_uOkw[34]=3D"searchExpr";=0A=
+_uOsr[35]=3D"sesam";	_uOkw[35]=3D"q";=0A=
+_uOsr[36]=3D"ozu"; _uOkw[36]=3D"q";=0A=
+_uOsr[37]=3D"terra"; _uOkw[37]=3D"query";=0A=
+_uOsr[38]=3D"nostrum"; _uOkw[38]=3D"query";=0A=
+_uOsr[39]=3D"mynet"; _uOkw[39]=3D"q";=0A=
+_uOsr[40]=3D"ekolay"; _uOkw[40]=3D"q";=0A=
+_uOsr[41]=3D"search.ilse"; _uOkw[41]=3D"search_for";=0A=
+_uOsr[42]=3D"bing"; _uOkw[42]=3D"q";=0A=
+=0A=
+//-- Auto/Organic Keywords to Ignore=0A=
+var _uOno=3Dnew Array();=0A=
+//_uOno[0]=3D"urchin";=0A=
+//_uOno[1]=3D"urchin.com";=0A=
+//_uOno[2]=3D"www.urchin.com";=0A=
+=0A=
+//-- Referral domains to Ignore=0A=
+var _uRno=3Dnew Array();=0A=
+//_uRno[0]=3D".urchin.com";=0A=
+=0A=
+//-- **** Don't modify below this point ***=0A=
+var =
+_uff,_udh,_udt,_ubl=3D0,_udo=3D"",_uu,_ufns=3D0,_uns=3D0,_ur=3D"-",_ufno=3D=
+0,_ust=3D0,_ubd=3Ddocument,_udl=3D_ubd.location,_udlh=3D"",_uwv=3D"1.4";=0A=
+var _ugifpath2=3D"http://www.google-analytics.com/__utm.gif";=0A=
+if (_udl.hash) _udlh=3D_udl.href.substring(_udl.href.indexOf('#'));=0A=
+if (_udl.protocol=3D=3D"https:") =
+_ugifpath2=3D"https://ssl.google-analytics.com/__utm.gif";=0A=
+if (!_utcp || _utcp=3D=3D"") _utcp=3D"/";=0A=
+function urchinTracker(page) {=0A=
+ if (_udl.protocol=3D=3D"file:") return;=0A=
+ if (_uff && (!page || page=3D=3D"")) return;=0A=
+ var a,b,c,xx,v,z,k,x=3D"",s=3D"",f=3D0,nv=3D0;=0A=
+ var nx=3D" expires=3D"+_uNx()+";";=0A=
+ var dc=3D_ubd.cookie;=0A=
+ _udh=3D_uDomain();=0A=
+ if (!_uVG()) return;=0A=
+ _uu=3DMath.round(Math.random()*2147483647);=0A=
+ _udt=3Dnew Date();=0A=
+ _ust=3DMath.round(_udt.getTime()/1000);=0A=
+ a=3Ddc.indexOf("__utma=3D"+_udh+".");=0A=
+ b=3Ddc.indexOf("__utmb=3D"+_udh);=0A=
+ c=3Ddc.indexOf("__utmc=3D"+_udh);=0A=
+ if (_udn && _udn!=3D"") { _udo=3D" domain=3D"+_udn+";"; }=0A=
+ if (_utimeout && _utimeout!=3D"") {=0A=
+  x=3Dnew Date(_udt.getTime()+(_utimeout*1000));=0A=
+  x=3D" expires=3D"+x.toGMTString()+";";=0A=
+ }=0A=
+ if (_ulink) {=0A=
+  if (_uanchor && _udlh && _udlh!=3D"") s=3D_udlh+"&";=0A=
+  s+=3D_udl.search;=0A=
+  if(s && s!=3D"" && s.indexOf("__utma=3D")>=3D0) {=0A=
+   if (!(_uIN(a=3D_uGC(s,"__utma=3D","&")))) a=3D"-";=0A=
+   if (!(_uIN(b=3D_uGC(s,"__utmb=3D","&")))) b=3D"-";=0A=
+   if (!(_uIN(c=3D_uGC(s,"__utmc=3D","&")))) c=3D"-";=0A=
+   v=3D_uGC(s,"__utmv=3D","&");=0A=
+   z=3D_uGC(s,"__utmz=3D","&");=0A=
+   k=3D_uGC(s,"__utmk=3D","&");=0A=
+   xx=3D_uGC(s,"__utmx=3D","&");=0A=
+   if ((k*1) !=3D ((_uHash(a+b+c+xx+z+v)*1)+(_udh*1))) =
+{_ubl=3D1;a=3D"-";b=3D"-";c=3D"-";xx=3D"-";z=3D"-";v=3D"-";}=0A=
+   if (a!=3D"-" && b!=3D"-" && c!=3D"-") f=3D1;=0A=
+   else if(a!=3D"-") f=3D2;=0A=
+  }=0A=
+ }=0A=
+ if(f=3D=3D1) {=0A=
+  _ubd.cookie=3D"__utma=3D"+a+"; path=3D"+_utcp+";"+nx+_udo;=0A=
+  _ubd.cookie=3D"__utmb=3D"+b+"; path=3D"+_utcp+";"+x+_udo;=0A=
+  _ubd.cookie=3D"__utmc=3D"+c+"; path=3D"+_utcp+";"+_udo;=0A=
+ } else if (f=3D=3D2) {=0A=
+  a=3D_uFixA(s,"&",_ust);=0A=
+  _ubd.cookie=3D"__utma=3D"+a+"; path=3D"+_utcp+";"+nx+_udo;=0A=
+  _ubd.cookie=3D"__utmb=3D"+_udh+"; path=3D"+_utcp+";"+x+_udo;=0A=
+  _ubd.cookie=3D"__utmc=3D"+_udh+"; path=3D"+_utcp+";"+_udo;=0A=
+  _ufns=3D1;=0A=
+ } else if (a>=3D0 && b>=3D0 && c>=3D0) {=0A=
+   b =3D _uGC(dc,"__utmb=3D"+_udh,";");=0A=
+   b =3D ("-" =3D=3D b) ? _udh : b;  =0A=
+  _ubd.cookie=3D"__utmb=3D"+b+"; path=3D"+_utcp+";"+x+_udo;=0A=
+ } else {=0A=
+  if (a>=3D0) a=3D_uFixA(_ubd.cookie,";",_ust);=0A=
+  else {=0A=
+   a=3D_udh+"."+_uu+"."+_ust+"."+_ust+"."+_ust+".1";=0A=
+   nv=3D1;=0A=
+  }=0A=
+  _ubd.cookie=3D"__utma=3D"+a+"; path=3D"+_utcp+";"+nx+_udo;=0A=
+  _ubd.cookie=3D"__utmb=3D"+_udh+"; path=3D"+_utcp+";"+x+_udo;=0A=
+  _ubd.cookie=3D"__utmc=3D"+_udh+"; path=3D"+_utcp+";"+_udo;=0A=
+  _ufns=3D1;=0A=
+ }=0A=
+ if (_ulink && xx && xx!=3D"" && xx!=3D"-") {=0A=
+   xx=3D_uUES(xx);=0A=
+   if (xx.indexOf(";")=3D=3D-1) _ubd.cookie=3D"__utmx=3D"+xx+"; =
+path=3D"+_utcp+";"+nx+_udo;=0A=
+ }=0A=
+ if (_ulink && v && v!=3D"" && v!=3D"-") {=0A=
+  v=3D_uUES(v);=0A=
+  if (v.indexOf(";")=3D=3D-1) _ubd.cookie=3D"__utmv=3D"+v+"; =
+path=3D"+_utcp+";"+nx+_udo;=0A=
+ }=0A=
+ var wc=3Dwindow;=0A=
+ var c=3D_ubd.cookie;=0A=
+ if(wc && wc.gaGlobal && wc.gaGlobal.dh=3D=3D_udh){=0A=
+  var g=3Dwc.gaGlobal;=0A=
+  var ua=3Dc.split("__utma=3D"+_udh+".")[1].split(";")[0].split(".");=0A=
+  if(g.sid)ua[3]=3Dg.sid;=0A=
+  if(nv>0){=0A=
+   ua[2]=3Dua[3];=0A=
+   if(g.vid){=0A=
+    var v=3Dg.vid.split(".");=0A=
+    ua[0]=3Dv[0];=0A=
+    ua[1]=3Dv[1];=0A=
+   }=0A=
+  }=0A=
+  _ubd.cookie=3D"__utma=3D"+_udh+"."+ua.join(".")+"; =
+path=3D"+_utcp+";"+nx+_udo;=0A=
+ }=0A=
+ _uInfo(page);=0A=
+ _ufns=3D0;=0A=
+ _ufno=3D0;=0A=
+ if (!page || page=3D=3D"") _uff=3D1;=0A=
+}=0A=
+function _uGH() {=0A=
+ var hid;=0A=
+ var wc=3Dwindow;=0A=
+ if (wc && wc.gaGlobal && wc.gaGlobal.hid) {=0A=
+  hid=3Dwc.gaGlobal.hid;=0A=
+ } else {=0A=
+  hid=3DMath.round(Math.random()*0x7fffffff);=0A=
+  if (!wc.gaGlobal) wc.gaGlobal=3D{};=0A=
+  wc.gaGlobal.hid=3Dhid;=0A=
+ }=0A=
+ return hid;=0A=
+}=0A=
+function _uInfo(page) {=0A=
+ var p,s=3D"",dm=3D"",pg=3D_udl.pathname+_udl.search;=0A=
+ if (page && page!=3D"") pg=3D_uES(page,1);=0A=
+ _ur=3D_ubd.referrer;=0A=
+ if (!_ur || _ur=3D=3D"") { _ur=3D"-"; }=0A=
+ else {=0A=
+  dm=3D_ubd.domain;=0A=
+  if(_utcp && _utcp!=3D"/") dm+=3D_utcp;=0A=
+  p=3D_ur.indexOf(dm);=0A=
+  if ((p>=3D0) && (p<=3D8)) { _ur=3D"0"; }=0A=
+  if (_ur.indexOf("[")=3D=3D0 && =
+_ur.lastIndexOf("]")=3D=3D(_ur.length-1)) { _ur=3D"-"; }=0A=
+ }=0A=
+ s+=3D"&utmn=3D"+_uu;=0A=
+ if (_ufsc) s+=3D_uBInfo();=0A=
+ if (_uctm) s+=3D_uCInfo();=0A=
+ if (_utitle && _ubd.title && _ubd.title!=3D"") =
+s+=3D"&utmdt=3D"+_uES(_ubd.title);=0A=
+ if (_udl.hostname && _udl.hostname!=3D"") =
+s+=3D"&utmhn=3D"+_uES(_udl.hostname);=0A=
+ if (_usample && _usample !=3D 100) s+=3D"&utmsp=3D"+_uES(_usample);=0A=
+ s+=3D"&utmhid=3D"+_uGH();=0A=
+ s+=3D"&utmr=3D"+_ur;=0A=
+ s+=3D"&utmp=3D"+pg;=0A=
+ if ((_userv=3D=3D0 || _userv=3D=3D2) && _uSP()) {=0A=
+  var i=3Dnew Image(1,1);=0A=
+  i.src=3D_ugifpath+"?"+"utmwv=3D"+_uwv+s;=0A=
+  i.onload=3Dfunction() { _uVoid(); }=0A=
+ }=0A=
+ if ((_userv=3D=3D1 || _userv=3D=3D2) && _uSP()) {=0A=
+  var i2=3Dnew Image(1,1);=0A=
+  =
+i2.src=3D_ugifpath2+"?"+"utmwv=3D"+_uwv+s+"&utmac=3D"+_uacct+"&utmcc=3D"+=
+_uGCS();=0A=
+  i2.onload=3Dfunction() { _uVoid(); }=0A=
+ }=0A=
+ return;=0A=
+}=0A=
+function _uVoid() { return; }=0A=
+function _uCInfo() {=0A=
+ if (!_ucto || _ucto=3D=3D"") { _ucto=3D"15768000"; }=0A=
+ if (!_uVG()) return;=0A=
+ var =
+c=3D"",t=3D"-",t2=3D"-",t3=3D"-",o=3D0,cs=3D0,cn=3D0,i=3D0,z=3D"-",s=3D""=
+;=0A=
+ if (_uanchor && _udlh && _udlh!=3D"") s=3D_udlh+"&";=0A=
+ s+=3D_udl.search;=0A=
+ var x=3Dnew Date(_udt.getTime()+(_ucto*1000));=0A=
+ var dc=3D_ubd.cookie;=0A=
+ x=3D" expires=3D"+x.toGMTString()+";";=0A=
+ if (_ulink && !_ubl) {=0A=
+  z=3D_uUES(_uGC(s,"__utmz=3D","&"));=0A=
+  if (z!=3D"-" && z.indexOf(";")=3D=3D-1) { =
+_ubd.cookie=3D"__utmz=3D"+z+"; path=3D"+_utcp+";"+x+_udo; return ""; }=0A=
+ }=0A=
+ z=3Ddc.indexOf("__utmz=3D"+_udh+".");=0A=
+ if (z>-1) { z=3D_uGC(dc,"__utmz=3D"+_udh+".",";"); }=0A=
+ else { z=3D"-"; }=0A=
+ t=3D_uGC(s,_ucid+"=3D","&");=0A=
+ t2=3D_uGC(s,_ucsr+"=3D","&");=0A=
+ t3=3D_uGC(s,"gclid=3D","&");=0A=
+ if ((t!=3D"-" && t!=3D"") || (t2!=3D"-" && t2!=3D"") || (t3!=3D"-" && =
+t3!=3D"")) {=0A=
+  if (t!=3D"-" && t!=3D"") c+=3D"utmcid=3D"+_uEC(t);=0A=
+  if (t2!=3D"-" && t2!=3D"") { if (c !=3D "") c+=3D"|"; =
+c+=3D"utmcsr=3D"+_uEC(t2); }=0A=
+  if (t3!=3D"-" && t3!=3D"") { if (c !=3D "") c+=3D"|"; =
+c+=3D"utmgclid=3D"+_uEC(t3); }=0A=
+  t=3D_uGC(s,_uccn+"=3D","&");=0A=
+  if (t!=3D"-" && t!=3D"") c+=3D"|utmccn=3D"+_uEC(t);=0A=
+  else c+=3D"|utmccn=3D(not+set)";=0A=
+  t=3D_uGC(s,_ucmd+"=3D","&");=0A=
+  if (t!=3D"-" && t!=3D"") c+=3D"|utmcmd=3D"+_uEC(t);=0A=
+  else  c+=3D"|utmcmd=3D(not+set)";=0A=
+  t=3D_uGC(s,_uctr+"=3D","&");=0A=
+  if (t!=3D"-" && t!=3D"") c+=3D"|utmctr=3D"+_uEC(t);=0A=
+  else { t=3D_uOrg(1); if (t!=3D"-" && t!=3D"") =
+c+=3D"|utmctr=3D"+_uEC(t); }=0A=
+  t=3D_uGC(s,_ucct+"=3D","&");=0A=
+  if (t!=3D"-" && t!=3D"") c+=3D"|utmcct=3D"+_uEC(t);=0A=
+  t=3D_uGC(s,_ucno+"=3D","&");=0A=
+  if (t=3D=3D"1") o=3D1;=0A=
+  if (z!=3D"-" && o=3D=3D1) return "";=0A=
+ }=0A=
+ if (c=3D=3D"-" || c=3D=3D"") { c=3D_uOrg(); if (z!=3D"-" && =
+_ufno=3D=3D1)  return ""; }=0A=
+ if (c=3D=3D"-" || c=3D=3D"") { if (_ufns=3D=3D1)  c=3D_uRef(); if =
+(z!=3D"-" && _ufno=3D=3D1)  return ""; }=0A=
+ if (c=3D=3D"-" || c=3D=3D"") {=0A=
+  if (z=3D=3D"-" && _ufns=3D=3D1) { =
+c=3D"utmccn=3D(direct)|utmcsr=3D(direct)|utmcmd=3D(none)"; }=0A=
+  if (c=3D=3D"-" || c=3D=3D"") return "";=0A=
+ }=0A=
+ if (z!=3D"-") {=0A=
+  i=3Dz.indexOf(".");=0A=
+  if (i>-1) i=3Dz.indexOf(".",i+1);=0A=
+  if (i>-1) i=3Dz.indexOf(".",i+1);=0A=
+  if (i>-1) i=3Dz.indexOf(".",i+1);=0A=
+  t=3Dz.substring(i+1,z.length);=0A=
+  if (t.toLowerCase()=3D=3Dc.toLowerCase()) cs=3D1;=0A=
+  t=3Dz.substring(0,i);=0A=
+  if ((i=3Dt.lastIndexOf(".")) > -1) {=0A=
+   t=3Dt.substring(i+1,t.length);=0A=
+   cn=3D(t*1);=0A=
+  }=0A=
+ }=0A=
+ if (cs=3D=3D0 || _ufns=3D=3D1) {=0A=
+  t=3D_uGC(dc,"__utma=3D"+_udh+".",";");=0A=
+  if ((i=3Dt.lastIndexOf(".")) > 9) {=0A=
+   _uns=3Dt.substring(i+1,t.length);=0A=
+   _uns=3D(_uns*1);=0A=
+  }=0A=
+  cn++;=0A=
+  if (_uns=3D=3D0) _uns=3D1;=0A=
+  _ubd.cookie=3D"__utmz=3D"+_udh+"."+_ust+"."+_uns+"."+cn+"."+c+"; =
+path=3D"+_utcp+"; "+x+_udo;=0A=
+ }=0A=
+ if (cs=3D=3D0 || _ufns=3D=3D1) return "&utmcn=3D1";=0A=
+ else return "&utmcr=3D1";=0A=
+}=0A=
+function _uRef() {=0A=
+ if (_ur=3D=3D"0" || _ur=3D=3D"" || _ur=3D=3D"-") return "";=0A=
+ var i=3D0,h,k,n;=0A=
+ if ((i=3D_ur.indexOf("://"))<0 || _uGCse()) return "";=0A=
+ h=3D_ur.substring(i+3,_ur.length);=0A=
+ if (h.indexOf("/") > -1) {=0A=
+  k=3Dh.substring(h.indexOf("/"),h.length);=0A=
+  if (k.indexOf("?") > -1) k=3Dk.substring(0,k.indexOf("?"));=0A=
+  h=3Dh.substring(0,h.indexOf("/"));=0A=
+ }=0A=
+ h=3Dh.toLowerCase();=0A=
+ n=3Dh;=0A=
+ if ((i=3Dn.indexOf(":")) > -1) n=3Dn.substring(0,i);=0A=
+ for (var ii=3D0;ii<_uRno.length;ii++) {=0A=
+  if ((i=3Dn.indexOf(_uRno[ii].toLowerCase())) > -1 && =
+n.length=3D=3D(i+_uRno[ii].length)) { _ufno=3D1; break; }=0A=
+ }=0A=
+ if (h.indexOf("www.")=3D=3D0) h=3Dh.substring(4,h.length);=0A=
+ return =
+"utmccn=3D(referral)|utmcsr=3D"+_uEC(h)+"|"+"utmcct=3D"+_uEC(k)+"|utmcmd=3D=
+referral";=0A=
+}=0A=
+function _uOrg(t) {=0A=
+ if (_ur=3D=3D"0" || _ur=3D=3D"" || _ur=3D=3D"-") return "";=0A=
+ var i=3D0,h,k;=0A=
+ if ((i=3D_ur.indexOf("://"))<0 || _uGCse()) return "";=0A=
+ h=3D_ur.substring(i+3,_ur.length);=0A=
+ if (h.indexOf("/") > -1) {=0A=
+  h=3Dh.substring(0,h.indexOf("/"));=0A=
+ }=0A=
+ for (var ii=3D0;ii<_uOsr.length;ii++) {=0A=
+  if (h.toLowerCase().indexOf(_uOsr[ii].toLowerCase()) > -1) {=0A=
+   if ((i=3D_ur.indexOf("?"+_uOkw[ii]+"=3D")) > -1 || =
+(i=3D_ur.indexOf("&"+_uOkw[ii]+"=3D")) > -1) {=0A=
+    k=3D_ur.substring(i+_uOkw[ii].length+2,_ur.length);=0A=
+    if ((i=3Dk.indexOf("&")) > -1) k=3Dk.substring(0,i);=0A=
+    for (var yy=3D0;yy<_uOno.length;yy++) {=0A=
+     if (_uOno[yy].toLowerCase()=3D=3Dk.toLowerCase()) { _ufno=3D1; =
+break; }=0A=
+    }=0A=
+    if (t) return _uEC(k);=0A=
+    else return =
+"utmccn=3D(organic)|utmcsr=3D"+_uEC(_uOsr[ii])+"|"+"utmctr=3D"+_uEC(k)+"|=
+utmcmd=3Dorganic";=0A=
+   }=0A=
+  }=0A=
+ }=0A=
+ return "";=0A=
+}=0A=
+function _uGCse() {=0A=
+ var h,p;=0A=
+ h=3Dp=3D_ur.split("://")[1];=0A=
+ if(h.indexOf("/")>-1) {=0A=
+  h=3Dh.split("/")[0];=0A=
+  p=3Dp.substring(p.indexOf("/")+1,p.length);=0A=
+ }=0A=
+ if(p.indexOf("?")>-1) {=0A=
+  p=3Dp.split("?")[0];=0A=
+ }=0A=
+ if(h.toLowerCase().indexOf("google")>-1) {=0A=
+  if(_ur.indexOf("?q=3D")>-1 || _ur.indexOf("&q=3D")>-1) {=0A=
+   if (p.toLowerCase().indexOf("cse")>-1) {=0A=
+    return true;=0A=
+   }=0A=
+  }=0A=
+ }=0A=
+}=0A=
+function _uBInfo() {=0A=
+ var sr=3D"-",sc=3D"-",ul=3D"-",fl=3D"-",cs=3D"-",je=3D1;=0A=
+ var n=3Dnavigator;=0A=
+ if (self.screen) {=0A=
+  sr=3Dscreen.width+"x"+screen.height;=0A=
+  sc=3Dscreen.colorDepth+"-bit";=0A=
+ } else if (self.java) {=0A=
+  var j=3Djava.awt.Toolkit.getDefaultToolkit();=0A=
+  var s=3Dj.getScreenSize();=0A=
+  sr=3Ds.width+"x"+s.height;=0A=
+ }=0A=
+ if (n.language) { ul=3Dn.language.toLowerCase(); }=0A=
+ else if (n.browserLanguage) { ul=3Dn.browserLanguage.toLowerCase(); }=0A=
+ je=3Dn.javaEnabled()?1:0;=0A=
+ if (_uflash) fl=3D_uFlash();=0A=
+ if (_ubd.characterSet) cs=3D_uES(_ubd.characterSet);=0A=
+ else if (_ubd.charset) cs=3D_uES(_ubd.charset);=0A=
+ return =
+"&utmcs=3D"+cs+"&utmsr=3D"+sr+"&utmsc=3D"+sc+"&utmul=3D"+ul+"&utmje=3D"+j=
+e+"&utmfl=3D"+fl;=0A=
+}=0A=
+function __utmSetTrans() {=0A=
+ var e;=0A=
+ if (_ubd.getElementById) e=3D_ubd.getElementById("utmtrans");=0A=
+ else if (_ubd.utmform && _ubd.utmform.utmtrans) =
+e=3D_ubd.utmform.utmtrans;=0A=
+ if (!e) return;=0A=
+ var l=3De.value.split("UTM:");=0A=
+ var i,i2,c;=0A=
+ if (_userv=3D=3D0 || _userv=3D=3D2) i=3Dnew Array();=0A=
+ if (_userv=3D=3D1 || _userv=3D=3D2) { i2=3Dnew Array(); c=3D_uGCS(); }=0A=
+=0A=
+ for (var ii=3D0;ii<l.length;ii++) {=0A=
+  l[ii]=3D_uTrim(l[ii]);=0A=
+  if (l[ii].charAt(0)!=3D'T' && l[ii].charAt(0)!=3D'I') continue;=0A=
+  var r=3DMath.round(Math.random()*2147483647);=0A=
+  if (!_utsp || _utsp=3D=3D"") _utsp=3D"|";=0A=
+  var f=3Dl[ii].split(_utsp),s=3D"";=0A=
+  if (f[0].charAt(0)=3D=3D'T') {=0A=
+   s=3D"&utmt=3Dtran"+"&utmn=3D"+r;=0A=
+   f[1]=3D_uTrim(f[1]); if(f[1]&&f[1]!=3D"") =
+s+=3D"&utmtid=3D"+_uES(f[1]);=0A=
+   f[2]=3D_uTrim(f[2]); if(f[2]&&f[2]!=3D"") =
+s+=3D"&utmtst=3D"+_uES(f[2]);=0A=
+   f[3]=3D_uTrim(f[3]); if(f[3]&&f[3]!=3D"") =
+s+=3D"&utmtto=3D"+_uES(f[3]);=0A=
+   f[4]=3D_uTrim(f[4]); if(f[4]&&f[4]!=3D"") =
+s+=3D"&utmttx=3D"+_uES(f[4]);=0A=
+   f[5]=3D_uTrim(f[5]); if(f[5]&&f[5]!=3D"") =
+s+=3D"&utmtsp=3D"+_uES(f[5]);=0A=
+   f[6]=3D_uTrim(f[6]); if(f[6]&&f[6]!=3D"") =
+s+=3D"&utmtci=3D"+_uES(f[6]);=0A=
+   f[7]=3D_uTrim(f[7]); if(f[7]&&f[7]!=3D"") =
+s+=3D"&utmtrg=3D"+_uES(f[7]);=0A=
+   f[8]=3D_uTrim(f[8]); if(f[8]&&f[8]!=3D"") =
+s+=3D"&utmtco=3D"+_uES(f[8]);=0A=
+  } else {=0A=
+   s=3D"&utmt=3Ditem"+"&utmn=3D"+r;=0A=
+   f[1]=3D_uTrim(f[1]); if(f[1]&&f[1]!=3D"") =
+s+=3D"&utmtid=3D"+_uES(f[1]);=0A=
+   f[2]=3D_uTrim(f[2]); if(f[2]&&f[2]!=3D"") =
+s+=3D"&utmipc=3D"+_uES(f[2]);=0A=
+   f[3]=3D_uTrim(f[3]); if(f[3]&&f[3]!=3D"") =
+s+=3D"&utmipn=3D"+_uES(f[3]);=0A=
+   f[4]=3D_uTrim(f[4]); if(f[4]&&f[4]!=3D"") =
+s+=3D"&utmiva=3D"+_uES(f[4]);=0A=
+   f[5]=3D_uTrim(f[5]); if(f[5]&&f[5]!=3D"") =
+s+=3D"&utmipr=3D"+_uES(f[5]);=0A=
+   f[6]=3D_uTrim(f[6]); if(f[6]&&f[6]!=3D"") =
+s+=3D"&utmiqt=3D"+_uES(f[6]);=0A=
+  }=0A=
+  if (_udl.hostname && _udl.hostname!=3D"") =
+s+=3D"&utmhn=3D"+_uES(_udl.hostname);=0A=
+  if (_usample && _usample !=3D 100) s+=3D"&utmsp=3D"+_uES(_usample);=0A=
+=0A=
+  if ((_userv=3D=3D0 || _userv=3D=3D2) && _uSP()) {=0A=
+   i[ii]=3Dnew Image(1,1);=0A=
+   i[ii].src=3D_ugifpath+"?"+"utmwv=3D"+_uwv+s;=0A=
+   i[ii].onload=3Dfunction() { _uVoid(); }=0A=
+  }=0A=
+  if ((_userv=3D=3D1 || _userv=3D=3D2) && _uSP()) {=0A=
+   i2[ii]=3Dnew Image(1,1);=0A=
+   =
+i2[ii].src=3D_ugifpath2+"?"+"utmwv=3D"+_uwv+s+"&utmac=3D"+_uacct+"&utmcc=3D=
+"+c;=0A=
+   i2[ii].onload=3Dfunction() { _uVoid(); }=0A=
+  }=0A=
+ }=0A=
+ return;=0A=
+}=0A=
+function _uFlash() {=0A=
+ var f=3D"-",n=3Dnavigator;=0A=
+ if (n.plugins && n.plugins.length) {=0A=
+  for (var ii=3D0;ii<n.plugins.length;ii++) {=0A=
+   if (n.plugins[ii].name.indexOf('Shockwave Flash')!=3D-1) {=0A=
+    f=3Dn.plugins[ii].description.split('Shockwave Flash ')[1];=0A=
+    break;=0A=
+   }=0A=
+  }=0A=
+ } else {=0A=
+  var fl;=0A=
+  try {=0A=
+   fl =3D new ActiveXObject("ShockwaveFlash.ShockwaveFlash.7");=0A=
+   f =3D fl.GetVariable("$version");=0A=
+  } catch(e) {}=0A=
+  if (f =3D=3D "-") {=0A=
+   try {=0A=
+    fl =3D new ActiveXObject("ShockwaveFlash.ShockwaveFlash.6");=0A=
+    f =3D "WIN 6,0,21,0";=0A=
+    fl.AllowScriptAccess =3D "always";=0A=
+    f =3D fl.GetVariable("$version");=0A=
+   } catch(e) {}=0A=
+  }=0A=
+  if (f =3D=3D "-") {=0A=
+   try {=0A=
+    fl =3D new ActiveXObject("ShockwaveFlash.ShockwaveFlash");=0A=
+    f =3D fl.GetVariable("$version");=0A=
+   } catch(e) {}=0A=
+  }=0A=
+  if (f !=3D "-") {=0A=
+   f =3D f.split(" ")[1].split(",");=0A=
+   f =3D f[0] + "." + f[1] + " r" + f[2];=0A=
+  }=0A=
+ }=0A=
+ return f;=0A=
+}=0A=
+function __utmLinkerUrl(l,h) {=0A=
+ var p,k,a=3D"-",b=3D"-",c=3D"-",x=3D"-",z=3D"-",v=3D"-";=0A=
+ var dc=3D_ubd.cookie;=0A=
+ var iq =3D l.indexOf("?");=0A=
+ var ih =3D l.indexOf("#");=0A=
+ var url=3Dl;=0A=
+ if (dc) {=0A=
+  a=3D_uES(_uGC(dc,"__utma=3D"+_udh+".",";"));=0A=
+  b=3D_uES(_uGC(dc,"__utmb=3D"+_udh,";"));=0A=
+  c=3D_uES(_uGC(dc,"__utmc=3D"+_udh,";"));=0A=
+  x=3D_uES(_uGC(dc,"__utmx=3D"+_udh,";"));=0A=
+  z=3D_uES(_uGC(dc,"__utmz=3D"+_udh+".",";"));=0A=
+  v=3D_uES(_uGC(dc,"__utmv=3D"+_udh+".",";"));=0A=
+  k=3D(_uHash(a+b+c+x+z+v)*1)+(_udh*1);=0A=
+  =
+p=3D"__utma=3D"+a+"&__utmb=3D"+b+"&__utmc=3D"+c+"&__utmx=3D"+x+"&__utmz=3D=
+"+z+"&__utmv=3D"+v+"&__utmk=3D"+k;=0A=
+ }=0A=
+ if (p) {=0A=
+  if (h && ih>-1) return;=0A=
+  if (h) { url=3Dl+"#"+p; }=0A=
+  else {=0A=
+   if (iq=3D=3D-1 && ih=3D=3D-1) url=3Dl+"?"+p;=0A=
+   else if (ih=3D=3D-1) url=3Dl+"&"+p;=0A=
+   else if (iq=3D=3D-1) url=3Dl.substring(0,ih-1)+"?"+p+l.substring(ih);=0A=
+   else url=3Dl.substring(0,ih-1)+"&"+p+l.substring(ih);=0A=
+  }=0A=
+ }=0A=
+ return url;=0A=
+}=0A=
+function __utmLinker(l,h) {=0A=
+ if (!_ulink || !l || l=3D=3D"") return;=0A=
+ _udl.href=3D__utmLinkerUrl(l,h);=0A=
+}=0A=
+function __utmLinkPost(f,h) {=0A=
+ if (!_ulink || !f || !f.action) return;=0A=
+ f.action=3D__utmLinkerUrl(f.action, h);=0A=
+ return;=0A=
+}=0A=
+function __utmSetVar(v) {=0A=
+ if (!v || v=3D=3D"") return;=0A=
+ if (!_udo || _udo =3D=3D "") {=0A=
+  _udh=3D_uDomain();=0A=
+  if (_udn && _udn!=3D"") { _udo=3D" domain=3D"+_udn+";"; }=0A=
+ }=0A=
+ if (!_uVG()) return;=0A=
+ var r=3DMath.round(Math.random() * 2147483647);=0A=
+ _ubd.cookie=3D"__utmv=3D"+_udh+"."+_uES(v)+"; path=3D"+_utcp+"; =
+expires=3D"+_uNx()+";"+_udo;=0A=
+ var s=3D"&utmt=3Dvar&utmn=3D"+r;=0A=
+ if (_usample && _usample !=3D 100) s+=3D"&utmsp=3D"+_uES(_usample);=0A=
+ if ((_userv=3D=3D0 || _userv=3D=3D2) && _uSP()) {=0A=
+  var i=3Dnew Image(1,1);=0A=
+  i.src=3D_ugifpath+"?"+"utmwv=3D"+_uwv+s;=0A=
+  i.onload=3Dfunction() { _uVoid(); }=0A=
+ }=0A=
+ if ((_userv=3D=3D1 || _userv=3D=3D2) && _uSP()) {=0A=
+  var i2=3Dnew Image(1,1);=0A=
+  =
+i2.src=3D_ugifpath2+"?"+"utmwv=3D"+_uwv+s+"&utmac=3D"+_uacct+"&utmcc=3D"+=
+_uGCS();=0A=
+  i2.onload=3Dfunction() { _uVoid(); }=0A=
+ }=0A=
+}=0A=
+function _uGCS() {=0A=
+ var t,c=3D"",dc=3D_ubd.cookie;=0A=
+ if ((t=3D_uGC(dc,"__utma=3D"+_udh+".",";"))!=3D"-") =
+c+=3D_uES("__utma=3D"+t+";+");=0A=
+ if ((t=3D_uGC(dc,"__utmx=3D"+_udh,";"))!=3D"-") =
+c+=3D_uES("__utmx=3D"+t+";+");=0A=
+ if ((t=3D_uGC(dc,"__utmz=3D"+_udh+".",";"))!=3D"-") =
+c+=3D_uES("__utmz=3D"+t+";+");=0A=
+ if ((t=3D_uGC(dc,"__utmv=3D"+_udh+".",";"))!=3D"-") =
+c+=3D_uES("__utmv=3D"+t+";");=0A=
+ if (c.charAt(c.length-1)=3D=3D"+") c=3Dc.substring(0,c.length-1);=0A=
+ return c;=0A=
+}=0A=
+function _uGC(l,n,s) {=0A=
+ if (!l || l=3D=3D"" || !n || n=3D=3D"" || !s || s=3D=3D"") return "-";=0A=
+ var i,i2,i3,c=3D"-";=0A=
+ i=3Dl.indexOf(n);=0A=
+ i3=3Dn.indexOf("=3D")+1;=0A=
+ if (i > -1) {=0A=
+  i2=3Dl.indexOf(s,i); if (i2 < 0) { i2=3Dl.length; }=0A=
+  c=3Dl.substring((i+i3),i2);=0A=
+ }=0A=
+ return c;=0A=
+}=0A=
+function _uDomain() {=0A=
+ if (!_udn || _udn=3D=3D"" || _udn=3D=3D"none") { _udn=3D""; return 1; }=0A=
+ if (_udn=3D=3D"auto") {=0A=
+  var d=3D_ubd.domain;=0A=
+  if (d.substring(0,4)=3D=3D"www.") {=0A=
+   d=3Dd.substring(4,d.length);=0A=
+  }=0A=
+  _udn=3Dd;=0A=
+ }=0A=
+ _udn =3D _udn.toLowerCase(); =0A=
+ if (_uhash=3D=3D"off") return 1;=0A=
+ return _uHash(_udn);=0A=
+}=0A=
+function _uHash(d) {=0A=
+ if (!d || d=3D=3D"") return 1;=0A=
+ var h=3D0,g=3D0;=0A=
+ for (var i=3Dd.length-1;i>=3D0;i--) {=0A=
+  var c=3DparseInt(d.charCodeAt(i));=0A=
+  h=3D((h << 6) & 0xfffffff) + c + (c << 14);=0A=
+  if ((g=3Dh & 0xfe00000)!=3D0) h=3D(h ^ (g >> 21));=0A=
+ }=0A=
+ return h;=0A=
+}=0A=
+function _uFixA(c,s,t) {=0A=
+ if (!c || c=3D=3D"" || !s || s=3D=3D"" || !t || t=3D=3D"") return "-";=0A=
+ var a=3D_uGC(c,"__utma=3D"+_udh+".",s);=0A=
+ var lt=3D0,i=3D0;=0A=
+ if ((i=3Da.lastIndexOf(".")) > 9) {=0A=
+  _uns=3Da.substring(i+1,a.length);=0A=
+  _uns=3D(_uns*1)+1;=0A=
+  a=3Da.substring(0,i);=0A=
+  if ((i=3Da.lastIndexOf(".")) > 7) {=0A=
+   lt=3Da.substring(i+1,a.length);=0A=
+   a=3Da.substring(0,i);=0A=
+  }=0A=
+  if ((i=3Da.lastIndexOf(".")) > 5) {=0A=
+   a=3Da.substring(0,i);=0A=
+  }=0A=
+  a+=3D"."+lt+"."+t+"."+_uns;=0A=
+ }=0A=
+ return a;=0A=
+}=0A=
+function _uTrim(s) {=0A=
+  if (!s || s=3D=3D"") return "";=0A=
+  while ((s.charAt(0)=3D=3D' ') || (s.charAt(0)=3D=3D'\n') || =
+(s.charAt(0,1)=3D=3D'\r')) s=3Ds.substring(1,s.length);=0A=
+  while ((s.charAt(s.length-1)=3D=3D' ') || =
+(s.charAt(s.length-1)=3D=3D'\n') || (s.charAt(s.length-1)=3D=3D'\r')) =
+s=3Ds.substring(0,s.length-1);=0A=
+  return s;=0A=
+}=0A=
+function _uEC(s) {=0A=
+  var n=3D"";=0A=
+  if (!s || s=3D=3D"") return "";=0A=
+  for (var i=3D0;i<s.length;i++) {if (s.charAt(i)=3D=3D" ") n+=3D"+"; =
+else n+=3Ds.charAt(i);}=0A=
+  return n;=0A=
+}=0A=
+function __utmVisitorCode(f) {=0A=
+ var r=3D0,t=3D0,i=3D0,i2=3D0,m=3D31;=0A=
+ var a=3D_uGC(_ubd.cookie,"__utma=3D"+_udh+".",";");=0A=
+ if ((i=3Da.indexOf(".",0))<0) return;=0A=
+ if ((i2=3Da.indexOf(".",i+1))>0) r=3Da.substring(i+1,i2); else return =
+"";  =0A=
+ if ((i=3Da.indexOf(".",i2+1))>0) t=3Da.substring(i2+1,i); else return =
+"";  =0A=
+ if (f) {=0A=
+  return r;=0A=
+ } else {=0A=
+  var c=3Dnew =
+Array('A','B','C','D','E','F','G','H','J','K','L','M','N','P','R','S','T'=
+,'U','V','W','X','Y','Z','1','2','3','4','5','6','7','8','9');=0A=
+  return =
+c[r>>28&m]+c[r>>23&m]+c[r>>18&m]+c[r>>13&m]+"-"+c[r>>8&m]+c[r>>3&m]+c[((r=
+&7)<<2)+(t>>30&3)]+c[t>>25&m]+c[t>>20&m]+"-"+c[t>>15&m]+c[t>>10&m]+c[t>>5=
+&m]+c[t&m];=0A=
+ }=0A=
+}=0A=
+function _uIN(n) {=0A=
+ if (!n) return false;=0A=
+ for (var i=3D0;i<n.length;i++) {=0A=
+  var c=3Dn.charAt(i);=0A=
+  if ((c<"0" || c>"9") && (c!=3D".")) return false;=0A=
+ }=0A=
+ return true;=0A=
+}=0A=
+function _uES(s,u) {=0A=
+ if (typeof(encodeURIComponent) =3D=3D 'function') {=0A=
+  if (u) return encodeURI(s);=0A=
+  else return encodeURIComponent(s);=0A=
+ } else {=0A=
+  return escape(s);=0A=
+ }=0A=
+}=0A=
+function _uUES(s) {=0A=
+ if (typeof(decodeURIComponent) =3D=3D 'function') {=0A=
+  return decodeURIComponent(s);=0A=
+ } else {=0A=
+  return unescape(s);=0A=
+ }=0A=
+}=0A=
+function _uVG() {=0A=
+ if((_udn.indexOf("www.google.") =3D=3D 0 || _udn.indexOf(".google.") =
+=3D=3D 0 || _udn.indexOf("google.") =3D=3D 0) && _utcp=3D=3D'/' && =
+_udn.indexOf("google.org")=3D=3D-1) {=0A=
+  return false;=0A=
+ }=0A=
+ return true;=0A=
+}=0A=
+function _uSP() {=0A=
+ var s=3D100;=0A=
+ if (_usample) s=3D_usample;=0A=
+ if(s>=3D100 || s<=3D0) return true;=0A=
+ return ((__utmVisitorCode(1)%10000)<(s*100));=0A=
+}=0A=
+function urchinPathCopy(p){=0A=
+ var d=3Ddocument,nx,tx,sx,i,c,cs,t,h,o;=0A=
+ cs=3Dnew Array("a","b","c","v","x","z");=0A=
+ h=3D_uDomain(); if (_udn && _udn!=3D"") o=3D" domain=3D"+_udn+";";=0A=
+ nx=3D_uNx()+";";=0A=
+ tx=3Dnew Date(); tx.setTime(tx.getTime()+(_utimeout*1000));=0A=
+ tx=3Dtx.toGMTString()+";";=0A=
+ sx=3Dnew Date(); sx.setTime(sx.getTime()+(_ucto*1000));=0A=
+ sx=3Dsx.toGMTString()+";";=0A=
+ for (i=3D0;i<6;i++){=0A=
+  t=3D" expires=3D";=0A=
+  if (i=3D=3D1) t+=3Dtx; else if (i=3D=3D2) t=3D""; else if (i=3D=3D5) =
+t+=3Dsx; else t+=3Dnx;=0A=
+  c=3D_uGC(d.cookie,"__utm"+cs[i]+"=3D"+h,";");=0A=
+  if (c!=3D"-") d.cookie=3D"__utm"+cs[i]+"=3D"+c+"; path=3D"+p+";"+t+o;=0A=
+ }=0A=
+}=0A=
+function _uCO() {=0A=
+ if (!_utk || _utk=3D=3D"" || _utk.length<10) return;=0A=
+ var d=3D'www.google.com';=0A=
+ if (_utk.charAt(0)=3D=3D'!') d=3D'analytics.corp.google.com';=0A=
+ _ubd.cookie=3D"GASO=3D"+_utk+"; path=3D"+_utcp+";"+_udo;=0A=
+ var sc=3Ddocument.createElement('script');=0A=
+ sc.type=3D'text/javascript';=0A=
+ sc.id=3D"_gasojs";=0A=
+ =
+sc.src=3D'https://'+d+'/analytics/reporting/overlay_js?gaso=3D'+_utk+'&'+=
+Math.random();=0A=
+ document.getElementsByTagName('head')[0].appendChild(sc);  =0A=
+}=0A=
+function _uGT() {=0A=
+ var h=3Dlocation.hash, a;=0A=
+ if (h && h!=3D"" && h.indexOf("#gaso=3D")=3D=3D0) {=0A=
+  a=3D_uGC(h,"gaso=3D","&");=0A=
+ } else {=0A=
+  a=3D_uGC(_ubd.cookie,"GASO=3D",";");=0A=
+ }=0A=
+ return a;=0A=
+}=0A=
+var _utk=3D_uGT();=0A=
+if (_utk && _utk!=3D"" && _utk.length>10 && _utk.indexOf("=3D")=3D=3D-1) =
+{=0A=
+ if (window.addEventListener) {=0A=
+  window.addEventListener('load', _uCO, false); =0A=
+ } else if (window.attachEvent) { =0A=
+  window.attachEvent('onload', _uCO);=0A=
+ }=0A=
+}=0A=
+=0A=
+function _uNx() {=0A=
+  return (new Date((new Date()).getTime()+63072000000)).toGMTString();=0A=
+}=0A=
+
+------=_NextPart_000_0000_01CE006B.3C583F00
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://pagead2.googlesyndication.com/pagead/show_ads.js
+
+(function(){var g=3D!0,h=3Dnull,i=3D!1,aa=3Dfunction(a,b,c){return =
+a.call.apply(a.bind,arguments)},ba=3Dfunction(a,b,c){if(!a)throw =
+Error();if(2<arguments.length){var =
+d=3DArray.prototype.slice.call(arguments,2);return function(){var =
+c=3DArray.prototype.slice.call(arguments);Array.prototype.unshift.apply(c=
+,d);return a.apply(b,c)}}return function(){return =
+a.apply(b,arguments)}},j=3Dfunction(a,b,c){j=3DFunction.prototype.bind&&-=
+1!=3DFunction.prototype.bind.toString().indexOf("native =
+code")?aa:ba;return j.apply(h,arguments)};var k=3D(new =
+Date).getTime();var l=3Dfunction(a){a=3DparseFloat(a);return =
+isNaN(a)||1<a||0>a?0:a},ca=3D/^([\w-]+\.)*([\w-]{2,})(\:[0-9]+)?$/,da=3Df=
+unction(a,b){if(!a)return b;var c=3Da.match(ca);return c?c[0]:b};var =
+ea=3Dl("0.0"),fa=3Dl("0.001"),ga=3Dl("0.001");var =
+ha=3D/^true$/.test("false")?g:i;var ia=3Dfunction(){return =
+da("","pagead2.googlesyndication.com")};var =
+ja=3D/&/g,ka=3D/</g,ma=3D/>/g,na=3D/\"/g,oa=3D{"\x00":"\\0","\b":"\\b","\=
+f":"\\f","\n":"\\n","\r":"\\r","\t":"\\t","\x0B":"\\x0B",'"':'\\"',"\\":"=
+\\\\"},r=3D{"'":"\\'"};var =
+u=3Dwindow,x,pa=3Dh,y=3Ddocument.getElementsByTagName("script");y&&y.leng=
+th&&(pa=3Dy[y.length-1].parentNode);x=3Dpa;ia();var =
+z=3Dfunction(a){return!!a&&"function"=3D=3Dtypeof =
+a&&!!a.call},qa=3Dfunction(a,b){if(!(2>arguments.length))for(var =
+c=3D1,d=3Darguments.length;c<d;++c)a.push(arguments[c])},ra=3Dfunction(a,=
+b){if(!(1E-4>Math.random())){var c=3DMath.random();if(c<b)return =
+a[Math.floor(c/b*a.length)]}return =
+h},sa=3Dfunction(a){try{return!!a.location.href||""=3D=3D=3Da.location.hr=
+ef}catch(b){return i}};var ta=3Dh,ua=3Dfunction(){if(!ta){for(var =
+a=3Dwindow,b=3Da,c=3D0;a!=3Da.parent;)if(a=3Da.parent,c++,sa(a))b=3Da;els=
+e break;ta=3Db}return ta};var =
+A,B=3Dfunction(a){this.c=3D[];this.b=3Da||window;this.a=3D0;this.d=3Dh},v=
+a=3Dfunction(a,b){this.l=3Da;this.i=3Db};B.prototype.o=3Dfunction(a,b){0=3D=
+=3Dthis.a&&0=3D=3Dthis.c.length&&(!b||b=3D=3Dwindow)?(this.a=3D2,this.f(n=
+ew =
+va(a,window))):this.g(a,b)};B.prototype.g=3Dfunction(a,b){this.c.push(new=
+ =
+va(a,b||this.b));wa(this)};B.prototype.p=3Dfunction(a){this.a=3D1;a&&(thi=
+s.d=3Dthis.b.setTimeout(j(this.e,this),a))};B.prototype.e=3Dfunction(){1=3D=
+=3Dthis.a&&(this.d!=3Dh&&(this.b.clearTimeout(this.d),this.d=3Dh),this.a=3D=
+0);wa(this)};B.prototype.q=3Dfunction(){return g};=0A=
+B.prototype.nq=3DB.prototype.o;B.prototype.nqa=3DB.prototype.g;B.prototyp=
+e.al=3DB.prototype.p;B.prototype.rl=3DB.prototype.e;B.prototype.sz=3DB.pr=
+ototype.q;var =
+wa=3Dfunction(a){a.b.setTimeout(j(a.m,a),0)};B.prototype.m=3Dfunction(){i=
+f(0=3D=3Dthis.a&&this.c.length){var =
+a=3Dthis.c.shift();this.a=3D2;a.i.setTimeout(j(this.f,this,a),0);wa(this)=
+}};B.prototype.f=3Dfunction(a){this.a=3D0;a.l()};=0A=
+var xa=3Dfunction(a){try{return a.sz()}catch(b){return =
+i}},ya=3Dfunction(a){return!!a&&("object"=3D=3Dtypeof =
+a||"function"=3D=3Dtypeof =
+a)&&xa(a)&&z(a.nq)&&z(a.nqa)&&z(a.al)&&z(a.rl)},za=3Dfunction(){if(A&&xa(=
+A))return A;var a=3Dua(),b=3Da.google_jobrunner;return =
+ya(b)?A=3Db:a.google_jobrunner=3DA=3Dnew =
+B(a)},Aa=3Dfunction(a,b){za().nq(a,b)},Ba=3Dfunction(a,b){za().nqa(a,b)};=
+var Ca=3D/MSIE =
+[2-7]|PlayStation|Gecko\/20090226/i,Da=3D/Android|Opera/,Ea=3Dfunction(){=
+var =
+a=3DC,b=3DD.google_ad_width,c=3DD.google_ad_height,d=3D["<iframe"],e;for(=
+e in =
+a)a.hasOwnProperty(e)&&qa(d,e+"=3D"+a[e]);d.push('style=3D"left:0;positio=
+n:absolute;top:0;"');d.push("></iframe>");b=3D"border:none;height:"+c+"px=
+;margin:0;padding:0;position:relative;visibility:visible;width:"+b+"px";r=
+eturn['<ins style=3D"display:inline-table;',b,'"><ins =
+id=3D"',a.id+"_anchor",'" style=3D"display:block;',b,'">',d.join(" =
+"),"</ins></ins>"].join("")};var =
+Fa=3Dfunction(a,b,c){c||(c=3Dha?"https":"http");return[c,"://",a,b].join(=
+"")};var Ga=3Dfunction(){},Ia=3Dfunction(a,b,c){switch(typeof b){case =
+"string":Ha(b,c);break;case =
+"number":c.push(isFinite(b)&&!isNaN(b)?b:"null");break;case =
+"boolean":c.push(b);break;case "undefined":c.push("null");break;case =
+"object":if(b=3D=3Dh){c.push("null");break}if(b instanceof Array){var =
+d=3Db.length;c.push("[");for(var =
+e=3D"",f=3D0;f<d;f++)c.push(e),Ia(a,b[f],c),e=3D",";c.push("]");break}c.p=
+ush("{");d=3D"";for(e in =
+b)b.hasOwnProperty(e)&&(f=3Db[e],"function"!=3Dtypeof =
+f&&(c.push(d),Ha(e,c),c.push(":"),Ia(a,f,c),d=3D=0A=
+","));c.push("}");break;case "function":break;default:throw =
+Error("Unknown type: "+typeof =
+b);}},Ja=3D{'"':'\\"',"\\":"\\\\","/":"\\/","\b":"\\b","\f":"\\f","\n":"\=
+\n","\r":"\\r","\t":"\\t","\x0B":"\\u000b"},Ka=3D/\uffff/.test("\uffff")?=
+/[\\\"\x00-\x1f\x7f-\uffff]/g:/[\\\"\x00-\x1f\x7f-\xff]/g,Ha=3Dfunction(a=
+,b){b.push('"');b.push(a.replace(Ka,function(a){if(a in Ja)return =
+Ja[a];var =
+b=3Da.charCodeAt(0),e=3D"\\u";16>b?e+=3D"000":256>b?e+=3D"00":4096>b&&(e+=
+=3D"0");return Ja[a]=3De+b.toString(16)}));b.push('"')};var =
+E=3D"google_ad_block google_ad_channel google_ad_client google_ad_format =
+google_ad_height google_ad_host google_ad_host_channel =
+google_ad_host_tier_id google_ad_output google_ad_override =
+google_ad_region google_ad_section google_ad_slot google_ad_type =
+google_ad_width google_adtest google_allow_expandable_ads =
+google_alternate_ad_url google_alternate_color =
+google_analytics_domain_name google_analytics_uacct google_bid =
+google_city google_color_bg google_color_border google_color_line =
+google_color_link google_color_text google_color_url google_container_id =
+google_contents google_country google_cpm google_ctr_threshold =
+google_cust_age google_cust_ch google_cust_gender google_cust_id =
+google_cust_interests google_cust_job google_cust_l google_cust_lh =
+google_cust_u_url google_disable_video_autoplay google_ed google_eids =
+google_enable_ose google_encoding google_font_face google_font_size =
+google_frame_id google_gl google_hints google_image_size google_kw =
+google_kw_type google_lact google_language google_loeid =
+google_max_num_ads google_max_radlink_len google_mtl google_num_radlinks =
+google_num_radlinks_per_unit google_num_slots_to_rotate =
+google_only_ads_with_video google_only_pyv_ads =
+google_only_userchoice_ads google_override_format google_page_url =
+google_previous_watch google_previous_searches google_referrer_url =
+google_region google_reuse_colors google_rl_dest_url google_rl_filtering =
+google_rl_mode google_rt google_safe google_sc_id google_scs google_sui =
+google_skip google_tag_info google_targeting google_tdsma google_tfs =
+google_tl google_ui_features google_ui_version google_video_doc_id =
+google_video_product_type google_with_pyv_ads google_yt_pt =
+google_yt_up".split(" ");var =
+La=3D/\.((google(|groups|mail|images|print))|gmail)\./,Ma=3Dfunction(){va=
+r =
+a=3DF,b=3DLa.test(a.location.host);return!(!a.postMessage||!a.localStorag=
+e||!a.JSON||b)};var =
+Na=3Dfunction(a){this.b=3Da;a.google_iframe_oncopy||(a.google_iframe_onco=
+py=3D{handlers:{}});this.j=3Da.google_iframe_oncopy},Oa;var I=3D"var =
+i=3Dthis.id,s=3Dwindow.google_iframe_oncopy,H=3Ds&&s.handlers,h=3DH&&H[i]=
+,w=3Dthis.contentWindow,d;try{d=3Dw.document}catch(e){}if(h&&d&&(!d.body|=
+|!d.body.firstChild)){if(h.call){setTimeout(h,0)}else =
+if(h.match){w.location.replace(h)}}";=0A=
+/[&<>\"]/.test(I)&&(-1!=3DI.indexOf("&")&&(I=3DI.replace(ja,"&amp;")),-1!=
+=3DI.indexOf("<")&&(I=3DI.replace(ka,"&lt;")),-1!=3DI.indexOf(">")&&(I=3D=
+I.replace(ma,"&gt;")),-1!=3DI.indexOf('"')&&(I=3DI.replace(na,"&quot;")))=
+;Oa=3DI;Na.prototype.set=3Dfunction(a,b){this.j.handlers[a]=3Db;this.b.ad=
+dEventListener&&this.b.addEventListener("load",j(this.k,this,a),i)};Na.pr=
+ototype.k=3Dfunction(a){a=3Dthis.b.document.getElementById(a);var =
+b=3Da.contentWindow.document;if(a.onload&&b&&(!b.body||!b.body.firstChild=
+))a.onload()};var Pa=3Dfunction(){var a=3D"script";return["<",a,' =
+src=3D"',Fa(ia(),"/pagead/js/r20130130/r20121214/show_ads_impl.js",""),'"=
+></',a,">"].join("")},Qa=3Dfunction(){var a=3D"script";return["<",a,' =
+src=3D"',Fa(ia(),"/pagead/expansion_embed.js"),'"></',a,">"].join("")},Ra=
+=3Dfunction(a){var =
+b;if(!(b=3D"expt"!=3Da.google_expand_experiment))a:{var =
+c=3Da.document;try{var d;if(!(d=3D=0A=
+a.google_allow_expandable_ads=3D=3D=3Di)){var e;if(!(e=3D!c.body)){var =
+f;if(!(f=3Da.google_ad_output&&"html"!=3Da.google_ad_output)){var =
+m;if(!(m=3DisNaN(a.google_ad_height))){var =
+s;if(!(s=3DisNaN(a.google_ad_width))){var =
+v;if(!(v=3Dc.domain!=3Da.location.hostname)){var t;b:{a=3Dnavigator;var =
+n=3Da.userAgent,G=3Da.platform;if(/Win|Mac|Linux/.test(G)&&!/^Opera/.test=
+(n)){var =
+U=3D(/WebKit\/(\d+)/.exec(n)||[0,0])[1],la=3D(/rv\:(\d+\.\d+)/.exec(n)||[=
+0,0])[1];if(/Win/.test(G)&&/MSIE.*Trident/.test(n)&&7<c.documentMode||!U&=
+&"Gecko"=3D=3D=0A=
+a.product&&1.7<la&&!/rv\:1\.8([^.]|\.0)/.test(n)||524<U){t=3Dg;break =
+b}}t=3Di}v=3D!t}s=3Dv}m=3Ds}f=3Dm}e=3Df}d=3De}if(d){b=3Dg;break =
+a}}catch(V){b=3Dg;break a}b=3Di}return =
+b?i:g},Sa=3Dfunction(a,b,c,d){return function(){var =
+e=3Di;d&&za().al(3E4);try{if(sa(a.document.getElementById(b).contentWindo=
+w)){var =
+f=3Da.document.getElementById(b).contentWindow,m=3Df.document;if(!m.body|=
+|!m.body.firstChild)m.open(),f.google_async_iframe_close=3Dg,m.write(c)}e=
+lse{var =
+s=3Da.document.getElementById(b).contentWindow,v;f=3Dc;f=3DString(f);if(f=
+.quote)v=3D=0A=
+f.quote();else{for(var m=3D['"'],t=3D0;t<f.length;t++){var =
+n=3Df.charAt(t),G=3Dn.charCodeAt(0),U=3Dm,la=3Dt+1,V;if(!(V=3Doa[n])){var=
+ H;if(31<G&&127>G)H=3Dn;else{var q=3Dn;if(q in r)H=3Dr[q];else if(q in =
+oa)H=3Dr[q]=3Doa[q];else{var =
+p=3Dq,w=3Dq.charCodeAt(0);if(31<w&&127>w)p=3Dq;else{if(256>w){if(p=3D"\\x=
+",16>w||256<w)p+=3D"0"}else =
+p=3D"\\u",4096>w&&(p+=3D"0");p+=3Dw.toString(16).toUpperCase()}H=3Dr[q]=3D=
+p}}V=3DH}U[la]=3DV}m.push('"');v=3Dm.join("")}s.location.replace("javascr=
+ipt:"+v)}e=3Dg}catch(Kb){s=3Dua().google_jobrunner,ya(s)&&s.rl()}e&&(new =
+Na(a)).set(b,=0A=
+Sa(a,b,c,i))}},Ta=3Dfunction(a,b){var =
+c=3DF.google_ad_height,d=3Db?'"':"",e=3Dd+"0"+d;a.width=3Dd+F.google_ad_w=
+idth+d;a.height=3Dd+c+d;a.frameborder=3De;a.marginwidth=3De;a.marginheigh=
+t=3De;a.vspace=3De;a.hspace=3De;a.allowtransparency=3Dd+"true"+d;a.scroll=
+ing=3Dd+"no"+d},Ua=3DMath.floor(1E6*Math.random()),Va=3Dfunction(a){for(v=
+ar b=3Da.data.split("\n"),c=3D{},d=3D0;d<b.length;d++){var =
+e=3Db[d].indexOf("=3D");-1!=3De&&(c[b[d].substr(0,e)]=3Db[d].substr(e+1))=
+}b=3Dc[3];if(c[1]=3D=3DUa&&(window.google_top_js_status=3D4,a.source=3D=3D=
+top&&0=3D=3Db.indexOf(a.origin)&&=0A=
+(window.google_top_url=3Db,window.google_top_js_status=3D5),window.google=
+_top_js_callbacks)){for(a=3D0;a<window.google_top_js_callbacks.length;a++=
+)window.google_top_js_callbacks[a]();window.google_top_js_callbacks.lengt=
+h=3D0}};window.google_loader_used=3Dg;var =
+J=3Dwindow;if(!("google_onload_fired"in =
+J)){J.google_onload_fired=3Di;var =
+Wa=3Dfunction(){J.google_onload_fired=3Dg};J.addEventListener?J.addEventL=
+istener("load",Wa,i):J.attachEvent&&J.attachEvent("onload",Wa)}=0A=
+if(!window.google_top_experiment&&(window.google_top_experiment=3Dra(["jp=
+_c","jp_zl","jp_wfpmr"],fa),"jp_zl"=3D=3D=3Dwindow.google_top_experiment|=
+|"jp_wfpmr"=3D=3D=3Dwindow.google_top_experiment)){var =
+Xa=3Dwindow,Ya=3D2;try{Xa.top.document=3D=3DXa.document?Ya=3D0:sa(Xa.top)=
+&&(Ya=3D1)}catch(Za){}if(2!=3D=3DYa)window.google_top_js_status=3D0;else =
+if(top.postMessage){var =
+$a;try{$a=3Dtop.frames.google_top_static_frame?g:i}catch(ab){$a=3Di}if($a=
+){var =
+K=3Dwindow;K.addEventListener?K.addEventListener("message",Va,i):K.attach=
+Event&&K.attachEvent("onmessage",=0A=
+Va);window.google_top_js_status=3D3;var =
+bb=3D{"0":"google_loc_request",1:Ua},cb=3D[],db;for(db in =
+bb)cb.push(db+"=3D"+bb[db]);top.postMessage(cb.join("\n"),"*")}else =
+window.google_top_js_status=3D2}else =
+window.google_top_js_status=3D1}window.google_expand_experiment||(window.=
+google_expand_experiment=3Dra(["expt","control"],ea)||"none");var eb;=0A=
+if(window.google_enable_async=3D=3D=3Di)eb=3D0;else{var =
+fb=3Dnavigator.userAgent;eb=3D(Ca.test(fb)||Da.test(fb)?i:g)&&!window.goo=
+gle_container_id&&(!window.google_ad_output||"html"=3D=3Dwindow.google_ad=
+_output)}=0A=
+if(eb){var =
+gb=3Dwindow;gb.google_unique_id?++gb.google_unique_id:gb.google_unique_id=
+=3D1;var =
+F=3Dwindow,_script$$inline_82=3D"script",C=3D{};Ta(C,g);C.onload=3D'"'+Oa=
++'"';for(var =
+L,D=3DF,hb=3DD.document,M=3DC.id,ib=3D0;!M||D.document.getElementById(M);=
+)M=3D"aswift_"+ib++;C.id=3DM;C.name=3DM;hb.write(Ea());L=3DM;var =
+jb,N=3DF;N.google_page_url&&(N.google_page_url=3DString(N.google_page_url=
+));for(var kb=3D[],lb=3D0,mb=3DE.length;lb<mb;lb++){var =
+nb=3DE[lb];if(N[nb]!=3Dh){var ob;try{var pb=3D[];Ia(new =
+Ga,N[nb],pb);ob=3Dpb.join("")}catch(qb){}ob&&=0A=
+qa(kb,nb,"=3D",ob,";")}}jb=3Dkb.join("");var =
+O=3Dwindow,rb=3DO.google_ad_output,P=3DO.google_ad_format;if(!P&&("html"=3D=
+=3Drb||rb=3D=3Dh))P=3DO.google_ad_width+"x"+O.google_ad_height;P=3DP&&(!O=
+.google_ad_slot||O.google_override_format)?P.toLowerCase():"";O.google_ad=
+_format=3DP;var =
+sb,tb=3D[u.google_ad_slot,u.google_ad_format,u.google_ad_type,u.google_ad=
+_width,u.google_ad_height];if(x){var Q;if(x){for(var =
+ub=3D[],vb=3D0,R=3Dx;R&&25>vb;R=3DR.parentNode,++vb)ub.push(9!=3DR.nodeTy=
+pe&&R.id||"");Q=3Dub.join()}else Q=3D"";Q&&tb.push(Q)}var wb=3D=0A=
+0;if(tb){var =
+xb=3Dtb.join(":"),yb=3Dxb.length;if(0=3D=3Dyb)wb=3D0;else{for(var =
+S=3D305419896,zb=3D0;zb<yb;zb++)S^=3D(S<<5)+(S>>2)+xb.charCodeAt(zb)&4294=
+967295;wb=3D0<S?S:4294967296+S}}sb=3Dwb.toString();a:{var =
+T=3Dwindow,W=3DT.google_async_slots;W||(W=3DT.google_async_slots=3D{});va=
+r Ab=3DT.google_unique_id,X=3DString("number"=3D=3Dtypeof Ab?Ab:0);if(X =
+in W&&(X+=3D"b",X in W))break =
+a;W[X]=3D{sent:i,w:T.google_ad_width||"",h:T.google_ad_height||"",adk:sb,=
+type:T.google_ad_type||"",slot:T.google_ad_slot||"",fmt:T.google_ad_forma=
+t||"",cli:T.google_ad_client||=0A=
+"",saw:[]}}var =
+Y=3DF.google_ad_handling_experiment||(Ma()?ra(["X","XN","S","SC","SN"],ga=
+):""),Bb=3D"";if(Ma()&&"S"!=3DY&&"SN"!=3DY&&"XN"!=3DY){var =
+Cb;Cb=3D"zrt_ads_frame"+F.google_unique_id;var =
+Z=3D{};Ta(Z,i);Z.style=3D"display:none";Z.id=3DCb;Z.name=3DCb;Z.src=3DFa(=
+da("","googleads.g.doubleclick.net"),"/pagead/html/r20130130/r20121214/zr=
+t_lookup.html");var Db=3D["<iframe"],Eb=3Dfunction(a,b){Db.push(" =
+"+b+'=3D"'+(a=3D=3Dh?"":a)+=0A=
+'"')},$;for($ in =
+Z)Object.prototype.hasOwnProperty.call(Z,$)&&Eb.call(h,Z[$],$);Db.push(">=
+</iframe>");Bb=3DDb.join("")}for(var =
+Fb=3DF,Gb=3D0,Hb=3DE.length;Gb<Hb;Gb++)Fb[E[Gb]]=3Dh;var Ib=3D(new =
+Date).getTime(),Jb=3DF.google_top_experiment,Lb=3DF.google_expand_experim=
+ent,Mb=3D"";Ra(F)&&(Mb=3DQa());var Nb=3D["<!doctype =
+html><html><body>",Bb,"<",_script$$inline_82,">",jb,"google_show_ads_impl=
+=3Dtrue;google_unique_id=3D",F.google_unique_id,';google_async_iframe_id=3D=
+"',L,'";google_ad_unit_key=3D"',sb,'";google_start_time=3D',k,";",=0A=
+Jb?'google_top_experiment=3D"'+Jb+'";':"",Lb?'google_expand_experiment=3D=
+"'+Lb+'";':"",Y?'google_ad_handling_experiment=3D"'+Y+'";':"","google_bpp=
+=3D",Ib>k?Ib-k:1,";</",_script$$inline_82,">",Mb,Pa(),"</body></html>"].j=
+oin("");(F.document.getElementById(L)?Aa:Ba)(Sa(F,L,Nb,g))}else =
+window.google_start_time=3Dk,!("object"=3D=3Dtypeof =
+window.n&&"function"=3D=3Dtypeof =
+window.n.createIframe)&&Ra(window)&&document.write(Qa()),document.write(P=
+a());})();=0A=
+
+------=_NextPart_000_0000_01CE006B.3C583F00--

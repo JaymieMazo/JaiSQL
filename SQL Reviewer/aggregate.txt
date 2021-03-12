@@ -1,0 +1,118 @@
+Getting summarizing values
+
+
+
+How many PC models does a particular supplier produce?
+ How the average price is defined for computers with the same specifications? 
+The answers to these and other questions associated with some statistic information may be obtained by means of summarizing (aggregate) functions. 
+The following aggregate functions are assumed as standard:
+
+Function Description 
+COUNT(*) 		Returns the number of rows of the record source. 
+COUNT(<column name>) 	Returns the number of values in the specified column. 
+SUM(<column name>) 	Returns the sum of values in the specified column. 
+AVG(<column name>) 	Returns the average value in the specified column. 
+MIN(<column name>) 	Returns the minimal value in the specified column. 
+MAX(<column name>) 	Returns the maximum value in the specified column 
+
+All these functions return a single value. 
+In so doing, the functions COUNT, MIN, and MAX are applicable to any data types, while the functions SUM and AVG are only used with numeric fields.
+ The difference between the functions COUNT(*) and COUNT(<column name>) is that the second does not calculate NULL-values. 
+
+
+Example1. Find the minimal and maximal prices for PCs: SELECT MIN(price) AS Min_price, MAX(price) AS Max_price
+FROM PC;
+
+The result is a single row containing the aggregate values:
+Min_price 	Max_price 
+350.0 		980.0 
+ 
+
+Example2. Find the number of available computers produced by the maker Ñ@: SELECT COUNT(*) AS Qty
+FROM PC
+WHERE model IN
+       (SELECT model
+       FROM Product
+       WHERE maker = 'A'); 
+
+As a result we get:
+Qty 
+7 
+
+Example3. If the number of different models produced by the maker A is needed, the query may be written as follows (taking into account the fact that each model in the Product table is shown once): SELECT COUNT(model) AS Qty_model
+FROM Product
+WHERE maker = 'A'; 
+
+The coincidence in the results is fully accidental and is due to the number of computers produced by maker A in database being equal to the number of models produced by this maker:
+
+Qty_model 
+7 
+
+
+Example4. Find the number of available different models produced by maker A. This query is similar to the preceding one for the total number of models produced by maker A. Now we need to find the number of different models in the PC table (available for sale). 
+
+To use only unique values in calculating the statistic, the parameter DISTINCT with an aggregate function argument may be used. ALL is another (default) parameter and assumes that all the column values returned are calculated. The statement SELECT COUNT(DISTINCT model) AS Qty
+FROM PC
+WHERE model IN
+       (SELECT model
+       FROM Product
+       WHERE maker = 'A'); 
+
+gives the following result:
+Qty 
+2 
+If we need the number of PC models produced by each maker, we will need to use the GROUP BY clause, placed immediately after the WHERE clause, if any.
+GROUP BY clause
+The GROUP BY clause is used to define the row groups for each of the aggregate functions (COUNT, MIN, MAX, AVG, and SUM) that may be applied. When aggregate functions are used without a GROUP BY clause, all the columns with names mentioned in SELECT clause must be included in the aggregate functions. These functions are then applied to the total set of the rows that fit the query predicate. Otherwise, all columns in the SELECT list not included into the aggregate functions must be listed in the GROUP BY clause. As a result, all the returned query rows distributed into groups are characterized by the same combinations of these column values. Later on, aggregate functions are applied to each group. It is essential that NULL values are considered equal in this case, i.e. when grouping by the column including NULL values all rows will be combined in one group. 
+When a GROUP BY clause is used without any aggregate function in the SELECT clause, the query will simply return one row from each group. Beside the DISTINCT keyword, this opportunity may be used in eliminating the row duplicates from the result set.
+Let us consider a simple example: SELECT model, COUNT(model) AS Qty_model, AVG(price) AS Avg_price 
+FROM PC
+GROUP BY model; 
+
+The number of computers and their average price are defined for each PC model in the query. All rows with the same model value are combined in a group with value count and the average price calculated for each group thereafter. Executing this query gives the following table:
+
+model Qty_model Avg_price 
+1121 3 850.0 
+1232 4 425.0 
+1233 3 843.33333333333337 
+1260 1 350.0 
+
+HAVING clause
+While WHERE clause gives predicate for filtering rows, the HAVING clause is applied after grouping that gives a similar predicate but filtering groups by the values of aggregate functions. This clause is nessesary for checking the values that are obtained by means of an aggregate function not from separate rows of record source in the FROM clause but from the groups of these rows. Therefore, this checking is not applicable to the WHERE clause. 
+
+Example. Get the count of PC and the average price for each model providing average price is less than $800: SELECT model, COUNT(model) AS Qty_model, AVG(price) AS Avg_price
+FROM PC
+GROUP BY model
+HAVING AVG(price) < 800; 
+
+
+As a result, we get:
+
+model Qty_model Avg_price 
+1232 4 425.0 
+1260 1 350.0 
+
+Note that the alias (Avg_price) for naming values of the aggregate function in the SELECT clause may not be used in the HAVING clause. This is because the SELECT clause forming the query result set is executed last but before the ORDER BY clause. 
+
+Below is the execution order of clauses in the SELECT operator: 
+FROM 
+WHERE 
+GROUP BY 
+HAVING 
+SELECT 
+ORDER BY 
+
+This order does not correspond to the syntax order of SELECT operator generally formed as follows: 
+
+SELECT [DISTINCT | ALL]{*
+| [<column expression> [[AS] <alias>]] [,Åc]}
+FROM <table name> [[AS] <alias>] [,Åc]
+[WHERE <predicate>]
+[[GROUP BY <colunm list>]
+[HAVING <condition on aggregate values>] ]
+[ORDER BY <column list>]
+
+
+
+
+

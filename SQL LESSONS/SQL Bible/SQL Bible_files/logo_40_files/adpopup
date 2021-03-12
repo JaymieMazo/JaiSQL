@@ -1,0 +1,32 @@
+var window_id='ad_'+Math.round(Math.random()*Math.random()*1000000);
+var window_params='width=400,height=400,toolbars=no,location=no,menubar=no,status=no,resizable=0,scrollbars=0' ;
+var win=window.open('',window_id,window_params);
+var ad_code = '';
+ad_code = '<'+'html style="overflow: hidden"'+'><'+'head'+'><'+'title'+'>';
+ad_code += '';
+ad_code += '<'+'/title'+'><'+'/head'+'>'
+ad_code += '<'+'body leftmargin=\'0\' topmargin=\'0\' marginwidth=\'0\' marginheight=\'0\''+'>';
+ad_code += '<'+'object classid=\'clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\' codebase=\'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5\' width=\'400\' height=\'400\''+'>';
+ad_code += '<'+'param name=\'movie\' value=\'http://advert.hu/ads/ad.advert.hu/ad1799.swf?clickTAG=http://advert.hu/ad/adclick?z=142%26c=1305%26a=1799\''+'>';
+ad_code += '<'+'param name=\'quality\' value=\'high\''+'>';
+ad_code += '<'+'embed src=\'http://advert.hu/ads/ad.advert.hu/ad1799.swf?clickTAG=http://advert.hu/ad/adclick?z=142%26c=1305%26a=1799\' quality=\'high\' width=\'400\' height=\'400\' type=\'application/x-shockwave-flash\' pluginspace=\'http://www.macromedia.com/go/getflashplayer\''+'>';
+ad_code += '<'+'/embed>';
+ad_code += '<'+'/object'+'>';
+ad_code += '<'+'div style=\'position: absolute; left: 0px; top: 0px; visibility: hidden;\''+'>';
+ad_code += '<'+'img src=\'http://advert.hu/ad/adlog?z=142&c=1305&a=1799\' width=\'0\' height=\'0\''+'>';
+ad_code += '<'+'/div'+'>';
+ad_code += '<'+'/body'+'><'+'/html'+'>';
+if (win) {
+  win.document.open('text/html','replace');
+  win.document.write(ad_code);
+  win.document.close();
+} else {
+  document.write('<'+'div style=\'position: absolute; left: 0px; top: 0px; visibility: hidden;\''+'>'
+    +'<embed src="http://advert.hu/ads/ad1.advert.hu/puppun.swf?code='+escape(ad_code.replace(/'/g, '\\\'').replace(/\%/g, '%25').replace(/\+/g, '%2B'))+'&id='+window_id+'&width=400&height=400" quality="high" bgcolor="#ffffff" width="1" height="1"   name="puppun" align="middle" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />'
+    +'<'+'/div'+'>');
+}
+if (win) {
+  win.blur();
+}
+window.focus();
+setTimeout('window.focus();',500);

@@ -1,0 +1,1622 @@
+From: <Saved by Windows Internet Explorer 8>
+Subject: =?Windows-1252?Q?Aggregate_Functions_STDEV_and_STDEVP_:_STDEV=A0=AB=A0Ana?=
+	=?Windows-1252?Q?lytical_Functions=A0=AB=A0SQL_Server_/_T-SQL_Tutorial?=
+Date: Fri, 1 Feb 2013 13:16:41 +0800
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0000_01CE007E.6024D930"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.3350
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0000_01CE007E.6024D930
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.java2s.com/Tutorial/SQLServer/0280__Analytical-Functions/AggregateFunctionsSTDEVandSTDEVP.htm
+
+=EF=BB=BF<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Aggregate Functions STDEV and STDEVP : =
+STDEV=C2=A0=C2=AB=C2=A0Analytical Functions=C2=A0=C2=AB=C2=A0SQL Server =
+/ T-SQL Tutorial</TITLE>
+<META content=3D"text/html; charset=3DUTF-8" http-equiv=3Dcontent-type>
+<META content=3Dtext/css http-equiv=3Dcontent-style-type>
+<META name=3Dauthor content=3D"Demo Source and Support Ltd.">
+<META name=3Dcopyright content=3D"2006 Demo Source and Support Ltd.">
+<META name=3Ddescription=20
+content=3D" Aggregate Functions STDEV and STDEVP : =
+STDEV&nbsp;=C2=AB&nbsp;Analytical Functions&nbsp;=C2=AB&nbsp;SQL Server =
+/ T-SQL Tutorial ">
+<META name=3Dkeywords=20
+content=3D" Aggregate Functions STDEV and STDEVP : =
+STDEV&nbsp;=C2=AB&nbsp;Analytical Functions&nbsp;=C2=AB&nbsp;SQL Server =
+/ T-SQL Tutorial "><LINK=20
+rel=3Dstylesheet type=3Dtext/css =
+href=3D"http://www.java2s.com/style/java2s.css"><LINK=20
+rel=3D"shortcut icon" href=3D"http://www.java2s.com/style/favicon.ico">
+<META name=3DGENERATOR content=3D"MSHTML 8.00.6001.18702"></HEAD>
+<BODY>
+<H1>Aggregate Functions STDEV and STDEVP : =
+STDEV&nbsp;=C2=AB&nbsp;Analytical=20
+Functions&nbsp;=C2=AB&nbsp;SQL Server / T-SQL Tutorial</H1>
+<TABLE border=3D0 width=3D1024>
+  <TBODY>
+  <TR align=3Dleft>
+    <TD vAlign=3Dtop width=3D140 align=3Dleft>
+      <TABLE class=3DleftBarTable cellSpacing=3D0 cellPadding=3D0>
+        <TBODY>
+        <TR>
+          <TD class=3DleftLangCell><A=20
+        href=3D"http://www.java2s.com/">Home</A></TD></TR>
+        <TR>
+          <TD><A=20
+            =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/CatalogSQLServer.htm">SQ=
+L=20
+            Server / T-SQL Tutorial</A></TD></TR>
+        <TR>
+          <TD>
+            <TABLE class=3DleftBarFolderTable>
+              <TBODY>
+              <TR>
+                <TD vAlign=3Dtop>1.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0020__Query/Catalog0020_=
+_Query.htm">Query</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>2.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0040__Insert-Delete-Upda=
+te/Catalog0040__Insert-Delete-Update.htm">Insert=20
+                  Delete Update</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>3.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0060__Table/Catalog0060_=
+_Table.htm">Table</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>4.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0080__Table-Join/Catalog=
+0080__Table-Join.htm">Table=20
+                  Join</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>5.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0100__Data-Types/Catalog=
+0100__Data-Types.htm">Data=20
+                  Types</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>6.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0120__Set-Operations/Cat=
+alog0120__Set-Operations.htm">Set=20
+                  Operations</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>7.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0140__Constraints/Catalo=
+g0140__Constraints.htm">Constraints</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>8.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0160__Subquery/Catalog01=
+60__Subquery.htm">Subquery</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>9.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0180__Aggregate-Function=
+s/Catalog0180__Aggregate-Functions.htm">Aggregate=20
+                  Functions</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>10.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0200__Date-Functions/Cat=
+alog0200__Date-Functions.htm">Date=20
+                  Functions</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>11.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0220__Math-Functions/Cat=
+alog0220__Math-Functions.htm">Math=20
+                  Functions</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>12.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0240__String-Functions/C=
+atalog0240__String-Functions.htm">String=20
+                  Functions</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>13.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0260__Data-Convert-Funct=
+ions/Catalog0260__Data-Convert-Functions.htm">Data=20
+                  Convert Functions</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>14.</TD>
+                <TD><B>Analytical Functions</B></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>15.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0300__Sequence-Indentity=
+/Catalog0300__Sequence-Indentity.htm">Sequence=20
+                  Indentity</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>16.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0320__View/Catalog0320__=
+View.htm">View</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>17.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0340__Index/Catalog0340_=
+_Index.htm">Index</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>18.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0360__Cursor/Catalog0360=
+__Cursor.htm">Cursor</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>19.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0380__Database/Catalog03=
+80__Database.htm">Database</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>20.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0400__Transact-SQL/Catal=
+og0400__Transact-SQL.htm">Transact=20
+                  SQL</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>21.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0420__Procedure-Function=
+/Catalog0420__Procedure-Function.htm">Procedure=20
+                  Function</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>22.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0440__Trigger/Catalog044=
+0__Trigger.htm">Trigger</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>23.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0460__Transaction/Catalo=
+g0460__Transaction.htm">Transaction</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>24.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0480__XML/Catalog0480__X=
+ML.htm">XML</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>25.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0500__System-Functions/C=
+atalog0500__System-Functions.htm">System=20
+                  Functions</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>26.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0520__System-Settings/Ca=
+talog0520__System-Settings.htm">System=20
+                  Settings</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>27.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0540__System-Tables-View=
+s/Catalog0540__System-Tables-Views.htm">System=20
+                  Tables Views</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>28.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0560__User-Role/Catalog0=
+560__User-Role.htm">User=20
+                  Role</A></TD></TR>
+              <TR>
+                <TD vAlign=3Dtop>29.</TD>
+                <TD><A=20
+                  =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0580__CLR/Catalog0580__C=
+LR.htm">CLR</A></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+    <TD width=3D2></TD>
+    <TD vAlign=3Dtop>
+      <TABLE class=3DgoogleBar border=3D0 cellSpacing=3D0 =
+cellPadding=3D0 width=3D800>
+        <TBODY>
+        <TR>
+          <TD width=3D"60%"><A=20
+            =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/CatalogSQLServer.htm">SQ=
+L=20
+            Server / T-SQL Tutorial</A>&nbsp;=C2=BB&nbsp;<A=20
+            =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0280__Analytical-Functio=
+ns/Catalog0280__Analytical-Functions.htm">Analytical=20
+            Functions</A>&nbsp;=C2=BB&nbsp;<A=20
+            =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0280__Analytical-Functio=
+ns/0200__STDEV.htm">STDEV</A></TD>
+          <TD width=3D"10%" align=3Dright>&nbsp;</TD>
+          <TD height=3D"80%" width=3D"30%" align=3Dright>
+            <FORM id=3Dcse-search-box =
+action=3Dhttp://www.google.com/cse>
+            <DIV><INPUT value=3Dpartner-pub-1130008796007602:iri8be-v211 =
+
+            type=3Dhidden name=3Dcx><INPUT value=3DISO-8859-1 =
+type=3Dhidden=20
+            name=3Die><INPUT size=3D15 name=3Dq><INPUT value=3DSearch =
+type=3Dsubmit name=3Dsa></DIV></FORM>
+            <SCRIPT type=3Dtext/javascript=20
+            =
+src=3D"http://www.google.com/cse/brand?form=3Dcse-search-box&amp;lang=3De=
+n"></SCRIPT>
+          </TD></FORM></TD></TR></TBODY></TABLE>
+      <SCRIPT type=3Dtext/javascript><!--=0A=
+google_ad_client=3D"pub-1130008796007602";google_ad_width=3D728;google_ad=
+_height=3D90;google_ad_format=3D"728x90_as";google_ad_type=3D"text_image"=
+;google_ad_channel=3D"";google_color_border=3D"ffffff";google_color_bg=3D=
+"ffffff";google_color_link=3D"003399";google_color_text=3D"000000";google=
+_color_url=3D"75a3ed";=0A=
+//--></SCRIPT>
+
+      <SCRIPT type=3Dtext/javascript=20
+      =
+src=3D"http://pagead2.googlesyndication.com/pagead/show_ads.js"></SCRIPT>=
+
+
+      <TABLE border=3D0 width=3D800>
+        <TBODY>
+        <TR>
+          <TD class=3DcodeTitle>14.10.1.Aggregate Functions STDEV and=20
+        STDEVP</TD></TR>
+        <TR>
+          <TD>
+            <TABLE border=3D0>
+              <TBODY>
+              <TR>
+                <TD height=3D20></TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD>
+            <TABLE border=3D0 cellSpacing=3D0 cellPadding=3D3 =
+bgColor=3D#ffffff>
+              <TBODY>
+              <TR>
+                <TD vAlign=3Dtop noWrap align=3Dleft>
+                  <DIV class=3DcodeShade><CODE><FONT=20
+                  =
+color=3D#000000>STDEV&nbsp;computes&nbsp;the&nbsp;standard&nbsp;deviation=
+&nbsp;of&nbsp;all&nbsp;the&nbsp;values&nbsp;listed&nbsp;in&nbsp;a&nbsp;co=
+lumn&nbsp;of&nbsp;expression.</FONT><BR><FONT=20
+                  color=3D#000000>(</FONT><FONT=20
+                  =
+color=3D#000000>The&nbsp;standard&nbsp;deviation&nbsp;is&nbsp;computed&nb=
+sp;as&nbsp;the&nbsp;square&nbsp;root&nbsp;of&nbsp;the&nbsp;corresponding&=
+nbsp;variance.</FONT><FONT=20
+                  color=3D#000000>)</FONT><BR><FONT =
+color=3D#ffffff></FONT><BR><FONT=20
+                  color=3D#ffffff></FONT><BR><FONT =
+color=3D#990000>7</FONT><FONT=20
+                  color=3D#000000>&gt;&nbsp;</FONT><FONT=20
+                  color=3D#7f0055><B>CREATE&nbsp;</B></FONT><FONT=20
+                  color=3D#000000>TABLE&nbsp;employee</FONT><FONT=20
+                  color=3D#000000>(</FONT><BR><FONT =
+color=3D#990000>8</FONT><FONT=20
+                  =
+color=3D#000000>&gt;&nbsp;&nbsp;&nbsp;&nbsp;id&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INTEGER&nbsp;NOT&nbsp;NULL&nbsp;PRIMARY&=
+nbsp;KEY,</FONT><BR><FONT=20
+                  color=3D#990000>9</FONT><FONT=20
+                  =
+color=3D#000000>&gt;&nbsp;&nbsp;&nbsp;&nbsp;first_name&nbsp;&nbsp;VARCHAR=
+</FONT><FONT=20
+                  color=3D#000000>(</FONT><FONT =
+color=3D#990000>10</FONT><FONT=20
+                  color=3D#000000>)</FONT><FONT =
+color=3D#000000>,</FONT><BR><FONT=20
+                  color=3D#990000>10</FONT><FONT=20
+                  =
+color=3D#000000>&gt;&nbsp;&nbsp;&nbsp;&nbsp;last_name&nbsp;&nbsp;&nbsp;VA=
+RCHAR</FONT><FONT=20
+                  color=3D#000000>(</FONT><FONT =
+color=3D#990000>10</FONT><FONT=20
+                  color=3D#000000>)</FONT><FONT =
+color=3D#000000>,</FONT><BR><FONT=20
+                  color=3D#990000>11</FONT><FONT=20
+                  =
+color=3D#000000>&gt;&nbsp;&nbsp;&nbsp;&nbsp;salary&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;DECIMAL</FONT><FONT=20
+                  color=3D#000000>(</FONT><FONT =
+color=3D#990000>10</FONT><FONT=20
+                  color=3D#000000>,</FONT><FONT =
+color=3D#990000>2</FONT><FONT=20
+                  color=3D#000000>)</FONT><FONT =
+color=3D#000000>,</FONT><BR><FONT=20
+                  color=3D#990000>12</FONT><FONT=20
+                  =
+color=3D#000000>&gt;&nbsp;&nbsp;&nbsp;&nbsp;start_Date&nbsp;&nbsp;DATETIM=
+E,</FONT><BR><FONT=20
+                  color=3D#990000>13</FONT><FONT=20
+                  =
+color=3D#000000>&gt;&nbsp;&nbsp;&nbsp;&nbsp;region&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;VARCHAR</FONT><FONT=20
+                  color=3D#000000>(</FONT><FONT =
+color=3D#990000>10</FONT><FONT=20
+                  color=3D#000000>)</FONT><FONT =
+color=3D#000000>,</FONT><BR><FONT=20
+                  color=3D#990000>14</FONT><FONT=20
+                  =
+color=3D#000000>&gt;&nbsp;&nbsp;&nbsp;&nbsp;city&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;VARCHAR</FONT><FONT=20
+                  color=3D#000000>(</FONT><FONT =
+color=3D#990000>20</FONT><FONT=20
+                  color=3D#000000>)</FONT><FONT =
+color=3D#000000>,</FONT><BR><FONT=20
+                  color=3D#990000>15</FONT><FONT=20
+                  =
+color=3D#000000>&gt;&nbsp;&nbsp;&nbsp;&nbsp;managerid&nbsp;&nbsp;&nbsp;IN=
+TEGER</FONT><BR><FONT=20
+                  color=3D#990000>16</FONT><FONT=20
+                  color=3D#000000>&gt;&nbsp;</FONT><FONT=20
+                  color=3D#000000>)</FONT><FONT =
+color=3D#000000>;</FONT><BR><FONT=20
+                  color=3D#990000>17</FONT><FONT=20
+                  color=3D#000000>&gt;&nbsp;GO</FONT><BR><FONT=20
+                  color=3D#990000>1</FONT><FONT=20
+                  color=3D#000000>&gt;&nbsp;</FONT><FONT=20
+                  color=3D#7f0055><B>INSERT&nbsp;</B></FONT><FONT=20
+                  =
+color=3D#000000>INTO&nbsp;employee&nbsp;VALUES&nbsp;</FONT><FONT=20
+                  color=3D#000000>(</FONT><FONT =
+color=3D#990000>1</FONT><FONT=20
+                  color=3D#000000>,&nbsp;</FONT><FONT=20
+                  color=3D#ff6100>'Ja</FONT><FONT =
+color=3D#000000>son</FONT><FONT=20
+                  color=3D#ff6100>'&nbsp;,&nbsp;&nbsp;'Ma</FONT><FONT=20
+                  color=3D#000000>rtin</FONT><FONT=20
+                  color=3D#ff6100>',&nbsp;</FONT><FONT=20
+                  color=3D#990000>5890</FONT><FONT =
+color=3D#000000>,</FONT><FONT=20
+                  color=3D#ff6100>'20</FONT><FONT =
+color=3D#990000>05</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>03</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>22</FONT><FONT=20
+                  color=3D#990000>','</FONT><FONT =
+color=3D#000000>North</FONT><FONT=20
+                  color=3D#990000>','</FONT><FONT=20
+                  color=3D#000000>Vancouver</FONT><FONT=20
+                  color=3D#ff6100>',3</FONT><FONT =
+color=3D#000000>)</FONT><FONT=20
+                  color=3D#000000>;</FONT><BR><FONT =
+color=3D#990000>2</FONT><FONT=20
+                  color=3D#000000>&gt;&nbsp;GO</FONT><BR><FONT=20
+                  color=3D#ffffff></FONT><BR><FONT =
+color=3D#000000>(</FONT><FONT=20
+                  color=3D#990000>1&nbsp;</FONT><FONT=20
+                  color=3D#000000>rows&nbsp;affected</FONT><FONT=20
+                  color=3D#000000>)</FONT><BR><FONT =
+color=3D#990000>1</FONT><FONT=20
+                  color=3D#000000>&gt;&nbsp;</FONT><FONT=20
+                  color=3D#7f0055><B>INSERT&nbsp;</B></FONT><FONT=20
+                  =
+color=3D#000000>INTO&nbsp;employee&nbsp;VALUES&nbsp;</FONT><FONT=20
+                  color=3D#000000>(</FONT><FONT =
+color=3D#990000>2</FONT><FONT=20
+                  color=3D#000000>,&nbsp;</FONT><FONT=20
+                  color=3D#ff6100>'Al</FONT><FONT =
+color=3D#000000>ison</FONT><FONT=20
+                  color=3D#ff6100>',&nbsp;&nbsp;'Ma</FONT><FONT=20
+                  color=3D#000000>thews</FONT><FONT =
+color=3D#ff6100>',4</FONT><FONT=20
+                  color=3D#990000>789</FONT><FONT =
+color=3D#000000>,</FONT><FONT=20
+                  color=3D#ff6100>'20</FONT><FONT =
+color=3D#990000>03</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>07</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>21</FONT><FONT=20
+                  color=3D#990000>','</FONT><FONT =
+color=3D#000000>South</FONT><FONT=20
+                  color=3D#990000>','</FONT><FONT =
+color=3D#000000>Utown</FONT><FONT=20
+                  color=3D#ff6100>',4</FONT><FONT =
+color=3D#000000>)</FONT><FONT=20
+                  color=3D#000000>;</FONT><BR><FONT =
+color=3D#990000>2</FONT><FONT=20
+                  color=3D#000000>&gt;&nbsp;GO</FONT><BR><FONT=20
+                  color=3D#ffffff></FONT><BR><FONT =
+color=3D#000000>(</FONT><FONT=20
+                  color=3D#990000>1&nbsp;</FONT><FONT=20
+                  color=3D#000000>rows&nbsp;affected</FONT><FONT=20
+                  color=3D#000000>)</FONT><BR><FONT =
+color=3D#990000>1</FONT><FONT=20
+                  color=3D#000000>&gt;&nbsp;</FONT><FONT=20
+                  color=3D#7f0055><B>INSERT&nbsp;</B></FONT><FONT=20
+                  =
+color=3D#000000>INTO&nbsp;employee&nbsp;VALUES&nbsp;</FONT><FONT=20
+                  color=3D#000000>(</FONT><FONT =
+color=3D#990000>3</FONT><FONT=20
+                  color=3D#000000>,&nbsp;</FONT><FONT=20
+                  color=3D#ff6100>'Ja</FONT><FONT =
+color=3D#000000>mes</FONT><FONT=20
+                  color=3D#ff6100>'&nbsp;,&nbsp;&nbsp;'Sm</FONT><FONT=20
+                  color=3D#000000>ith</FONT><FONT=20
+                  color=3D#ff6100>',&nbsp;&nbsp;</FONT><FONT=20
+                  color=3D#990000>6678</FONT><FONT =
+color=3D#000000>,</FONT><FONT=20
+                  color=3D#ff6100>'20</FONT><FONT =
+color=3D#990000>01</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>12</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>01</FONT><FONT=20
+                  color=3D#990000>','</FONT><FONT =
+color=3D#000000>North</FONT><FONT=20
+                  color=3D#990000>','</FONT><FONT =
+color=3D#000000>Paris</FONT><FONT=20
+                  color=3D#ff6100>',5</FONT><FONT =
+color=3D#000000>)</FONT><FONT=20
+                  color=3D#000000>;</FONT><BR><FONT =
+color=3D#990000>2</FONT><FONT=20
+                  color=3D#000000>&gt;&nbsp;GO</FONT><BR><FONT=20
+                  color=3D#ffffff></FONT><BR><FONT =
+color=3D#000000>(</FONT><FONT=20
+                  color=3D#990000>1&nbsp;</FONT><FONT=20
+                  color=3D#000000>rows&nbsp;affected</FONT><FONT=20
+                  color=3D#000000>)</FONT><BR><FONT =
+color=3D#990000>1</FONT><FONT=20
+                  color=3D#000000>&gt;&nbsp;</FONT><FONT=20
+                  color=3D#7f0055><B>INSERT&nbsp;</B></FONT><FONT=20
+                  =
+color=3D#000000>INTO&nbsp;employee&nbsp;VALUES&nbsp;</FONT><FONT=20
+                  color=3D#000000>(</FONT><FONT =
+color=3D#990000>4</FONT><FONT=20
+                  color=3D#000000>,&nbsp;</FONT><FONT=20
+                  color=3D#ff6100>'Ce</FONT><FONT =
+color=3D#000000>lia</FONT><FONT=20
+                  color=3D#ff6100>'&nbsp;,&nbsp;&nbsp;'Ri</FONT><FONT=20
+                  color=3D#000000>ce</FONT><FONT=20
+                  color=3D#ff6100>',&nbsp;&nbsp;&nbsp;</FONT><FONT=20
+                  color=3D#990000>5567</FONT><FONT =
+color=3D#000000>,</FONT><FONT=20
+                  color=3D#ff6100>'20</FONT><FONT =
+color=3D#990000>06</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>03</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>03</FONT><FONT=20
+                  color=3D#990000>','</FONT><FONT =
+color=3D#000000>South</FONT><FONT=20
+                  color=3D#990000>','</FONT><FONT =
+color=3D#000000>London</FONT><FONT=20
+                  color=3D#ff6100>',6</FONT><FONT =
+color=3D#000000>)</FONT><FONT=20
+                  color=3D#000000>;</FONT><BR><FONT =
+color=3D#990000>2</FONT><FONT=20
+                  color=3D#000000>&gt;&nbsp;GO</FONT><BR><FONT=20
+                  color=3D#ffffff></FONT><BR><FONT =
+color=3D#000000>(</FONT><FONT=20
+                  color=3D#990000>1&nbsp;</FONT><FONT=20
+                  color=3D#000000>rows&nbsp;affected</FONT><FONT=20
+                  color=3D#000000>)</FONT><BR><FONT =
+color=3D#990000>1</FONT><FONT=20
+                  color=3D#000000>&gt;&nbsp;</FONT><FONT=20
+                  color=3D#7f0055><B>INSERT&nbsp;</B></FONT><FONT=20
+                  =
+color=3D#000000>INTO&nbsp;employee&nbsp;VALUES&nbsp;</FONT><FONT=20
+                  color=3D#000000>(</FONT><FONT =
+color=3D#990000>5</FONT><FONT=20
+                  color=3D#000000>,&nbsp;</FONT><FONT=20
+                  color=3D#ff6100>'Ro</FONT><FONT =
+color=3D#000000>bert</FONT><FONT=20
+                  color=3D#ff6100>',&nbsp;&nbsp;'Bl</FONT><FONT=20
+                  color=3D#000000>ack</FONT><FONT=20
+                  color=3D#ff6100>',&nbsp;&nbsp;</FONT><FONT=20
+                  color=3D#990000>4467</FONT><FONT =
+color=3D#000000>,</FONT><FONT=20
+                  color=3D#ff6100>'20</FONT><FONT =
+color=3D#990000>04</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>07</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>02</FONT><FONT=20
+                  color=3D#990000>','</FONT><FONT =
+color=3D#000000>East</FONT><FONT=20
+                  color=3D#990000>','</FONT><FONT =
+color=3D#000000>Newton</FONT><FONT=20
+                  color=3D#ff6100>',7</FONT><FONT =
+color=3D#000000>)</FONT><FONT=20
+                  color=3D#000000>;</FONT><BR><FONT =
+color=3D#990000>2</FONT><FONT=20
+                  color=3D#000000>&gt;&nbsp;GO</FONT><BR><FONT=20
+                  color=3D#ffffff></FONT><BR><FONT =
+color=3D#000000>(</FONT><FONT=20
+                  color=3D#990000>1&nbsp;</FONT><FONT=20
+                  color=3D#000000>rows&nbsp;affected</FONT><FONT=20
+                  color=3D#000000>)</FONT><BR><FONT =
+color=3D#990000>1</FONT><FONT=20
+                  color=3D#000000>&gt;&nbsp;</FONT><FONT=20
+                  color=3D#7f0055><B>INSERT&nbsp;</B></FONT><FONT=20
+                  =
+color=3D#000000>INTO&nbsp;employee&nbsp;VALUES&nbsp;</FONT><FONT=20
+                  color=3D#000000>(</FONT><FONT =
+color=3D#990000>6</FONT><FONT=20
+                  color=3D#000000>,&nbsp;</FONT><FONT=20
+                  color=3D#ff6100>'Li</FONT><FONT =
+color=3D#000000>nda</FONT><FONT=20
+                  color=3D#ff6100>'&nbsp;,&nbsp;&nbsp;'Gr</FONT><FONT=20
+                  color=3D#000000>een</FONT><FONT=20
+                  color=3D#ff6100>'&nbsp;,&nbsp;</FONT><FONT=20
+                  color=3D#990000>6456</FONT><FONT =
+color=3D#000000>,</FONT><FONT=20
+                  color=3D#ff6100>'20</FONT><FONT =
+color=3D#990000>02</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>05</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>19</FONT><FONT=20
+                  color=3D#990000>','</FONT><FONT =
+color=3D#000000>East</FONT><FONT=20
+                  color=3D#990000>','</FONT><FONT=20
+                  color=3D#000000>Calgary</FONT><FONT=20
+                  color=3D#ff6100>',8</FONT><FONT =
+color=3D#000000>)</FONT><FONT=20
+                  color=3D#000000>;</FONT><BR><FONT =
+color=3D#990000>2</FONT><FONT=20
+                  color=3D#000000>&gt;&nbsp;GO</FONT><BR><FONT=20
+                  color=3D#ffffff></FONT><BR><FONT =
+color=3D#000000>(</FONT><FONT=20
+                  color=3D#990000>1&nbsp;</FONT><FONT=20
+                  color=3D#000000>rows&nbsp;affected</FONT><FONT=20
+                  color=3D#000000>)</FONT><BR><FONT =
+color=3D#990000>1</FONT><FONT=20
+                  color=3D#000000>&gt;&nbsp;</FONT><FONT=20
+                  color=3D#7f0055><B>INSERT&nbsp;</B></FONT><FONT=20
+                  =
+color=3D#000000>INTO&nbsp;employee&nbsp;VALUES&nbsp;</FONT><FONT=20
+                  color=3D#000000>(</FONT><FONT =
+color=3D#990000>7</FONT><FONT=20
+                  color=3D#000000>,&nbsp;</FONT><FONT=20
+                  color=3D#ff6100>'Da</FONT><FONT =
+color=3D#000000>vid</FONT><FONT=20
+                  color=3D#ff6100>'&nbsp;,&nbsp;&nbsp;'La</FONT><FONT=20
+                  color=3D#000000>rry</FONT><FONT=20
+                  color=3D#ff6100>',&nbsp;&nbsp;</FONT><FONT=20
+                  color=3D#990000>5345</FONT><FONT =
+color=3D#000000>,</FONT><FONT=20
+                  color=3D#ff6100>'20</FONT><FONT =
+color=3D#990000>08</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>03</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>18</FONT><FONT=20
+                  color=3D#990000>','</FONT><FONT =
+color=3D#000000>West</FONT><FONT=20
+                  color=3D#990000>','</FONT><FONT=20
+                  color=3D#000000>New&nbsp;York</FONT><FONT=20
+                  color=3D#ff6100>',9</FONT><FONT =
+color=3D#000000>)</FONT><FONT=20
+                  color=3D#000000>;</FONT><BR><FONT =
+color=3D#990000>2</FONT><FONT=20
+                  color=3D#000000>&gt;&nbsp;GO</FONT><BR><FONT=20
+                  color=3D#ffffff></FONT><BR><FONT =
+color=3D#000000>(</FONT><FONT=20
+                  color=3D#990000>1&nbsp;</FONT><FONT=20
+                  color=3D#000000>rows&nbsp;affected</FONT><FONT=20
+                  color=3D#000000>)</FONT><BR><FONT =
+color=3D#990000>1</FONT><FONT=20
+                  color=3D#000000>&gt;&nbsp;</FONT><FONT=20
+                  color=3D#7f0055><B>INSERT&nbsp;</B></FONT><FONT=20
+                  =
+color=3D#000000>INTO&nbsp;employee&nbsp;VALUES&nbsp;</FONT><FONT=20
+                  color=3D#000000>(</FONT><FONT =
+color=3D#990000>8</FONT><FONT=20
+                  color=3D#000000>,&nbsp;</FONT><FONT=20
+                  color=3D#ff6100>'Ja</FONT><FONT =
+color=3D#000000>mes</FONT><FONT=20
+                  color=3D#ff6100>'&nbsp;,&nbsp;&nbsp;'Ca</FONT><FONT=20
+                  color=3D#000000>t</FONT><FONT=20
+                  color=3D#ff6100>',&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT =
+
+                  color=3D#990000>4234</FONT><FONT =
+color=3D#000000>,</FONT><FONT=20
+                  color=3D#ff6100>'20</FONT><FONT =
+color=3D#990000>07</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>07</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>17</FONT><FONT=20
+                  color=3D#990000>','</FONT><FONT =
+color=3D#000000>West</FONT><FONT=20
+                  color=3D#990000>','</FONT><FONT =
+color=3D#000000>Regina</FONT><FONT=20
+                  color=3D#ff6100>',9</FONT><FONT =
+color=3D#000000>)</FONT><FONT=20
+                  color=3D#000000>;</FONT><BR><FONT =
+color=3D#990000>2</FONT><FONT=20
+                  color=3D#000000>&gt;&nbsp;GO</FONT><BR><FONT=20
+                  color=3D#ffffff></FONT><BR><FONT =
+color=3D#000000>(</FONT><FONT=20
+                  color=3D#990000>1&nbsp;</FONT><FONT=20
+                  color=3D#000000>rows&nbsp;affected</FONT><FONT=20
+                  color=3D#000000>)</FONT><BR><FONT =
+color=3D#990000>1</FONT><FONT=20
+                  color=3D#000000>&gt;&nbsp;</FONT><FONT=20
+                  color=3D#7f0055><B>INSERT&nbsp;</B></FONT><FONT=20
+                  =
+color=3D#000000>INTO&nbsp;employee&nbsp;VALUES&nbsp;</FONT><FONT=20
+                  color=3D#000000>(</FONT><FONT =
+color=3D#990000>9</FONT><FONT=20
+                  color=3D#000000>,&nbsp;</FONT><FONT=20
+                  color=3D#ff6100>'Jo</FONT><FONT =
+color=3D#000000>an</FONT><FONT=20
+                  color=3D#ff6100>'&nbsp;&nbsp;</FONT><FONT=20
+                  color=3D#000000>,&nbsp;&nbsp;</FONT><FONT=20
+                  color=3D#ff6100>'Ac</FONT><FONT =
+color=3D#000000>t</FONT><FONT=20
+                  color=3D#ff6100>',&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT =
+
+                  color=3D#990000>6123</FONT><FONT =
+color=3D#000000>,</FONT><FONT=20
+                  color=3D#ff6100>'20</FONT><FONT =
+color=3D#990000>01</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>04</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>16</FONT><FONT=20
+                  color=3D#990000>','</FONT><FONT =
+color=3D#000000>North</FONT><FONT=20
+                  color=3D#990000>','</FONT><FONT=20
+                  color=3D#000000>Toronto</FONT><FONT=20
+                  color=3D#ff6100>',1</FONT><FONT =
+color=3D#990000>0</FONT><FONT=20
+                  color=3D#000000>)</FONT><FONT =
+color=3D#000000>;</FONT><BR><FONT=20
+                  color=3D#990000>2</FONT><FONT=20
+                  color=3D#000000>&gt;&nbsp;GO</FONT><BR><FONT=20
+                  color=3D#ffffff></FONT><BR><FONT =
+color=3D#000000>(</FONT><FONT=20
+                  color=3D#990000>1&nbsp;</FONT><FONT=20
+                  color=3D#000000>rows&nbsp;affected</FONT><FONT=20
+                  color=3D#000000>)</FONT><BR><FONT =
+color=3D#990000>1</FONT><FONT=20
+                  color=3D#000000>&gt;</FONT><BR><FONT =
+color=3D#990000>2</FONT><FONT=20
+                  color=3D#000000>&gt;&nbsp;</FONT><FONT=20
+                  color=3D#7f0055><B>select&nbsp;</B></FONT><FONT=20
+                  color=3D#000000>*&nbsp;</FONT><FONT=20
+                  color=3D#7f0055><B>from&nbsp;</B></FONT><FONT=20
+                  color=3D#000000>employee;</FONT><BR><FONT=20
+                  color=3D#990000>3</FONT><FONT=20
+                  color=3D#000000>&gt;&nbsp;GO</FONT><BR><FONT=20
+                  =
+color=3D#000000>id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;first_name&nbsp;last_name&nbsp;&nbsp;salary&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;start_Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;region&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;city&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;managerid</FONT><BR><FONT=20
+                  =
+color=3D#000000>-----------&nbsp;----------&nbsp;----------&nbsp;--------=
+----&nbsp;-----------------------&nbsp;----------&nbsp;------------------=
+--&nbsp;-----------</FONT><BR><FONT=20
+                  =
+color=3D#ffffff>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;</FONT><FONT=20
+                  color=3D#990000>1&nbsp;</FONT><FONT=20
+                  =
+color=3D#000000>Jason&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Martin&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT=20
+                  color=3D#990000>5890.00&nbsp;2005</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>03</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT=20
+                  color=3D#990000>22&nbsp;00</FONT><FONT=20
+                  color=3D#000000>:</FONT><FONT =
+color=3D#990000>00</FONT><FONT=20
+                  color=3D#000000>:</FONT><FONT=20
+                  color=3D#990000>00.000&nbsp;</FONT><FONT=20
+                  =
+color=3D#000000>North&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vancouver&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT=20
+                  color=3D#990000>3</FONT><BR><FONT=20
+                  =
+color=3D#ffffff>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;</FONT><FONT=20
+                  color=3D#990000>2&nbsp;</FONT><FONT=20
+                  =
+color=3D#000000>Alison&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mathews&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT=20
+                  color=3D#990000>4789.00&nbsp;2003</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>07</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT=20
+                  color=3D#990000>21&nbsp;00</FONT><FONT=20
+                  color=3D#000000>:</FONT><FONT =
+color=3D#990000>00</FONT><FONT=20
+                  color=3D#000000>:</FONT><FONT=20
+                  color=3D#990000>00.000&nbsp;</FONT><FONT=20
+                  =
+color=3D#000000>South&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Utown&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<=
+/FONT><FONT=20
+                  color=3D#990000>4</FONT><BR><FONT=20
+                  =
+color=3D#ffffff>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;</FONT><FONT=20
+                  color=3D#990000>3&nbsp;</FONT><FONT=20
+                  =
+color=3D#000000>James&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Smith&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT=20
+                  color=3D#990000>6678.00&nbsp;2001</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>12</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT=20
+                  color=3D#990000>01&nbsp;00</FONT><FONT=20
+                  color=3D#000000>:</FONT><FONT =
+color=3D#990000>00</FONT><FONT=20
+                  color=3D#000000>:</FONT><FONT=20
+                  color=3D#990000>00.000&nbsp;</FONT><FONT=20
+                  =
+color=3D#000000>North&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Paris&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<=
+/FONT><FONT=20
+                  color=3D#990000>5</FONT><BR><FONT=20
+                  =
+color=3D#ffffff>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;</FONT><FONT=20
+                  color=3D#990000>4&nbsp;</FONT><FONT=20
+                  =
+color=3D#000000>Celia&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rice&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT =
+
+                  color=3D#990000>5567.00&nbsp;2006</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>03</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT=20
+                  color=3D#990000>03&nbsp;00</FONT><FONT=20
+                  color=3D#000000>:</FONT><FONT =
+color=3D#990000>00</FONT><FONT=20
+                  color=3D#000000>:</FONT><FONT=20
+                  color=3D#990000>00.000&nbsp;</FONT><FONT=20
+                  =
+color=3D#000000>South&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;London&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT=
+><FONT=20
+                  color=3D#990000>6</FONT><BR><FONT=20
+                  =
+color=3D#ffffff>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;</FONT><FONT=20
+                  color=3D#990000>5&nbsp;</FONT><FONT=20
+                  =
+color=3D#000000>Robert&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Black&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT=20
+                  color=3D#990000>4467.00&nbsp;2004</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>07</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT=20
+                  color=3D#990000>02&nbsp;00</FONT><FONT=20
+                  color=3D#000000>:</FONT><FONT =
+color=3D#990000>00</FONT><FONT=20
+                  color=3D#000000>:</FONT><FONT=20
+                  color=3D#990000>00.000&nbsp;</FONT><FONT=20
+                  =
+color=3D#000000>East&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Newton&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<=
+/FONT><FONT=20
+                  color=3D#990000>7</FONT><BR><FONT=20
+                  =
+color=3D#ffffff>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;</FONT><FONT=20
+                  color=3D#990000>6&nbsp;</FONT><FONT=20
+                  =
+color=3D#000000>Linda&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Green&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT=20
+                  color=3D#990000>6456.00&nbsp;2002</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>05</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT=20
+                  color=3D#990000>19&nbsp;00</FONT><FONT=20
+                  color=3D#000000>:</FONT><FONT =
+color=3D#990000>00</FONT><FONT=20
+                  color=3D#000000>:</FONT><FONT=20
+                  color=3D#990000>00.000&nbsp;</FONT><FONT=20
+                  =
+color=3D#000000>East&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Calgary&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT=
+><FONT=20
+                  color=3D#990000>8</FONT><BR><FONT=20
+                  =
+color=3D#ffffff>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;</FONT><FONT=20
+                  color=3D#990000>7&nbsp;</FONT><FONT=20
+                  =
+color=3D#000000>David&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Larry&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT=20
+                  color=3D#990000>5345.00&nbsp;2008</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>03</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT=20
+                  color=3D#990000>18&nbsp;00</FONT><FONT=20
+                  color=3D#000000>:</FONT><FONT =
+color=3D#990000>00</FONT><FONT=20
+                  color=3D#000000>:</FONT><FONT=20
+                  color=3D#990000>00.000&nbsp;</FONT><FONT=20
+                  =
+color=3D#000000>West&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;New&nbsp;Yo=
+rk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT=
+><FONT=20
+                  color=3D#990000>9</FONT><BR><FONT=20
+                  =
+color=3D#ffffff>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;</FONT><FONT=20
+                  color=3D#990000>8&nbsp;</FONT><FONT=20
+                  =
+color=3D#000000>James&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cat&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><=
+FONT=20
+                  color=3D#990000>4234.00&nbsp;2007</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>07</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT=20
+                  color=3D#990000>17&nbsp;00</FONT><FONT=20
+                  color=3D#000000>:</FONT><FONT =
+color=3D#990000>00</FONT><FONT=20
+                  color=3D#000000>:</FONT><FONT=20
+                  color=3D#990000>00.000&nbsp;</FONT><FONT=20
+                  =
+color=3D#000000>West&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Regina&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<=
+/FONT><FONT=20
+                  color=3D#990000>9</FONT><BR><FONT=20
+                  =
+color=3D#ffffff>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;</FONT><FONT=20
+                  color=3D#990000>9&nbsp;</FONT><FONT=20
+                  =
+color=3D#000000>Joan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Act&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</F=
+ONT><FONT=20
+                  color=3D#990000>6123.00&nbsp;2001</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT =
+color=3D#990000>04</FONT><FONT=20
+                  color=3D#000000>-</FONT><FONT=20
+                  color=3D#990000>16&nbsp;00</FONT><FONT=20
+                  color=3D#000000>:</FONT><FONT =
+color=3D#990000>00</FONT><FONT=20
+                  color=3D#000000>:</FONT><FONT=20
+                  color=3D#990000>00.000&nbsp;</FONT><FONT=20
+                  =
+color=3D#000000>North&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Toronto&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT=20
+                  color=3D#990000>10</FONT><BR><FONT=20
+                  color=3D#ffffff></FONT><BR><FONT =
+color=3D#000000>(</FONT><FONT=20
+                  color=3D#990000>9&nbsp;</FONT><FONT=20
+                  color=3D#000000>rows&nbsp;affected</FONT><FONT=20
+                  color=3D#000000>)</FONT><BR><FONT =
+color=3D#990000>1</FONT><FONT=20
+                  color=3D#000000>&gt;</FONT><BR><FONT =
+color=3D#990000>2</FONT><FONT=20
+                  color=3D#000000>&gt;</FONT><BR><FONT =
+color=3D#990000>3</FONT><FONT=20
+                  color=3D#000000>&gt;</FONT><BR><FONT =
+color=3D#990000>4</FONT><FONT=20
+                  color=3D#000000>&gt;&nbsp;</FONT><FONT=20
+                  color=3D#7f0055><B>SELECT&nbsp;</B></FONT><FONT=20
+                  color=3D#000000>STDEV</FONT><FONT =
+color=3D#000000>(</FONT><FONT=20
+                  color=3D#000000>salary</FONT><FONT=20
+                  color=3D#000000>)&nbsp;</FONT><FONT=20
+                  color=3D#000000>std_dev_of_budgets</FONT><BR><FONT=20
+                  color=3D#990000>5</FONT><FONT=20
+                  =
+color=3D#000000>&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;</FONT><FONT=20
+                  color=3D#7f0055><B>FROM&nbsp;</B></FONT><FONT=20
+                  color=3D#000000>employee</FONT><BR><FONT=20
+                  color=3D#990000>6</FONT><FONT =
+color=3D#000000>&gt;</FONT><BR><FONT=20
+                  color=3D#990000>7</FONT><FONT =
+color=3D#000000>&gt;</FONT><BR><FONT=20
+                  color=3D#990000>8</FONT><FONT=20
+                  =
+color=3D#000000>&gt;&nbsp;drop&nbsp;table&nbsp;employee;</FONT><BR><FONT =
+
+                  color=3D#990000>9</FONT><FONT=20
+                  color=3D#000000>&gt;&nbsp;GO</FONT><BR><FONT=20
+                  color=3D#000000>std_dev_of_budgets</FONT><BR><FONT=20
+                  =
+color=3D#000000>------------------------</FONT><BR><FONT=20
+                  =
+color=3D#ffffff>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT=20
+                  color=3D#990000>869.30016552268989</FONT><BR><FONT=20
+                  color=3D#ffffff></FONT><BR><FONT =
+color=3D#000000>(</FONT><FONT=20
+                  color=3D#990000>1&nbsp;</FONT><FONT=20
+                  color=3D#000000>rows&nbsp;affected</FONT><FONT=20
+                  color=3D#000000>)</FONT><BR><FONT =
+color=3D#990000>1</FONT><FONT=20
+                  =
+color=3D#000000>&gt;</FONT></CODE></DIV></TD></TR></TBODY></TABLE></TD></=
+TR></TBODY></TABLE>
+      <TABLE border=3D0 cellSpacing=3D0 cellPadding=3D0 width=3D650>
+        <TBODY>
+        <TR>
+          <TD align=3Dleft>
+            <SCRIPT type=3Dtext/javascript><!--=0A=
+google_ad_client=3D"pub-1130008796007602";google_ad_width=3D300;google_ad=
+_height=3D250;google_ad_format=3D"300x250_as";google_ad_type=3D"text_imag=
+e";google_ad_channel=3D"";google_color_border=3D"ffffff";google_color_bg=3D=
+"FFFFFF";google_color_link=3D"003399";google_color_url=3D"75a3ed";google_=
+color_text=3D"000000";=0A=
+//--></SCRIPT>
+
+            <SCRIPT type=3Dtext/javascript=20
+            =
+src=3D"http://pagead2.googlesyndication.com/pagead/show_ads.js"></SCRIPT>=
+
+          </TD>
+          <TD align=3Dright>
+            <SCRIPT type=3Dtext/javascript><!--=0A=
+google_ad_client=3D"pub-1130008796007602";google_ad_width=3D300;google_ad=
+_height=3D250;google_ad_format=3D"300x250_as";google_ad_type=3D"text_imag=
+e";google_ad_channel=3D"";google_color_border=3D"ffffff";google_color_bg=3D=
+"FFFFFF";google_color_link=3D"003399";google_color_url=3D"75a3ed";google_=
+color_text=3D"000000";=0A=
+//--></SCRIPT>
+
+            <SCRIPT type=3Dtext/javascript=20
+            =
+src=3D"http://pagead2.googlesyndication.com/pagead/show_ads.js"></SCRIPT>=
+
+          </TD></TR></TBODY></TABLE>
+      <TABLE border=3D0>
+        <TBODY>
+        <TR>
+          <TD height=3D20></TD></TR></TBODY></TABLE>
+      <TABLE border=3D0 cellSpacing=3D0 cellPadding=3D0 width=3D800>
+        <TBODY>
+        <TR>
+          <TD colSpan=3D5>14.10.STDEV</TD></TR>
+        <TR class=3Dodd>
+          <TD width=3D20></TD>
+          <TD width=3D100>14.10.1.</TD>
+          <TD align=3Dleft>Aggregate Functions STDEV and =
+STDEVP</TD></TR>
+        <TR class=3Deven>
+          <TD width=3D20></TD>
+          <TD width=3D100>14.10.2.</TD>
+          <TD align=3Dleft><A=20
+            =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0280__Analytical-Functio=
+ns/STDEVFunctionisacalculationbasedonthevarianceofanumericrangeofvalues.h=
+tm">STDEV()=20
+            Function is a calculation based on the variance of a numeric =
+range=20
+            of values.</A></TD></TR>
+        <TR class=3Dodd>
+          <TD width=3D20></TD>
+          <TD width=3D100>14.10.3.</TD>
+          <TD align=3Dleft><A=20
+            =
+href=3D"http://www.java2s.com/Tutorial/SQLServer/0280__Analytical-Functio=
+ns/STDEVreturnsthestandarddeviationofallthevaluesprovidedintheexpressionb=
+asedonasampleofthedatapopulation.htm">STDEV=20
+            returns the standard deviation of all the values provided in =
+the=20
+            expression, based on a sample of the data=20
+        population.</A></TD></TR></TBODY></TABLE>
+      <TABLE border=3D0>
+        <TBODY>
+        <TR>
+          <TD=20
+height=3D10></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR=
+></TABLE>
+<CENTER>
+<TABLE border=3D0>
+  <TBODY>
+  <TR align=3Dleft>
+    <TD><A href=3D"http://www.java2s.com/">java2s.com</A> =
+&nbsp;|&nbsp;<A=20
+      href=3D"http://www.java2s.com/html/contact.htm">Contact=20
+      Us</A>&nbsp;|&nbsp;<A =
+href=3D"http://www.java2s.com/html/ad.htm">Privacy=20
+      Policy</A></TD></TR>
+  <TR align=3Dleft>
+    <TD class=3DTemplatetext>Copyright 2009 - 12 Demo Source and =
+Support. All=20
+      rights reserved.</TD></TR>
+  <TR align=3Dleft>
+    <TD>All other trademarks are property of their respective=20
+  owners.</TD></TR></TBODY></TABLE></CENTER></BODY></HTML>
+
+------=_NextPart_000_0000_01CE007E.6024D930
+Content-Type: text/css;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.java2s.com/style/java2s.css
+
+H1 {
+	MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; COLOR: #003399; FONT-SIZE: 75%; =
+FONT-WEIGHT: normal; TEXT-DECORATION: none
+}
+.codeShade {
+	BORDER-BOTTOM: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; =
+PADDING-BOTTOM: 4px; MARGIN-TOP: 0.5em; PADDING-LEFT: 4px; =
+PADDING-RIGHT: 4px; MARGIN-BOTTOM: 0.5em; MARGIN-LEFT: 0em; BORDER-TOP: =
+#cccccc 1px solid; BORDER-RIGHT: #cccccc 1px solid; PADDING-TOP: 4px
+}
+A {
+	COLOR: #003399; TEXT-DECORATION: none
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+FORM {
+	MARGIN: 0px
+}
+BODY {
+	MARGIN: 3px auto 3px 0px; PADDING-LEFT: 0px; WIDTH: 100%; FONT-FAMILY: =
+Arial
+}
+.leftBarTable {
+	BORDER-LEFT: #cccccc 1px solid; BACKGROUND-COLOR: #e6e6e6; WIDTH: =
+140px; FONT-SIZE: 90%; BORDER-TOP: #cccccc 1px solid; BORDER-RIGHT: =
+#cccccc 1px solid
+}
+.leftLangCell {
+	BORDER-BOTTOM: #cccccc 1px solid
+}
+.leftNewLangCell {
+	BORDER-BOTTOM: #cccccc 1px solid; BACKGROUND-COLOR: #ffe6e6
+}
+.leftBarFolderTable {
+	BORDER-BOTTOM: #cccccc 1px solid; BACKGROUND-COLOR: white; FONT-SIZE: =
+90%; BORDER-TOP: #cccccc 1px solid
+}
+.leftNewFolderCell {
+	BACKGROUND-COLOR: #ffe6e6
+}
+.folderGroupTable {
+	BORDER-BOTTOM: #cccccc 1px solid; BACKGROUND-COLOR: #e6e6e6; =
+MARGIN-BOTTOM: 0px; FONT-SIZE: 95%
+}
+.folderTitleTable {
+	BORDER-BOTTOM: #cccccc 1px solid; MARGIN-BOTTOM: 0px; FONT-SIZE: 90%; =
+FONT-WEIGHT: bold
+}
+.folderTable {
+	FONT-SIZE: 80%
+}
+#fileElementCount {
+	BORDER-LEFT: #ffffff 5px solid; FONT-SIZE: 75%
+}
+.articleProductElement {
+	MARGIN: 10px; WIDTH: 1000px
+}
+.articleProductElementTitle {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; FONT-SIZE: 100%; FONT-WEIGHT: bold; PADDING-TOP: 0px
+}
+.articleProductElementParagraph {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.articleProductElementTitleImage {
+	MARGIN: 10px 10px 10px 0px; FLOAT: left
+}
+.articleProductElementHost {
+	MARGIN: 0px; COLOR: #999999; FONT-SIZE: 80%; FONT-WEIGHT: normal
+}
+.odd {
+	BACKGROUND-COLOR: #e6e6e6; HEIGHT: 40px
+}
+.even {
+	HEIGHT: 40px
+}
+.relatedExample {
+	BORDER-BOTTOM: #cccccc 1px solid; FONT-SIZE: 170%
+}
+.screenshotIndexTable {
+	BORDER-BOTTOM: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; =
+BACKGROUND-COLOR: #e6e6e6; BORDER-COLLAPSE: collapse; FONT-SIZE: 80%; =
+BORDER-TOP: #cccccc 1px solid; BORDER-RIGHT: #cccccc 1px solid
+}
+.screenshotElementTable {
+	BORDER-COLLAPSE: collapse
+}
+.codeTitle {
+	BORDER-BOTTOM: #cccccc 1px solid; FONT-SIZE: 150%
+}
+.tutorialFolderTitle {
+	BORDER-BOTTOM: #cccccc 1px solid; FONT-SIZE: 110%
+}
+.googleBar {
+	BORDER-BOTTOM: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; =
+BORDER-TOP: #cccccc 1px solid; BORDER-RIGHT: #cccccc 1px solid
+}
+.tutorialTable {
+	BORDER-BOTTOM: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; =
+BORDER-COLLAPSE: collapse; BORDER-TOP: #cccccc 1px solid; BORDER-RIGHT: =
+#cccccc 1px solid
+}
+.tutorialTable TD {
+	BORDER-BOTTOM: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; =
+BORDER-TOP: #cccccc 1px solid; BORDER-RIGHT: #cccccc 1px solid
+}
+.codeResult {
+	BORDER-BOTTOM: #cccccc 5px solid; BORDER-LEFT: #cccccc 5px solid; =
+BACKGROUND-COLOR: #000000; WIDTH: 800px; FONT-FAMILY: Courier New; =
+COLOR: #ffffff; FONT-SIZE: 100%; BORDER-TOP: #cccccc 5px solid; =
+BORDER-RIGHT: #cccccc 5px solid
+}
+.treeTableLeaf {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; =
+PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: verdana,sans-serif; =
+FONT-SIZE: 13px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 0px
+}
+.treeTableHeader {
+	BORDER-BOTTOM: #f4f4f4 1px outset; TEXT-ALIGN: left; BORDER-LEFT: =
+#c0c0c0 1px outset; BACKGROUND: #d4d0c8; FONT-SIZE: 70%; BORDER-TOP: =
+#c0c0c0 1px outset; BORDER-RIGHT: #f4f4f4 1px outset
+}
+.treeTableTree {
+	WIDTH: 200px; HEIGHT: 13px; FONT-SIZE: 75%
+}
+.diagramCellClass {
+	BORDER-BOTTOM: #660099 1px solid; BORDER-LEFT: #660099 1px solid; =
+MARGIN: 2px; WIDTH: 500px; FONT-FAMILY: Courier New, monospace; =
+BACKGROUND: #f7e6ff; HEIGHT: 15px; FONT-SIZE: 75%; BORDER-TOP: #660099 =
+1px solid; BORDER-RIGHT: #660099 1px solid
+}
+.diagramCellInterface {
+	BORDER-BOTTOM: #ff9900 1px solid; BORDER-LEFT: #ff9900 1px solid; =
+MARGIN: 2px; WIDTH: 500px; FONT-FAMILY: Courier New, monospace; =
+BACKGROUND: #fff5e6; HEIGHT: 15px; FONT-SIZE: 75%; BORDER-TOP: #ff9900 =
+1px solid; BORDER-RIGHT: #ff9900 1px solid
+}
+.tabContent {
+	BORDER-BOTTOM: #bbbbbb 1px solid; BORDER-LEFT: #bbbbbb 1px solid; =
+BORDER-RIGHT: #bbbbbb 1px solid
+}
+.tabHeader {
+	BORDER-BOTTOM: #bbbbbb 1px solid; TEXT-ALIGN: center; BORDER-LEFT: =
+#bbbbbb 1px solid; BACKGROUND: #e6e6e6; FONT-SIZE: 80%; BORDER-TOP: =
+#bbbbbb 1px solid; BORDER-RIGHT: #bbbbbb 1px solid
+}
+.tabHeaderCurrent {
+	TEXT-ALIGN: center; BORDER-LEFT: #bbbbbb 1px solid; FONT-SIZE: 80%; =
+BORDER-TOP: #bbbbbb 1px solid; BORDER-RIGHT: #bbbbbb 1px solid
+}
+.tabHeaderLast {
+	BORDER-BOTTOM: #bbbbbb 1px solid; BACKGROUND: white
+}
+.tabHeaderDivider {
+	BORDER-BOTTOM: #bbbbbb 1px solid; BACKGROUND: white
+}
+
+------=_NextPart_000_0000_01CE007E.6024D930
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.google.com/cse/brand?form=cse-search-box&lang=en
+
+=0A=
+(function() {=0A=
+var f =3D document.getElementById('cse-search-box');=0A=
+if (!f) {=0A=
+f =3D document.getElementById('searchbox_demo');=0A=
+}=0A=
+if (f && f['q']) {=0A=
+var q =3D f['q'];=0A=
+var n =3D navigator;=0A=
+var l =3D location;=0A=
+var du =3D function(n, v) {=0A=
+var u =3D document.createElement('input');=0A=
+u.name =3D n;=0A=
+u.value =3D v;=0A=
+u.type =3D 'hidden';=0A=
+f.appendChild(u);=0A=
+return u;=0A=
+};=0A=
+var su =3D function (n, t, v, l) {=0A=
+if (!encodeURIComponent || !decodeURIComponent) {=0A=
+return;=0A=
+}=0A=
+var regexp =3D new RegExp('(?:[?&]' + n + '=3D)([^&#]*)');=0A=
+var existing =3D regexp.exec(t);=0A=
+if (existing) {=0A=
+v =3D decodeURIComponent(existing[1]);=0A=
+}=0A=
+var delimIndex =3D v.indexOf('://');=0A=
+if (delimIndex >=3D 0) {=0A=
+v =3D v.substring(delimIndex + '://'.length, v.length);=0A=
+}=0A=
+var v_sub =3D v.substring(0, l);=0A=
+while (encodeURIComponent(v_sub).length > l) {=0A=
+v_sub =3D v_sub.substring(0, v_sub.length - 1);=0A=
+}=0A=
+du(n, v_sub);=0A=
+};=0A=
+var pl =3D function(he) {=0A=
+var ti =3D 0, tsi =3D 0, tk =3D 0, pt;=0A=
+return function() {=0A=
+var ct =3D (new Date).getTime();=0A=
+if (pt) {=0A=
+var i =3D ct - pt;=0A=
+ti +=3D i;=0A=
+tsi +=3D i*i;=0A=
+}=0A=
+tk++;=0A=
+pt =3D ct;=0A=
+he.value =3D [ti, tsi, tk].join('j');=0A=
+};=0A=
+};=0A=
+var append =3D false;=0A=
+if (n.appName =3D=3D 'Microsoft Internet Explorer') {=0A=
+var s =3D f.parentNode.childNodes;=0A=
+for (var i =3D 0; i < s.length; i++) {=0A=
+        if (s[i].nodeName =3D=3D 'SCRIPT' &&=0A=
+            s[i].attributes['src'] &&=0A=
+            s[i].attributes['src'].nodeValue =3D=3D =
+unescape('http:\x2F\x2Fwww.google.com\x2Fcse\x2Fbrand?form=3Dcse-search-b=
+ox\x26lang=3Den')) {=0A=
+          append =3D true;=0A=
+          break;=0A=
+        }=0A=
+      }=0A=
+    } else {=0A=
+      append =3D true;=0A=
+    }=0A=
+    if (append) {=0A=
+      =0A=
+      var loc =3D document.location.toString(); var ref =3D =
+document.referrer;=0A=
+      su('siteurl', loc, loc, 250);=0A=
+      su('ref', loc, ref, 750);=0A=
+=0A=
+      =0A=
+      =0A=
+      if (q.addEventListener) {=0A=
+        q.addEventListener('keyup', pl(du('ss', '')), false);=0A=
+      } else if (q.attachEvent) {=0A=
+        q.attachEvent('onkeyup', pl(du('ss', '')));=0A=
+      }=0A=
+    }=0A=
+=0A=
+    =0A=
+    if (n.platform =3D=3D 'Win32') {=0A=
+      q.style.cssText =3D 'border: 1px solid #7e9db9; padding: 2px;';=0A=
+    }=0A=
+=0A=
+    =0A=
+    if (window.history.navigationMode) {=0A=
+      window.history.navigationMode =3D 'compatible';=0A=
+    }=0A=
+=0A=
+    var b =3D function() {=0A=
+      if (q.value =3D=3D '') {=0A=
+        q.style.background =3D '#FFFFFF =
+url(http:\x2F\x2Fwww.google.com\x2Fcse\x2Fintl\x2Fen\x2Fimages\x2Fgoogle_=
+custom_search_watermark.gif) left no-repeat';=0A=
+      }=0A=
+    };=0A=
+=0A=
+    var f =3D function() {=0A=
+      q.style.background =3D '#ffffff';=0A=
+    };=0A=
+=0A=
+    q.onfocus =3D f;=0A=
+    q.onblur =3D b;=0A=
+=0A=
+    =0A=
+    if (!/[&?]q=3D[^&]/.test(l.search)) {=0A=
+      b();=0A=
+    }=0A=
+  }=0A=
+})();=0A=
+
+------=_NextPart_000_0000_01CE007E.6024D930
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://pagead2.googlesyndication.com/pagead/show_ads.js
+
+(function(){var g=3D!0,h=3Dnull,i=3D!1,aa=3Dfunction(a,b,c){return =
+a.call.apply(a.bind,arguments)},ba=3Dfunction(a,b,c){if(!a)throw =
+Error();if(2<arguments.length){var =
+d=3DArray.prototype.slice.call(arguments,2);return function(){var =
+c=3DArray.prototype.slice.call(arguments);Array.prototype.unshift.apply(c=
+,d);return a.apply(b,c)}}return function(){return =
+a.apply(b,arguments)}},j=3Dfunction(a,b,c){j=3DFunction.prototype.bind&&-=
+1!=3DFunction.prototype.bind.toString().indexOf("native =
+code")?aa:ba;return j.apply(h,arguments)};var k=3D(new =
+Date).getTime();var l=3Dfunction(a){a=3DparseFloat(a);return =
+isNaN(a)||1<a||0>a?0:a},ca=3D/^([\w-]+\.)*([\w-]{2,})(\:[0-9]+)?$/,da=3Df=
+unction(a,b){if(!a)return b;var c=3Da.match(ca);return c?c[0]:b};var =
+ea=3Dl("0.0"),fa=3Dl("0.001"),ga=3Dl("0.001");var =
+ha=3D/^true$/.test("false")?g:i;var ia=3Dfunction(){return =
+da("","pagead2.googlesyndication.com")};var =
+ja=3D/&/g,ka=3D/</g,ma=3D/>/g,na=3D/\"/g,oa=3D{"\x00":"\\0","\b":"\\b","\=
+f":"\\f","\n":"\\n","\r":"\\r","\t":"\\t","\x0B":"\\x0B",'"':'\\"',"\\":"=
+\\\\"},r=3D{"'":"\\'"};var =
+u=3Dwindow,x,pa=3Dh,y=3Ddocument.getElementsByTagName("script");y&&y.leng=
+th&&(pa=3Dy[y.length-1].parentNode);x=3Dpa;ia();var =
+z=3Dfunction(a){return!!a&&"function"=3D=3Dtypeof =
+a&&!!a.call},qa=3Dfunction(a,b){if(!(2>arguments.length))for(var =
+c=3D1,d=3Darguments.length;c<d;++c)a.push(arguments[c])},ra=3Dfunction(a,=
+b){if(!(1E-4>Math.random())){var c=3DMath.random();if(c<b)return =
+a[Math.floor(c/b*a.length)]}return =
+h},sa=3Dfunction(a){try{return!!a.location.href||""=3D=3D=3Da.location.hr=
+ef}catch(b){return i}};var ta=3Dh,ua=3Dfunction(){if(!ta){for(var =
+a=3Dwindow,b=3Da,c=3D0;a!=3Da.parent;)if(a=3Da.parent,c++,sa(a))b=3Da;els=
+e break;ta=3Db}return ta};var =
+A,B=3Dfunction(a){this.c=3D[];this.b=3Da||window;this.a=3D0;this.d=3Dh},v=
+a=3Dfunction(a,b){this.l=3Da;this.i=3Db};B.prototype.o=3Dfunction(a,b){0=3D=
+=3Dthis.a&&0=3D=3Dthis.c.length&&(!b||b=3D=3Dwindow)?(this.a=3D2,this.f(n=
+ew =
+va(a,window))):this.g(a,b)};B.prototype.g=3Dfunction(a,b){this.c.push(new=
+ =
+va(a,b||this.b));wa(this)};B.prototype.p=3Dfunction(a){this.a=3D1;a&&(thi=
+s.d=3Dthis.b.setTimeout(j(this.e,this),a))};B.prototype.e=3Dfunction(){1=3D=
+=3Dthis.a&&(this.d!=3Dh&&(this.b.clearTimeout(this.d),this.d=3Dh),this.a=3D=
+0);wa(this)};B.prototype.q=3Dfunction(){return g};=0A=
+B.prototype.nq=3DB.prototype.o;B.prototype.nqa=3DB.prototype.g;B.prototyp=
+e.al=3DB.prototype.p;B.prototype.rl=3DB.prototype.e;B.prototype.sz=3DB.pr=
+ototype.q;var =
+wa=3Dfunction(a){a.b.setTimeout(j(a.m,a),0)};B.prototype.m=3Dfunction(){i=
+f(0=3D=3Dthis.a&&this.c.length){var =
+a=3Dthis.c.shift();this.a=3D2;a.i.setTimeout(j(this.f,this,a),0);wa(this)=
+}};B.prototype.f=3Dfunction(a){this.a=3D0;a.l()};=0A=
+var xa=3Dfunction(a){try{return a.sz()}catch(b){return =
+i}},ya=3Dfunction(a){return!!a&&("object"=3D=3Dtypeof =
+a||"function"=3D=3Dtypeof =
+a)&&xa(a)&&z(a.nq)&&z(a.nqa)&&z(a.al)&&z(a.rl)},za=3Dfunction(){if(A&&xa(=
+A))return A;var a=3Dua(),b=3Da.google_jobrunner;return =
+ya(b)?A=3Db:a.google_jobrunner=3DA=3Dnew =
+B(a)},Aa=3Dfunction(a,b){za().nq(a,b)},Ba=3Dfunction(a,b){za().nqa(a,b)};=
+var Ca=3D/MSIE =
+[2-7]|PlayStation|Gecko\/20090226/i,Da=3D/Android|Opera/,Ea=3Dfunction(){=
+var =
+a=3DC,b=3DD.google_ad_width,c=3DD.google_ad_height,d=3D["<iframe"],e;for(=
+e in =
+a)a.hasOwnProperty(e)&&qa(d,e+"=3D"+a[e]);d.push('style=3D"left:0;positio=
+n:absolute;top:0;"');d.push("></iframe>");b=3D"border:none;height:"+c+"px=
+;margin:0;padding:0;position:relative;visibility:visible;width:"+b+"px";r=
+eturn['<ins style=3D"display:inline-table;',b,'"><ins =
+id=3D"',a.id+"_anchor",'" style=3D"display:block;',b,'">',d.join(" =
+"),"</ins></ins>"].join("")};var =
+Fa=3Dfunction(a,b,c){c||(c=3Dha?"https":"http");return[c,"://",a,b].join(=
+"")};var Ga=3Dfunction(){},Ia=3Dfunction(a,b,c){switch(typeof b){case =
+"string":Ha(b,c);break;case =
+"number":c.push(isFinite(b)&&!isNaN(b)?b:"null");break;case =
+"boolean":c.push(b);break;case "undefined":c.push("null");break;case =
+"object":if(b=3D=3Dh){c.push("null");break}if(b instanceof Array){var =
+d=3Db.length;c.push("[");for(var =
+e=3D"",f=3D0;f<d;f++)c.push(e),Ia(a,b[f],c),e=3D",";c.push("]");break}c.p=
+ush("{");d=3D"";for(e in =
+b)b.hasOwnProperty(e)&&(f=3Db[e],"function"!=3Dtypeof =
+f&&(c.push(d),Ha(e,c),c.push(":"),Ia(a,f,c),d=3D=0A=
+","));c.push("}");break;case "function":break;default:throw =
+Error("Unknown type: "+typeof =
+b);}},Ja=3D{'"':'\\"',"\\":"\\\\","/":"\\/","\b":"\\b","\f":"\\f","\n":"\=
+\n","\r":"\\r","\t":"\\t","\x0B":"\\u000b"},Ka=3D/\uffff/.test("\uffff")?=
+/[\\\"\x00-\x1f\x7f-\uffff]/g:/[\\\"\x00-\x1f\x7f-\xff]/g,Ha=3Dfunction(a=
+,b){b.push('"');b.push(a.replace(Ka,function(a){if(a in Ja)return =
+Ja[a];var =
+b=3Da.charCodeAt(0),e=3D"\\u";16>b?e+=3D"000":256>b?e+=3D"00":4096>b&&(e+=
+=3D"0");return Ja[a]=3De+b.toString(16)}));b.push('"')};var =
+E=3D"google_ad_block google_ad_channel google_ad_client google_ad_format =
+google_ad_height google_ad_host google_ad_host_channel =
+google_ad_host_tier_id google_ad_output google_ad_override =
+google_ad_region google_ad_section google_ad_slot google_ad_type =
+google_ad_width google_adtest google_allow_expandable_ads =
+google_alternate_ad_url google_alternate_color =
+google_analytics_domain_name google_analytics_uacct google_bid =
+google_city google_color_bg google_color_border google_color_line =
+google_color_link google_color_text google_color_url google_container_id =
+google_contents google_country google_cpm google_ctr_threshold =
+google_cust_age google_cust_ch google_cust_gender google_cust_id =
+google_cust_interests google_cust_job google_cust_l google_cust_lh =
+google_cust_u_url google_disable_video_autoplay google_ed google_eids =
+google_enable_ose google_encoding google_font_face google_font_size =
+google_frame_id google_gl google_hints google_image_size google_kw =
+google_kw_type google_lact google_language google_loeid =
+google_max_num_ads google_max_radlink_len google_mtl google_num_radlinks =
+google_num_radlinks_per_unit google_num_slots_to_rotate =
+google_only_ads_with_video google_only_pyv_ads =
+google_only_userchoice_ads google_override_format google_page_url =
+google_previous_watch google_previous_searches google_referrer_url =
+google_region google_reuse_colors google_rl_dest_url google_rl_filtering =
+google_rl_mode google_rt google_safe google_sc_id google_scs google_sui =
+google_skip google_tag_info google_targeting google_tdsma google_tfs =
+google_tl google_ui_features google_ui_version google_video_doc_id =
+google_video_product_type google_with_pyv_ads google_yt_pt =
+google_yt_up".split(" ");var =
+La=3D/\.((google(|groups|mail|images|print))|gmail)\./,Ma=3Dfunction(){va=
+r =
+a=3DF,b=3DLa.test(a.location.host);return!(!a.postMessage||!a.localStorag=
+e||!a.JSON||b)};var =
+Na=3Dfunction(a){this.b=3Da;a.google_iframe_oncopy||(a.google_iframe_onco=
+py=3D{handlers:{}});this.j=3Da.google_iframe_oncopy},Oa;var I=3D"var =
+i=3Dthis.id,s=3Dwindow.google_iframe_oncopy,H=3Ds&&s.handlers,h=3DH&&H[i]=
+,w=3Dthis.contentWindow,d;try{d=3Dw.document}catch(e){}if(h&&d&&(!d.body|=
+|!d.body.firstChild)){if(h.call){setTimeout(h,0)}else =
+if(h.match){w.location.replace(h)}}";=0A=
+/[&<>\"]/.test(I)&&(-1!=3DI.indexOf("&")&&(I=3DI.replace(ja,"&amp;")),-1!=
+=3DI.indexOf("<")&&(I=3DI.replace(ka,"&lt;")),-1!=3DI.indexOf(">")&&(I=3D=
+I.replace(ma,"&gt;")),-1!=3DI.indexOf('"')&&(I=3DI.replace(na,"&quot;")))=
+;Oa=3DI;Na.prototype.set=3Dfunction(a,b){this.j.handlers[a]=3Db;this.b.ad=
+dEventListener&&this.b.addEventListener("load",j(this.k,this,a),i)};Na.pr=
+ototype.k=3Dfunction(a){a=3Dthis.b.document.getElementById(a);var =
+b=3Da.contentWindow.document;if(a.onload&&b&&(!b.body||!b.body.firstChild=
+))a.onload()};var Pa=3Dfunction(){var a=3D"script";return["<",a,' =
+src=3D"',Fa(ia(),"/pagead/js/r20130130/r20121214/show_ads_impl.js",""),'"=
+></',a,">"].join("")},Qa=3Dfunction(){var a=3D"script";return["<",a,' =
+src=3D"',Fa(ia(),"/pagead/expansion_embed.js"),'"></',a,">"].join("")},Ra=
+=3Dfunction(a){var =
+b;if(!(b=3D"expt"!=3Da.google_expand_experiment))a:{var =
+c=3Da.document;try{var d;if(!(d=3D=0A=
+a.google_allow_expandable_ads=3D=3D=3Di)){var e;if(!(e=3D!c.body)){var =
+f;if(!(f=3Da.google_ad_output&&"html"!=3Da.google_ad_output)){var =
+m;if(!(m=3DisNaN(a.google_ad_height))){var =
+s;if(!(s=3DisNaN(a.google_ad_width))){var =
+v;if(!(v=3Dc.domain!=3Da.location.hostname)){var t;b:{a=3Dnavigator;var =
+n=3Da.userAgent,G=3Da.platform;if(/Win|Mac|Linux/.test(G)&&!/^Opera/.test=
+(n)){var =
+U=3D(/WebKit\/(\d+)/.exec(n)||[0,0])[1],la=3D(/rv\:(\d+\.\d+)/.exec(n)||[=
+0,0])[1];if(/Win/.test(G)&&/MSIE.*Trident/.test(n)&&7<c.documentMode||!U&=
+&"Gecko"=3D=3D=0A=
+a.product&&1.7<la&&!/rv\:1\.8([^.]|\.0)/.test(n)||524<U){t=3Dg;break =
+b}}t=3Di}v=3D!t}s=3Dv}m=3Ds}f=3Dm}e=3Df}d=3De}if(d){b=3Dg;break =
+a}}catch(V){b=3Dg;break a}b=3Di}return =
+b?i:g},Sa=3Dfunction(a,b,c,d){return function(){var =
+e=3Di;d&&za().al(3E4);try{if(sa(a.document.getElementById(b).contentWindo=
+w)){var =
+f=3Da.document.getElementById(b).contentWindow,m=3Df.document;if(!m.body|=
+|!m.body.firstChild)m.open(),f.google_async_iframe_close=3Dg,m.write(c)}e=
+lse{var =
+s=3Da.document.getElementById(b).contentWindow,v;f=3Dc;f=3DString(f);if(f=
+.quote)v=3D=0A=
+f.quote();else{for(var m=3D['"'],t=3D0;t<f.length;t++){var =
+n=3Df.charAt(t),G=3Dn.charCodeAt(0),U=3Dm,la=3Dt+1,V;if(!(V=3Doa[n])){var=
+ H;if(31<G&&127>G)H=3Dn;else{var q=3Dn;if(q in r)H=3Dr[q];else if(q in =
+oa)H=3Dr[q]=3Doa[q];else{var =
+p=3Dq,w=3Dq.charCodeAt(0);if(31<w&&127>w)p=3Dq;else{if(256>w){if(p=3D"\\x=
+",16>w||256<w)p+=3D"0"}else =
+p=3D"\\u",4096>w&&(p+=3D"0");p+=3Dw.toString(16).toUpperCase()}H=3Dr[q]=3D=
+p}}V=3DH}U[la]=3DV}m.push('"');v=3Dm.join("")}s.location.replace("javascr=
+ipt:"+v)}e=3Dg}catch(Kb){s=3Dua().google_jobrunner,ya(s)&&s.rl()}e&&(new =
+Na(a)).set(b,=0A=
+Sa(a,b,c,i))}},Ta=3Dfunction(a,b){var =
+c=3DF.google_ad_height,d=3Db?'"':"",e=3Dd+"0"+d;a.width=3Dd+F.google_ad_w=
+idth+d;a.height=3Dd+c+d;a.frameborder=3De;a.marginwidth=3De;a.marginheigh=
+t=3De;a.vspace=3De;a.hspace=3De;a.allowtransparency=3Dd+"true"+d;a.scroll=
+ing=3Dd+"no"+d},Ua=3DMath.floor(1E6*Math.random()),Va=3Dfunction(a){for(v=
+ar b=3Da.data.split("\n"),c=3D{},d=3D0;d<b.length;d++){var =
+e=3Db[d].indexOf("=3D");-1!=3De&&(c[b[d].substr(0,e)]=3Db[d].substr(e+1))=
+}b=3Dc[3];if(c[1]=3D=3DUa&&(window.google_top_js_status=3D4,a.source=3D=3D=
+top&&0=3D=3Db.indexOf(a.origin)&&=0A=
+(window.google_top_url=3Db,window.google_top_js_status=3D5),window.google=
+_top_js_callbacks)){for(a=3D0;a<window.google_top_js_callbacks.length;a++=
+)window.google_top_js_callbacks[a]();window.google_top_js_callbacks.lengt=
+h=3D0}};window.google_loader_used=3Dg;var =
+J=3Dwindow;if(!("google_onload_fired"in =
+J)){J.google_onload_fired=3Di;var =
+Wa=3Dfunction(){J.google_onload_fired=3Dg};J.addEventListener?J.addEventL=
+istener("load",Wa,i):J.attachEvent&&J.attachEvent("onload",Wa)}=0A=
+if(!window.google_top_experiment&&(window.google_top_experiment=3Dra(["jp=
+_c","jp_zl","jp_wfpmr"],fa),"jp_zl"=3D=3D=3Dwindow.google_top_experiment|=
+|"jp_wfpmr"=3D=3D=3Dwindow.google_top_experiment)){var =
+Xa=3Dwindow,Ya=3D2;try{Xa.top.document=3D=3DXa.document?Ya=3D0:sa(Xa.top)=
+&&(Ya=3D1)}catch(Za){}if(2!=3D=3DYa)window.google_top_js_status=3D0;else =
+if(top.postMessage){var =
+$a;try{$a=3Dtop.frames.google_top_static_frame?g:i}catch(ab){$a=3Di}if($a=
+){var =
+K=3Dwindow;K.addEventListener?K.addEventListener("message",Va,i):K.attach=
+Event&&K.attachEvent("onmessage",=0A=
+Va);window.google_top_js_status=3D3;var =
+bb=3D{"0":"google_loc_request",1:Ua},cb=3D[],db;for(db in =
+bb)cb.push(db+"=3D"+bb[db]);top.postMessage(cb.join("\n"),"*")}else =
+window.google_top_js_status=3D2}else =
+window.google_top_js_status=3D1}window.google_expand_experiment||(window.=
+google_expand_experiment=3Dra(["expt","control"],ea)||"none");var eb;=0A=
+if(window.google_enable_async=3D=3D=3Di)eb=3D0;else{var =
+fb=3Dnavigator.userAgent;eb=3D(Ca.test(fb)||Da.test(fb)?i:g)&&!window.goo=
+gle_container_id&&(!window.google_ad_output||"html"=3D=3Dwindow.google_ad=
+_output)}=0A=
+if(eb){var =
+gb=3Dwindow;gb.google_unique_id?++gb.google_unique_id:gb.google_unique_id=
+=3D1;var =
+F=3Dwindow,_script$$inline_82=3D"script",C=3D{};Ta(C,g);C.onload=3D'"'+Oa=
++'"';for(var =
+L,D=3DF,hb=3DD.document,M=3DC.id,ib=3D0;!M||D.document.getElementById(M);=
+)M=3D"aswift_"+ib++;C.id=3DM;C.name=3DM;hb.write(Ea());L=3DM;var =
+jb,N=3DF;N.google_page_url&&(N.google_page_url=3DString(N.google_page_url=
+));for(var kb=3D[],lb=3D0,mb=3DE.length;lb<mb;lb++){var =
+nb=3DE[lb];if(N[nb]!=3Dh){var ob;try{var pb=3D[];Ia(new =
+Ga,N[nb],pb);ob=3Dpb.join("")}catch(qb){}ob&&=0A=
+qa(kb,nb,"=3D",ob,";")}}jb=3Dkb.join("");var =
+O=3Dwindow,rb=3DO.google_ad_output,P=3DO.google_ad_format;if(!P&&("html"=3D=
+=3Drb||rb=3D=3Dh))P=3DO.google_ad_width+"x"+O.google_ad_height;P=3DP&&(!O=
+.google_ad_slot||O.google_override_format)?P.toLowerCase():"";O.google_ad=
+_format=3DP;var =
+sb,tb=3D[u.google_ad_slot,u.google_ad_format,u.google_ad_type,u.google_ad=
+_width,u.google_ad_height];if(x){var Q;if(x){for(var =
+ub=3D[],vb=3D0,R=3Dx;R&&25>vb;R=3DR.parentNode,++vb)ub.push(9!=3DR.nodeTy=
+pe&&R.id||"");Q=3Dub.join()}else Q=3D"";Q&&tb.push(Q)}var wb=3D=0A=
+0;if(tb){var =
+xb=3Dtb.join(":"),yb=3Dxb.length;if(0=3D=3Dyb)wb=3D0;else{for(var =
+S=3D305419896,zb=3D0;zb<yb;zb++)S^=3D(S<<5)+(S>>2)+xb.charCodeAt(zb)&4294=
+967295;wb=3D0<S?S:4294967296+S}}sb=3Dwb.toString();a:{var =
+T=3Dwindow,W=3DT.google_async_slots;W||(W=3DT.google_async_slots=3D{});va=
+r Ab=3DT.google_unique_id,X=3DString("number"=3D=3Dtypeof Ab?Ab:0);if(X =
+in W&&(X+=3D"b",X in W))break =
+a;W[X]=3D{sent:i,w:T.google_ad_width||"",h:T.google_ad_height||"",adk:sb,=
+type:T.google_ad_type||"",slot:T.google_ad_slot||"",fmt:T.google_ad_forma=
+t||"",cli:T.google_ad_client||=0A=
+"",saw:[]}}var =
+Y=3DF.google_ad_handling_experiment||(Ma()?ra(["X","XN","S","SC","SN"],ga=
+):""),Bb=3D"";if(Ma()&&"S"!=3DY&&"SN"!=3DY&&"XN"!=3DY){var =
+Cb;Cb=3D"zrt_ads_frame"+F.google_unique_id;var =
+Z=3D{};Ta(Z,i);Z.style=3D"display:none";Z.id=3DCb;Z.name=3DCb;Z.src=3DFa(=
+da("","googleads.g.doubleclick.net"),"/pagead/html/r20130130/r20121214/zr=
+t_lookup.html");var Db=3D["<iframe"],Eb=3Dfunction(a,b){Db.push(" =
+"+b+'=3D"'+(a=3D=3Dh?"":a)+=0A=
+'"')},$;for($ in =
+Z)Object.prototype.hasOwnProperty.call(Z,$)&&Eb.call(h,Z[$],$);Db.push(">=
+</iframe>");Bb=3DDb.join("")}for(var =
+Fb=3DF,Gb=3D0,Hb=3DE.length;Gb<Hb;Gb++)Fb[E[Gb]]=3Dh;var Ib=3D(new =
+Date).getTime(),Jb=3DF.google_top_experiment,Lb=3DF.google_expand_experim=
+ent,Mb=3D"";Ra(F)&&(Mb=3DQa());var Nb=3D["<!doctype =
+html><html><body>",Bb,"<",_script$$inline_82,">",jb,"google_show_ads_impl=
+=3Dtrue;google_unique_id=3D",F.google_unique_id,';google_async_iframe_id=3D=
+"',L,'";google_ad_unit_key=3D"',sb,'";google_start_time=3D',k,";",=0A=
+Jb?'google_top_experiment=3D"'+Jb+'";':"",Lb?'google_expand_experiment=3D=
+"'+Lb+'";':"",Y?'google_ad_handling_experiment=3D"'+Y+'";':"","google_bpp=
+=3D",Ib>k?Ib-k:1,";</",_script$$inline_82,">",Mb,Pa(),"</body></html>"].j=
+oin("");(F.document.getElementById(L)?Aa:Ba)(Sa(F,L,Nb,g))}else =
+window.google_start_time=3Dk,!("object"=3D=3Dtypeof =
+window.n&&"function"=3D=3Dtypeof =
+window.n.createIframe)&&Ra(window)&&document.write(Qa()),document.write(P=
+a());})();=0A=
+
+------=_NextPart_000_0000_01CE007E.6024D930--

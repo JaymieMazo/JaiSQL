@@ -1,0 +1,106 @@
+Predicates (part I)
+Predicate is an expression taking truth value. It may be both a single expression or any combination of a numberless expressions built by means of Boolean operators AND, OR, and NOT. Besides, these combinations may inclide SQL-operator IS, and parentheses that define the order in which operations are to be executed. 
+
+SQL predicate evaluates to TRUE, FALSE and UNKNOWN. The following predicates are exeptions to this rule: NULL, EXISTS, UNIQUE, and MATCH, which could not evaluate to UNKNOWN. 
+
+To remember combination rules for these three truth values, let us denote TRUE as 1, FALSE as 0, and UNKNOWN as 1/2 (somewhere between true and false). 
+
+AND with two truth values gives minimum of these values. For example, TRUE AND UNKNOWN is UNKNOWN. 
+OR with two truth values gives maximum of these values. For example, FALSE OR UNKNOWN is UNKNOWN. 
+Negation of truth value is 1 minus this truth value. For example, NOT UNKNOWN is UNKNOWN. 
+
+Comparison predicates
+Comparison predicate is two expressions separated by a comparison operator. There are six conventional comparison operators: =, >, <, >=, <=, <>. 
+The data of NUMERIC type (numbers) are compared in accordance with their algebraic values. 
+The data of CHARACTER STRING type are compared in accordance with their alphabetic sequences. If a1a2Åcan and b1b2Åcbn are two character sequences, the first of these is "less" than the second if Ñp1<b1 or Ñp1=b1 and Ñp2<b2 and so on. Also, it is believed to be Ñp1Ñp2ÅcÑpn<b1b2Åcbm if n<m and Ñp1Ñp2ÅcÑpn=b1b2Åcbn, i.e. if the first string is the prefix of second one. For example, 'folder'<'for' because the two first letters of these strings coincide, while the third letter of the string 'folder' precedes the third letter in the string 'for'. Inequality 'bar' < 'barber' is also correct because its first string is the prefix of the second string. 
+The data of DATETIME type is compared in a chronological order. 
+The data of INTERVAL type (time range) are converted into corresponding types and then compared as ordinary numeric values (of NUMERIC type). 
+Example. Get information on computers with processor speed not less than 500 MHz and price below $800:
+SELECT * FROM Pc 
+WHERE speed >= 500 AND price < 800; 
+
+The query returns the following data:
+
+code model speed ram hd cd price 
+1  1232 500 64 5 12x 600.0 
+3  1233 500 64 5 12x 600.0 
+7  1232 500 32 10 12x 400.0 
+10  1260 500 32 10 12x 350.0 
+
+Example. Get information on all those printers that are not matrix and priced below $300: 
+SELECT * FROM Printer 
+WHERE NOT (type = 'matrix') AND price < 300; 
+
+Here is the result of that query:
+
+code model color type price 
+2  1433 y Jet 270.0 
+3  1434 y Jet 290.0 
+
+
+BETWEEN predicate
+BETWEEN predicate specifies the inclusive range to test the expression values. The range is defined by boundary expressions with AND keyword between them. Naturally, all the expressions in BETWEEN predicate must be the same data type, as in the case of comparison predicate. 
+Syntax 
+BETWEEN::=
+<expression to test> [NOT] BETWEEN 
+<begin expression> AND <end expression> 
+
+The predicate
+      exp1 BETWEEN exp2 AND exp3
+is equal to the predicate
+      exp1>=exp2 AND exp1<=exp3
+And the predicate
+      exp1 NOT BETWEEN exp2 AND exp3
+is equal to the predicate
+      NOT (exp1 BETWEEN exp2 AND exp3)
+
+
+If the value of the predicate exp1 BETWEEN exp2 AND exp3 is TRUE, it does not generally mean that the value of predicate exp1 BETWEEN exp3 AND exp2 is TRUE also, because the first one may be interpreted as the predicate
+      exp1>=exp2 AND exp1<=exp3
+while the second one may be considered as
+      exp1>=exp3 AND exp1<=exp2
+
+
+Example. Find model and processor speed of computers priced between and including $400 through $600: 
+SELECT model, speed FROM Pc 
+WHERE price BETWEEN 400 AND 600; 
+
+model speed 
+1232 500 
+1233 500 
+1232 500 
+
+
+
+IN predicate
+IN predicate determines whether the value of expression to test matches any value in the subquery or the list. Subquery is an ordinary SELECT statement that has a result set of one column and one or more rows. This column or all expressions in the list must have the same data type as the expression to test. If the target object is equal to any value returned by subquery or is equal to any expression from the comma separated list, the Boolean value of IN predicate is TRUE. If target object <>X for each X in IN clause, the result value is FALSE. If a subquery does not return any rows (empty table), the predicate is FALSE. If none of the above conditions is valid, the predicate is UNKNOWN. 
+Syntax
+IN::=
+<expression to test> [NOT] IN (<subquery>)
+| (<expression1>,...) 
+
+Example. Find the model, processor speed and hard drive capacity for those computers having the hard drive of 10Mb or 20Mb: 
+SELECT model, speed, hd FROM Pc 
+WHERE hd IN (10, 20); 
+
+model speed hd 
+1233 750 20 
+1232 500 10 
+1232 450 10 
+1260 500 10 
+
+
+Example. Find the model, processor speed and hard drive capacity for those computers having hard drive of 10Mb or 20Mb and produced by the manufacturer A: 
+SELECT model, speed, hd 
+FROM Pc 
+WHERE hd IN (10, 20) AND 
+            model IN (SELECT model FROM product
+            WHERE maker = 'A');  
+
+model speed hd 
+1233 750 20 
+1232 500 10 
+1232 450 10 
+
+
+

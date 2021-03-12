@@ -1,0 +1,2655 @@
+From: <Saved by Windows Internet Explorer 8>
+Subject: Aggregate Functions
+Date: Fri, 1 Feb 2013 13:17:07 +0800
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0011_01CE007E.6F7BB2A0"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.3350
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0011_01CE007E.6F7BB2A0
+Content-Type: text/html;
+	charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions003.htm
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML lang=3Den xmlns=3D"http://www.w3.org/1999/xhtml" =
+xml:lang=3D"en"><HEAD><TITLE>Aggregate Functions</TITLE>
+<META content=3D"text/html; charset=3Dwindows-1252" =
+http-equiv=3DContent-Type>
+<META content=3Den http-equiv=3DContent-Language>
+<META content=3Dtext/css http-equiv=3DContent-Style-Type>
+<META content=3Dtext/javascript http-equiv=3DContent-Script-Type>
+<META scheme=3Dhttp://www.robotstxt.org/ name=3Drobots content=3Dall>
+<META name=3DGENERATOR content=3D"MSHTML 8.00.6001.18702">
+<META name=3DDate content=3D2009-08-10T13:33:46Z>
+<META name=3Ddoctitle=20
+content=3D"Oracle=AE Database SQL Language Reference 11g Release 2 =
+(11.2)">
+<META name=3Dpartno content=3DE10592-02>
+<META name=3Ddocid content=3DSQLRF><LINK title=3DHome rel=3DStart =
+type=3Dtext/html=20
+href=3D"../../index.htm"><LINK title=3DCopyright rel=3DCopyright =
+type=3Dtext/html=20
+href=3D"../../dcommon/html/cpyr.htm"><LINK title=3DDefault =
+rel=3DStylesheet=20
+type=3Dtext/css=20
+href=3D"http://docs.oracle.com/cd/E14072_01/dcommon/css/blafdoc.css">
+<SCRIPT type=3Dtext/javascript=20
+src=3D"http://docs.oracle.com/cd/E14072_01/dcommon/js/doccd.js">=0A=
+</SCRIPT>
+<LINK title=3DContents rel=3DContents type=3Dtext/html =
+href=3D"toc.htm"><LINK=20
+title=3DIndex rel=3DIndex type=3Dtext/html href=3D"index.htm"><LINK =
+title=3DPrevious=20
+rel=3DPrev type=3Dtext/html href=3D"functions002.htm"><LINK title=3DNext =
+rel=3DNext=20
+type=3Dtext/html href=3D"functions004.htm"><LINK title=3D"PDF version" =
+rel=3Dalternate=20
+type=3Dapplication/pdf href=3D"../e10592.pdf"></HEAD>
+<BODY>
+<DIV class=3Dheader>
+<DIV class=3Dzz-skip-header><A id=3Dtop=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions00=
+3.htm#BEGIN"=20
+name=3Dtop>Skip Headers</A></DIV>
+<TABLE class=3D"simple oac_no_warn" cellSpacing=3D0 summary=3D"" =
+cellPadding=3D0=20
+width=3D"100%">
+  <TBODY>
+  <TR>
+    <TD vAlign=3Dtop align=3Dleft><B>Oracle=AE Database SQL Language=20
+      Reference<BR>11<I>g</I> Release 2 (11.2)</B><BR>Part Number =
+E10592-02</TD>
+    <TD vAlign=3Dbottom align=3Dright>
+      <TABLE class=3D"icons oac_no_warn" cellSpacing=3D0 summary=3D"" =
+cellPadding=3D0=20
+      width=3D294>
+        <TBODY>
+        <TR>
+          <TD vAlign=3Dtop align=3Dmiddle><A=20
+            href=3D"http://docs.oracle.com/cd/E14072_01/index.htm"><IMG=20
+            alt=3D"Go to Documentation Home"=20
+            =
+src=3D"http://docs.oracle.com/cd/E14072_01/dcommon/gifs/doclib.gif"=20
+            width=3D24 height=3D24><BR><SPAN =
+class=3Dicon>Home</SPAN></A></TD>
+          <TD vAlign=3Dtop align=3Dmiddle><A=20
+            =
+href=3D"http://docs.oracle.com/cd/E14072_01/nav/portal_booklist.htm"><IMG=
+=20
+            alt=3D"Go to Book List"=20
+            =
+src=3D"http://docs.oracle.com/cd/E14072_01/dcommon/gifs/booklist.gif"=20
+            width=3D24 height=3D24><BR><SPAN class=3Dicon>Book =
+List</SPAN></A></TD>
+          <TD vAlign=3Dtop align=3Dmiddle><A=20
+            =
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/toc.htm"><I=
+MG=20
+            alt=3D"Go to Table of Contents"=20
+            =
+src=3D"http://docs.oracle.com/cd/E14072_01/dcommon/gifs/toc.gif"=20
+            width=3D24 height=3D24><BR><SPAN =
+class=3Dicon>Contents</SPAN></A></TD>
+          <TD vAlign=3Dtop align=3Dmiddle><A=20
+            =
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/index.htm">=
+<IMG=20
+            alt=3D"Go to Index"=20
+            =
+src=3D"http://docs.oracle.com/cd/E14072_01/dcommon/gifs/index.gif"=20
+            width=3D24 height=3D24><BR><SPAN =
+class=3Dicon>Index</SPAN></A></TD>
+          <TD vAlign=3Dtop align=3Dmiddle><A=20
+            =
+href=3D"http://docs.oracle.com/cd/E14072_01/mix.112/b14387/toc.htm"><IMG =
+
+            alt=3D"Go to Master Index"=20
+            =
+src=3D"http://docs.oracle.com/cd/E14072_01/dcommon/gifs/masterix.gif"=20
+            width=3D24 height=3D24><BR><SPAN class=3Dicon>Master =
+Index</SPAN></A></TD>
+          <TD vAlign=3Dtop align=3Dmiddle><A=20
+            =
+href=3D"http://docs.oracle.com/cd/E14072_01/dcommon/html/feedback.htm"><I=
+MG=20
+            alt=3D"Go to Feedback page"=20
+            =
+src=3D"http://docs.oracle.com/cd/E14072_01/dcommon/gifs/feedbck2.gif"=20
+            width=3D24 height=3D24><BR><SPAN class=3Dicon>Contact=20
+        =
+Us</SPAN></A></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<HR>
+
+<TABLE class=3D"simple oac_no_warn" cellSpacing=3D0 summary=3D"" =
+cellPadding=3D0=20
+width=3D"100%">
+  <TBODY>
+  <TR>
+    <TD vAlign=3Dtop align=3Dleft>
+      <TABLE class=3D"simple oac_no_warn" cellSpacing=3D0 summary=3D"" =
+cellPadding=3D0=20
+      width=3D98>
+        <TBODY>
+        <TR>
+          <TD vAlign=3Dtop align=3Dmiddle><A=20
+            =
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions00=
+2.htm"><IMG=20
+            alt=3D"Go to previous page"=20
+            =
+src=3D"http://docs.oracle.com/cd/E14072_01/dcommon/gifs/leftnav.gif"=20
+            width=3D24 height=3D24><BR><SPAN =
+class=3Dicon>Previous</SPAN></A></TD>
+          <TD vAlign=3Dtop align=3Dmiddle><A=20
+            =
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions00=
+4.htm"><IMG=20
+            alt=3D"Go to next page"=20
+            =
+src=3D"http://docs.oracle.com/cd/E14072_01/dcommon/gifs/rightnav.gif"=20
+            width=3D24 height=3D24><BR><SPAN=20
+      class=3Dicon>Next</SPAN></A></TD></TR></TBODY></TABLE></TD>
+    <TD style=3D"FONT-SIZE: 90%" vAlign=3Dtop align=3Dright><A=20
+      =
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592.pdf">View=20
+      PDF</A></TD></TR></TBODY></TABLE><A id=3DBEGIN =
+name=3DBEGIN></A></DIV>
+<DIV class=3DIND><!-- End Header --><A id=3Di89203 name=3Di89203></A><A =
+id=3DSQLRF20035=20
+name=3DSQLRF20035></A>
+<DIV class=3Dsect1><!-- infolevel=3D"all" infotype=3D"General" -->
+<H1 class=3Dsect1>Aggregate Functions <A id=3Dsthref898 =
+name=3Dsthref898></A><A=20
+id=3Dsthref899 name=3Dsthref899></A></H1>
+<P>Aggregate functions return a single result row based on groups of =
+rows,=20
+rather than on single rows. Aggregate functions can appear in select =
+lists and=20
+in <CODE>ORDER</CODE> <CODE>BY</CODE> and <CODE>HAVING</CODE> clauses. =
+They are=20
+commonly used with the <CODE>GROUP</CODE> <CODE>BY</CODE> clause in a=20
+<CODE>SELECT</CODE> statement, where Oracle Database divides the rows of =
+a=20
+queried table or view into groups. In a query containing a =
+<CODE>GROUP</CODE>=20
+<CODE>BY</CODE> clause, the elements of the select list can be aggregate =
+
+functions, <CODE>GROUP</CODE> <CODE>BY</CODE> expressions, constants, or =
+
+expressions involving one of these. Oracle applies the aggregate =
+functions to=20
+each group of rows and returns a single result row for each group.</P>
+<P>If you omit the <CODE>GROUP</CODE> <CODE>BY</CODE> clause, then =
+Oracle=20
+applies aggregate functions in the select list to all the rows in the =
+queried=20
+table or view. You use aggregate functions in the <CODE>HAVING</CODE> =
+clause to=20
+eliminate groups from the output based on the results of the aggregate=20
+functions, rather than on the values of the individual rows of the =
+queried table=20
+or view.</P>
+<DIV class=3Dinfoboxnotealso>
+<P class=3Dnotep1>See Also:</P><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/statements_=
+10002.htm#i2066419">"Using=20
+the GROUP BY Clause: Examples"</A> and the <A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/statements_=
+10002.htm#i2078943">"HAVING=20
+Clause"</A> for more information on the <CODE>GROUP</CODE> =
+<CODE>BY</CODE>=20
+clause and <CODE>HAVING</CODE> clauses in queries and subqueries</DIV>
+<P>Many (but not all) aggregate functions that take a single argument =
+accept=20
+these clauses:</P>
+<UL>
+  <LI>
+  <P><CODE>DISTINCT</CODE> and <CODE>UNIQUE</CODE>, which are =
+synonymous, cause=20
+  an aggregate function to consider only distinct values of the argument =
+
+  expression. The syntax diagrams for aggregate functions in this =
+chapter use=20
+  the keyword <CODE>DISTINCT</CODE> for simplicity.</P></LI>
+  <LI>
+  <P><CODE>ALL</CODE> causes an aggregate function to consider all =
+values,=20
+  including all duplicates.</P></LI></UL>
+<P>For example, the <CODE>DISTINCT</CODE> average of 1, 1, 1, and 3 is =
+2. The=20
+<CODE>ALL</CODE> average is 1.5. If you specify neither, then the =
+default is=20
+<CODE>ALL</CODE>.</P>
+<P>Some aggregate functions allow the <CODE><SPAN=20
+class=3Dcodeinlineitalic>windowing_clause</SPAN></CODE>, which is part =
+of the=20
+syntax of analytic functions. Refer to <A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions00=
+4.htm#i97640"><SPAN=20
+class=3Dxreftitleitalic><SPAN =
+class=3Ditalic>windowing_clause</SPAN></SPAN></A> for=20
+information about this clause. In the listing of aggregate functions at =
+the end=20
+of this section, the functions that allow the <CODE><SPAN=20
+class=3Dcodeinlineitalic>windowing_clause</SPAN></CODE> are followed by =
+an=20
+asterisk (*)</P>
+<P>All aggregate functions except <CODE>COUNT</CODE>(*), =
+<CODE>GROUPING</CODE>,=20
+and <CODE>GROUPING_ID</CODE> ignore nulls. You can use the =
+<CODE>NVL</CODE>=20
+function in the argument to an aggregate function to substitute a value =
+for a=20
+null. <CODE>COUNT</CODE> and <CODE>REGR_COUNT</CODE> never return null, =
+but=20
+return either a number or zero. For all the remaining aggregate =
+functions, if=20
+the data set contains no rows, or contains only rows with nulls as =
+arguments to=20
+the aggregate function, then the function returns null.</P>
+<P><A id=3Dsthref900 name=3Dsthref900></A>The aggregate functions =
+<CODE>MIN</CODE>,=20
+<CODE>MAX</CODE>, <CODE>SUM</CODE>, <CODE>AVG</CODE>, =
+<CODE>COUNT</CODE>,=20
+<CODE>VARIANCE</CODE>, and <CODE>STDDEV</CODE>, when followed by the=20
+<CODE>KEEP</CODE> keyword, can be used in conjunction with the=20
+<CODE>FIRST</CODE> or <CODE>LAST</CODE> function to operate on a set of =
+values=20
+from a set of rows that rank as the <CODE>FIRST</CODE> or =
+<CODE>LAST</CODE> with=20
+respect to a given sorting specification. Refer to <A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions06=
+3.htm#i1000901">FIRST</A>=20
+for more information.</P>
+<P>You can nest aggregate functions. For example, the following example=20
+calculates the average of the maximum salaries of all the departments in =
+the=20
+sample schema <CODE>hr</CODE>:</P><PRE class=3Doac_no_warn =
+xml:space=3D"preserve">SELECT AVG(MAX(salary)) FROM employees GROUP BY =
+department_id;
+
+AVG(MAX(SALARY))
+----------------
+           10925
+</PRE>
+<P>This calculation evaluates the inner aggregate=20
+(<CODE>MAX</CODE>(<CODE>salary</CODE>)) for each group defined by the=20
+<CODE>GROUP</CODE> <CODE>BY</CODE> clause (<CODE>department_id</CODE>), =
+and=20
+aggregates the results again.</P>
+<P>The aggregate functions are:</P><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions01=
+6.htm#i82074">AVG</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions02=
+9.htm#i1271564">COLLECT</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions03=
+3.htm#i82637">CORR</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions03=
+4.htm#i1293691">CORR_*</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions03=
+7.htm#i82697">COUNT</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions03=
+8.htm#i1008854">COVAR_POP</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions03=
+9.htm#i82820">COVAR_SAMP</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions04=
+1.htm#i82886">CUME_DIST</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions05=
+0.htm#i1064409">DENSE_RANK</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions06=
+3.htm#i1000901">FIRST</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions06=
+8.htm#i1002035">GROUP_ID</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions06=
+9.htm#i77498">GROUPING</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions07=
+0.htm#i1001964">GROUPING_ID</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions08=
+1.htm#i1000905">LAST</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions09=
+6.htm#i89072">MAX</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions09=
+7.htm#i1279886">MEDIAN</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions09=
+8.htm#i1280029">MIN</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions12=
+5.htm#i1000909">PERCENTILE_CONT</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions12=
+6.htm#i1000913">PERCENTILE_DISC</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions12=
+4.htm#i1043951">PERCENT_RANK</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions13=
+9.htm#i1269223">RANK</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions14=
+9.htm#i85922">REGR_=20
+(Linear Regression) Functions</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions16=
+7.htm#i1279891">STATS_BINOMIAL_TEST</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions16=
+8.htm#i1333770">STATS_CROSSTAB</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions16=
+9.htm#i1279901">STATS_F_TEST</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions17=
+0.htm#i1279906">STATS_KS_TEST</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions17=
+1.htm#i1279911">STATS_MODE</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions17=
+2.htm#i1279921">STATS_MW_TEST</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions17=
+3.htm#i1335576">STATS_ONE_WAY_ANOVA</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions17=
+4.htm#i1279931">STATS_T_TEST_*</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions17=
+5.htm#i1279951">STATS_WSR_TEST</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions17=
+6.htm#i89108">STDDEV</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions17=
+7.htm#i86639">STDDEV_POP</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions17=
+8.htm#i86697">STDDEV_SAMP</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions18=
+0.htm#i89126">SUM</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions18=
+7.htm#i1006716">SYS_XMLAGG</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions22=
+8.htm#i87119">VAR_POP</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions22=
+9.htm#i87169">VAR_SAMP</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions23=
+0.htm#i89144">VARIANCE</A><BR><A=20
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions23=
+3.htm#i1286333">XMLAGG</A></DIV><!-- class=3D"sect1" --></DIV><!-- =
+class=3D"ind" -->
+<DIV class=3Dfooter>
+<HR>
+
+<TABLE class=3D"simple oac_no_warn" cellSpacing=3D0 summary=3D"" =
+cellPadding=3D0=20
+width=3D"100%">
+  <COLGROUP>
+  <COL width=3D"33%">
+  <COL width=3D*>
+  <COL width=3D"33%">
+  <TBODY>
+  <TR>
+    <TD align=3Dleft>
+      <TABLE class=3D"simple oac_no_warn" cellSpacing=3D0 summary=3D"" =
+cellPadding=3D0=20
+      width=3D98>
+        <TBODY>
+        <TR>
+          <TD vAlign=3Dtop align=3Dmiddle><A=20
+            =
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions00=
+2.htm"><IMG=20
+            alt=3D"Go to previous page"=20
+            =
+src=3D"http://docs.oracle.com/cd/E14072_01/dcommon/gifs/leftnav.gif"=20
+            width=3D24 height=3D24><BR><SPAN =
+class=3Dicon>Previous</SPAN></A></TD>
+          <TD vAlign=3Dtop align=3Dmiddle><A=20
+            =
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/functions00=
+4.htm"><IMG=20
+            alt=3D"Go to next page"=20
+            =
+src=3D"http://docs.oracle.com/cd/E14072_01/dcommon/gifs/rightnav.gif"=20
+            width=3D24 height=3D24><BR><SPAN=20
+      class=3Dicon>Next</SPAN></A></TD></TR></TBODY></TABLE></TD>
+    <TD style=3D"FONT-SIZE: 90%" class=3Dcopyrightlogo =
+align=3Dmiddle><IMG=20
+      alt=3DOracle=20
+      =
+src=3D"http://docs.oracle.com/cd/E14072_01/dcommon/gifs/oracle.gif"=20
+      width=3D144 height=3D18><BR>Copyright&nbsp;=A9&nbsp;1996,=20
+      =
+2009,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rig=
+hts&nbsp;reserved.<BR><A=20
+      =
+href=3D"http://docs.oracle.com/cd/E14072_01/dcommon/html/cpyr.htm">Legal =
+
+      Notices</A></TD>
+    <TD align=3Dright>
+      <TABLE class=3D"icons oac_no_warn" cellSpacing=3D0 summary=3D"" =
+cellPadding=3D0=20
+      width=3D294>
+        <TBODY>
+        <TR>
+          <TD vAlign=3Dtop align=3Dmiddle><A=20
+            href=3D"http://docs.oracle.com/cd/E14072_01/index.htm"><IMG=20
+            alt=3D"Go to Documentation Home"=20
+            =
+src=3D"http://docs.oracle.com/cd/E14072_01/dcommon/gifs/doclib.gif"=20
+            width=3D24 height=3D24><BR><SPAN =
+class=3Dicon>Home</SPAN></A></TD>
+          <TD vAlign=3Dtop align=3Dmiddle><A=20
+            =
+href=3D"http://docs.oracle.com/cd/E14072_01/nav/portal_booklist.htm"><IMG=
+=20
+            alt=3D"Go to Book List"=20
+            =
+src=3D"http://docs.oracle.com/cd/E14072_01/dcommon/gifs/booklist.gif"=20
+            width=3D24 height=3D24><BR><SPAN class=3Dicon>Book =
+List</SPAN></A></TD>
+          <TD vAlign=3Dtop align=3Dmiddle><A=20
+            =
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/toc.htm"><I=
+MG=20
+            alt=3D"Go to Table of Contents"=20
+            =
+src=3D"http://docs.oracle.com/cd/E14072_01/dcommon/gifs/toc.gif"=20
+            width=3D24 height=3D24><BR><SPAN =
+class=3Dicon>Contents</SPAN></A></TD>
+          <TD vAlign=3Dtop align=3Dmiddle><A=20
+            =
+href=3D"http://docs.oracle.com/cd/E14072_01/server.112/e10592/index.htm">=
+<IMG=20
+            alt=3D"Go to Index"=20
+            =
+src=3D"http://docs.oracle.com/cd/E14072_01/dcommon/gifs/index.gif"=20
+            width=3D24 height=3D24><BR><SPAN =
+class=3Dicon>Index</SPAN></A></TD>
+          <TD vAlign=3Dtop align=3Dmiddle><A=20
+            =
+href=3D"http://docs.oracle.com/cd/E14072_01/mix.112/b14387/toc.htm"><IMG =
+
+            alt=3D"Go to Master Index"=20
+            =
+src=3D"http://docs.oracle.com/cd/E14072_01/dcommon/gifs/masterix.gif"=20
+            width=3D24 height=3D24><BR><SPAN class=3Dicon>Master =
+Index</SPAN></A></TD>
+          <TD vAlign=3Dtop align=3Dmiddle><A=20
+            =
+href=3D"http://docs.oracle.com/cd/E14072_01/dcommon/html/feedback.htm"><I=
+MG=20
+            alt=3D"Go to Feedback page"=20
+            =
+src=3D"http://docs.oracle.com/cd/E14072_01/dcommon/gifs/feedbck2.gif"=20
+            width=3D24 height=3D24><BR><SPAN class=3Dicon>Contact=20
+        =
+Us</SPAN></A></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></DIV><N=
+OSCRIPT>
+<P>Scripting on this page enhances content navigation, but does not =
+change the=20
+content in any way.</P></NOSCRIPT></BODY></HTML>
+
+------=_NextPart_000_0011_01CE007E.6F7BB2A0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://docs.oracle.com/cd/E14072_01/dcommon/gifs/doclib.gif
+
+R0lGODlhGAAYAPMAMf///+/v99be58bO1q29zpytvYScrXuMnGuMrWN7jEpzjEJjhDlaczFKawAA
+AAAAACwAAAAAGAAYAEAEvxDISautjKV2EMoJ2DVhgy2hh5Aa6TUtdhTGYXNFbhQDcTAmCojz0ohW
+GUYFBlt8kslPwiC4DBZAkkCwyTQ426pwgU2EGCiskRWcoDcqWCixGMXGmc5qjrZvMEZxfHVIfxeH
+iImKFwQFBI11AzkDkgYoB2RLQAkCAQRAWQkHBiELbRJGGnQspQhnGRgbTpasaAimJbENTpi1TrhA
+sba3rA0ewKcARrOmy79suk63IGR1uF/C0mclCL0aA4vh4osRADs=
+
+------=_NextPart_000_0011_01CE007E.6F7BB2A0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://docs.oracle.com/cd/E14072_01/dcommon/gifs/booklist.gif
+
+R0lGODlhGAAYAPMAMf////f3/97n773O3rXG1qW1zoScvWuMpVp7nEprjDFScyFCWhApQgAYKQAI
+EAAAACwAAAAAGAAYAEAEyxDISau9AjmmjlrNkxRDYQzCJQnHsjjIgDAcghxGkVoF2NCMxuIwUK0U
+DJsh8Xg4GtAhDmWclEw4g2FXBcigD0a3kkQofowF49FAcCsC9XJNUxh8w9Ob4lIkEgt2AAUKIlo6
+XVpKSodFYxN7j5IqPUFQDQaTCR9CaUELJ10CHAcIajQbCAUkKpsMGwqmDgsCJgk5jhRxCwhzTWlP
+P72IFYR/vWpRCQMDh5ESPQsJDQkCLCDSWUbNZzQuNzc4BWMmir0HJLljJTmsk5IRADs=
+
+------=_NextPart_000_0011_01CE007E.6F7BB2A0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://docs.oracle.com/cd/E14072_01/dcommon/gifs/toc.gif
+
+R0lGODlhGAAYAPMAMf////f//+/v787W58bGzqW1zqWtvYyltXuUpWN7jFp7pUprjEprhDFSawAA
+AAAAACwAAAAAGAAYAEAEuhDISautSyW0jCCEMHyE0SCCxWWdkEpCsiznSy2JjBTGMf+xlgWnaRUQ
+iI0nl7BdAIJCotF0OYee62TkehIVHeiAMCbwcFocAuwxFMxvASdxySjYn2QOUao9AQQzUw2EhFMb
+Wn+Ki4xDOGRiIGYmM4l2MkBWUHN1azIeRxuIc2l3YAUiSaoEeqVFqCUFsjwGCwgDQ54LsCEuk2hD
+Ckm7UZIgAK0XgTNvPzOFOYkTAs8bVA0LH9KN3N0TEQA7
+
+------=_NextPart_000_0011_01CE007E.6F7BB2A0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://docs.oracle.com/cd/E14072_01/dcommon/gifs/index.gif
+
+R0lGODlhGAAYAPMAMf////f//+fn79be587O3rXGzqW1zqWtvZStvYScrXuMpXOElGN7jEJacwAA
+AAAAACwAAAAAGAAYAEAEsRDISau9TRQiyB4gQQBEswxCxTANM7btuy6LkFKDCO78flsZRCKxMCyG
+C4StlBhdntCo9Nlw3lK/TkMJFCAQhS/CECYMSCZbJQPICBoSN7xU+00EBoPtkC/YxGB2U4OEhYYU
+Ky2JK4yKDIJxBAYKCwoGRAoMCWdvj0AiCZoEmDQFAG8nglV4Y3gGY2OnJhxrLw23cbdwqLQUDXpV
+bSjBVQWzkEgGA0RESkJHTZCH09SDEQA7
+
+------=_NextPart_000_0011_01CE007E.6F7BB2A0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://docs.oracle.com/cd/E14072_01/dcommon/gifs/masterix.gif
+
+R0lGODlhGAAYAPMAMf///+fv99be573O3py1zoylvXOUrWOEnEprjDFScyFCYxAxSgAYKQAACAAA
+AAAAACwAAAAAGAAYAEAE4xDISau1gpxTQJjfBzAIwxQiMSDI0b6uARwPYiSypQRiMAjAoADxOFAG
+hYViyUwsEbMHYYHLARQPxmOZzXIZCqrVQkAoEmZEgbBuEwyCSngxMSuZXNoCJTGIPD9CQEQMYlYE
+ASprBIyNHQcMOAkFBXEAHQADJgsCSVkSNDYXo6SlpqdhRgBmeEwLRRcCGxw9EiIGJH8Ae5YegkFF
+Dwt+EgVmaApqlMvLW1PEAAQe0yAUuCZVIpimoQXZEj8GlGzMawC4kzgDE9KnJZJjyWYP9Fz1rDgX
+BQdnZwlKTpwogXKq4IQIADs=
+
+------=_NextPart_000_0011_01CE007E.6F7BB2A0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://docs.oracle.com/cd/E14072_01/dcommon/gifs/feedbck2.gif
+
+R0lGODlhGAAYAPMAMf////f39+/v997n787W57XG1pStvWuEpVJzjEJjhClKaxg5WhgxUggYMQAA
+AAAAACwAAAAAGAAYAEAEwBDISautRQEx05jDgDRGcYGDsgDfsCTIYRyyQVhCcWhAstynSSGh+SQE
+goRncBAtZqXTRxIqFAicoGXx5GS1h5Vg2gOMFIYvS1JodDSIFYA228nGFhWVBzA0YnVRQXE6MjIE
+iFqKi4yMAwZKT40sGVgICGYIVgNqFAZiH0gUIwkmFg0FLSwKoWsDSgYGFQQ+awhwR480IiSmIAkS
+HHJ8AAuXsb4UPlMfBcY00IIWIlMKMdElyVIAOsidk9/bIDgVEQA7
+
+------=_NextPart_000_0011_01CE007E.6F7BB2A0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://docs.oracle.com/cd/E14072_01/dcommon/gifs/leftnav.gif
+
+R0lGODlhGAAYAPMAMf/////3/+/v/+fv997v59bW1rW9xq293pytvYylvXuMrXOEnGOEpVJrlEJj
+ewAAACwAAAAAGAAYAEAE1xBIIAQgJp9MKrUTYHQhlTQOUoqLIQlGsQpLKk+Gk4QCcoCrCQGBuEkI
+hBDC0UgwUiuCY8HrjQqWSsGwbBSDl03FYyEcNskSLF0iLA4lg8IlGfFODIZ3pquzJQUJDk8qJUuF
+Igl0YBRyNoxbCgs1kzF/QTAaa2dojBgHJGoCGHZxpWolBQoqIAY/UYcrCgoTryEECQuEKwZ7IkA9
+DXk1iBM0VAAJQAAFSwzEKwV9zLbGCg5QIQULDXQCoGALRsxMBsscyzwGlOPGMEQIk0uUMYxtzAIy
+6RMRADs=
+
+------=_NextPart_000_0011_01CE007E.6F7BB2A0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://docs.oracle.com/cd/E14072_01/dcommon/gifs/rightnav.gif
+
+R0lGODlhGAAYAPMAMf/////3/+/n3uf3/97n987W1r3e56293q21xpSMvYyltWuEnFqEnFpre0Jj
+ewAAACwAAAAAGAAYAEAE2xDICQgp5yBsKS2IBxQNsxTi0CTT5hUOQ4jC0qDSgCCz6CEJnEQxEMEW
+C4Yj0Rs6mgOBYVMoFgm7hWMR8uk0A0IRMBgcCkHfzkM4+QQK1rA5ISVNAo+ikceIEA1aCx0TKgtj
+AggHdHkecEpCHmEFCkiBCwoFdD4jGgYHBgVTGmKcAIooY2xoVY48pj9pOa8UCFubEggMOLS1MQxM
+qgBwgwAHjbUlSUhCAwq7xpG5DCZbkTU3Fb3TMWU/DkQSWIwJXRQ1S8KsyJJoDQ3mbFPlCwlINivS
+pgL8AqmcEQA7
+
+------=_NextPart_000_0011_01CE007E.6F7BB2A0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://docs.oracle.com/cd/E14072_01/dcommon/gifs/oracle.gif
+
+R0lGODdhkAASAPcAAP/////08/u8teRpeeREVOIyRuEnR+Q7UfBfb+JLVO6ThPzi4P3b1eRDW88L
+M9stQv/7+PrLwexxe/3Syf/78/J0dPBzb/7d2/WUj+FHY+E0SeEpR//p4/+TdvqFbf2yo/7s6eVM
+Ws0AHscAHckAKcgALssAMccAKcoAHs0AIeY8Wf/r1+QkQMIAIcYAJckAGtslQeZRXswAMsoAIdoL
+MP/+7scALb8AE+Nta8IAGuRBQNYCJv/kzv+tevuomf/TqMMAFsMAEdMAG/Coo+cqRMkAJv/k1fSj
+nNQON8EABP//9eZGYMQAIOdGROBCTMUACswAE//axf+ghPmjjP/X0dwlM/B7ie26te57ickAF//F
+r91GTfLNwO3Ttu23q+I2U9INLM0AK/nHtf/85NQOJtARJ+x6auy6tdQ3SNEAJOdWae2gp+28uP3N
+yP7Nu9cpOu6Jf+cqQ+luh+yBe+NaYvW5qNQqO9UaM///+fGEg//z3vufjcoALfB7hMQAJudjffy7
+u+tnavissel4c+dGYP/27NwzRt4VLssLKvq1ntQVNM4RLec8QvzVvtQSLO6Um9MDKfBpbfqtqP/y
+5OAqO98sLuRLYNUuMPy0kPidg//t3f/at9AZLc0AGs0BMtkWJM0AJOyaj90iSPvpzcwANOdnb+55
+f/Cxle6bk9xucthhZthbY9UcOcoAL+lGTNsmPvezqP3Sxe/IyPLSy/PZ0v3t2+qRiNUHNf/q5t0z
+Pf/k2/3ay+RaXcUAJ/m+xPF5dfiVhviip+dMR8UAEckAKsYAKetnXu+Fi/eXk9UhON9DP98tNuEo
+Mts5S8sEIvHEqMkABdgTMPTQr+Zshd07VdsrS/Clpf/y7NEYOfe2s+hedc8QMgAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACwAAAAAkAASAEAI/gABCAQQ
+QMAAAgUMKFzIsMCBAQICDBQYAAHDixcLJFCwYKLHiQwaOHgg4KNJCBEkNEiIkeGBCRQqKLRAwaTN
+iRcwZNCwoeXCAgI4dPDwQYYMFDxuKgWgaUaJLJsAxHGR4w8APDVtRuFEwkUZPB7ddDoxIoZHBUBk
+AJEwUMkMGy9KLjW5hImLJnMHMnJhogSTEYADCwacI8gTKjbZOALiwkbfEn0jl5hcwoaLEZASeSRC
+1apNBtGYkMjRLCsGICZy4MgrUNqLEiNCCGTwBggTx5QlP74RCGwI1DJyQx4uOQergWNCvBhhw4Zw
+ySWMe1zxpgWJFHBYC5yCoiuYrFNH/sjJO2dEiRdGbNLJcb2OnSIu7oD9mCAHbBw1tAOoe1d/HiCw
+aaCHfgOVgkIrI4hBIACxpBDdalJ15pEaQPBByiKJ4DKGTbnY94IuuySRRBAkkvgCJCaQcoII6R0R
+xFN7LMgfXqzx8NoIvCzo0Q872EcVECUGGWQOJ5yQgxBDTMSZCUUAKWSQjMG2Q3o3HTECCSakBqFN
+RiABBAlkOflkEEnQoIRAMxKohBNBFDmCmE8+AcUKAETRgRRTwFCCC4boCMAWdh0i0FRVsYZICVBo
+5hEFirhQxCJZMWIeEI14RMeVjsynX5qsPYIaJBv6SYoMLwDi5yavvZAUoZ61gcgN/i4UKSsJNjAR
+RCkfmWLeCKeYtEIRfj0wkCMnAIGKjpzmFcIIJiCRiiqrRCvttKtsMYhNRwxDTDGdGBOBJriEK+64
+mkRgjAgukBDEMQNxVuhHqIzgggsoIPORESKQwEQy81GgTBXLBCxwLswAO8IRdb6QLgrNfADuuBDj
+csEk+41wgis1gBBxxBcUQgEYTo0AwxG1bDzuBVR6BEIIIlw5HGUw93UCCimoQOdELLQA887CufAC
+DBfMFcMIMsxAQ35LVZACCidM9tjONtwAYQM5tKCDjhjsIC/PO+cAAwA89GCBDwBQIUS6I1RhxRVs
+t+0221hU8QKYWWjRbqxbcPH2/hVd9N2FFwm8lsMXN33sQglhkICogiaNQcauZZjhxRl7s+1Fysmy
+hsauaaixBhuVn+FFGwO58YERcOwaI4FHvMAHEH0IRIQfI3i2VADABvGBSYDcGAgAgux6rUe9w0bH
+goTYRWNehQhxAhN9+imDCVmQrSMgKJwXdBy0266UG05l4cZHkUwqyUCTpKAvJR5VQtYAOibfH2uW
+MHsJJlNkov/+/O/vwQ8e8UTRbragQgDrBVHhXu3q9IkUKOIOEIygIkBxuCCE4iOHYMIJ0kAxj4hC
+NGkYhUAKYZ5OyIVA8lveXPZCCj78ZTAwHMETrDcRVrTCD1vwk4FOAAawKNB2/oVwhXlGZQISjAAK
+r4DFR2KRLyZ8YRKymIUUpUiLWhygBGqxhUAIwIQiiCJ+ytOOKQB0Cz8JJAqQ6EUREFEH/fgCEbES
+gi4G1b2P/OJKJLhDLGwCjF3lQSASYIysBumYEThBIG8QDQqCgUINCkM/OPCQGcwIgGMAwRnReUEK
+QJGCTnqyk5x8gY9gp6Q6muQZkNBgFn43kS2YR3x5UcId0uWM/AxBCKJxQRY2yclPehIF0FBiA1pg
+Aj6EoZe+9OUTfgEAIziCPS4AAi+T6cll2mQBR4hBFYwyqm5ykxSkqEIDHhG0iQSgAVmahlKoQA0T
+GIUaE9jFA6ZXDQZoJwBqNHAnEqwhkGsMgQ4wMIoMvNlNE1SDFgIRAwxSBE6CDvShpMBGNsyZDW0U
+YBsNhSg3JeqRgAAAOw==
+
+------=_NextPart_000_0011_01CE007E.6F7BB2A0
+Content-Type: text/css;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://docs.oracle.com/cd/E14072_01/dcommon/css/blafdoc.css
+
+BODY {
+	BACKGROUND-COLOR: white; FONT-FAMILY: Tahoma, sans-serif; COLOR: black; =
+FONT-SIZE: small
+}
+* HTML BODY {
+	FONT-SIZE: small
+}
+H1 {
+	BORDER-BOTTOM: #ddd 1px solid; WIDTH: 100%; FONT-SIZE: 160%; =
+FONT-WEIGHT: bold
+}
+H2 {
+	FONT-SIZE: 130%; FONT-WEIGHT: bold
+}
+H3 {
+	FONT-SIZE: 110%; FONT-WEIGHT: bold
+}
+H4 {
+	FONT-SIZE: 100%; FONT-WEIGHT: bold
+}
+H5 {
+	DISPLAY: inline; FONT-WEIGHT: bold
+}
+H6 {
+	FONT-STYLE: italic; DISPLAY: inline; FONT-WEIGHT: bold
+}
+A:link {
+	BACKGROUND: inherit; COLOR: #039
+}
+A:visited {
+	BACKGROUND: inherit; COLOR: #72007c
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+A IMG {
+	BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-TOP-STYLE: =
+none; BORDER-LEFT-STYLE: none
+}
+IMG[usemap] {
+	BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-TOP-STYLE: =
+none; BORDER-LEFT-STYLE: none
+}
+CODE {
+	FONT-FAMILY: monospace; FONT-SIZE: 110%
+}
+PRE {
+	FONT-FAMILY: monospace; FONT-SIZE: 110%
+}
+SAMP {
+	FONT-FAMILY: monospace; FONT-SIZE: 110%
+}
+TT {
+	FONT-FAMILY: monospace; FONT-SIZE: 110%
+}
+CAPTION {
+	TEXT-ALIGN: center; WIDTH: auto; FONT-WEIGHT: bold
+}
+DT {
+	FONT-WEIGHT: bold
+}
+TABLE {
+	FONT-SIZE: small
+}
+TD {
+	VERTICAL-ALIGN: top
+}
+TH {
+	TEXT-ALIGN: left; VERTICAL-ALIGN: bottom; FONT-WEIGHT: bold
+}
+OL OL {
+	LIST-STYLE-TYPE: lower-alpha
+}
+OL OL OL {
+	LIST-STYLE-TYPE: lower-roman
+}
+TD P:first-child {
+	MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px
+}
+TD PRE:first-child {
+	MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px
+}
+TABLE.table-border {
+	BORDER-LEFT: #ccc 1px solid; BORDER-COLLAPSE: collapse; BORDER-TOP: =
+#ccc 1px solid
+}
+TABLE.table-border TH {
+	BORDER-BOTTOM: #ccc 1px solid; PADDING-BOTTOM: 0.5ex; BACKGROUND-COLOR: =
+#f7f7ea; PADDING-LEFT: 0.25em; PADDING-RIGHT: 0.25em; COLOR: black; =
+BORDER-RIGHT: #ccc 1px solid; PADDING-TOP: 0.5ex
+}
+TABLE.table-border TD {
+	BORDER-BOTTOM: #ccc 1px solid; PADDING-BOTTOM: 0.5ex; PADDING-LEFT: =
+0.25em; PADDING-RIGHT: 0.25em; BORDER-RIGHT: #ccc 1px solid; =
+PADDING-TOP: 0.5ex
+}
+SPAN.gui-object {
+	FONT-WEIGHT: bold
+}
+SPAN.gui-object-action {
+	FONT-WEIGHT: bold
+}
+SPAN.gui-object-title {
+=09
+}
+P.horizontal-rule {
+	BORDER-BOTTOM: #cc9 1px solid; BORDER-LEFT: #cc9 0px solid; WIDTH: =
+100%; MARGIN-BOTTOM: 4ex; BORDER-TOP: #cc9 0px solid; BORDER-RIGHT: #cc9 =
+0px solid
+}
+DIV.zz-skip-header {
+	DISPLAY: none
+}
+TD.zz-nav-header-cell {
+	TEXT-ALIGN: left; MARGIN-TOP: 0ex; WIDTH: 99%; BACKGROUND: inherit; =
+COLOR: black; FONT-SIZE: 95%; VERTICAL-ALIGN: top; FONT-WEIGHT: normal; =
+PADDING-TOP: 0ex
+}
+A.zz-nav-header-link {
+	FONT-SIZE: 95%
+}
+TD.zz-nav-button-cell {
+	TEXT-ALIGN: center; MARGIN-TOP: 0ex; PADDING-LEFT: 4px; WIDTH: 1%; =
+PADDING-RIGHT: 4px; WHITE-SPACE: nowrap; VERTICAL-ALIGN: top; =
+PADDING-TOP: 0ex
+}
+A.zz-nav-button-link {
+	FONT-SIZE: 90%
+}
+DIV.zz-nav-footer-menu {
+	TEXT-ALIGN: center; MARGIN-TOP: 2ex; WIDTH: 100%; MARGIN-BOTTOM: 4ex
+}
+P.zz-legal-notice {
+	FONT-SIZE: 85%
+}
+A.zz-legal-notice-link {
+	FONT-SIZE: 85%
+}
+.bold {
+	FONT-WEIGHT: bold
+}
+.codeinlinebold {
+	FONT-WEIGHT: bold
+}
+.syntaxinlinebold {
+	FONT-WEIGHT: bold
+}
+.term {
+	FONT-WEIGHT: bold
+}
+.glossterm {
+	FONT-WEIGHT: bold
+}
+.seghead {
+	FONT-WEIGHT: bold
+}
+.glossaryterm {
+	FONT-WEIGHT: bold
+}
+.keyword {
+	FONT-WEIGHT: bold
+}
+.msg {
+	FONT-WEIGHT: bold
+}
+.msgexplankw {
+	FONT-WEIGHT: bold
+}
+.msgactionkw {
+	FONT-WEIGHT: bold
+}
+.notep1 {
+	FONT-WEIGHT: bold
+}
+.xreftitlebold {
+	FONT-WEIGHT: bold
+}
+.italic {
+	FONT-STYLE: italic
+}
+.codeinlineitalic {
+	FONT-STYLE: italic
+}
+.syntaxinlineitalic {
+	FONT-STYLE: italic
+}
+.variable {
+	FONT-STYLE: italic
+}
+.xreftitleitalic {
+	FONT-STYLE: italic
+}
+.bolditalic {
+	FONT-STYLE: italic; FONT-WEIGHT: bold
+}
+.codeinlineboldital {
+	FONT-STYLE: italic; FONT-WEIGHT: bold
+}
+.syntaxinlineboldital {
+	FONT-STYLE: italic; FONT-WEIGHT: bold
+}
+.titleinfigure {
+	FONT-STYLE: italic; FONT-WEIGHT: bold
+}
+.titleinexample {
+	FONT-STYLE: italic; FONT-WEIGHT: bold
+}
+.titleintable {
+	FONT-STYLE: italic; FONT-WEIGHT: bold
+}
+.titleinequation {
+	FONT-STYLE: italic; FONT-WEIGHT: bold
+}
+.xreftitleboldital {
+	FONT-STYLE: italic; FONT-WEIGHT: bold
+}
+.itemizedlisttitle {
+	FONT-WEIGHT: bold
+}
+.orderedlisttitle {
+	FONT-WEIGHT: bold
+}
+.segmentedlisttitle {
+	FONT-WEIGHT: bold
+}
+.variablelisttitle {
+	FONT-WEIGHT: bold
+}
+.bridgehead {
+	FONT-WEIGHT: bold
+}
+.titleinrefsubsect {
+	FONT-WEIGHT: bold
+}
+.subhead1 {
+	DISPLAY: block; FONT-SIZE: 130%; FONT-WEIGHT: bold
+}
+.subhead2 {
+	DISPLAY: block; FONT-SIZE: 110%; FONT-WEIGHT: bold
+}
+.subhead3 {
+	DISPLAY: block; FONT-WEIGHT: bold
+}
+.underline {
+	TEXT-DECORATION: underline
+}
+.superscript {
+	VERTICAL-ALIGN: super
+}
+.subscript {
+	VERTICAL-ALIGN: sub
+}
+.listofeft {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-TOP: =
+medium none; BORDER-RIGHT: medium none
+}
+.betadraft {
+	BACKGROUND: inherit; COLOR: #f00
+}
+.alphabetanotice {
+	BACKGROUND: inherit; COLOR: #f00
+}
+.revenuerecognitionnotice {
+	BACKGROUND: inherit; COLOR: #f00
+}
+.betadraftsubtitle {
+	TEXT-ALIGN: center; BACKGROUND: inherit; COLOR: #f00; FONT-WEIGHT: bold
+}
+.comment {
+	BACKGROUND: inherit; COLOR: #080; FONT-WEIGHT: bold
+}
+.copyrightlogo {
+	TEXT-ALIGN: center; FONT-SIZE: 85%
+}
+.tocsubheader {
+	LIST-STYLE-TYPE: none
+}
+TABLE.icons TD {
+	PADDING-LEFT: 6px; PADDING-RIGHT: 6px
+}
+.l1ix DD {
+	MARGIN-TOP: 0ex; MARGIN-BOTTOM: 0ex
+}
+DD DL.l2ix {
+	MARGIN-TOP: 0ex; MARGIN-BOTTOM: 0ex
+}
+DD DL.l3ix {
+	MARGIN-TOP: 0ex; MARGIN-BOTTOM: 0ex
+}
+DIV.infoboxnote {
+	BORDER-BOTTOM: gray 1pt solid; PADDING-BOTTOM: 0.25em; MARGIN: 4ex 10%; =
+PADDING-LEFT: 0.25em; PADDING-RIGHT: 0.25em; BORDER-TOP: gray 1pt solid; =
+PADDING-TOP: 0.25em
+}
+DIV.infoboxnotewarn {
+	BORDER-BOTTOM: gray 1pt solid; PADDING-BOTTOM: 0.25em; MARGIN: 4ex 10%; =
+PADDING-LEFT: 0.25em; PADDING-RIGHT: 0.25em; BORDER-TOP: gray 1pt solid; =
+PADDING-TOP: 0.25em
+}
+DIV.infoboxnotealso {
+	BORDER-BOTTOM: gray 1pt solid; PADDING-BOTTOM: 0.25em; MARGIN: 4ex 10%; =
+PADDING-LEFT: 0.25em; PADDING-RIGHT: 0.25em; BORDER-TOP: gray 1pt solid; =
+PADDING-TOP: 0.25em
+}
+P.notep1 {
+	MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px
+}
+.tahiti-highlight-example {
+	BACKGROUND: #ff9; TEXT-DECORATION: inherit
+}
+.tahiti-highlight-search {
+	BACKGROUND: #9cf; TEXT-DECORATION: inherit
+}
+.tahiti-sidebar-heading {
+	PADDING-BOTTOM: 0px; MARGIN-BOTTOM: 0px; FONT-SIZE: 110%
+}
+
+@media All   =20
+{
+DD {
+	MARGIN-BOTTOM: 2ex
+}
+DL:first-child {
+	MARGIN-TOP: 2ex
+}
+
+}
+
+@media Print   =20
+{
+BODY {
+	PADDING-BOTTOM: 0px !important; PADDING-LEFT: 0px !important; =
+PADDING-RIGHT: 0px !important; FONT-SIZE: 11pt; PADDING-TOP: 0px =
+!important
+}
+A:link {
+	BACKGROUND: inherit; COLOR: black
+}
+A:visited {
+	BACKGROUND: inherit; COLOR: black
+}
+CODE {
+	FONT-SIZE: 10pt
+}
+PRE {
+	FONT-SIZE: 10pt
+}
+SAMP {
+	FONT-SIZE: 10pt
+}
+TT {
+	FONT-SIZE: 10pt
+}
+#nav {
+	DISPLAY: none !important
+}
+#search_this_book {
+	DISPLAY: none !important
+}
+#comment_form {
+	DISPLAY: none !important
+}
+#comment_announcement {
+	DISPLAY: none !important
+}
+#flipNav {
+	DISPLAY: none !important
+}
+.noprint {
+	DISPLAY: none !important
+}
+BODY#left-nav-present {
+	OVERFLOW: visible !important
+}
+
+}
+
+------=_NextPart_000_0011_01CE007E.6F7BB2A0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://docs.oracle.com/cd/E14072_01/dcommon/js/doccd.js
+
+/*
+	Copyright 2006, 2007 Oracle Corporation.
+	All rights reserved.
+	Author: John Russell
+*/
+
+var arrow_width =3D 18;
+var arrow_height =3D 18;
+var arrow_style =3D 'margin: 0px 0px 0px 0px; padding: 0px; /* position: =
+relative; top: 2px; */';
+var arrow_side_name =3D 'blue_med_dark_side.gif';
+var arrow_down_name =3D 'blue_med_dark_down.gif';
+
+var sidearrow =3D '<img alt=3D"Expand this chapter" width=3D"' + =
+arrow_width + '" height=3D"' + arrow_height + '" style=3D"' + =
+arrow_style + '" src=3D"../../nav/images/' + arrow_side_name + '" />';
+var downarrow =3D '<img alt=3D"Collapse this chapter" width=3D"' + =
+arrow_width + '" height=3D"' + arrow_height + '" style=3D"' + =
+arrow_style + '" src=3D"../../nav/images/' + arrow_down_name + '" />';
+
+var sidearrow_regexp =3D new RegExp("<img.*?" + arrow_side_name + =
+".*?>","i");
+var downarrow_regexp =3D new RegExp("<img.*?" + arrow_down_name + =
+".*?>","i");
+
+var flipOne =3D (function (evt)
+{
+	var id =3D this.id.replace(/^[a-z]*/,"");
+
+	var subheads =3D document.getElementById("list"+id);
+	if (subheads =3D=3D null)
+	{
+		print("Can't find list of subheadings, id list" + id);
+		return false;
+	}
+
+	var discloseControl =3D document.getElementById("disclose"+id);
+	if (discloseControl =3D=3D null)
+	{
+		print("Can't find list of subheadings, id disclose" + id);
+		return false;
+	}
+
+	if (!evt)
+	{
+		evt =3D window.event;
+	}
+
+	var shiftPressed;
+//		var altPressed;
+//		var ctrlPressed;
+
+	if (evt)
+	{
+		shiftPressed =3D evt.shiftKey;
+//			altPressed =3D evt.altKey;
+//			ctrlPressed =3D evt.ctrlKey;
+	}
+
+	if (subheads.style.display =3D=3D "none")
+	{
+		if (shiftPressed)
+		{
+			expand();
+			return false;
+		}
+
+		subheads.style.display =3D "block";
+		discloseControl.innerHTML =3D =
+discloseControl.innerHTML.replace(sidearrow_regexp,downarrow);
+	}
+	else
+	{
+		if (shiftPressed)
+		{
+			collapse();
+			return false;
+		}
+
+		subheads.style.display =3D "none";
+		discloseControl.innerHTML =3D =
+discloseControl.innerHTML.replace(downarrow_regexp,sidearrow);
+	}
+
+// Don't want the href=3D"#" part of the link to trigger any scrolling.
+	return false;
+});
+
+
+function addOnload(theFunc)
+{
+  var previous =3D window.onload;
+  if (typeof window.onload !=3D 'function')
+  {
+    window.onload =3D theFunc;
+  }
+  else
+  {
+    window.onload =3D function()
+	 {
+      previous();
+      theFunc();
+    }
+  }
+}
+
+function find_home_link()
+{
+	var anchors =3D document.getElementsByTagName("a");
+	for (i=3D0; i < anchors.length; i++)
+	{
+		theAnchor =3D anchors[i];
+		if (theAnchor.href)
+		{
+			if (theAnchor.href.match(/homepage$/))
+			{
+				return theAnchor;
+			}
+		}
+	}
+}
+
+addOnload(function()
+{
+	var theAnchor =3D find_home_link();
+	if (theAnchor)
+	{
+		if (self =3D=3D top)
+		{
+			theAnchor.href +=3D "?framed=3D0";
+			theAnchor.target =3D "_top";
+		}
+		else
+		{
+			theAnchor.target =3D "_top";
+		}
+	}
+});
+function set_cookie(value)
+{
+	if (value.length !=3D 16)
+	{
+		alert("Can't set preferences to non-16 length string '" + value + =
+"'");
+		return;
+	}
+
+	var now =3D new Date();
+	var future =3D new Date();
+	var expiry =3D now.getTime();  //Get the milliseconds since Jan 1, 1970
+	expiry +=3D 3600*1000*24*30;  //expires in 1 month(milliseconds)
+	future.setTime(expiry);
+	document.cookie =3D 'ORA_TAHITI_PREFS=3D' + value + '; expires=3D' + =
+future.toGMTString() + '; path=3D/; domain=3D.oracle.com;';
+	document.tahiti_prefs =3D value;
+}
+
+function get_prefs(which)
+{
+	if (! (which >=3D 0))
+	{
+		return "";
+	}
+
+	var prefs;
+
+	if ((prefs =3D document.tahiti_prefs) =3D=3D null)
+	{
+		prefs =3D document.cookie;
+		prefs =3D prefs.replace(/.*; *(ORA_TAHITI_PREFS=3D.*?)(;|$).*/, "$1");
+
+		if (prefs.length =3D=3D 0)
+		{
+			return "";
+		}
+
+		if (!prefs.match(/^ORA_TAHITI_PREFS=3D/))
+		{
+			return "";
+		}
+
+		prefs =3D prefs.replace(/^ORA_TAHITI_PREFS=3D(.*)/, "$1");
+		document.tahiti_prefs =3D prefs;
+	}
+	else
+	{
+	}
+
+	return prefs.charAt(which);
+}
+
+function cookie_exists()
+{
+	var prefs;
+
+	if ((prefs =3D document.tahiti_prefs) =3D=3D null)
+	{
+		prefs =3D document.cookie;
+		prefs =3D prefs.replace(/.*; *(ORA_TAHITI_PREFS=3D.*?)(;|$).*/, "$1");
+
+		if (prefs.length =3D=3D 0)
+		{
+			return false;
+		}
+
+		if (!prefs.match(/^ORA_TAHITI_PREFS=3D/))
+		{
+			return false;
+		}
+	}
+	else
+	{
+		return true;
+	}
+}
+
+function set_prefs(which, value)
+{
+	if (! (which >=3D 0))
+	{
+		return;
+	}
+
+	if (value !=3D 0 && value !=3D 1)
+	{
+		return;
+	}
+
+	var prefs;
+
+	if ((prefs =3D document.tahiti_prefs) =3D=3D null)
+	{
+		if (!cookie_exists())
+		{
+			set_cookie("----------------");
+		}
+
+		prefs =3D document.cookie;
+		prefs =3D prefs.replace(/.*; *(ORA_TAHITI_PREFS=3D.*?)(;|$).*/, "$1");
+
+		if (prefs.length =3D=3D 0)
+		{
+			return;
+		}
+
+		if (!prefs.match(/^ORA_TAHITI_PREFS=3D/))
+		{
+			return;
+		}
+
+		prefs =3D prefs.replace(/^ORA_TAHITI_PREFS=3D(.*)/, "$1");
+		document.tahiti_prefs =3D prefs;
+	}
+	else
+	{
+	}
+
+	var new_prefs =3D prefs.substring(0,which) + value + =
+prefs.substring(which+1,16);
+	set_cookie(new_prefs);
+}
+
+addOnload(function()
+{
+	var converterLevel =3D (function()
+	{
+		var allmeta =3D document.getElementsByTagName("meta");
+		var theLevel;
+
+		for (i=3D0; i < allmeta.length; i++)
+		{
+
+			if (allmeta[i].name =3D=3D "generator")
+			{
+				theLevel =3D allmeta[i].content;
+				return theLevel;
+			}
+		}
+		return null;
+	});
+
+	var findSubheadTag =3D (function()
+	{
+		var potential =3D "ul";
+		var subheads =3D document.getElementsByTagName(potential);
+		if (subheads !=3D null && subheads.length > 0)
+		{
+			return potential;
+		}
+
+		potential =3D "dl";
+		subheads =3D document.getElementsByTagName(potential);
+		if (subheads !=3D null && subheads.length > 0)
+		{
+			return potential;
+		}
+
+		return null;
+	});
+
+	var eligibleToc =3D (function()
+	{
+		var myAddress =3D window.location.href;
+
+		if (!myAddress.match(/\/[a-z]+\.[0-9]+\//))
+		{
+			return false;
+		}
+
+		if (myAddress.match(/\/mix.[0-9]{3}\//))
+		{
+			return false;
+		}
+
+		var head1s =3D document.getElementsByTagName("h1");
+		if (head1s =3D=3D null || head1s.length =3D=3D 0)
+		{
+			return false;
+		}
+
+		var conflict =3D document.getElementById("expandlink");
+		if (conflict)
+		{
+			return false;
+		}
+		conflict =3D document.getElementById("collapselink");
+		if (conflict)
+		{
+			return false;
+		}
+
+		var firstHead1 =3D head1s[0];
+		if (! firstHead1.innerHTML.match(/\bContents\b/))
+		{
+			return false;
+		}
+
+		if (converterLevel() =3D=3D null)
+		{
+			return false;
+		}
+
+		if (findSubheadTag() =3D=3D null)
+		{
+			return false;
+		}
+
+		return true;
+	});
+
+	if (eligibleToc() =3D=3D false)
+	{
+		return;
+	}
+
+	var head1s =3D document.getElementsByTagName("h1");
+	var firstHead1 =3D head1s[0];
+
+	var head2s =3D document.getElementsByTagName("h2");
+
+	var subheadTag =3D findSubheadTag();
+	var subheads =3D document.getElementsByTagName(subheadTag);
+
+	var listCounter =3D 0;
+	var firstLevel =3D {};
+
+	var print =3D (function (what)
+	{
+		alert(what);
+		return;
+
+		var msgArea =3D document.getElementById("message");
+		var msgBackup =3D document.getElementById("footer");
+		if (msgArea !=3D null)
+		{
+			msgArea.innerHTML +=3D what + "<br />";
+		}
+		else if (msgBackup !=3D null)
+		{
+			msgBackup.innerHTML +=3D what + "<br />";
+		}
+	});
+
+	var analyze =3D (function()
+	{
+		var subheadTag =3D findSubheadTag();
+
+		var subheads =3D document.getElementsByTagName(subheadTag);
+		var head2s =3D document.getElementsByTagName("h2");
+		var counter =3D 0;
+		for (i =3D 0; i < subheads.length; i++)
+		{
+			currentList =3D subheads[i];
+			var previousHead =3D currentList.previousSibling;
+			if ((previousHead !=3D null) && (previousHead.nodeName !=3D "H2"))
+			{
+				previousHead =3D previousHead.previousSibling;
+			}
+			else
+			{
+			}
+
+			if (previousHead =3D=3D null)
+			{
+			}
+			else if (previousHead.nodeName !=3D "H2")
+			{
+			}
+			else
+			{
+				var disclosureControl =3D '<a href=3D"#" id=3D"disclose' + counter + =
+'">' + sidearrow + '</a> ';
+
+				firstLevel[counter] =3D previousHead;
+				previousHead.id =3D "head" + counter;
+				previousHead.innerHTML =3D disclosureControl + =
+previousHead.innerHTML;
+
+				var justCreated =3D document.getElementById("disclose" + counter);
+				if (justCreated !=3D null)
+				{
+					justCreated.numericID =3D counter;
+					justCreated.title =3D "Expand or Collapse";
+
+
+					if (justCreated.addEventListener)
+					{
+						justCreated.addEventListener('click',flipOne,false);
+					}
+					else
+					{
+						justCreated.onclick =3D flipOne;
+					}
+				}
+				else
+				{
+				}
+				currentList.id =3D  "list" + counter;
+				counter++;
+			}
+		}
+
+		for (i =3D 0; i < head2s.length; i++)
+		{
+			currentHead =3D head2s[i];
+			if (currentHead.innerHTML.match(/>Part (I|V|X)/))
+			{
+				currentHead.style.textAlign =3D "center";
+				currentHead.style.borderTop =3D "medium solid #039";
+				currentHead.style.marginTop =3D "10px";
+				currentHead.style.paddingTop =3D "10px";
+			}
+			else if (!currentHead.innerHTML.match(/id=3D"disclose/))
+			{
+				currentHead.innerHTML =3D "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + =
+currentHead.innerHTML;
+			}
+			else
+			{
+			}
+		}
+	});
+
+	var expand =3D (function()
+	{
+		var subheads =3D document.getElementsByTagName(findSubheadTag());
+		var head2s =3D document.getElementsByTagName("h2");
+
+		for (i =3D 0; i < subheads.length; i++)
+		{
+			var theList =3D subheads[i];
+			theList.style.display =3D "block";
+			theList.style.marginTop =3D "1px";
+			theList.style.marginBottom =3D "1px";
+		}
+
+		for (i =3D 0; i < head2s.length; i++)
+		{
+			var theHead =3D head2s[i];
+			if (!currentHead.innerHTML.match(/>Part (I|V|X)/))
+			{
+				theHead.style.marginTop =3D "5px";
+			}
+			if (currentHead.innerHTML.match(/>Part (I|V|X)/))
+			{
+				theHead.style.marginBottom =3D "1px";
+			}
+			var discloseControl =3D document.getElementById("disclose"+i);
+			if (discloseControl !=3D null)
+			{
+				discloseControl.innerHTML =3D =
+discloseControl.innerHTML.replace(sidearrow_regexp,downarrow);
+			}
+		}
+	});
+
+	var collapse =3D (function()
+	{
+		var subheads =3D document.getElementsByTagName(findSubheadTag());
+		var head2s =3D document.getElementsByTagName("h2");
+
+		for (i =3D 0; i < subheads.length; i++)
+		{
+			var theList =3D subheads[i];
+			var previousHead =3D theList.previousSibling;
+			if ((previousHead !=3D null) && (previousHead.nodeName !=3D "H2"))
+			{
+				previousHead =3D previousHead.previousSibling;
+			}
+			else
+			{
+			}
+
+			if ((previousHead !=3D null) && (previousHead.nodeName =3D=3D "H2"))
+			{
+				theList.style.display =3D "none";
+				theList.style.paddingLeft =3D "18px";
+			}
+			theList.style.marginTop =3D "1px";
+			theList.style.marginBottom =3D "1px";
+		}
+
+		for (i =3D 0; i < head2s.length; i++)
+		{
+			var theHead =3D head2s[i];
+			if (!currentHead.innerHTML.match(/>Part (I|V|X)/))
+			{
+				theHead.style.marginTop =3D "5px";
+			}
+			theHead.style.marginBottom =3D "1px";
+
+			theHead.style.marginLeft =3D "0px";
+			theHead.style.paddingLeft =3D "0px";
+
+			var discloseControl =3D document.getElementById("disclose"+i);
+			if (discloseControl !=3D null)
+			{
+				discloseControl.innerHTML =3D =
+discloseControl.innerHTML.replace(downarrow_regexp,sidearrow);
+				discloseControl.style.padding =3D "0px 6px";
+				if (discloseControl.addEventListener =3D=3D null)
+				{
+					discloseControl.onclick =3D flipOne;
+				}
+			}
+		}
+
+	});
+
+	analyze();
+	collapse();
+
+	var toolbar =3D document.createElement('div');
+	var toolbarContent =3D document.createTextNode('');
+	var fontsize =3D "120%";
+
+	var button_style =3D '';
+	var expand_all =3D '<img id=3D"expand_all_button" style=3D"' + =
+button_style + '" alt=3D"Expand All" =
+src=3D"../../nav/images/expand_hlight_button.gif" />';
+	var collapse_all =3D '<img id=3D"collapse_all_button" style=3D"' + =
+button_style + '" alt=3D"Collapse All" =
+src=3D"../../nav/images/collapse_hlight_butt.gif" />';
+
+	toolbar.appendChild(toolbarContent);
+	toolbar.innerHTML =3D '<a style=3D"font-size: 120%; border: none; =
+padding: 4px 6px 4px 6px; " href=3D"#" id=3D"expandlink">' + expand_all =
++ '</a><span style=3D"font-size: 120%;"> | </span><a style=3D"font-size: =
+120%; border: none; padding: 4px 6px 4px 6px; " href=3D"#" =
+id=3D"collapselink">' + collapse_all + '</a> (Or click any <span =
+id=3D"expand_collapse_icon">' + sidearrow + '</span> icon to expand that =
+chapter.)';
+
+	firstHead1.parentNode.insertBefore(toolbar, firstHead1.nextSibling);
+
+	var expandLink =3D document.getElementById('expandlink');
+	var collapseLink =3D document.getElementById('collapselink');
+
+	expandLink.onclick =3D expand;
+	collapseLink.onclick =3D collapse;
+
+	var always_link =3D =
+document.getElementById("collapse_preference_expanded");
+	var always_expand;
+	var always_collapse;
+
+	var bumpDown =3D (function(id)
+	{
+		var theItem =3D document.getElementById(id);
+		if (theItem)
+		{
+			try
+			{
+				theItem.style.position =3D "inherit";
+				theItem.style.position =3D "relative";
+				theItem.style.top =3D "4px";
+			}
+			catch (err) {}
+		}
+
+	});
+
+	bumpDown("expand_all_button");
+	bumpDown("collapse_all_button");
+	bumpDown("expand_collapse_icon");
+
+	always_expand =3D (function()
+	{
+		expand();
+		var me =3D document.getElementById("collapse_preference_expanded");
+		if (me)
+		{
+			me.innerHTML =3D "Always collapse all";
+			me.id =3D "collapse_preference_collapsed";
+			if (me.href)
+			{
+				me.href =3D me.href.replace(/_expanded/,"_collapsed");
+			}
+			me.onclick =3D always_collapse;
+		}
+		else
+		{
+		}
+		return true;
+	});
+
+	always_collapse =3D (function()
+	{
+		collapse();
+		var me =3D document.getElementById("collapse_preference_collapsed");
+		if (me)
+		{
+			me.innerHTML =3D "Always expand all";
+			me.id =3D "collapse_preference_expanded";
+			if (me.href)
+			{
+				me.href =3D me.href.replace(/_collapsed/,"_expanded");
+			}
+			me.onclick =3D always_expand;
+		}
+		else
+		{
+		}
+		return true;
+	});
+
+	if (always_link)
+	{
+		always_link.onclick =3D always_expand;
+	}
+	else
+	{
+		always_link =3D =
+document.getElementById("collapse_preference_collapsed");
+		if (always_link)
+		{
+			always_link.onclick =3D always_collapse;
+		}
+	}
+
+});
+
+function showPlatform(what)
+{
+	var platform_name =3D new RegExp(what,"i");
+
+	var head1s =3D document.getElementsByTagName("h1");
+
+	for (i =3D 0; i < head1s.length; i++)
+	{
+		theHead =3D head1s[i];
+		theText =3D theHead.innerHTML;
+
+		if (what =3D=3D null)
+		{
+			theHead.style.display =3D "block";
+			if (theHead.className.match(/libportletheader/))
+			{
+				var para =3D theHead.nextSibling;
+				while (para && ((para.nodeName =3D=3D 'P') || (para.nodeName =3D=3D =
+'#text')))
+				{
+					if (para.nodeName =3D=3D 'P')
+					{
+						para.style.display =3D "block";
+					}
+					para =3D para.nextSibling;
+				}
+			}
+		}
+		else if (theHead.className =3D=3D null)
+		{
+			theHead.style.display =3D "block";
+		}
+		else if (!theHead.className.match(/libportletheader/))
+		{
+			theHead.style.display =3D "block";
+		}
+		else if (theHead.id.match(platform_name))
+		{
+			theHead.style.display =3D "block";
+			var para =3D theHead.nextSibling;
+			while (para && ((para.nodeName =3D=3D 'P') || (para.nodeName =3D=3D =
+'#text')))
+			{
+				if (para.nodeName =3D=3D 'P')
+				{
+					para.style.display =3D "block";
+				}
+				para =3D para.nextSibling;
+			}
+		}
+		else if (!theText.match(/Installation Guides/i))
+		{
+			theHead.style.display =3D "block";
+		}
+		else
+		{
+			theHead.style.display =3D "none";
+
+
+			var para =3D theHead.nextSibling;
+			while (para && ((para.nodeName =3D=3D 'P') || (para.nodeName =3D=3D =
+'#text')))
+			{
+				if (para.nodeName =3D=3D 'P')
+				{
+					para.style.display =3D "none";
+				}
+				para =3D para.nextSibling;
+			}
+		}
+	}
+
+	var tables =3D document.getElementsByTagName("table");
+
+	for (i =3D 0; i < tables.length; i++)
+	{
+		theTable =3D tables[i];
+
+		if (what =3D=3D null)
+		{
+			theTable.style.display =3D "block";
+		}
+		else if (theTable.className =3D=3D null)
+		{
+			theTable.style.display =3D "block";
+		}
+		else if (!theTable.className.match(/libdoclist/))
+		{
+			theTable.style.display =3D "block";
+		}
+		else if (theTable.id.match(platform_name))
+		{
+			theTable.style.display =3D "block";
+		}
+		else if (!theTable.id.match(/install/i))
+		{
+			theTable.style.display =3D "block";
+		}
+		else
+		{
+			theTable.style.display =3D "none";
+		}
+	}
+
+}
+
+addOnload(function()
+{
+	var needs_absolute_position =3D (function()
+	{
+		if (window.XMLHttpRequest)
+		{
+			return false;
+		}
+		return true;
+	});
+
+	var converterLevel =3D (function()
+	{
+		var allmeta =3D document.getElementsByTagName("meta");
+		var theLevel;
+
+		for (i=3D0; i < allmeta.length; i++)
+		{
+
+			if (allmeta[i].name =3D=3D "generator")
+			{
+				theLevel =3D allmeta[i].content;
+				return theLevel;
+			}
+		}
+		return null;
+	});
+
+	var eligibleBookNav =3D (function()
+	{
+		var myAddress =3D window.location.href;
+		try
+		{
+			var myParams =3D window.location.search.substring(1);
+
+			if (myParams.match(/type=3Dpopup/))
+			{
+				return false;
+			}
+		}
+		catch (err)
+		{
+		}
+
+		if (!myAddress.match(/\/[a-z]+\.[0-9]+\//))
+		{
+			return false;
+		}
+
+		if (myAddress.match(/\/mix.[0-9]{3}\//))
+		{
+			return false;
+		}
+
+		if (top !=3D self)
+		{
+			return false;
+		}
+
+		var head1s =3D document.getElementsByTagName("h1");
+		if (head1s =3D=3D null || head1s.length =3D=3D 0)
+		{
+			return false;
+		}
+
+		var conflict =3D document.getElementById("nav");
+		if (conflict)
+		{
+			return false;
+		}
+
+		if (converterLevel() =3D=3D null)
+		{
+			return false;
+		}
+
+		return true;
+	});
+
+	if (eligibleBookNav() =3D=3D false)
+	{
+		return;
+	}
+
+	var rememberLayout =3D (function()
+	{
+		if (document.oldlayout =3D=3D null)
+		{
+			var bodyTags =3D document.getElementsByTagName("body");
+			var htmlTags =3D document.getElementsByTagName("html");
+			var layout =3D {};
+
+			if (bodyTags && htmlTags)
+			{
+				var theBody =3D bodyTags[0];
+				var theHTML =3D htmlTags[0];
+
+				layout.htmlOverflowY =3D theHTML.style.overflowY;
+				layout.bodyOverflowY =3D theBody.style.overflowY;
+
+				layout.bodyPaddingLeft =3D theBody.style.paddingLeft;
+
+				layout.bodyOverflowX =3D theBody.style.overflowX;
+				layout.bodyOverflowY =3D theBody.style.overflowY;
+				layout.bodyHeight =3D theBody.style.height;
+
+				layout.htmlOverflowY =3D theHTML.style.overflowY;
+				layout.htmlHeight =3D theHTML.style.height;
+
+				document.oldlayout =3D layout;
+			}
+		}
+	});
+
+	var restoreLayout =3D (function()
+	{
+		if (document.oldlayout)
+		{
+			var bodyTags =3D document.getElementsByTagName("body");
+			var htmlTags =3D document.getElementsByTagName("html");
+			var layout =3D {};
+
+			if (bodyTags && htmlTags)
+			{
+				var theBody =3D bodyTags[0];
+				var theHTML =3D htmlTags[0];
+				var layout =3D {};
+
+				if (layout =3D document.oldlayout)
+				{
+
+					if (layout.htmlOverflowY !=3D theHTML.style.overflowY)
+					{
+						theHTML.style.overflowY =3D layout.htmlOverflowY;
+					}
+
+					if (layout.bodyOverflowY !=3D theBody.style.overflowY)
+					{
+						theBody.style.overflowY =3D layout.bodyOverflowY;
+					}
+
+					if (layout.bodyPaddingLeft !=3D theBody.style.paddingLeft)
+					{
+						layout.bodyPaddingLeft =3D theBody.style.paddingLeft;
+					}
+
+					if (layout.bodyOverflowX !=3D theBody.style.overflowX)
+					{
+						layout.bodyOverflowX =3D theBody.style.overflowX;
+					}
+
+					if (layout.bodyOverflowY !=3D theBody.style.overflowY)
+					{
+						layout.bodyOverflowY =3D theBody.style.overflowY;
+					}
+
+					if (layout.bodyHeight !=3D theBody.style.height)
+					{
+						layout.bodyHeight =3D theBody.style.height;
+					}
+
+					if (layout.htmlOverflowY !=3D theHTML.style.overflowY)
+					{
+						layout.htmlOverflowY =3D theHTML.style.overflowY;
+					}
+
+					if (layout.htmlHeight !=3D theHTML.style.height)
+					{
+						layout.htmlHeight =3D theHTML.style.height;
+					}
+				}
+			}
+		}
+	});
+
+	var makeNav =3D (function()
+	{
+		var bookTitle =3D (function()
+		{
+			var allmeta =3D document.getElementsByTagName("meta");
+
+			for (i=3D0; i < allmeta.length; i++)
+			{
+				if (allmeta[i].name =3D=3D "doctitle")
+				{
+					return '\
+<h1 id=3D"nav_this_book" style=3D"font-size: 110%; margin-bottom: 0px; =
+padding-bottom: 0px;">This Book</h1>\
+<p style=3D"margin-top: 0px; padding-top: 4px; padding-left: 0.5em;"><a =
+href=3D"toc.htm">' + allmeta[i].content + '</a></p>';
+				}
+			}
+			return ''; // '<h1>This Book</h1><p>Title unknown.</p>';
+		});
+
+		rememberLayout();
+
+
+		var head1s =3D document.getElementsByTagName("div");
+		if (head1s)
+		{
+			var firstHead1 =3D head1s[0];
+			var myAddress =3D window.location.href;
+			var partno =3D myAddress.replace(/.*\/([a-z][0-9]{5})\/.*/, "$1");
+			var navDiv =3D document.createElement('div');
+			var navContent =3D document.createTextNode('');
+			navDiv.appendChild(navContent);
+			navDiv.innerHTML =3D '\
+<div id=3D"flipNav_container" style=3D"margin-top: 20px; clear: both;">\
+</div>\
+<div class=3D"simple_search_form_container" style=3D"padding-bottom: =
+5px; padding-left: 8px; padding-top: 0px;">\
+<div style=3D"margin-top: 6px;">\
+<form class=3D"simple_search_form" style=3D"margin-bottom: 6px;" =
+action=3D"http://www.oracle.com/pls/db112/search" method=3D"get">\
+<input type=3D"hidden" name=3D"remark" value=3D"quick_search" />\
+<span>\
+<input style=3D"margin-bottom: 3px;" type=3D"text" id=3D"s_word" =
+name=3D"word" value=3D"" class=3D"search_field" />\
+</span>\
+<span class=3D"text">\
+<label for=3D"s_word">\
+<span style=3D" display: none; ">Search:</span>\
+</label>\
+<input style=3D"margin-bottom: 3px; margin-left: 4px;" type=3D"submit" =
+value=3D"Search" class=3D"text" />\
+<div>\
+<input type=3D"radio" value=3D"' + partno + '" name=3D"partno" />This =
+book \
+<input type=3D"radio" value=3D"" name=3D"partno" checked=3D"checked" =
+/>Entire library\
+</div>\
+</span>\
+</div>\
+\
+<h1 style=3D"font-size: 110%; margin-bottom: 0px; padding-bottom: =
+0px;">Quick Lookup</h1>\
+<div class=3D"shortcut_links">\
+<a href=3D"http://www.oracle.com/pls/db112/ranked?advanced=3D1" =
+target=3D"_top">Advanced Search</a> &#149; \
+<a href=3D"../../nav/portal_3.htm" target=3D"_top">Master Book List</a> =
+&#149; \
+<a href=3D"../../mix.111/b14387/toc.htm" target=3D"_top">Master =
+Index</a> &#149; \
+<a href=3D"../../mix.111/b14388/toc.htm" target=3D"_top">Master =
+Glossary</a> &#149; \
+<a href=3D"../../server.111/b28278/toc.htm" target=3D"_top">Error =
+Messages</a>\
+</div>\
+</div>\
+<div>\
+</div>\
+\
+<div style=3D"margin-right: 8px;">\
+<h1 style=3D"font-size: 110%; margin-bottom: 0px; padding-bottom: =
+0px;">Main Categories</h1>\
+<ul style=3D"list-style: none; margin-top: 0px; padding-top: 0px; =
+margin-left: 0em; padding-left: 0.5em;">\
+<li><a href=3D"../../nav/portal_11.htm">Installation</a></li>\
+<li><a href=3D"../../nav/portal_1.htm">Getting Started</a></li>\
+<li><a href=3D"../../nav/portal_4.htm">Administration</a></li>\
+<li><a href=3D"../../nav/portal_5.htm">Application Development</a></li>\
+<li><a href=3D"../../nav/portal_16.htm">Grid Computing</a></li>\
+<li><a href=3D"../../nav/portal_14.htm">High Availability</a></li>\
+<li><a href=3D"../../nav/portal_6.htm">Data Warehousing</a></li>\
+<li><a href=3D"../../nav/portal_7.htm">Content Management and =
+Unstructured Data</a></li>\
+<li><a href=3D"../../nav/portal_15.htm">Information =
+Integration</a></li>\
+<li><a href=3D"../../nav/portal_25.htm">Security</a></li>\
+</ul>' +
+bookTitle() +
+'<h1 id=3D"nav_this_page" style=3D"font-size: 110%; margin-bottom: 4px; =
+padding-bottom: 0px;">This Page</h1>\
+<div style=3D"margin-right: 8px; margin-left: 0.5em;">\
+';
+
+
+			var divCounter =3D 0;
+
+			var allHead1s =3D document.getElementsByTagName("h1");
+			if (allHead1s)
+			{
+				var theHead1 =3D allHead1s[0];
+				if (theHead1.id =3D=3D null || theHead1.id.length =3D=3D 0)
+				{
+					theHead1.id =3D "insertedID" + divCounter++;
+				}
+				else
+				{
+				}
+
+				var innerText =3D theHead1.innerHTML.replace(/<.*?>/g,"");
+				navDiv.innerHTML +=3D '<div style=3D"margin-left: 0.5em; =
+margin-right: 8px;"><a href=3D"#' + theHead1.id + '">' + innerText + =
+'</a></div>';
+
+				if (theHead1.className !=3D null && theHead1.className =3D=3D =
+"glossary")
+				{
+					var allParas =3D document.getElementsByTagName("p");
+					if (allParas)
+					{
+						for (i=3D0; i < allParas.length; i++)
+						{
+							var thePara =3D allParas[i];
+							if (thePara.className !=3D null && thePara.className =3D=3D =
+"glossterm")
+							{
+								if (thePara.id =3D=3D null || thePara.id.length =3D=3D 0)
+								{
+									thePara.id =3D "insertedID" + divCounter++;
+								}
+								var innerText =3D thePara.innerHTML.replace(/<.*?>/g,"");
+								navDiv.innerHTML +=3D '<div style=3D"padding-left: 1.5em; =
+padding-right: 8px;"><a href=3D"#' + thePara.id + '">' + innerText + =
+'</a></div>';
+							}
+						}
+					}
+				}
+				else if ((theHead1.className !=3D null && theHead1.className =3D=3D =
+"toc") || theHead1.innerHTML =3D=3D "Contents")
+
+				{
+				}
+				else
+				{
+					var allHead2s =3D document.getElementsByTagName("h2");
+					for (i=3D0; i < allHead2s.length; i++)
+					{
+						var theHead2 =3D allHead2s[i];
+						if (theHead2.id =3D=3D null || theHead2.id.length =3D=3D 0)
+						{
+							theHead2.id =3D "insertedID" + divCounter++;
+						}
+						var innerText =3D theHead2.innerHTML.replace(/<.*?>/g,"");
+						innerText =3D innerText.replace(/&nbsp;/g,"");
+						navDiv.innerHTML +=3D '<div style=3D"padding-right: 8px; =
+padding-left: 1.5em;"><a href=3D"#' + theHead2.id + '">' + innerText + =
+'</a></div>';
+					}
+				}
+			}
+
+			navDiv.innerHTML +=3D '</div></div>';
+
+			firstHead1.parentNode.insertBefore(navDiv, firstHead1.nextSibling);
+			navDiv.style.display =3D "none";
+			navDiv.id =3D "nav";
+			navDiv.style.top =3D "0";
+			navDiv.style.left =3D "0";
+			navDiv.style.width =3D "19.5em";
+
+
+
+			navDiv.style.position =3D "fixed";
+
+			try
+			{
+				navDiv.style.marginLeft =3D "1em;"
+			}
+			catch(err)
+			{
+				navDiv.style.position =3D "absolute";
+			}
+
+			navDiv.style.overflowX =3D "hidden";
+			navDiv.style.overflowY =3D "auto";
+			navDiv.style.padding =3D "0px 0px 0px 0px";
+			navDiv.style.margin =3D "0px 0px 0px 4px";
+			navDiv.style.height =3D "100%";
+			navDiv.style.borderRight =3D "solid 2px #ccc";
+			navDiv.style.zOrder =3D "100";
+			navDiv.style.backgroundColor =3D "white";
+		}
+
+		var toolbar =3D document.getElementById('flipNav_container');
+
+		if (toolbar !=3D null)
+		{
+			toolbar.innerHTML =3D '<a id=3D"flipNavInline" style=3D"float: right; =
+clear: both; margin-top: 4px;" href=3D"#"><img =
+src=3D"../../nav/images/show_nav.gif" border=3D"0" alt=3D"Show =
+Navigation" /></a><br />';
+		}
+		else
+		{
+	//		alert("flipNav_container does not exist");
+		}
+
+	});
+
+	var showNav =3D (function()
+	{
+		var navToggle =3D document.getElementById("flipNav");
+		var navToggleInline =3D document.getElementById("flipNavInline");
+		var bodyTags =3D document.getElementsByTagName("body");
+		var htmlTags =3D document.getElementsByTagName("html");
+		var navDiv =3D document.getElementById("nav");
+		if (bodyTags && htmlTags)
+		{
+			var theBody =3D bodyTags[0];
+			var theHTML =3D htmlTags[0];
+			theBody.id =3D "left-nav-present";
+			theBody.style.paddingLeft =3D "20em";
+
+			try
+			{
+				theHTML.style.overflowY =3D "inherit";
+				theHTML.style.overflowY =3D "auto";
+			}
+			catch (err)
+			{
+				{
+					theBody.style.overflowX =3D "hidden";
+					theBody.style.overflowY =3D "auto";
+					theBody.style.height =3D "100%";
+
+					theHTML.style.overflowY =3D "hidden";
+					theHTML.style.height =3D "100%";
+					if (window.onresize)
+					{
+						window.onresize();
+					}
+				}
+			}
+
+		}
+		else
+		{
+			alert("Couldn't find body element");
+		}
+
+		if (navToggle)
+		{
+			navToggle.onclick =3D navToggle.hideFunction;
+			navToggle.innerHTML =3D navToggle.innerHTML.replace(/Show =
+Navigation/,"Hide Navigation");
+			navToggle.innerHTML =3D =
+navToggle.innerHTML.replace(/show_nav/,"hide_nav");
+			if (navDiv)
+			{
+				navDiv.style.display =3D "block";
+				set_prefs(1,0);
+			}
+		}
+		else
+		{
+			alert("Couldn't find flipNav element");
+		}
+
+		if (navToggleInline)
+		{
+			navToggleInline.onclick =3D navToggleInline.hideFunction;
+			navToggleInline.innerHTML =3D navToggleInline.innerHTML.replace(/Show =
+Navigation/,"Hide Navigation");
+			navToggleInline.innerHTML =3D =
+navToggleInline.innerHTML.replace(/show_nav/,"hide_nav");
+		}
+	});
+
+	var hideNav =3D (function()
+	{
+
+		restoreLayout();
+
+		var navToggle =3D document.getElementById("flipNav");
+		var navToggleInline =3D document.getElementById("flipNavInline");
+		var bodyTags =3D document.getElementsByTagName("body");
+		var htmlTags =3D document.getElementsByTagName("html");
+		var navDiv =3D document.getElementById("nav");
+
+		if (bodyTags)
+		{
+			var theBody =3D bodyTags[0];
+			theBody.id =3D "";
+			theBody.style.paddingLeft =3D "0px";
+		}
+
+		if (navToggle)
+		{
+			navToggle.onclick =3D navToggle.showFunction;
+			navToggle.innerHTML =3D navToggle.innerHTML.replace(/Hide =
+Navigation/,"Show Navigation");
+			navToggle.innerHTML =3D =
+navToggle.innerHTML.replace(/hide_nav/,"show_nav");
+			if (navDiv)
+			{
+				navDiv.style.display =3D "none";
+				set_prefs(1,1);
+			}
+		}
+		if (navToggleInline)
+		{
+			navToggleInline.onclick =3D navToggleInline.showFunction;
+			navToggleInline.innerHTML =3D navToggleInline.innerHTML.replace(/Hide =
+Navigation/,"Show Navigation");
+			navToggleInline.innerHTML =3D =
+navToggleInline.innerHTML.replace(/hide_nav/,"show_nav");
+			if (navDiv)
+			{
+				navDiv.style.display =3D "none";
+				set_prefs(1,1);
+			}
+		}
+	});
+
+	var head1s =3D document.getElementsByTagName("h1");
+	var firstHead1 =3D head1s[0];
+
+	var toolbar =3D document.createElement('div');
+	var toolbarContent =3D document.createTextNode('');
+	toolbar.appendChild(toolbarContent);
+	toolbar.innerHTML =3D '<a id=3D"flipNav" style=3D"float: left; clear: =
+left; margin-top: 4px;" href=3D"#"><img =
+src=3D"../../nav/images/show_nav.gif" border=3D"0" alt=3D"Show =
+Navigation" /></a><br />';
+
+	firstHead1.parentNode.insertBefore(toolbar, firstHead1);
+
+	makeNav();
+
+	var navToggle =3D document.getElementById("flipNav");
+	if (navToggle)
+	{
+		navToggle.onclick =3D showNav;
+		navToggle.showFunction =3D showNav;
+		navToggle.hideFunction =3D hideNav;
+	}
+	else
+	{
+		alert("Can't find flipNav element");
+	}
+
+	var navToggleInline =3D document.getElementById("flipNavInline");
+	if (navToggleInline)
+	{
+		navToggleInline.onclick =3D showNav;
+		navToggleInline.showFunction =3D showNav;
+		navToggleInline.hideFunction =3D hideNav;
+	}
+	else
+	{
+	}
+
+
+	var should_hide_nav =3D get_prefs(1);
+	if (should_hide_nav !=3D "1")
+	{
+		showNav();
+	}
+});
+
+addOnload(function()
+{
+	var myAddress =3D window.location.href;
+	var anchor;
+	var tab;
+
+	if (myAddress.match(/#/))
+	{
+		anchor =3D myAddress.replace(/.*#(.*)/,"$1");
+	}
+
+	if (myAddress.match(/\bselected=3D[0-9]+\b/))
+	{
+		tab =3D myAddress.replace(/.*\bselected=3D([0-9]+)\b.*/,"$1")
+	}
+
+	if (tab =3D=3D 99)
+	{
+		return;
+	}
+
+	var anchors =3D document.getElementsByTagName("a");
+	var theAnchor;
+
+	var progress =3D "";
+	var portal_id =3D new RegExp("\\bselected=3D" + tab + "\\b");
+	var anchor_id =3D new RegExp("#" + anchor + "$");
+
+	for (i=3D0; i < anchors.length; i++)
+	{
+		theAnchor =3D anchors[i];
+		if (theAnchor.className =3D=3D "linkanchor")
+		{
+			progress +=3D "+";
+			if (theAnchor.href.match(portal_id))
+			{
+				if
+				(
+					(
+						(anchor =3D=3D null)
+						&&
+						(theAnchor.href.match(/#/) =3D=3D false)
+					)
+					|| 					theAnchor.href.match(anchor_id)
+				)
+				{
+					var id =3D theAnchor.id;
+					var numeric =3D id.replace(/^a/,"");
+					var theDiv =3D document.getElementById("div" + numeric);
+
+
+					if (id !=3D null)
+					{
+						theDiv =3D document.getElementById("div" + numeric);
+					}
+					else
+					{
+						theDiv =3D theAnchor;
+						alert("Starting at node with ID " + theDiv.id);
+						theDiv =3D theDiv.parentNode;
+						alert("Walking up the DOM to node with ID " + theDiv.id);
+						theDiv =3D theDiv.parentNode;
+						alert("Walking up the DOM to node with ID " + theDiv.id);
+						theDiv.style.backgroundColor =3D "#e6e6ef";
+						alert("Changing color of div with ID " + theDiv.id);
+						theDiv =3D null;
+					}
+
+					if (theDiv !=3D null)
+					{
+						theDiv.style.backgroundColor =3D "#e6e6ef";
+						theDiv =3D theDiv.parentNode;
+						if (theDiv !=3D null)
+						{
+							theDiv =3D theDiv.parentNode;
+							if (theDiv !=3D null)
+							{
+								flipEntry(theDiv.id);
+							}
+							else
+							{
+							}
+						}
+						else
+						{
+						}
+					}
+					else
+					{
+					}
+				}
+			}
+		}
+		else
+		{
+			progress +=3D "-" + theAnchor.className;
+		}
+	}
+
+});
+
+addOnload(function()
+{
+	var bodyTags =3D document.getElementsByTagName("body");
+	var htmlTags =3D document.getElementsByTagName("html");
+	var examine;
+
+	var eligibleScrollbars =3D (function()
+	{
+		var theBody =3D bodyTags[0];
+		var theHTML =3D htmlTags[0];
+
+		if (theBody =3D=3D null)
+		{
+			return false;
+		}
+
+		if (theHTML =3D=3D null)
+		{
+			return false;
+		}
+
+		var needs_absolute_position =3D (function()
+		{
+			if (window.XMLHttpRequest)
+			{
+				return false;
+			}
+			return true;
+		});
+
+		var hcw =3D theHTML.clientWidth;
+		var how =3D theHTML.offsetWidth;
+		var hsw =3D theHTML.scrollWidth;
+
+		var bcw =3D theBody.clientWidth;
+		var bow =3D theBody.offsetWidth;
+		var bsw =3D theBody.scrollWidth;
+
+		if ((bcw !=3D bow) && (bsw !=3D bow) && (bcw =3D=3D bsw))
+		{
+			return true;
+		}
+
+		return false;
+	});
+
+	if (eligibleScrollbars())
+	{
+
+		try
+		{
+			bodyTags[0].style.width =3D (htmlTags[0].offsetWidth - 280) + "px";
+		}
+		catch(err) {}
+
+		htmlTags[0].style.overflowY =3D "hidden";
+
+
+		var resize_handler =3D (function()
+		{
+			var bodyTags =3D document.getElementsByTagName("body");
+			var htmlTags =3D document.getElementsByTagName("html");
+			if (bodyTags && htmlTags)
+			{
+				try
+				{
+					bodyTags[0].style.width =3D (htmlTags[0].offsetWidth - 280) + "px";
+				}
+				catch(err) {}
+			}
+		});
+
+		window.onresize =3D resize_handler;
+	}
+
+});
+
+addOnload(function()
+{
+
+	var eligibleSynch =3D (function()
+	{
+		var vendor =3D navigator.vendor;
+		if (vendor =3D=3D null)
+		{
+			return false;
+		}
+
+		var is_safari =3D vendor.match(/Apple/);
+		if (is_safari)
+		{
+			return false;
+		}
+
+		var myAddress =3D window.location.href;
+
+
+		if (myAddress.match(/\.htm#.*/))
+		{
+			return true;
+		}
+		return false;
+	});
+
+	if (eligibleSynch() =3D=3D true)
+	{
+		var anchor =3D  window.location.href.replace(/.*#/,"");
+		var el =3D document.getElementById(anchor);
+		if (el)
+		{
+			var scroll_position =3D findPosY(el);
+			window.scrollTo(0,scroll_position);
+		}
+//		window.location.href =3D window.location.href;
+	}
+});
+
+addOnload(function()
+{
+	var navDiv =3D document.getElementById("nav");
+	if (navDiv)
+	{
+		navDiv.style.visibility =3D "visible";
+	}
+});
+
+addOnload(function()
+{
+	var eligibleErrorFile =3D (function()
+	{
+		var myAddress =3D window.location.href;
+		if (myAddress.match(/\/mix.[0-9]{3}\//))
+		{
+			return false;
+		}
+		if (myAddress.match(/toc.htm$/))
+		{
+			return false;
+		}
+		if (myAddress.match(/index.htm$/))
+		{
+			return false;
+		}
+		if (myAddress.match(/\/nav\//))
+		{
+			return false;
+		}
+		if (myAddress.match(/\/pls\//))
+		{
+			return false;
+		}
+
+		var allmeta =3D document.getElementsByTagName("meta");
+
+		for (i=3D0; i < allmeta.length; i++)
+		{
+			if (allmeta[i].name =3D=3D "doctitle")
+			{
+				if (allmeta[i].content.match(/Error Messages/))
+				{
+					return false;
+				}
+			}
+		}
+
+		return true;
+	});
+
+	if (eligibleErrorFile() =3D=3D false)
+	{
+		return;
+	}
+
+	var myAddress =3D window.location.href;
+	var mylib =3D =
+myAddress.replace(/.*\/(B19306_01|10\/102|11\/111|B25553_01|cs\/1012|B140=
+99_19|101202fulldoc|B25221_03|101300doc_final|B28196_01|1014im_final)\/.*=
+/, "$1");
+	var library =3D new Array();
+	library["10/102"] =3D {code:"db102", =
+host:"tahiti-stage.us.oracle.com"};
+	library["B19306_01"] =3D {code:"db102", host:"www.oracle.com"};
+	library["11/111"] =3D {code:"db111", =
+host:"tahiti-stage.us.oracle.com"};
+
+	var dad =3D "db112";
+	var host =3D "tahiti-stage.us.oracle.com";
+
+	if (dad =3D=3D null || host =3D=3D null)
+	{
+		alert("No search URL defined for library " + mylib);
+		return;
+	}
+
+	var errors =3D =
+document.body.innerHTML.match(/(ORA|SQL|EXP|IMP|KUP|UDE|UDI|DBV|NID|DGM|L=
+CD|QSM|OCI|RMAN|LRM|LFI|PLS|PLW|AMD|CLSR|CLSS|PROC|PROT|TNS|NNC|NNO|NNL|N=
+PL|NNF|NMP|NCR|NZE|O2F|O2I|O2U|PCB|PCC|AUD|IMG|VID|DRG|LPX|LSX)-\d{3,5}/g=
+);
+	var errorstring;
+
+	if (errors !=3D null)
+	{
+		document.body.innerHTML =3D document.body.innerHTML.replace( =
+/((ORA|SQL|EXP|IMP|KUP|UDE|UDI|DBV|NID|DGM|LCD|QSM|OCI|RMAN|LRM|LFI|PLS|P=
+LW|AMD|CLSR|CLSS|PROC|PROT|TNS|NNC|NNO|NNL|NPL|NNF|NMP|NCR|NZE|O2F|O2I|O2=
+U|PCB|PCC|AUD|IMG|VID|DRG|LPX|LSX)-\d{3,5})/g ,"<a href=3D\"http://" + =
+host + "/pls/" + dad + "/lookup?id=3D$1\">$1</a>");
+	}
+});
+
+function findPosY(obj)
+{
+	var curtop =3D 0;
+	if(obj.offsetParent)
+	while(1)
+	{
+	  curtop +=3D obj.offsetTop;
+	  if(!obj.offsetParent)
+	    break;
+	  obj =3D obj.offsetParent;
+	}
+	else if(obj.y)
+	curtop +=3D obj.y;
+	return curtop;
+}
+
+
+------=_NextPart_000_0011_01CE007E.6F7BB2A0--

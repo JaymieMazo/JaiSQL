@@ -1,0 +1,717 @@
+.chapter {
+	FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0.15in; MARGIN-RIGHT: 0.15in; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif; TEXT-ALIGN: left
+}
+.preface {
+	FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0.15in; MARGIN-RIGHT: 0.15in; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif; TEXT-ALIGN: left
+}
+.appendix {
+	FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0.15in; MARGIN-RIGHT: 0.15in; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif; TEXT-ALIGN: left
+}
+.index {
+	FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0.15in; MARGIN-RIGHT: 0.15in; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif; TEXT-ALIGN: left
+}
+.glossary {
+	FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0.15in; MARGIN-RIGHT: 0.15in; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif; TEXT-ALIGN: left
+}
+.reference {
+	FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0.15in; MARGIN-RIGHT: 0.15in; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif; TEXT-ALIGN: left
+}
+.part {
+	FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0.15in; MARGIN-RIGHT: 0.15in; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif; TEXT-ALIGN: left
+}
+.lot {
+	FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0.15in; MARGIN-RIGHT: 0.15in; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif; TEXT-ALIGN: left
+}
+.book {
+	FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0.15in; MARGIN-RIGHT: 0.15in; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif; TEXT-ALIGN: left
+}
+.bibliography {
+	FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0.15in; MARGIN-RIGHT: 0.15in; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif; TEXT-ALIGN: left
+}
+.epilog {
+	FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0.15in; MARGIN-RIGHT: 0.15in; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif; TEXT-ALIGN: left
+}
+.toc {
+	FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0.15in; MARGIN-RIGHT: 0.15in; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif; TEXT-ALIGN: left
+}
+.chapter .bibliography {
+	MARGIN-LEFT: 0px; MARGIN-RIGHT: 0px
+}
+.appendix .bibliography {
+	MARGIN-LEFT: 0px; MARGIN-RIGHT: 0px
+}
+.section .bibliography {
+	MARGIN-LEFT: 0px; MARGIN-RIGHT: 0px
+}
+.bibliomixed {
+	MARGIN-LEFT: 0.25in; MARGIN-RIGHT: 0px
+}
+.biblioentry {
+	MARGIN-LEFT: 0.25in; MARGIN-RIGHT: 0px
+}
+.preface H1 {
+	MARGIN-TOP: 0px; FONT-WEIGHT: bold; FONT-SIZE: large; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0px; COLOR: #800000; BACKGROUND-COLOR: white
+}
+.part H1 {
+	MARGIN-TOP: 0px; FONT-WEIGHT: bold; FONT-SIZE: large; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0px; COLOR: #800000; BACKGROUND-COLOR: white
+}
+.lot H1 {
+	MARGIN-TOP: 0px; FONT-WEIGHT: bold; FONT-SIZE: large; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0px; COLOR: #800000; BACKGROUND-COLOR: white
+}
+.index H1 {
+	MARGIN-TOP: 0px; FONT-WEIGHT: bold; FONT-SIZE: large; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0px; COLOR: #800000; BACKGROUND-COLOR: white
+}
+.appendix-title {
+	MARGIN-TOP: 0px; FONT-WEIGHT: bold; FONT-SIZE: large; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0px; COLOR: #800000; BACKGROUND-COLOR: white
+}
+.glossary H2 {
+	MARGIN-TOP: 0px; FONT-WEIGHT: bold; FONT-SIZE: large; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0px; COLOR: #800000; BACKGROUND-COLOR: white
+}
+.chapter-title {
+	MARGIN-TOP: 0px; FONT-WEIGHT: bold; FONT-SIZE: large; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0px; COLOR: #800000; BACKGROUND-COLOR: white
+}
+.reference .title {
+	MARGIN-TOP: 0px; FONT-WEIGHT: bold; FONT-SIZE: large; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0px; COLOR: #800000; BACKGROUND-COLOR: white
+}
+.index .title {
+	MARGIN-TOP: 0px; FONT-WEIGHT: bold; FONT-SIZE: large; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0px; COLOR: #800000; BACKGROUND-COLOR: white
+}
+.titlepage .title {
+	MARGIN-TOP: 0px; FONT-WEIGHT: bold; FONT-SIZE: large; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0px; COLOR: #800000; BACKGROUND-COLOR: white
+}
+.bibliography H2 {
+	MARGIN-TOP: 0px; FONT-WEIGHT: bold; FONT-SIZE: large; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0px; COLOR: #800000; BACKGROUND-COLOR: white
+}
+.toc H1 {
+	MARGIN-TOP: 0px; FONT-WEIGHT: bold; FONT-SIZE: large; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0px; COLOR: #800000; BACKGROUND-COLOR: white
+}
+.bookinfo-title {
+	MARGIN-TOP: 0px; FONT-WEIGHT: bold; FONT-SIZE: large; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0px; COLOR: #800000; BACKGROUND-COLOR: white
+}
+.book .title {
+	MARGIN-TOP: 0px; FONT-WEIGHT: bold; FONT-SIZE: large; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0px; COLOR: #800000; BACKGROUND-COLOR: white
+}
+.subtitle {
+	MARGIN-TOP: 0.4em; FONT-WEIGHT: bold; FONT-SIZE: small; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0px; COLOR: #800000; BACKGROUND-COLOR: white
+}
+.first-section-title {
+	MARGIN-TOP: 0em; FONT-WEIGHT: bold; FONT-SIZE: medium; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0em; COLOR: #000080; BACKGROUND-COLOR: white
+}
+.glossary .glossdiv .first-section-title {
+	MARGIN-TOP: 0em; FONT-WEIGHT: bold; FONT-SIZE: medium; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0em; COLOR: #000080; BACKGROUND-COLOR: white
+}
+.section-title {
+	FONT-WEIGHT: bold; FONT-SIZE: medium; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0em; COLOR: #000080; BACKGROUND-COLOR: white
+}
+.glossary .glossdiv .section-title {
+	FONT-WEIGHT: bold; FONT-SIZE: medium; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0em; COLOR: #000080; BACKGROUND-COLOR: white
+}
+.sect2-title {
+	MARGIN-TOP: 1.2em; FONT-WEIGHT: bold; FONT-SIZE: medium; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0em; COLOR: #000080; BACKGROUND-COLOR: white
+}
+.bibliodiv H3 {
+	MARGIN-TOP: 1.2em; FONT-WEIGHT: bold; FONT-SIZE: medium; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0em; COLOR: #000080; BACKGROUND-COLOR: white
+}
+.indexdiv .title {
+	MARGIN-TOP: 1.2em; FONT-WEIGHT: bold; FONT-SIZE: medium; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0em; COLOR: #000080; BACKGROUND-COLOR: white
+}
+.legalnotice-title {
+	MARGIN-TOP: 1.2em; FONT-WEIGHT: bold; FONT-SIZE: medium; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0em; COLOR: #000080; BACKGROUND-COLOR: white
+}
+.chapter .bibliography H2 {
+	MARGIN-TOP: 1.2em; FONT-WEIGHT: bold; FONT-SIZE: medium; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0em; COLOR: #000080; BACKGROUND-COLOR: white
+}
+.sect3-title {
+	MARGIN-TOP: 1.3em; FONT-WEIGHT: bold; FONT-SIZE: medium; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0em; COLOR: #800000; BACKGROUND-COLOR: white
+}
+.authorblurb .title {
+	MARGIN-TOP: 1.3em; FONT-WEIGHT: bold; FONT-SIZE: medium; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0em; COLOR: #800000; BACKGROUND-COLOR: white
+}
+.section .glossdiv .title {
+	MARGIN-TOP: 1.3em; FONT-WEIGHT: bold; FONT-SIZE: medium; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0em; COLOR: #800000; BACKGROUND-COLOR: white
+}
+.section .toc .toc-title H1 {
+	MARGIN-TOP: 1.3em; FONT-WEIGHT: bold; FONT-SIZE: medium; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0em; COLOR: #800000; BACKGROUND-COLOR: white
+}
+.bibliodiv .sect3-title {
+	MARGIN-TOP: 1.3em; FONT-WEIGHT: bold; FONT-SIZE: medium; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0em; COLOR: #800000; BACKGROUND-COLOR: white
+}
+.chapter .bibliodiv H3 {
+	MARGIN-TOP: 1.3em; FONT-WEIGHT: bold; FONT-SIZE: medium; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0em; COLOR: #800000; BACKGROUND-COLOR: white
+}
+.section .bibliography .title {
+	MARGIN-TOP: 1.3em; FONT-WEIGHT: bold; FONT-SIZE: medium; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0em; COLOR: #800000; BACKGROUND-COLOR: white
+}
+.qandaset .title {
+	MARGIN-TOP: 1.3em; FONT-WEIGHT: bold; FONT-SIZE: medium; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0em; COLOR: #800000; BACKGROUND-COLOR: white
+}
+.slide {
+	BORDER-TOP: #000080 solid; MARGIN-TOP: 1.2em
+}
+.slide-title {
+	MARGIN-TOP: 0em; FONT-WEIGHT: bold; FONT-SIZE: medium; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0em; COLOR: #000080; BACKGROUND-COLOR: white
+}
+.section .slide .slide-title {
+	MARGIN-TOP: 0em; FONT-WEIGHT: bold; FONT-SIZE: medium; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0em; COLOR: #800000; BACKGROUND-COLOR: white
+}
+.bibliography .bibliomixed .title {
+	FONT-WEIGHT: normal; FONT-SIZE: x-small; BACKGROUND-IMAGE: none; COLOR: black; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif; BACKGROUND-COLOR: white
+}
+.bibliography .biblioentry .title {
+	FONT-WEIGHT: normal; FONT-SIZE: x-small; BACKGROUND-IMAGE: none; COLOR: black; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif; BACKGROUND-COLOR: white
+}
+.dedication-title {
+	MARGIN-TOP: 1.3em; FONT-WEIGHT: bold; FONT-SIZE: x-small; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0em; COLOR: black; BACKGROUND-COLOR: white
+}
+.sect4-title {
+	MARGIN-TOP: 0.9em; FONT-WEIGHT: bold; FONT-SIZE: small; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0em; COLOR: #010100; BACKGROUND-COLOR: white
+}
+.glossdiv .title {
+	MARGIN-TOP: 0.9em; FONT-WEIGHT: bold; FONT-SIZE: small; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0em; COLOR: #010100; BACKGROUND-COLOR: white
+}
+.qandadiv .title {
+	MARGIN-TOP: 0.9em; FONT-WEIGHT: bold; FONT-SIZE: small; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0em; COLOR: #010100; BACKGROUND-COLOR: white
+}
+.sect5-title {
+	MARGIN-TOP: 0.9em; FONT-WEIGHT: bold; FONT-SIZE: x-small; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0em; COLOR: #000080; BACKGROUND-COLOR: white
+}
+.sect6-title {
+	MARGIN-TOP: 0.9em; FONT-WEIGHT: bold; FONT-SIZE: x-small; MARGIN-BOTTOM: 0em
+}
+.blockquote .title {
+	MARGIN-TOP: 0.9em; FONT-WEIGHT: bold; FONT-SIZE: x-small; MARGIN-BOTTOM: 0em
+}
+.sect7-title {
+	MARGIN-TOP: 0.4em; FONT-WEIGHT: bold; FONT-SIZE: x-small; MARGIN-BOTTOM: 0em
+}
+.section .toc {
+	MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0px
+}
+.refentry .title {
+	MARGIN-TOP: 0.8em; FONT-WEIGHT: bold; FONT-SIZE: x-small; MARGIN-BOTTOM: 0em; COLOR: #000080; BACKGROUND-COLOR: white
+}
+.refentry .title .name {
+	FONT-SIZE: medium; BACKGROUND-IMAGE: none; COLOR: #000080; BACKGROUND-COLOR: white
+}
+.chapter-titlelabel {
+	FONT-WEIGHT: bold; BACKGROUND-IMAGE: none; COLOR: black; BACKGROUND-COLOR: white
+}
+.partintro {
+	MARGIN-TOP: 1.2em
+}
+.partintro-title {
+	MARGIN-TOP: 1.2em
+}
+.lot-title {
+	FONT-WEIGHT: bold; FONT-SIZE: medium; BACKGROUND-IMAGE: none; COLOR: #000080; BACKGROUND-COLOR: white
+}
+.partintro-title {
+	FONT-WEIGHT: bold; FONT-SIZE: medium; BACKGROUND-IMAGE: none; COLOR: #000080; BACKGROUND-COLOR: white
+}
+.lotentry {
+	MARGIN-TOP: 0.4em; FONT-SIZE: x-small
+}
+.lot-body {
+	MARGIN-LEFT: 0.25in
+}
+.admon-body .first-listitem {
+	MARGIN-TOP: 0px
+}
+LI {
+	MARGIN-TOP: 0.9em
+}
+OL .first-para {
+	MARGIN-TOP: 0em
+}
+UL .first-para {
+	MARGIN-TOP: 0em
+}
+.li .first-para {
+	MARGIN-TOP: 0em
+}
+LI .qandaset {
+	MARGIN-TOP: 0.9em
+}
+.para {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif
+}
+.last-para {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif
+}
+.first-para {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif
+}
+.lotentry {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif
+}
+.definition {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif
+}
+.para {
+	MARGIN-TOP: 0.9em; MARGIN-BOTTOM: 0px
+}
+.last-para {
+	MARGIN-TOP: 0.9em; MARGIN-BOTTOM: 0px
+}
+.first-para {
+	MARGIN-TOP: 0.9em; MARGIN-BOTTOM: 0px
+}
+.lotentry {
+	MARGIN-TOP: 0.9em; MARGIN-BOTTOM: 0px
+}
+.varlistentry .first-para {
+	MARGIN-TOP: 0.9em; MARGIN-BOTTOM: 0px
+}
+.definition {
+	MARGIN-TOP: 0.9em; MARGIN-BOTTOM: 0px
+}
+.section .bibliography {
+	MARGIN-TOP: 0.9em; MARGIN-BOTTOM: 0px
+}
+.author {
+	MARGIN-TOP: 0.3em; FONT-WEIGHT: normal; FONT-SIZE: x-small; MARGIN-BOTTOM: 0.3em; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif
+}
+.authorgroup {
+	MARGIN-TOP: 0.3em; FONT-WEIGHT: normal; FONT-SIZE: x-small; MARGIN-BOTTOM: 0.3em; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif
+}
+.componentauthors {
+	MARGIN-TOP: 1.25em; FONT-WEIGHT: bold
+}
+.titlepage .author {
+	FONT-WEIGHT: bold
+}
+.bookinfo .author {
+	FONT-WEIGHT: bold
+}
+.indented-para {
+	MARGIN-TOP: 0.9em; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0.25in
+}
+.right {
+	MARGIN-TOP: 0.9em; MARGIN-BOTTOM: 0px; TEXT-ALIGN: right
+}
+.centered-para {
+	MARGIN-TOP: 0.9em; MARGIN-BOTTOM: 0px; TEXT-ALIGN: center
+}
+.admon-flow {
+	MARGIN-TOP: 0.9em
+}
+.note {
+	MARGIN-TOP: 0.9em; FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0.25in; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif
+}
+.caution {
+	MARGIN-TOP: 0.9em; FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0.25in; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif
+}
+.warning {
+	MARGIN-TOP: 0.9em; FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0.25in; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif
+}
+.tip {
+	MARGIN-TOP: 0.9em; FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0.25in; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif
+}
+.admon-body {
+	MARGIN-LEFT: 0.25in
+}
+.admon-body .first-para {
+	MARGIN-TOP: 0px; FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; MARGIN-RIGHT: 0px; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif
+}
+.admon-body .para {
+	MARGIN-TOP: 0.9em; FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; MARGIN-RIGHT: 0px; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif
+}
+.admon-body .last-para {
+	MARGIN-TOP: 0.9em; FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; MARGIN-RIGHT: 0px; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif
+}
+.note UL {
+	MARGIN-TOP: 0px
+}
+.caution UL {
+	MARGIN-TOP: 0px
+}
+.warning UL {
+	MARGIN-TOP: 0px
+}
+.tip UL {
+	MARGIN-TOP: 0px
+}
+.admon-flow-title {
+	FONT-WEIGHT: bold; COLOR: blue
+}
+.admon-title {
+	MARGIN-TOP: 0px; FONT-WEIGHT: bold; FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0.25in; COLOR: #000080; FONT-FAMILY: Arial, Arial, Helvetica, sans-serif
+}
+.warning .admon-title {
+	COLOR: #800000
+}
+.caution .admon-title {
+	COLOR: #800000
+}
+.tip-row {
+	MARGIN-BOTTOM: 0px
+}
+.admon-body {
+	MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px
+}
+.figure {
+	MARGIN-TOP: 2em; MARGIN-BOTTOM: 1em; MARGIN-LEFT: 0.25in
+}
+.informalfigure {
+	MARGIN-TOP: 2em; MARGIN-BOTTOM: 1em; MARGIN-LEFT: 0.25in
+}
+.figurespace {
+	WIDTH: 2%
+}
+.equation {
+	MARGIN-TOP: 1em; MARGIN-BOTTOM: 1em; MARGIN-LEFT: 0.25in
+}
+.equation-label {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, Arial, Helvetica, sans-serif
+}
+.equation-image {
+	
+}
+.figure-title {
+	MARGIN-TOP: 0.5em; MARGIN-LEFT: 0em; MARGIN-RIGHT: 8em
+}
+.figure-titlelabel {
+	FONT-WEIGHT: bold
+}
+.legalnotice {
+	
+}
+.miscfigure {
+	MARGIN-TOP: 1em; MARGIN-BOTTOM: 1em; MARGIN-LEFT: 0.25in
+}
+LI .miscfigure {
+	MARGIN-LEFT: 0px
+}
+.inheritted-orderedlist {
+	MARGIN-TOP: 0.9em
+}
+.miscfigure .first-para {
+	MARGIN-TOP: 0px
+}
+OL .first-para {
+	MARGIN-TOP: 0px
+}
+UL .first-para {
+	MARGIN-TOP: 0px
+}
+.calloutlistbody .first-para {
+	MARGIN-TOP: 0px
+}
+.inheritted-orderedlist .first-para {
+	MARGIN-TOP: 0px
+}
+.miscfigure-title {
+	MARGIN-TOP: 0.5em; MARGIN-RIGHT: 4em
+}
+.miscfigure-titlelabel {
+	FONT-WEIGHT: bold
+}
+.miscfigure-informalexample {
+	MARGIN-TOP: 0.5em
+}
+.box {
+	BORDER-RIGHT: red solid; BORDER-TOP: red solid; BORDER-LEFT: red solid; BORDER-BOTTOM: red solid
+}
+.revision {
+	BORDER-LEFT: red solid
+}
+.slide {
+	BORDER-TOP: #000080 solid; MARGIN-TOP: 1.2em
+}
+.slide-title {
+	MARGIN-TOP: 0em; FONT-WEIGHT: bold; FONT-SIZE: medium; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0em; COLOR: #000080; BACKGROUND-COLOR: white
+}
+.section .slide .slide-title {
+	MARGIN-TOP: 0em; FONT-WEIGHT: bold; FONT-SIZE: medium; BACKGROUND-IMAGE: none; MARGIN-BOTTOM: 0em; COLOR: #800000; BACKGROUND-COLOR: white
+}
+.BlueLine {
+	BACKGROUND-IMAGE: none; COLOR: #010100; MARGIN-RIGHT: 0px; BACKGROUND-COLOR: #010100
+}
+.BlueLine {
+	WIDTH: 95%
+}
+.sidebar .BlueLine {
+	WIDTH: 90%
+}
+LI .BlueLine {
+	WIDTH: 90%
+}
+.BlankSpace {
+	WIDTH: 10%
+}
+.td .freemediaobject {
+	MARGIN-TOP: 1em; MARGIN-BOTTOM: 1em; MARGIN-LEFT: 1em
+}
+.freemediaobject {
+	MARGIN-TOP: 1em; MARGIN-BOTTOM: 1em; MARGIN-LEFT: 0.5in
+}
+.informalequation {
+	MARGIN-TOP: 1em; MARGIN-BOTTOM: 1em; MARGIN-LEFT: 0.5in
+}
+.example-title {
+	MARGIN-TOP: 0.3em; FONT-WEIGHT: bold; COLOR: #800000
+}
+.example {
+	MARGIN-TOP: 1em
+}
+.table {
+	MARGIN-TOP: 1em; MARGIN-BOTTOM: 1em; WIDTH: 96%
+}
+.table-title {
+	MARGIN-TOP: 0.3em; FONT-WEIGHT: bold; FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0px; COLOR: #800000; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif; TEXT-ALIGN: left
+}
+.informaltable {
+	MARGIN-TOP: 0.9em; WIDTH: 98%
+}
+.formalbody {
+	MARGIN-LEFT: 0px
+}
+.th {
+	FONT-WEIGHT: bold; FONT-SIZE: x-small; BACKGROUND-IMAGE: none; COLOR: #800000; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif; BACKGROUND-COLOR: white
+}
+.td {
+	PADDING-RIGHT: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 0px; FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif
+}
+.table-para {
+	MARGIN: 0.4em 1em 0px 0.3em
+}
+.table-indented-para {
+	MARGIN: 0.4em 0.25em 0px 2em
+}
+.table-centered-para {
+	MARGIN-TOP: 0.4em; MARGIN-BOTTOM: 0px; TEXT-ALIGN: center
+}
+.table-right-para {
+	MARGIN-TOP: 0.4em; MARGIN-BOTTOM: 0px; TEXT-ALIGN: right
+}
+DD {
+	MARGIN-LEFT: 0.75in
+}
+.sidebar {
+	MARGIN-TOP: 1em; MARGIN-BOTTOM: 1em; MARGIN-LEFT: 0.25in
+}
+.sidebar-title {
+	MARGIN-TOP: 0.3em; FONT-WEIGHT: bold; MARGIN-BOTTOM: 0.4em; COLOR: #800000; TEXT-ALIGN: center
+}
+.formalfootnote {
+	BORDER-RIGHT: blue 0px solid; BORDER-TOP: blue thin solid; BORDER-LEFT: blue 0px solid; BORDER-BOTTOM: blue 0px solid
+}
+OL PRE {
+	FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0px; FONT-FAMILY: "Courier New", Courier, mono
+}
+OL XMP {
+	FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0px; FONT-FAMILY: "Courier New", Courier, mono
+}
+PRE {
+	MARGIN-TOP: 0.4em; FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0px; FONT-FAMILY: "Courier New", Courier, mono
+}
+XMP {
+	MARGIN-TOP: 0.4em; FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0px; FONT-FAMILY: "Courier New", Courier, mono
+}
+.literallayout-normal {
+	FONT-SIZE: x-small; MARGIN-BOTTOM: 0px; FONT-FAMILY: Arial, Arial, Helvetica, Sans-serif
+}
+.check-list {
+	LIST-STYLE-IMAGE: url(images/check.gif)
+}
+.regular-list {
+	LIST-STYLE-TYPE: square
+}
+.td .orderedlist {
+	MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px
+}
+.orderedlist {
+	MARGIN-TOP: 0.4em; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0.35in
+}
+OL {
+	MARGIN-TOP: 0.4em; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0.35in
+}
+.qandaentry .orderedlist {
+	MARGIN-TOP: 0.4em; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0.35in
+}
+.qandaentry-answer {
+	MARGIN-TOP: 0.4em
+}
+.orderedlist .itemizedlist {
+	MARGIN-LEFT: 0.25in
+}
+.itemizedlist .itemizedlist {
+	MARGIN-LEFT: 0.25in
+}
+OL UL {
+	MARGIN-LEFT: 0.25in
+}
+UL UL {
+	MARGIN-LEFT: 0.25in
+}
+.characteritemizedlist {
+	MARGIN-LEFT: 0.1in
+}
+.itemizedlist {
+	MARGIN-TOP: 0.9em; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0.2in; LIST-STYLE-TYPE: square
+}
+UL {
+	MARGIN-TOP: 0.9em; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 0.2in; LIST-STYLE-TYPE: square
+}
+.first-listitem {
+	MARGIN-TOP: 0px; MARGIN-LEFT: 0.5em
+}
+.listitem {
+	MARGIN-LEFT: 0.5em
+}
+.itemizedlist .itemizedlist {
+	LIST-STYLE-TYPE: circle
+}
+UL UL {
+	LIST-STYLE-TYPE: circle
+}
+.itemizedlist .itemizedlist .itemizedlist {
+	LIST-STYLE-TYPE: disc
+}
+UL UL UL {
+	LIST-STYLE-TYPE: disc
+}
+DL {
+	MARGIN-TOP: 0.4em; MARGIN-BOTTOM: 0px
+}
+TT {
+	FONT-SIZE: x-small; FONT-FAMILY: "Courier New", Courier, mono
+}
+.calloutlistbody {
+	MARGIN-LEFT: 0.5%
+}
+.hit {
+	COLOR: #ff00ff
+}
+.b24-hit {
+	COLOR: #ff00ff
+}
+.b24-indexhit {
+	COLOR: white; BACKGROUND-COLOR: #336699
+}
+.glossterm {
+	FONT-WEIGHT: bold
+}
+.varlistentry {
+	FONT-SIZE: x-small
+}
+.variablelist .para .term {
+	FONT-WEIGHT: bold
+}
+.glossentry {
+	MARGIN-TOP: 1em
+}
+.variablelist {
+	MARGIN-TOP: 1em
+}
+.glossdef {
+	MARGIN-TOP: 0.3em
+}
+.serif {
+	FONT-FAMILY: timesroman,serif
+}
+.fixed {
+	FONT-FAMILY: "Courier New", Courier, mono
+}
+.symbol {
+	FONT-FAMILY: Symbol, Fantasy
+}
+.extended-unicode {
+	FONT-FAMILY: Arial Unicode MS, Caslon, Lucida Sans Unicode, Arial, Arial, Helvetica, Sans-serif
+}
+.math {
+	FONT-FAMILY: Lucida Sans Unicode, Caslon, Arial, Arial, Helvetica, Sans-serif
+}
+.unicode {
+	FONT-FAMILY: Lucida Sans Unicode, Caslon, Arial, Arial, Helvetica, Sans-serif
+}
+.wingdings {
+	FONT-FAMILY: Wingdings, Fantasy
+}
+.webdings {
+	FONT-FAMILY: Webdings, Fantasy
+}
+.smallcaps {
+	FONT-VARIANT: small-caps
+}
+.emphasis {
+	FONT-STYLE: italic
+}
+.bold {
+	FONT-WEIGHT: bold
+}
+.overline {
+	TEXT-DECORATION: overline
+}
+.simple-list {
+	MARGIN-TOP: 0.4em; MARGIN-BOTTOM: 0em; LIST-STYLE-TYPE: none
+}
+.simplelist {
+	MARGIN-TOP: 0.4em; LIST-STYLE-TYPE: none
+}
+.indexentry {
+	MARGIN-TOP: 0.4em
+}
+.primaryie {
+	MARGIN-LEFT: 0in
+}
+.secondaryie {
+	MARGIN-LEFT: 0.2in
+}
+.tertiaryie {
+	MARGIN-LEFT: 0.4in
+}
+.quaternaryie {
+	MARGIN-LEFT: 0.6in
+}
+.termlink:link {
+	COLOR: black
+}
+.chapterjump:link {
+	COLOR: #008000
+}
+.chapter-titlelabel:link {
+	COLOR: #008000
+}
+.default:link {
+	COLOR: #008000
+}
+.chapterjump:visited {
+	COLOR: #008000
+}
+.chapter-titlelabel:visited {
+	COLOR: #008000
+}
+.default:visited {
+	COLOR: #008000
+}
+.url:link {
+	COLOR: #000080
+}
+.url:visited {
+	COLOR: maroon
+}
+.internaljump:link {
+	COLOR: #008000
+}
+.internaljump:visited {
+	COLOR: #008000
+}
+.default {
+	FONT-SIZE: x-small
+}
+.small {
+	FONT-SIZE: xx-small
+}
+.medium {
+	FONT-SIZE: small
+}
+.large {
+	FONT-SIZE: medium
+}
+.larger {
+	FONT-SIZE: large
+}
+.largest {
+	FONT-SIZE: x-large
+}

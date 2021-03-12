@@ -1,0 +1,6602 @@
+From: <Saved by Windows Internet Explorer 8>
+Subject: Aggregate Functions
+Date: Fri, 1 Feb 2013 13:16:08 +0800
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0000_01CE007E.4C2F9870"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.3350
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0000_01CE007E.4C2F9870
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.georeference.org/doc/aggregate_functions.htm
+
+=EF=BB=BF<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Aggregate Functions</TITLE>
+<META content=3Dtext/css http-equiv=3Dcontent-style-type>
+<META content=3D"text/html; charset=3Dutf-8" http-equiv=3Dcontent-type>
+<META name=3DGENERATOR content=3D"MSHTML 8.00.6001.18702"><LINK =
+rel=3Dstylesheet=20
+type=3Dtext/css =
+href=3D"http://www.georeference.org/doc/manifold_ns.css">
+<SCRIPT language=3DJavaScript type=3Dtext/javascript>
+<!--
+if (navigator.appName !=3D"Netscape")
+{   document.write("<link rel=3D'stylesheet' href=3D'manifold.css'>");}
+//-->
+</SCRIPT>
+
+<SCRIPT language=3DJavaScript type=3Dtext/javascript=20
+src=3D"http://www.georeference.org/doc/ehlpdhtm.js">
+</SCRIPT>
+
+<SCRIPT language=3DJavaScript type=3Dtext/javascript>
+<!--
+function reDo() {
+  if (innerWidth !=3D origWidth || innerHeight !=3D origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) =3D=3D 4) && (navigator.appName =
+=3D=3D "Netscape")) {
+        origWidth =3D innerWidth;
+        origHeight =3D innerHeight;
+        onresize =3D reDo;
+}
+onerror =3D null;=20
+//-->
+</SCRIPT>
+
+<STYLE type=3Dtext/css>DIV.WebHelpPopupMenu {
+	Z-INDEX: 4; POSITION: absolute; VISIBILITY: hidden; TOP: 0px; LEFT: 0px
+}
+</STYLE>
+
+<SCRIPT language=3Djavascript1.2 type=3Dtext/javascript=20
+src=3D"http://www.georeference.org/doc/whmsg.js">
+</SCRIPT>
+
+<SCRIPT language=3Djavascript type=3Dtext/javascript=20
+src=3D"http://www.georeference.org/doc/whver.js">
+</SCRIPT>
+
+<SCRIPT language=3Djavascript1.2 type=3Dtext/javascript=20
+src=3D"http://www.georeference.org/doc/whproxy.js">
+</SCRIPT>
+
+<SCRIPT language=3Djavascript1.2 type=3Dtext/javascript=20
+src=3D"http://www.georeference.org/doc/whutils.js">
+</SCRIPT>
+
+<SCRIPT language=3Djavascript1.2 type=3Dtext/javascript=20
+src=3D"http://www.georeference.org/doc/whtopic.js">
+</SCRIPT>
+</HEAD>
+<BODY>
+<SCRIPT language=3Djavascript1.2 type=3Dtext/javascript>
+<!--
+if (window.gbWhTopic)
+{
+        if (window.addTocInfo)
+        {
+        addTocInfo("SQL Reference Guide\nAggregate Functions");
+addAvenueInfo("MAIN","expressions.htm","alter_table_statement.htm");
+addButton("show",BTN_TEXT,"Show","","","","",0,0,"","","");
+
+        }
+        if (window.writeBtnStyle)
+                writeBtnStyle();
+
+        if (window.writeIntopicBar)
+                writeIntopicBar(1);
+
+        if (window.setRelStartPage)
+        {
+        setRelStartPage("manifold.htm");
+
+                autoSync(0);
+                sendSyncInfo();
+                sendAveInfoOut();
+        }
+}
+else
+        if (window.gbIE4)
+                document.location.reload();
+//-->
+</SCRIPT>
+
+<H1>Aggregate Functions</H1>
+<P>An aggregate function is a function that calculates the total value =
+of a=20
+group of values. Aggregate functions are commonly used with the GROUP BY =
+clause,=20
+and with the TRANSFORM statement.</P>
+<P style=3D"MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</P>
+<P>The following table lists available aggregate functions:</P>
+<P style=3D"MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</P>
+<TABLE cellSpacing=3D0 cellPadding=3D1 width=3D432>
+  <TBODY>
+  <TR vAlign=3Dtop>
+    <TD width=3D"33.33%">
+      <P style=3D"TEXT-ALIGN: right; MARGIN-BOTTOM: 6pt"><FONT=20
+      style=3D"FONT-WEIGHT: bold">Function</FONT></P></TD>
+    <TD width=3D"66.67%">
+      <P style=3D"MARGIN-BOTTOM: 6pt"><FONT=20
+      style=3D"FONT-WEIGHT: bold">Comments</FONT></P></TD></TR>
+  <TR vAlign=3Dtop>
+    <TD width=3D"33.33%">
+      <P style=3D"TEXT-ALIGN: right; MARGIN-BOTTOM: 6pt"><FONT=20
+      style=3D"FONT-WEIGHT: bold">AllBranches</FONT></P></TD>
+    <TD width=3D"66.67%">
+      <P style=3D"MARGIN-BOTTOM: 6pt">Combines all branches of geometric =
+objects=20
+      into a single object. See the <A=20
+      =
+href=3D"http://www.georeference.org/doc/spatial_extensions.htm"><FONT=20
+      style=3D"FONT-WEIGHT: bold">Spatial Extensions</FONT></A> =
+topic.</P></TD></TR>
+  <TR vAlign=3Dtop>
+    <TD width=3D"33.33%">
+      <P style=3D"TEXT-ALIGN: right; MARGIN-BOTTOM: 6pt"><FONT=20
+      style=3D"FONT-WEIGHT: bold">AllCoords</FONT></P></TD>
+    <TD width=3D"66.67%">
+      <P style=3D"MARGIN-BOTTOM: 6pt">Combines all coordinates of =
+geometric=20
+      objects into a single object. See the <A=20
+      =
+href=3D"http://www.georeference.org/doc/spatial_extensions.htm"><FONT=20
+      style=3D"FONT-WEIGHT: bold">Spatial Extensions</FONT></A> =
+topic.</P></TD></TR>
+  <TR vAlign=3Dtop>
+    <TD width=3D"33.33%">
+      <P style=3D"TEXT-ALIGN: right; MARGIN-BOTTOM: 6pt"><FONT=20
+      style=3D"FONT-WEIGHT: bold">Avg</FONT></P></TD>
+    <TD width=3D"66.67%">
+      <P style=3D"MARGIN-BOTTOM: 6pt">Calculates the arithmetic mean of =
+a set of=20
+      numeric values.</P></TD></TR>
+  <TR vAlign=3Dtop>
+    <TD width=3D"33.33%">
+      <P style=3D"TEXT-ALIGN: right; MARGIN-BOTTOM: 6pt"><FONT=20
+      style=3D"FONT-WEIGHT: bold">Count</FONT></P></TD>
+    <TD width=3D"66.67%">
+      <P style=3D"MARGIN-BOTTOM: 6pt">Calculates the number of values in =
+a set of=20
+      values of any type.</P></TD></TR>
+  <TR vAlign=3Dtop>
+    <TD width=3D"33.33%">
+      <P style=3D"TEXT-ALIGN: right; MARGIN-BOTTOM: 6pt"><FONT=20
+      style=3D"FONT-WEIGHT: bold">First</FONT></P></TD>
+    <TD width=3D"66.67%">
+      <P style=3D"MARGIN-BOTTOM: 6pt">Retrieves the first value in a set =
+of values=20
+      of any type.</P></TD></TR>
+  <TR vAlign=3Dtop>
+    <TD width=3D"33.33%">
+      <P style=3D"TEXT-ALIGN: right; MARGIN-BOTTOM: 6pt"><FONT=20
+      style=3D"FONT-WEIGHT: bold">Last</FONT></P></TD>
+    <TD width=3D"66.67%">
+      <P style=3D"MARGIN-BOTTOM: 6pt">Retrieves the last value in a set =
+of values=20
+      of any type.</P></TD></TR>
+  <TR vAlign=3Dtop>
+    <TD width=3D"33.33%">
+      <P style=3D"TEXT-ALIGN: right; MARGIN-BOTTOM: 6pt"><FONT=20
+      style=3D"FONT-WEIGHT: bold">Max</FONT></P></TD>
+    <TD width=3D"66.67%">
+      <P style=3D"MARGIN-BOTTOM: 6pt">Calculates the maximum value in a =
+set of=20
+      numeric, string, or date values.</P></TD></TR>
+  <TR vAlign=3Dtop>
+    <TD width=3D"33.33%">
+      <P style=3D"TEXT-ALIGN: right; MARGIN-BOTTOM: 6pt"><FONT=20
+      style=3D"FONT-WEIGHT: bold">Min</FONT></P></TD>
+    <TD width=3D"66.67%">
+      <P style=3D"MARGIN-BOTTOM: 6pt">Calculates the minimum value in a =
+set of=20
+      numeric, string, or date values.</P></TD></TR>
+  <TR vAlign=3Dtop>
+    <TD width=3D"33.33%">
+      <P style=3D"TEXT-ALIGN: right; MARGIN-BOTTOM: 6pt"><FONT=20
+      style=3D"FONT-WEIGHT: bold">StDev</FONT></P></TD>
+    <TD width=3D"66.67%">
+      <P style=3D"MARGIN-BOTTOM: 6pt">Calculates the standard deviation =
+of a set=20
+      of numeric values. Requires at least two values.</P></TD></TR>
+  <TR vAlign=3Dtop>
+    <TD width=3D"33.33%">
+      <P style=3D"TEXT-ALIGN: right; MARGIN-BOTTOM: 6pt"><FONT=20
+      style=3D"FONT-WEIGHT: bold">StDevP</FONT></P></TD>
+    <TD width=3D"66.67%">
+      <P style=3D"MARGIN-BOTTOM: 6pt">Calculates the unadjusted standard =
+deviation=20
+      of a set of numeric values.</P></TD></TR>
+  <TR vAlign=3Dtop>
+    <TD width=3D"33.33%">
+      <P style=3D"TEXT-ALIGN: right; MARGIN-BOTTOM: 6pt"><FONT=20
+      style=3D"FONT-WEIGHT: bold">Sum</FONT></P></TD>
+    <TD width=3D"66.67%">
+      <P style=3D"MARGIN-BOTTOM: 6pt">Calculates the sum of a set of =
+numeric=20
+      values.</P></TD></TR>
+  <TR vAlign=3Dtop>
+    <TD width=3D"33.33%">
+      <P style=3D"TEXT-ALIGN: right; MARGIN-BOTTOM: 6pt"><FONT=20
+      style=3D"FONT-WEIGHT: bold">UnionAll</FONT></P></TD>
+    <TD width=3D"66.67%">
+      <P style=3D"MARGIN-BOTTOM: 6pt">Unions all areas into a single =
+area. See the=20
+      <A =
+href=3D"http://www.georeference.org/doc/spatial_extensions.htm"><FONT=20
+      style=3D"FONT-WEIGHT: bold">Spatial Extensions</FONT></A> =
+topic.</P></TD></TR>
+  <TR vAlign=3Dtop>
+    <TD width=3D"33.33%">
+      <P style=3D"TEXT-ALIGN: right; MARGIN-BOTTOM: 6pt"><FONT=20
+      style=3D"FONT-WEIGHT: bold">Var</FONT></P></TD>
+    <TD width=3D"66.67%">
+      <P style=3D"MARGIN-BOTTOM: 6pt">Calculates the variation in a set =
+of numeric=20
+      values. Requires at least two values.</P></TD></TR>
+  <TR vAlign=3Dtop>
+    <TD width=3D"33.33%">
+      <P style=3D"TEXT-ALIGN: right; MARGIN-BOTTOM: 6pt"><FONT=20
+      style=3D"FONT-WEIGHT: bold">VarP</FONT></P></TD>
+    <TD width=3D"66.67%">
+      <P style=3D"MARGIN-BOTTOM: 6pt">Calculates the unadjusted =
+variation in a set=20
+      of numeric values.</P></TD></TR></TBODY></TABLE>
+<P style=3D"MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</P>
+<P style=3D"MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</P>
+<P>All aggregate functions ignore NULL values. If the set of values is =
+empty,=20
+the Count function returns 0, and all other aggregate functions return =
+NULL.</P>
+<P style=3D"MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</P>
+<P><FONT style=3D"COLOR: blue; FONT-WEIGHT: bold">Examples</FONT></P>
+<P style=3D"MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</P>
+<P>This example uses the <FONT style=3D"FONT-WEIGHT: bold">Avg</FONT> =
+aggregate=20
+function to calculate the average freight charges for orders with =
+freight=20
+charges over $100.</P>
+<P style=3D"MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" class=3DCode>&nbsp;</P>
+<P class=3DCode>SELECT Avg([Freight]) AS [Average Freight] FROM [Orders] =
+WHERE=20
+[Freight] &gt; 100;</P>
+<P style=3D"MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</P>
+<P>This example uses the <FONT style=3D"FONT-WEIGHT: bold">Sum</FONT>, =
+<FONT=20
+style=3D"FONT-WEIGHT: bold">Avg</FONT>, and <FONT=20
+style=3D"FONT-WEIGHT: bold">StDev</FONT> aggregate functions to =
+calculate the=20
+total number of units, the average number of units, and the standard =
+deviation=20
+of the number of units ordered for each product:</P>
+<P style=3D"MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</P>
+<P class=3DCode>SELECT [Product Name], Sum([Quantity]) AS [Total =
+Quantity],=20
+Avg([Quantity]) AS [Typical Quantity], StDevP([Quantity]) AS [Standard=20
+Deviation] FROM [Products] INNER JOIN [Order Details] ON [Order=20
+Details].[Product ID] =3D [Products].[Product ID] GROUP BY [Product =
+Name];</P>
+<P style=3D"MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</P>
+<P>This example uses the <FONT style=3D"FONT-WEIGHT: bold">Max</FONT> =
+and <FONT=20
+style=3D"FONT-WEIGHT: bold">Min</FONT> aggregate functions to calculate =
+the=20
+maximum and minimum order adjusted for discount, and the maximum =
+discount made=20
+on each product:</P>
+<P style=3D"MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</P>
+<P class=3DCode>SELECT [Product Name], Min([Order Details].[Unit Price] =
+*=20
+(1-[Discount]) * [Quantity]) AS [Min Value], Max([Order Details].[Unit =
+Price] *=20
+(1-[Discount]) * [Quantity]) AS [Max Value], Max([Discount]) AS [Max =
+Discount]=20
+FROM [Products] INNER JOIN [Order Details] ON [Order Details].[Product =
+ID] =3D=20
+[Products].[Product ID] GROUP BY [Product Name];</P>
+<P style=3D"MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</P>
+<P>This example uses the <FONT style=3D"FONT-WEIGHT: bold">Max</FONT> =
+and <FONT=20
+style=3D"FONT-WEIGHT: bold">Min</FONT> aggregate functions to select the =
+first and=20
+the last order for each product in 1992:</P>
+<P style=3D"MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</P>
+<P class=3DCode>SELECT [Product Name], Min([Order Date]) AS [First =
+Order],=20
+Max([Order Date]) AS [Last Order] FROM ([Orders] INNER JOIN [Order =
+Details] ON=20
+[Order Details].[Order ID] =3D [Orders].[Order ID]) INNER JOIN =
+[Products] ON=20
+[Products].[Product ID] =3D [Order Details].[Product ID] WHERE =
+Year([Order Date])=20
+=3D 1992 GROUP BY [Product Name];</P>
+<SCRIPT language=3Djavascript1.2 type=3Dtext/javascript>
+<!--
+if (window.writeIntopicBar)
+        writeIntopicBar(0);
+//-->
+</SCRIPT>
+</BODY></HTML>
+
+------=_NextPart_000_0000_01CE007E.4C2F9870
+Content-Type: text/css;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.georeference.org/doc/manifold_ns.css
+
+P {
+	TEXT-ALIGN: left; MARGIN: 4pt 6.5pt 1pt 5.75pt; FONT-FAMILY: Arial; =
+FONT-SIZE: 9pt
+}
+H1 {
+	TEXT-ALIGN: left; MARGIN: 6pt 6.5pt 2pt 5.75pt; FONT-FAMILY: Arial; =
+FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+H2 {
+	TEXT-ALIGN: left; MARGIN: 6pt 6.5pt 2pt 5.75pt; FONT-FAMILY: Arial; =
+FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+H3 {
+	TEXT-ALIGN: left; MARGIN: 6pt 6.5pt 2pt 5.75pt; FONT-FAMILY: Arial; =
+FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+H4 {
+	TEXT-ALIGN: left; MARGIN: 4pt 6.5pt 1pt 18pt; FONT-FAMILY: Arial; =
+FONT-SIZE: 12pt
+}
+H5 {
+	TEXT-ALIGN: left; MARGIN: 12pt 6.5pt 3pt 5.75pt; FONT-FAMILY: Arial; =
+FONT-SIZE: 11pt
+}
+H6 {
+	TEXT-ALIGN: left; FONT-STYLE: italic; MARGIN: 12pt 6.5pt 3pt 5.75pt; =
+FONT-FAMILY: Arial; FONT-SIZE: 11pt
+}
+H6.Heading7 {
+	TEXT-ALIGN: left; MARGIN: 12pt 6.5pt 3pt 5.75pt; FONT-FAMILY: Arial; =
+FONT-SIZE: 9pt
+}
+H6.Heading8 {
+	TEXT-ALIGN: left; FONT-STYLE: italic; MARGIN: 12pt 6.5pt 3pt 5.75pt; =
+FONT-FAMILY: Arial; FONT-SIZE: 9pt
+}
+H6.Heading9 {
+	TEXT-ALIGN: left; FONT-STYLE: italic; MARGIN: 12pt 6.5pt 3pt 5.75pt; =
+FONT-FAMILY: Arial; FONT-SIZE: 9pt
+}
+P.footnote_text {
+	TEXT-ALIGN: left; MARGIN: 4pt 6.5pt 1pt 5.75pt; FONT-FAMILY: Arial; =
+FONT-SIZE: 10pt
+}
+P.Topic_Text_Indent {
+	TEXT-ALIGN: left; MARGIN: 4pt 6.5pt 1pt 15.1pt; FONT-FAMILY: Arial; =
+FONT-SIZE: 9pt
+}
+P.Normal_Indent {
+	TEXT-ALIGN: left; MARGIN: 4pt 6.5pt 1pt 36pt; FONT-FAMILY: Arial; =
+FONT-SIZE: 9pt
+}
+P.Tip_Note_Heading {
+	TEXT-ALIGN: left; MARGIN: 6pt 6.5pt 1pt 5.75pt; FONT-FAMILY: Arial; =
+FONT-SIZE: 9pt; FONT-WEIGHT: bold
+}
+P.Tip_Note_Text {
+	TEXT-ALIGN: left; MARGIN: 4pt 6.5pt 1pt 15.1pt; FONT-FAMILY: Arial; =
+FONT-SIZE: 9pt
+}
+P.Tip_Note_Text_Bulleted {
+	TEXT-ALIGN: left; TEXT-INDENT: 0px; MARGIN: 4pt 6.5pt 1pt 15.1pt; =
+FONT-FAMILY: Arial; FONT-SIZE: 9pt
+}
+P.Topic_Text_Bulleted {
+	TEXT-ALIGN: left; TEXT-INDENT: 0px; MARGIN: 4pt 6.5pt 1pt 15.1pt; =
+FONT-FAMILY: Arial; FONT-SIZE: 9pt
+}
+P.Topic_Text_Numbered {
+	TEXT-ALIGN: left; TEXT-INDENT: 0px; MARGIN: 4pt 6.5pt 1pt 15.1pt; =
+FONT-FAMILY: Arial; FONT-SIZE: 9pt
+}
+P.Topic_Text_Onestep {
+	TEXT-ALIGN: left; TEXT-INDENT: 0px; MARGIN: 4pt 6.5pt 1pt 15.1pt; =
+FONT-FAMILY: Arial; FONT-SIZE: 9pt
+}
+P.Balloon_Text {
+	TEXT-ALIGN: left; MARGIN: 4pt 6.5pt 1pt 5.75pt; FONT-FAMILY: Tahoma; =
+FONT-SIZE: 9pt
+}
+P.header {
+	TEXT-ALIGN: left; MARGIN: 4pt 6.5pt 1pt 5.75pt; FONT-FAMILY: Arial; =
+FONT-SIZE: 9pt
+}
+P.footer {
+	TEXT-ALIGN: left; MARGIN: 4pt 6.5pt 1pt 5.75pt; FONT-FAMILY: Arial; =
+FONT-SIZE: 9pt
+}
+P.Block_Text {
+	TEXT-ALIGN: left; MARGIN: 4pt 6.5pt 1pt 5.75pt; FONT-FAMILY: Arial; =
+FONT-SIZE: 9pt
+}
+P.List_Bullet {
+	TEXT-ALIGN: left; TEXT-INDENT: 0px; MARGIN: 4pt 6.5pt 1pt 18pt; =
+FONT-FAMILY: Arial; FONT-SIZE: 9pt
+}
+P.Document_Map {
+	TEXT-ALIGN: left; BACKGROUND-COLOR: navy; MARGIN: 4pt 6.5pt 1pt 5.75pt; =
+FONT-FAMILY: Tahoma; FONT-SIZE: 9pt
+}
+P.Definition_Term {
+	TEXT-ALIGN: left; MARGIN-TOP: 4pt; MARGIN-BOTTOM: 1pt; FONT-SIZE: 12pt
+}
+P.HTML_Preformatted {
+	TEXT-ALIGN: left; MARGIN-TOP: 4pt; FONT-FAMILY: Courier New; =
+MARGIN-BOTTOM: 1pt; FONT-SIZE: 9pt
+}
+UNKNOWN {
+	TEXT-ALIGN: left; MARGIN-TOP: 5pt; MARGIN-BOTTOM: 5pt; COLOR: black; =
+FONT-SIZE: 12pt
+}
+P.Definition_List {
+	TEXT-ALIGN: left; MARGIN-TOP: 4pt; MARGIN-BOTTOM: 1pt; MARGIN-LEFT: =
+18pt; FONT-SIZE: 12pt
+}
+P.Body_Text {
+	TEXT-ALIGN: left; MARGIN: 4pt 6.5pt 6pt 5.75pt; FONT-FAMILY: Arial; =
+FONT-SIZE: 9pt
+}
+P.Tabcell {
+	TEXT-ALIGN: left; MARGIN-TOP: 4pt; FONT-FAMILY: Arial; MARGIN-BOTTOM: =
+1pt; FONT-SIZE: 10pt
+}
+P.definition {
+	TEXT-ALIGN: left; FONT-STYLE: italic; MARGIN-TOP: 6pt; FONT-FAMILY: =
+Arial; MARGIN-BOTTOM: 1pt; FONT-SIZE: 12pt; FONT-WEIGHT: bold
+}
+P.H5 {
+	TEXT-ALIGN: left; MARGIN-TOP: 5pt; MARGIN-BOTTOM: 5pt; FONT-SIZE: 10pt; =
+FONT-WEIGHT: bold
+}
+P.Blockquote {
+	TEXT-ALIGN: left; MARGIN: 5pt 18pt; FONT-SIZE: 12pt
+}
+P.A_Table {
+	TEXT-ALIGN: left; MARGIN-TOP: 4pt; FONT-FAMILY: Arial; MARGIN-BOTTOM: =
+6pt; FONT-SIZE: 9pt
+}
+P.Code {
+	TEXT-ALIGN: left; MARGIN-TOP: 4pt; FONT-FAMILY: Courier New; =
+MARGIN-BOTTOM: 1pt; MARGIN-LEFT: 36pt; FONT-SIZE: 9pt
+}
+P.article {
+	TEXT-ALIGN: left; MARGIN-TOP: 4pt; MARGIN-BOTTOM: 4pt; MARGIN-LEFT: =
+20pt; FONT-SIZE: 9pt
+}
+P.Plain_Text {
+	TEXT-ALIGN: left; MARGIN-TOP: 1pt; FONT-FAMILY: Consolas; =
+MARGIN-BOTTOM: 1pt; FONT-SIZE: 10pt
+}
+
+------=_NextPart_000_0000_01CE007E.4C2F9870
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.georeference.org/doc/ehlpdhtm.js
+
+// Adobe Systems Dynamic HTML JavaScript=20
+// Copyright=A9 1998-2007 Adobe Systems Incorporated and its licensors. =
+All rights reserved.
+// Version=3D4.80
+
+// Warning:Do not modify this file.It is generated by RoboHELP=AE and =
+changes will be overwritten.
+
+//// Segment Begin -- (JavaScript 1.0)
+
+/// Section Begin - General and relative topics(JavaScript 1.0)
+
+//{{HH_SYMBOL_SECTION
+var HH_ChmFilename =3D "";
+var HH_WindowName =3D "";
+var HH_GlossaryFont =3D "";
+var HH_Glossary =3D "";
+var HH_Avenue =3D "";
+var HH_ActiveX =3D false;
+//}}HH_SYMBOL_SECTION
+
+//Begin to support previous generic parameters
+//Get the information about the browser.
+var gstrBsAgent 	=3D navigator.userAgent.toLowerCase();
+var gnBsVer	   		=3D parseInt(navigator.appVersion);
+
+var gbBsOpera		=3D (gstrBsAgent.indexOf('opera') !=3D -1);
+var gbBsKonqueror	=3D (gstrBsAgent.indexOf('konqueror') !=3D -1);
+var gbBsSafari		=3D (gstrBsAgent.indexOf('safari') !=3D -1);
+var gbBsIE  		=3D (gstrBsAgent.indexOf('msie') !=3D -1) && !gbBsOpera && =
+!gbBsKonqueror && !gbBsSafari;
+var gbBsNS  		=3D (gstrBsAgent.indexOf('mozilla') !=3D -1) && =
+((gstrBsAgent.indexOf('spoofer') =3D=3D -1) && =
+(gstrBsAgent.indexOf('compatible') =3D=3D -1)) && !gbBsOpera && =
+!gbBsKonqueror && !gbBsSafari;
+
+var gbBsMac			=3D (gstrBsAgent.indexOf('mac') !=3D -1);
+var gbBsWindows		=3D ((gstrBsAgent.indexOf('win') !=3D -1) || =
+(gstrBsAgent.indexOf('16bit') !=3D -1));
+var gbBsSunOS		=3D (gstrBsAgent.indexOf("sunos") !=3D -1);
+
+var gbBsIE3Before 	=3D ((gbBsIE) && (gnBsVer <=3D 2));
+var gbBsNS3Before 	=3D ((gbBsNS) && (gnBsVer <=3D 3));
+
+var gbBsNS2			=3D ((gbBsNS) && (gnBsVer <=3D 2));
+var gbBsNS3			=3D ((gbBsNS) && (gnBsVer =3D=3D 3));
+var gbBsIE300301	=3D ((gbBsIE) && (gnBsVer =3D=3D 2) && =
+((gstrBsAgent.indexOf("3.00") !=3D -1)||(gstrBsAgent.indexOf("3.0a") =
+!=3D =
+-1)||(gstrBsAgent.indexOf("3.0b")!=3D-1)||(gstrBsAgent.indexOf("3.01")!=3D=
+-1)));
+var gbBsIE302		=3D ((gbBsIE) && (gnBsVer =3D=3D 2) && =
+(gstrBsAgent.indexOf("3.02") !=3D -1));
+
+var gbBsNS4			=3D ((gbBsNS) && (gnBsVer >=3D 4));
+var gbBsNS6			=3D ((gbBsNS) && (gnBsVer >=3D 5));
+var	gbBsNS7			=3D false;
+
+var gbBsIE4			=3D ((gbBsIE) && (gnBsVer >=3D 4));
+var gbBsIE5			=3D false;
+var gbBsIE55		=3D false;
+
+var gbBsOpera6		=3D false;
+var gbBsOpera7		=3D false;
+
+var gbBsKonqueror3	=3D false;
+
+
+
+gbBsIE =3D (navigator.appName.indexOf("Microsoft") !=3D -1) && =
+!gbBsOpera && !gbBsKonqueror && !gbBsSafari;;
+if (gbBsIE)
+{
+	if (parseInt(navigator.appVersion) >=3D 4) {
+		gbBsIE4 =3D true;
+		if (gbBsIE4) {
+			var nPos =3D gstrBsAgent.indexOf("msie");
+			var strIEversion =3D gstrBsAgent.substring(nPos + 5);
+			var nVersion =3D  parseFloat(strIEversion);
+			if (nVersion >=3D 5)
+				gbBsIE5 =3D true;
+			if (nVersion >=3D 5.5)
+				gbBsIE55 =3D true;
+		}
+	}
+}
+if (gbBsNS6)
+{
+	var nPos=3DgstrBsAgent.indexOf("gecko");
+	if(nPos!=3D-1)
+	{
+		var nPos2=3DgstrBsAgent.indexOf("/", nPos);
+		if(nPos2!=3D-1)
+		{
+			var nVersion=3DparseFloat(gstrBsAgent.substring(nPos2+1));
+			if (nVersion>=3D20020823)
+				gbBsNS7=3Dtrue;
+		}
+	}=09
+}
+if (gbBsOpera)
+{
+	var nPos =3D gstrBsAgent.indexOf("opera");
+	if(nPos!=3D-1)
+	{
+		var nVersion =3D parseFloat(gstrBsAgent.substring(nPos+6));
+		if (nVersion >=3D 6)
+		{
+			gbBsOpera6=3Dtrue;
+			if (nVersion >=3D7)
+				gbBsOpera7=3Dtrue;=09
+		}
+	}
+}
+if (gbBsKonqueror)
+{
+	var nPos =3D gstrBsAgent.indexOf("konqueror");
+	if(nPos!=3D-1)
+	{
+		var nVersion =3D parseFloat(gstrBsAgent.substring(nPos+10));
+		if (nVersion >=3D 3)
+		{
+			gbBsKonqueror3=3Dtrue;
+		}
+	}
+}
+
+function insertAdjacentHTML(obj, where, htmlStr)
+{
+	if (gbBsIE || gbBsOpera7)
+	{
+		obj.insertAdjacentHTML(where, htmlStr);
+	}
+	else if (gbBsNS6 || gbBsSafari)
+	{
+		var r =3D obj.ownerDocument.createRange();
+		r.setStartBefore(obj);
+		var	parsedHTML =3D r.createContextualFragment(htmlStr);
+	=09
+		switch (where){
+		case 'beforeBegin':
+			obj.parentNode.insertBefore(parsedHTML,obj);
+			break;
+		case 'afterBegin':
+			obj.insertBefore(parsedHTML,obj.firstChild);
+			break;
+		case 'beforeEnd':
+			obj.appendChild(parsedHTML);
+			break;
+		case 'afterEnd':
+			if (obj.nextSibling){
+			obj.parentNode.insertBefore(parsedHTML,obj.nextSibling);
+			} else {
+			obj.parentNode.appendChild(parsedHTML);
+			}
+			break;
+		}
+	}
+}
+
+// Utilities functions.
+function BsscHasExtJs()
+{
+	if( gbBsIE3Before || gbBsNS3Before)
+		return false;
+	return true;
+}
+
+// Register event handler
+var gBsOnLoads 			=3D new Array();	// An array holds all the onload =
+event handler.
+var gBsOnClicks 		=3D new Array();	// An array holds all the onClick =
+event handler.
+var gBsOnUnLoads 		=3D new Array();	// An array holds all the OnUnLoad =
+event handler.
+var gBsOnMouseOvers 	=3D new Array();	// An array holds all the =
+OnMouseOver event handler.
+var gBsOnMouseOuts 		=3D new Array();	// An array holds all the =
+OnMouseOut event handler.
+
+var gbOrignalOnMouseDown =3D null;
+
+function BsscRegisterOnLoad(funcHandler)
+{
+	var nLength =3D gBsOnLoads.length;
+	gBsOnLoads[nLength] =3D funcHandler;
+}
+
+function BsscRegisterOnClick(funcHandler)
+{
+	var nLength =3D gBsOnClicks.length;
+	gBsOnClicks[nLength] =3D funcHandler;
+}
+
+function BsscRegisterOnUnLoad(funcHandler)
+{
+	var nLength =3D gBsOnUnLoads.length;
+	gBsOnUnLoads[nLength] =3D funcHandler;
+}
+
+function BsscRegisterOnMouseOver(funcHandler)
+{
+	var nLength =3D gBsOnMouseOvers.length;
+	gBsOnMouseOvers[nLength] =3D funcHandler;
+}
+
+function BsscRegisterOnMouseOut(funcHandler)
+{
+	var nLength =3D gBsOnMouseOuts.length;
+	gBsOnMouseOuts[nLength] =3D funcHandler;
+}
+
+function BsGeneralOnLoad()
+{
+	if (!gbBsIE4 && !gbBsNS4)
+		return;
+
+	// Make everything visible in navigator
+	if (gbBsNS4 && !gbBsNS6) {
+		// Make some special effects items visible
+		for (var iLayer =3D 0; iLayer < document.layers.length; iLayer++) {
+			document.layers[iLayer].visibility =3D "show";
+			document.layers[iLayer].left =3D 0;
+		}
+	}
+}
+
+// If resize the netscape browser, need to reload it.
+function BsReDo()
+{
+  if (innerWidth !=3D origWidth || innerHeight !=3D origHeight)
+     location.reload();
+}
+// End of the local functions.
+
+// The following functions are used by the html files.
+function BSSCOnLoad()
+{
+	if( !BsscHasExtJs() )
+		return;
+	for (var nElement =3D gBsOnLoads.length - 1; nElement >=3D 0; =
+nElement--)
+		gBsOnLoads[nElement]();
+}
+
+function BSSCOnClick()
+{
+	if (!BsscHasExtJs()) return;
+	=09
+	for (var nElement =3D gBsOnClicks.length - 1; nElement >=3D 0; =
+nElement--)
+		gBsOnClicks[nElement]();
+}
+
+function BSSCOnUnload()
+{
+	if (!BsscHasExtJs()) return;
+	for (var nElement =3D gBsOnUnLoads.length - 1; nElement >=3D 0; =
+nElement--)
+		gBsOnUnLoads[nElement]();
+}
+
+function BSSCOnMouseOver()
+{
+	if (!BsscHasExtJs()) return;
+	for (var nElement =3D gBsOnMouseOvers.length - 1; nElement >=3D 0; =
+nElement--)
+		gBsOnMouseOvers[nElement]();
+}
+
+function BSSCOnMouseOut()
+{
+	if (!BsscHasExtJs()) return;
+	for (var nElement =3D gBsOnMouseOuts.length - 1; nElement >=3D 0; =
+nElement--)
+	{
+		gBsOnMouseOuts[nElement]();
+	}
+}
+// End of invocation of the event handle functions.
+
+// Add the GereralOnLoad to the onload array.
+if (typeof(BsscRegisterOnLoad) !=3D "undefined")
+{
+	BsscRegisterOnLoad(BsGeneralOnLoad);
+}
+if (gbBsNS4&&!gbBsNS6) {
+	origWidth =3D innerWidth;
+	origHeight =3D innerHeight;
+	onresize =3D BsReDo;
+}
+//End to support previous generic parameters
+
+//Begin to support previous HHActiveX invoking
+function BsHHActivateComponents()
+{
+	if( HH_ActiveX && (HH_ChmFilename !=3D "") && ((self =3D=3D top) || =
+(self =3D=3D top.frames[0])))
+	{
+		var objBody =3D getElementsByTag(document,"BODY")[0];
+		if( typeof(objBody) =3D=3D "object" )
+		{
+			insertAdjacentHTML(objBody, "beforeEnd", '<OBJECT =
+ID=3D"HHComponentActivator" =
+CLASSID=3D"CLSID:399CB6C4-7312-11D2-B4D9-00105A0422DF" width=3D0 =
+height=3D0></OBJECT>');
+			if (HHComponentActivator.object)
+				HHComponentActivator.Activate(HH_ChmFilename, HH_WindowName, =
+HH_GlossaryFont, HH_Glossary, HH_Avenue);
+		}
+	}
+}
+
+function BsHHActivXOnLoad()
+{=09
+	if( gbBsIE4 )
+		BsHHActivateComponents();=20
+}
+
+if( typeof(BsscRegisterOnLoad) !=3D "undefined" )
+{
+	BsscRegisterOnLoad(BsHHActivXOnLoad);
+}
+//End to support previous HHActiveX invoking
+
+//Begin to support previous relative topics
+//If webHelp needs Related Topics DHTMLcode, it's supposed to add it =
+here
+var gbPopupMenuTimeoutExpired =3D false;
+var gbInPopupMenu =3D false;
+var gbPopupMenuTopicList =3D null;
+var gOlddocumentClick =3D null;
+
+/////////////////////////////////////////////////////////////////////////=
+/////////////////
+//
+// Popup Menu code
+//
+/////////////////////////////////////////////////////////////////////////=
+/////////////////
+
+var g_bIsPopupMenuInit =3D false;
+function _WritePopupMenuLayer()
+{
+	if (!g_bIsPopupMenuInit)
+        {
+	  if (gbBsNS4&&!gbBsNS6) {
+//Do not try to write ininle styles for NS!  NS can not handle it and =
+will not stop downloading the html page...
+	   	document.write("<DIV CLASS=3D'WebHelpPopupMenu' =
+ID=3D'PopupMenu'></DIV>");
+	  } else{
+	  document.write("<DIV ID=3D'PopupMenu' STYLE=3D'position:absolute; =
+left:0px; top:0px; z-index:4; visibility:hidden;'></DIV>");
+	  if (!(gbBsNS4&&!gbBsNS6)) {
+		document.write("<STYLE TYPE=3D'text/css'>");
+		if (gbBsMac&&gbBsIE4) {
+			document.write(".PopupOver {font-family:'Arial'; color:white; =
+background:navy; font-size:10pt; =
+font-style:normal;font-weight:normal;text-decoration:none;}");
+			document.write(".PopupNotOver {font-family:'Arial'; color:black; =
+background:#c0c0c0; font-size:10pt; =
+font-style:normal;font-weight:normal;text-decoration:none;}");
+		} else {
+			document.write(".PopupOver {font-family:'Arial'; color:white; =
+background:navy; font-size:8pt; =
+font-style:normal;font-weight:normal;text-decoration:none;}");
+			document.write(".PopupNotOver {font-family:'Arial'; color:black; =
+background:#c0c0c0; font-size:8pt; =
+font-style:normal;font-weight:normal;text-decoration:none;}");
+		}
+		document.write("</STYLE>");
+	   }
+          }
+	  g_bIsPopupMenuInit =3D true;
+	}
+}
+
+//Seek for the bsscright frame=20
+function _SeekFrameByName( cRoot, strName )
+{
+	if( cRoot =3D=3D null )	return null;
+	if( cRoot.frames =3D=3D null )	return null;
+	if( cRoot.frames[strName] !=3D null )	return cRoot.frames[strName];
+	for (var i=3D0; i<cRoot.frames.length; i++)
+	{
+		var cObj =3D null;
+		if (!gbBsNS6)=20
+			cObj =3D _SeekFrameByName( cRoot.frames(i).document, strName );
+		else
+			cObj =3D _SeekFrameByName( cRoot.frames[i], strName );
+		if( cObj !=3D null )		return cObj;
+	};
+	return null;
+}
+function _GetFrameByName( cRoot, strName )
+{
+	if( cRoot =3D=3D null )	return null;
+	var cRet =3D _SeekFrameByName(cRoot, strName);
+	if( cRet !=3D null )	return cRet;
+	if (cRoot.parent !=3D cRoot)
+		return _GetFrameByName( cRoot.parent, strName );
+	else
+		return null;
+}
+
+var gfn_arguments =3D null;
+function _PopupMenu_Invoke(fn_arguments)
+{
+	gfn_arguments =3D fn_arguments;
+	if (gbBsOpera6&&gbBsMac)
+	{
+		var wndOldPopupLinks=3D window.open(document.location.href, =
+"popuplinks");
+		wndOldPopupLinks.close();
+		setTimeout("_PopupMenu_Invoke_2();",100);
+	}
+	else
+	{
+		_PopupMenu_Invoke_2();
+	}
+}
+
+function _PopupMenu_Invoke_2()
+{
+	var fn_arguments =3D gfn_arguments;
+	gfn_arguments =3D null;
+=09
+	// Make sure we have reasonable arguments
+	var argLen =3D fn_arguments.length;
+	if (argLen < 3) {
+		return false;
+	}
+
+	// Check to see if we only have one target
+	var strTarget =3D "";
+	var targetDoc =3D null;
+	if (fn_arguments[1] =3D=3D '') {
+		if (BSSCPopup_IsPopup()) {
+			targetDoc =3D parent;
+			strTarget =3D "TARGET=3D _parent";
+		}
+		else
+			targetDoc =3D window.document;
+	} else {
+		targetDoc =3D _GetFrameByName( parent, fn_arguments[1] );
+
+		strTarget =3D "TARGET=3D'" + fn_arguments[1] + "'";
+	}
+
+	if ((!gbBsIE4 && !gbBsNS4 && !gbBsOpera7 && !gbBsKonqueror3 =
+&&!gbBsSafari) || ((gbBsMac) && (gbBsIE4) && =
+(window.event.srcElement.tagName =3D=3D "AREA"))) {
+=09
+		var argLen 	=3D fn_arguments.length;
+
+		// Create the window that the hyperlinks will go into
+		var nHeight =3D argLen * 15;
+		var nWidth =3D 400;
+		var strParam =3D =
+"titlebar=3Dno,toolbar=3Dno,status=3Dno,location=3Dno,menubar=3Dno,resiza=
+ble=3Dyes,scrollbars=3Dauto";
+		strParam +=3D ",height=3D" + nHeight + ",width=3D200";
+		strParam +=3D ",resizable";
+
+		var wndTemp=3Dnull;
+		// Create a temporary window first to ensure the real popup comes up =
+on top
+		if (!gbBsOpera)
+			wndTemp =3D window.open("", "temp", strParam);
+
+		// Create the real popup window
+		var wndPopupLinks=3Dnull;
+		if (gbBsOpera&&gbBsMac)
+		{
+			wndTemp =3D window.open(document.location.href, "temp", strParam);
+			wndPopupLinks=3D window.open(document.location.href, "popuplinks", =
+strParam);
+		}
+		else
+			wndPopupLinks=3D window.open("", "popuplinks", strParam);
+		wndPopupLinks.document.open("text/html");
+
+		// Close the temporary
+		if (wndTemp)
+			wndTemp.close();
+
+		var sHTML=3D"<html><head></head>";
+		sHTML+=3D"<body onBlur=3D\'self.focus();\'>";
+		var strParaLine =3D "";
+		for (var i =3D 0; i < (argLen - 2) / 2; i++) {
+			strParaLine =3D "";
+			strParaLine +=3D "<a href=3D\"javascript:";
+			if (gbBsIE) {
+				strParaLine +=3D "onBlur=3Dnull; ";
+			}
+			strParaLine +=3D "opener.location=3D\'";
+			strParaLine +=3D fn_arguments[2 * i + 3];
+			strParaLine +=3D "\';close();\"";
+			strParaLine +=3D strTarget;
+
+			strParaLine +=3D ">";
+			strParaLine +=3D fn_arguments[2 * i + 2];
+			strParaLine +=3D "</a>";
+			strParaLine +=3D "<br>";
+			sHTML+=3DstrParaLine;
+		}
+		sHTML+=3D"</body></html>";
+		wndPopupLinks.document.write(sHTML);
+		wndPopupLinks.document.close();
+		window.gbInPopupMenu =3D true;
+		if (!gbBsIE) {
+			wndPopupLinks.focus();
+		}
+		return false;
+	}
+
+	if (((argLen < 5) && ((isNaN(fn_arguments[2])) || (gbPopupMenuTopicList =
+=3D=3D null))) ||
+		((argLen < 4) && ((!isNaN(fn_arguments[2])) && (gbPopupMenuTopicList =
+!=3D null)))) {
+		// Get the place that we will be putting the topic into
+		var strURL =3D "";
+		if (isNaN(fn_arguments[2]) ||  (gbPopupMenuTopicList =3D=3D null)) {
+			strURL =3D fn_arguments[3];
+		}
+		else 	{
+			strURL =3D gbPopupMenuTopicList[fn_arguments[2]].strURL;
+		}
+
+		if (targetDoc !=3D null) {
+			targetDoc.location.href =3D strURL;
+		}
+		else {
+			if (fn_arguments[1] !=3D null && typeof(fn_arguments[1]) !=3D =
+"undefined")
+				window.open(strURL, fn_arguments[1]);
+			else
+				window.open(strURL);
+		}	=09
+		window.gbInPopupMenu =3D true;
+		return false;
+	}
+=09
+	var strMenu =3D "";
+	if (gbBsNS4&&!gbBsNS6) {
+		strMenu =3D '<TABLE BORDER=3D"1" CELLSPACING=3D0 CELLPADDING=3D3 =
+BGCOLOR=3D"#c0c0c0">';
+	} else {
+		strMenu =3D '<TABLE STYLE=3D"border:2px outset white;" =
+CELLSPACING=3D0';
+		if (gbBsMac) {
+			strMenu +=3D ' CELLPADDING=3D4';
+		} else {
+			strMenu +=3D ' CELLPADDING=3D2';
+		}=09
+		strMenu +=3D ' BGCOLOR=3D#c0c0c0>';
+	}
+	// Add each of the items
+	var i =3D 2;
+	while (i <=3D argLen - 1) {
+		strMenu +=3D '<TR><TD><NOBR>'
+		// If the destination is a number then look it up in the topic list
+		if (isNaN(fn_arguments[i]) ||  (gbPopupMenuTopicList =3D=3D null)) {
+			strMenu +=3D '<DIV STYLE=3D"padding-left:3pt; padding-right:3pt;"><A =
+HREF=3D"' + fn_arguments[i + 1] + '"' + strTarget;
+		} else {
+			strMenu +=3D '<DIV STYLE=3D"padding-left:3pt; padding-right:3pt;"><A =
+HREF=3D"' + gbPopupMenuTopicList[fn_arguments[i]].strURL + '"' + =
+strTarget;
+		}
+		strMenu +=3D ' onclick=3D"PopupMenu_HandleClick(event);"';
+		strMenu +=3D ' onmouseover=3D"PopupMenu_Over(event);"';
+		strMenu +=3D ' onmouseout=3D"PopupMenu_Out(event);"';
+		strMenu +=3D '>';
+		if (isNaN(fn_arguments[i]) || (gbPopupMenuTopicList =3D=3D null)) {
+			strMenu +=3D '<SPAN CLASS=3D"PopupNotOver">' + fn_arguments[i] + =
+'</SPAN>';
+		} else {
+			strMenu +=3D '<SPAN CLASS=3D"PopupNotOver">' + =
+gbPopupMenuTopicList[fn_arguments[i]].strTitle + '</SPAN>';
+		}
+		strMenu +=3D '</A></DIV></NOBR></TD></TR>';
+
+		if (isNaN(fn_arguments[i]) || (gbPopupMenuTopicList =3D=3D null)) {
+			i +=3D 2;
+		} else {
+			i +=3D 1;
+		}
+	}
+	strMenu +=3D "</TABLE>";
+
+	if (gbBsMac) {
+	// totally hack. because ie5 in mac need something. </TABLE> is one of =
+them. mac is mad.
+		strMenu +=3D"<TABLE></TABLE>";
+	}
+
+	var layerPopup =3D null;
+	var stylePopup =3D null;
+	var nEventX =3D 0;
+	var nEventY =3D 0;
+	var nWindowWidth =3D 0;
+	if (gbBsIE4 || gbBsOpera7) {
+
+		layerPopup =3D getElement("PopupMenu");
+		layerPopup.innerHTML =3D strMenu;
+		stylePopup =3D layerPopup.style;
+
+		_BSPSGetClientSize();
+
+		// Get the position of the item causing the event (relative to its =
+parent)
+		nEventX =3D window.event.clientX;
+		nEventY =3D window.event.clientY;
+
+		if (nEventY + layerPopup.scrollHeight + 10 < gBsClientHeight) {
+			nEventY +=3D document.body.scrollTop + 10;
+		} else {
+			nEventY =3D (document.body.scrollTop + gBsClientHeight) - =
+layerPopup.scrollHeight - 20;
+		}
+		stylePopup.top =3D nEventY;
+	=09
+		var nPopupWidth =3D layerPopup.scrollWidth;
+		if (gbBsMac) {
+			nPopupWidth =3D 80; // we have no idea how to get the dynamic width =
+of the popup.
+		}
+		if (nEventX + nPopupWidth + 20 > gBsClientWidth) {
+			if (gBsClientWidth - nPopupWidth < 5) {
+				stylePopup.left =3D 5;
+			} else {
+				stylePopup.left =3D gBsClientWidth - nPopupWidth - 5;
+			}
+		} else {
+			stylePopup.left =3D nEventX + document.body.scrollLeft + 20;
+		}
+
+		stylePopup.visibility =3D "visible";
+		if (!gOlddocumentClick && document.onclick)
+			gOlddocumentClick =3D document.onclick;
+		document.onclick =3D PopupMenu_HandleClick;
+
+	} else if (gbBsNS6 || gbBsKonqueror3||gbBsSafari) {
+		layerPopup =3D getElement("PopupMenu");
+		layerPopup.style.visibility =3D "hidden";
+=09
+		if (gbBsNS6)
+		{
+			var e =3D fn_arguments[0];
+			nEventX =3D e.pageX;
+			nEventY =3D e.pageY;
+		}
+		else
+		{
+			nEventX =3D window.event.clientX;
+			nEventY =3D window.event.clientY;
+		}
+		_BSPSGetClientSize();
+		layerPopup.innerHTML =3D strMenu;
+
+		if (nEventY + layerPopup.offsetHeight + 20  <  window.pageYOffset + =
+gBsClientHeight) {
+			nEventY +=3D 20;
+		} else {
+			nEventY =3D gBsClientHeight + window.pageYOffset - =
+layerPopup.offsetHeight - 20;
+		}
+
+		if (nEventX + layerPopup.offsetWidth + 20 > gBsClientWidth + =
+window.pageXOffset) {
+			if (gBsClientWidth + window.pageXOffset - layerPopup.offsetWidth < =
+20) {
+				nEventX =3D 5;
+			} else {
+				nEventX =3D gBsClientWidth + window.pageXOffset - =
+layerPopup.offsetWidth - 20;
+			}
+		} else {
+			nEventX +=3D 20;
+		}
+		layerPopup.style.top =3D nEventY;
+		layerPopup.style.left =3D nEventX;
+		// set again to avoid the stupid frash in netscape 6.
+		layerPopup.innerHTML =3D strMenu;
+		layerPopup.style.visibility =3D "visible";
+		//window.captureEvents(Event.MOUSEDOWN);
+		if (!gOlddocumentClick && document.onclick)
+			gOlddocumentClick =3D document.onclick;
+		window.onclick =3D PopupMenu_HandleClick;
+	}
+	else if (gbBsNS4) {
+		layerPopup =3D document.layers.PopupMenu;
+		layerPopup.visibility =3D "hide";
+		stylePopup =3D layerPopup.document;
+		stylePopup.write(strMenu);
+		stylePopup.close();
+		var e =3D fn_arguments[0];
+		nEventX =3D e.pageX;
+		nEventY =3D e.pageY;
+		_BSPSGetClientSize();
+		if (nEventY + layerPopup.clip.height + 20 < window.pageYOffset + =
+gBsClientHeight) {
+			nEventY +=3D 20;
+		} else {
+			nEventY =3D gBsClientHeight + window.pageYOffset- =
+layerPopup.clip.height - 20;
+		}
+		layerPopup.top =3D nEventY;
+
+		if (nEventX + layerPopup.clip.width + 20 > gBsClientWidth + =
+window.pageXOffset) {
+			if (gBsClientWidth + window.pageXOffset - layerPopup.clip.width < 20) =
+{
+				nEventX =3D 5;
+			} else {
+				nEventX =3D gBsClientWidth + window.pageXOffset - =
+layerPopup.clip.width - 20;
+			}
+		} else {
+			nEventX +=3D 20;
+		}
+
+		layerPopup.left =3D nEventX;
+
+		layerPopup.visibility =3D "show";
+
+		window.captureEvents(Event.MOUSEDOWN);
+		if (!gOlddocumentClick && document.onmousedown)
+			gOlddocumentClick =3D document.onmousedown;
+		window.onmousedown =3D PopupMenu_HandleClick;
+	}
+
+	window.gbInPopupMenu =3D true;
+	window.gbPopupMenuTimeoutExpired =3D false;
+	setTimeout("PopupMenu_Timeout();", 100);
+	return false;
+}
+
+function PopupMenu_Timeout()
+{
+	window.gbPopupMenuTimeoutExpired =3D true;
+}
+
+function PopupMenu_Over(e)
+{
+    if (gbBsIE4||gbBsOpera7)
+		e.srcElement.className =3D "PopupOver";
+    else if (gbBsNS6)
+		e.target.parentNode.className =3D "PopupOver";
+	return;
+}
+
+function PopupMenu_Out(e)
+{
+    if (gbBsIE4||gbBsOpera7)
+		e.srcElement.className =3D "PopupNotOver";
+    else if (gbBsNS6)
+		e.target.parentNode.className =3D "PopupNotOver";
+	return;
+}
+
+function PopupMenu_HandleClick(e)
+{
+	if (window.gbPopupMenuTimeoutExpired) {
+		window.gbInPopupMenu =3D false;
+		if (gbBsNS4 && !gbBsNS6) {
+			window.releaseEvents(Event.MOUSEDOWN);
+		}
+
+		var layerPopup =3D null;
+		if (gbBsNS4&&!gbBsNS6) {
+			layerPopup =3D document.layers.PopupMenu;
+			layerPopup.visibility =3D "hide";
+		} else {
+			layerPopup =3D getElement("PopupMenu");
+			layerPopup.style.visibility =3D "hidden";
+		}
+=09
+		if (gOlddocumentClick)
+		{
+			if (gbBsNS4 && !gbBsNS6)
+				document.onmousedown =3D gOlddocumentClick;
+			else
+				document.onclick =3D gOlddocumentClick;
+		}
+	}
+	return;
+}
+
+function BSSCPopup_ClickMac()
+{
+	if ((!DHTMLPopupSupport()) && (gbBsIE4 || gbBsOpera7))
+	{=09
+		var bClickOnAnchor =3D false;
+		var el;
+		if ((window.event !=3D null) &&
+		    (window.event.srcElement !=3D null))
+		{
+		    el =3D window.event.srcElement;
+			while (el !=3D null)
+			{
+				if ((el.tagName =3D=3D "A") || (el.tagName =3D=3D "AREA")) 	{
+					bClickOnAnchor =3D true;
+					break;
+				}
+				if (el.tagName =3D=3D "BODY") {
+					break;
+				}
+				el =3D getParentNode(el);
+			}
+		}
+		if (BSSCPopup_IsPopup())
+		{
+			if (!bClickOnAnchor) {
+				parent.window.gPopupWindow =3D null;
+				self.close();
+			}
+		}
+		else
+		{
+			bClosePopupWindow =3D true;
+			if ((bClickOnAnchor) &&
+				(el.href) &&
+			    ((el.href.indexOf("javascript:BSSCPopup") !=3D -1) || =
+(el.href.indexOf("javascript:null") !=3D -1) || =
+(el.href.indexOf("javascript:void(0)") !=3D -1)))
+			{
+				bClosePopupWindow =3D false;
+			}
+			if (bClosePopupWindow)
+			{
+				if (window.gPopupWindow !=3D null && !window.gPopupWindow.closed )
+				{
+					window.gPopupWindow.close();
+				}
+			}
+		}
+	}
+}
+
+function BsPopupOnClick()
+{
+	if (!gbBsIE4 && !gbBsOpera7)
+		return;
+
+	BSSCPopup_ClickMac();
+}
+
+function _BSSCOnError(message)
+{
+	if(-1 !=3D message.indexOf("denied")=20
+		|| -1 !=3D message.indexOf("Object required"))
+	 return true;
+}
+
+//End to support previous relative topics
+
+/// Section End - General and relative topics (JavaScript 1.0)
+
+/// Section Begin  - Popup (JavaScript 1.0)
+//Begin to support previous popup functions
+
+//variables used to isolate the browser type
+var gBsStyVisShow	=3D null;
+var gBsStyVisHide	=3D null;
+var gBsClientWidth	=3D 640;
+var gBsClientHeight =3D 480;
+
+// here is the varible for judge popup windows size. these parameter is =
+for IE5.0, it may need adjust for others.
+var gBRateH_W		=3D 0.618; // 1.618 Golden cut.
+var gBMaxXOfParent	=3D 0.8;=20
+var gBMaxYOfParent	=3D 0.8;
+var gBscrollHeight   =3D 16;
+var gBscrollWidth   =3D  16;
+var gBpermitXDelta	=3D 3;
+var gBpermitYDelta	=3D 3;
+
+
+var arrayPopupURL =3D new Array();
+var arrayAbsPopupURL =3D new Array();
+
+var arrayDirty =3D new Array();
+
+function setAbsPopupURL(nIndex, strURL)
+{
+	arrayAbsPopupURL[nIndex] =3D strURL;
+}
+
+function getAbsPopupURL(nIndex)
+{
+	if (nIndex =3D=3D -1 || arrayAbsPopupURL.length <=3D nIndex) return =
+null;
+	else=20
+		return arrayAbsPopupURL[nIndex];
+}
+
+function getPopupURL(nIndex)
+{
+	if (nIndex =3D=3D -1 || arrayPopupURL.length <=3D nIndex) return null;
+	else=20
+		return arrayPopupURL[nIndex];
+}
+
+function getPopupID(nIndex)
+{
+	return gstrPopupID + nIndex;
+}
+
+function getPopupShadowID(nIndex)
+{
+	return gstrPopupShadowID + nIndex;
+}
+
+function getPopupTopicID(nIndex)
+{
+	return gstrPopupTopicID + nIndex;
+}
+
+function getPopupIFrameID(nIndex)
+{
+	return gstrPopupIFrameID + nIndex;
+}
+
+function getPopupIFrameName(nIndex)
+{
+	return gstrPopupIFrameName + nIndex;
+}
+
+
+function getPopupTopicStyle(nIndex)
+{
+	return getElement(getPopupTopicID(nIndex)).style;
+}
+
+function getPopupShadowStyle(nIndex)
+{
+	return getElement(getPopupShadowID(nIndex)).style;
+}
+
+function getPopupIFrame(nIndex)
+{
+	if (gbBsNS6)
+		return eval("window.frames['" + getPopupIFrameName(nIndex) + "']");
+	else
+		return eval("document.frames['" + getPopupIFrameName(nIndex) + "']");
+}
+
+function getPopupDivStyle(nIndex)
+{
+	return getElement(getPopupID(nIndex)).style;
+}
+
+function getPopupIFrameStyle(nIndex)
+{
+	return getElement(getPopupIFrameID(nIndex)).style;
+}
+
+
+function findDiv(strURL)
+{
+	for (var i =3D 0; i < arrayPopupURL.length; i ++ ) {
+		if (arrayPopupURL[i] =3D=3D strURL) {
+			return i;
+		}
+	}
+	return -1;
+}
+
+var gnToken =3D -1;
+function takeToken()
+{
+	gnToken ++;
+	if (gnToken > 10000) gnToken =3D 0;
+	return gnToken;
+}
+
+function IsValidToken(nToken)
+{
+	return (gnToken =3D=3D nToken);
+}
+
+function addDiv(strURL)
+{
+	for (var i =3D 0; i < arrayPopupURL.length; i ++) {
+		if (arrayPopupURL[i] =3D=3D null) {
+			arrayPopupURL[i] =3D strURL;
+			return i;
+		}
+	}=09
+	arrayPopupURL[i] =3D strURL;
+	arrayDirty[i] =3D true;
+	return i;
+}
+
+function setDirty()
+{
+	for (var i =3D 0; i < arrayPopupURL.length; i ++ )
+		arrayDirty[i] =3D true;
+}
+
+function IsDirty(nIndex)
+{
+	if (nIndex =3D=3D -1)
+		return true;
+	else=20
+		if (arrayDirty.length > nIndex)=20
+			return arrayDirty[nIndex];
+		else
+			return true;
+}
+
+function hideAll()
+{
+	for (var i =3D 0; i < arrayPopupURL.length; i ++ )
+	{
+		getPopupDivStyle(i).visibility =3D gBsStyVisHide;
+		getPopupIFrameStyle(i).visibility =3D gBsStyVisHide;
+	}
+}
+
+function getCurrentPopupIFrame()
+{
+	for (var i =3D 0; i < arrayPopupURL.length; i ++)
+		if (getPopupDivStyle(i).visibility =3D=3D gBsStyVisShow)
+			return getPopupIFrame(i);
+	return null;
+}
+
+function setClear(nIndex)
+{
+	if (nIndex !=3D -1)
+		arrayDirty[nIndex] =3D false;
+}
+
+function _BSSCCreatePopupDiv(strURL)
+{
+	var nIndex =3D findDiv(strURL);
+	if (nIndex =3D=3D -1 ) {
+		nIndex =3D addDiv(strURL);
+		BsPopup_CreateDiv(nIndex);
+	}
+	else {
+		if (IsDirty(nIndex)) {
+			if("object" =3D=3D typeof(getPopupIFrame(nIndex).document))
+				getPopupIFrame(nIndex).document.location.href =3D strURL;
+		}
+	}
+	return nIndex;
+}
+
+//Here is the browser type=20
+function _BSPSGetBrowserInfo()
+{
+	if (gbBsNS4&&!gbBsNS6)
+	{
+		gBsStyVisShow	=3D "show";
+		gBsStyVisHide	=3D "hide";
+	}
+	else
+	{
+		gBsStyVisShow	=3D "visible";
+		gBsStyVisHide	=3D "hidden";
+	}
+}
+
+_BSPSGetBrowserInfo();
+
+//Get client size info
+function _BSPSGetClientSize()
+{
+	if (gbBsNS4||gbBsKonqueror3||gbBsSafari)
+	{
+		gBsClientWidth	=3D innerWidth;
+		gBsClientHeight =3D innerHeight;
+	}
+	else if (gbBsIE4 || gbBsOpera7)
+	{
+		gBsClientWidth	=3D document.body.clientWidth;
+		gBsClientHeight =3D document.body.clientHeight;
+	}
+}
+
+var gstrPopupID =3D 'BSSCPopup';
+var gstrPopupShadowID =3D 'BSSCPopupShadow';
+var gstrPopupTopicID =3D 'BSSCPopupTopic';
+var gstrPopupIFrameID =3D 'BSSCPopupIFrame';
+var gstrPopupIFrameName =3D 'BSSCPopupIFrameName';
+
+var gstrPopupSecondWindowName =3D 'BSSCPopup';
+
+var gPopupWindow =3D null;
+var gnPopupClickX =3D 0;
+var gnPopupClickY =3D 0;
+
+var gnPopupScreenClickX =3D 0;
+var gnPopupScreenClickY =3D 0;
+
+var gbPopupTimeoutExpired =3D false;
+
+function DHTMLPopupSupport()
+{
+	if (((gbBsIE4) && (!gbBsMac))||gbBsOpera7|| gbBsNS7) {
+		return true;
+	}
+	return false;
+}
+
+function BSSCPopup_IsPopup()
+{
+	if (DHTMLPopupSupport() && (this.name.indexOf(gstrPopupIFrameName) !=3D =
+-1)) {
+		return true;
+	} else if ((gbBsNS4 || gbBsIE4 || gbBsOpera7) && =
+(this.name.indexOf(gstrPopupID) !=3D -1)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+// If there is a hyperlink in a popup window, display the hyperlink in
+// the original window. (bsscright)
+if (BSSCPopup_IsPopup() && !gbBsIE4 && !gbBsOpera7) {
+	document.write("<base target=3D\"bsscright\">");
+}
+
+// Local functions.
+function BsPopup_CreateDiv(nIndex)
+{
+	if(!DHTMLPopupSupport())
+		return;
+	// DO NOT SET Width and height for the div, otherwize it will make IE4 =
+popup do not work when view the topic alone.
+	var strPopupDiv =3D "<DIV ID=3D'" + getPopupID(nIndex) + "' =
+STYLE=3D'position:absolute; top:-100; left:0; z-index:600; =
+visibility:hidden;'>";
+	strPopupDiv +=3D "<DIV ID=3D'" + getPopupShadowID(nIndex) + "' =
+STYLE=3D\"position:absolute;top:0; left:0;  =
+background-color:#C0C0C0;\"></DIV>";
+	strPopupDiv +=3D "<DIV ID=3D'" + getPopupTopicID(nIndex) + "' =
+STYLE=3D\"position:absolute;top:0; left:0;  =
+background-color:#FFFFFF;border:1px #000000 outset;\">";
+	strPopupDiv +=3D "<IFRAME title=3D\"Popup Window\" ID=3D'" + =
+getPopupIFrameID(nIndex) + "' name=3D'" + getPopupIFrameName(nIndex) + =
+"' src =3D '" + getPopupURL(nIndex) + "' frameborder=3D0 =
+scrolling=3Dauto></IFRAME>";
+	strPopupDiv +=3D "</DIV></DIV>";
+
+	var objBody =3D getElementsByTag(document, "BODY")[0];
+	if( typeof(objBody) !=3D "object" )
+		return;
+
+	insertAdjacentHTML(objBody, "beforeEnd", strPopupDiv);
+}
+
+function handleLoadNS()
+{
+	if (this.id)
+	{
+		var nIndex =3D parseInt(this.id.substring(gstrPopupIFrameID.length));
+		BSSCPopup_PostWork(nIndex);
+	}
+}
+
+function BSSCPopup_PostWork(nIndex)
+{
+	getPopupDivStyle(nIndex).visibility =3D gBsStyVisShow;
+	getPopupIFrameStyle(nIndex).visibility =3DgBsStyVisShow;
+
+	setClear(nIndex);
+	window.gbPopupTimeoutExpired =3D true;
+
+	BSSCPopup_ChangeTargettoParent(getPopupIFrame(nIndex).document);
+	if (gbBsNS6)
+		=
+getPopupIFrame(nIndex).document.body.addEventListener("click",BSSCPopupCl=
+icked,false);
+	else
+		getPopupIFrame(nIndex).document.body.onclick =3D BSSCPopupClicked;
+
+	if (!gbOrignalOnMouseDown && document.onmousedown)
+		gbOrignalOnMouseDown =3D document.onmousedown;
+
+	if (gbBsNS6)
+		document.addEventListener("mousedown", BSSCPopupParentClicked,false);
+	else
+		document.onmousedown =3D BSSCPopupParentClicked;
+}
+
+function BSSCPopup_Timeout(nIndex, nToken)
+{
+    if (!IsValidToken(nToken)) return;
+
+	if (gbBsNS6||((getPopupIFrame(nIndex).document.readyState =3D=3D =
+"complete") &&
+		(getPopupIFrame(nIndex).document.body !=3D null))) {
+		BSSCPopup_PostWork(nIndex);
+	} else {
+		setTimeout("BSSCPopup_Timeout(" + nIndex + "," + nToken + ")", 100);
+	}
+}
+
+// VH 08/10/00=20
+// do not change target to parent if the href is using javascript
+function BSSCPopup_ChangeTargettoParent(tagsObject)
+{
+	var collA =3D getElementsByTag(tagsObject, "A");
+	BSSCPopup_ChangeTargettoParent2(collA);
+
+	var collIMG =3D getElementsByTag(tagsObject,"IMG");
+	BSSCPopup_ChangeTargettoParent2(collIMG);
+}
+
+function BSSCPopup_ChangeTargettoParent2(colls)
+{
+	if (colls !=3D null)  {
+		for (var j =3D 0; j < colls.length; j ++ )
+		{
+			var strtemp =3D colls[j].href;
+			if (strtemp)
+			{
+				strtemp =3D strtemp.toLowerCase();
+				if (strtemp.indexOf("javascript:") =3D=3D -1)
+				if (colls[j].target =3D=3D "")
+					colls[j].target =3D "_parent";
+			}
+		}
+	}
+}
+
+function BSPSPopupTopicWinHelp(strURL)
+{
+	_BSSCPopup(strURL);
+	return;
+}
+
+function _BSSCPopup(strURL, width, height)
+{
+	var cuswidth =3D 0;
+	var cusheight =3D 0;
+	if ("undefined" !=3D typeof(width) && "undefined" !=3D typeof(height)) =
+{
+		cuswidth =3D width;
+		cusheight=3D height;
+	}
+=09
+	if (DHTMLPopupSupport()) {
+		var nToken =3D takeToken(); // take  token first.
+		var nIndex =3D _BSSCCreatePopupDiv(strURL);
+		window.gbPopupTimeoutExpired =3D false;
+		var ntWidth =3D gBsClientWidth;
+		var ntHeight =3D gBsClientHeight;
+		_BSPSGetClientSize();
+		if (ntWidth !=3D gBsClientWidth || ntHeight !=3D gBsClientHeight) {
+			setDirty();
+		}
+
+		if (IsDirty(nIndex)) {
+			if (gbBsMac) {
+				setTimeout("BSSCPopup_AfterLoad(" + nIndex + "," + nToken + "," + =
+cuswidth + "," + cusheight  +")", 400);
+			} else {
+				setTimeout("BSSCPopup_AfterLoad(" + nIndex + "," + nToken + "," + =
+cuswidth + "," + cusheight + ")", 100);
+			}
+		}
+		else {
+			MoveDivAndShow(nIndex ,nToken, cuswidth, cusheight);
+		}
+	} else {
+		_BSSCPopup2(strURL, cuswidth, cusheight);
+	}
+	return;
+}
+
+if (gbBsIE55)
+{
+	var ehlpdhtm_fOldBefureUnload =3D window.onbeforeunload;
+	var gnBsUnload=3D0;
+	window.onbeforeunload =3D window_BUnload;
+}
+=09
+function window_BUnload()
+{
+	gnBsUnload++;
+	if (gnBsUnload>1)
+		return;
+	for (var i =3D 0; i < arrayPopupURL.length; i ++)
+		removeThis(document.all(getPopupID(i)));
+	arrayPopupURL.length =3D 0;=09
+	if (ehlpdhtm_fOldBefureUnload)
+		ehlpdhtm_fOldBefureUnload();
+}
+
+function _BSSCPopup2(strURL, width, height)
+{
+	if (gbBsOpera6&&gbBsMac)
+	{
+		var wmTemp =3D window.open(document.location.href, =
+gstrPopupSecondWindowName);
+		wmTemp.close();
+		setTimeout("_BSSCPopup3(\""+strURL+"\","+width+","+height+");",100);
+	}
+	else
+		_BSSCPopup3(strURL, width, height);
+}
+	=09
+function _BSSCPopup3(strURL, width, height)
+{
+	if (window.name =3D=3D gstrPopupSecondWindowName) {
+		window.location =3D strURL;
+	} else {
+		if (!gbBsMac || !gbBsNS4) {
+			BSSCHidePopupWindow();
+		}
+		var nX =3D 0;
+		var nY =3D 0;
+		var nHeight =3D 300;
+		var nWidth =3D 400;
+		if (width > 0 && height > 0) {
+			nHeight =3D height;
+			nWidth =3D width;
+		}
+		_BSPSGetClientSize();
+
+		nX =3D window.gnPopupScreenClickX;
+		nY =3D window.gnPopupScreenClickY;
+
+		if (nY + nHeight + 40 > screen.availHeight) {
+			nY =3D screen.availHeight - nHeight - 40;
+		}
+		if (nX + nWidth + 40 > screen.availWidth) {
+			nX =3D screen.availWidth - nWidth - 40;
+		}
+
+		// Launch a separate window
+		var =
+strParam=3D"titlebar=3Dno,toolbar=3Dno,status=3Dno,location=3Dno,menubar=3D=
+no,resizable=3Dyes,scrollbars=3Dyes";
+		if (gbBsNS) {
+			if (gbBsNS6) {
+				strParam +=3D ",Height=3D" + nHeight + ",Width=3D" + nWidth;
+				strParam +=3D ",screenX=3D" + nX + ",screenY=3D" + nY;
+				strParam +=3D ",dependent=3Dyes";
+			}
+			else {
+				strParam +=3D ",OuterHeight=3D" + nHeight + ",OuterWidth=3D" + =
+nWidth;
+				strParam +=3D ",screenX=3D" + nX + ",screenY=3D" + nY;
+				strParam +=3D ",dependent=3Dyes";
+			}
+		}
+		else {
+			strParam +=3D ",height=3D" + nHeight + ",width=3D" + nWidth;
+			strParam +=3D ",left=3D" + nX + ",top=3D" + nY;
+		}
+		if (gbBsSafari)
+		{
+			if (window.gPopupWindow)
+				window.gPopupWindow.close();	=09
+			window.gPopupWindow =3D window.open(strURL, "", strParam);
+			window.gPopupWindow.name =3D gstrPopupSecondWindowName;
+			window.gPopupWindow.moveTo(nX, nY);
+			widnow.gPopupWindow.document.location.reload();
+		}=09
+		else
+		{
+			var wmTemp=3Dnull;
+			if (gbBsKonqueror3)
+			{
+				if (window.gPopupWindow)
+					window.gPopupWindow.close();
+			}
+			if (gbBsOpera&&gbBsMac)
+			{
+				wmTemp=3D window.open(document.location.href, "Temp", strParam);
+			}
+			window.gPopupWindow =3D window.open(strURL, =
+gstrPopupSecondWindowName, strParam);
+			if (!gbBsIE)
+				window.gPopupWindow.focus();
+			=09
+			if (wmTemp)
+				wmTemp.close();
+		}
+
+		if (gbBsNS4)
+			setEventHandle();
+		else if (gbBsIE4 || gbBsOpera7||gbBsKonqueror3)
+			setTimeout("setPopupFocus();", 100);
+	}
+	return;
+}
+
+function setEventHandle()
+{
+	window.gPopupWindow.captureEvents(Event.CLICK | Event.BLUR);
+	window.gPopupWindow.onclick =3D NonIEPopup_HandleClick;
+	window.gPopupWindow.onblur =3D NonIEPopup_HandleBlur;
+}
+
+function setPopupFocus()
+{
+	window.gPopupWindow.focus();
+}
+
+function NonIEPopup_HandleBlur(e)
+{
+	window.gPopupWindow.focus();
+}
+
+function NonIEPopup_HandleClick(e)
+{
+	// Because navigator will give the event to the handler before the =
+hyperlink, let's
+	// first route the event to see if we are clicking on a Popup menu in a =
+popup.
+	document.routeEvent(e);
+
+	// If a popup menu is active then don't do anything with the click
+	if (window.gPopupWindow.gbInPopupMenu) {
+		window.gPopupWindow.captureEvents(Event.CLICK);
+		window.gPopupWindow.onclick =3D NonIEPopup_HandleClick;
+		return false;
+	}
+
+	// Close the popup window
+	if(e.target.href)
+	{
+		if(e.target.href.indexOf("javascript:")=3D=3D-1)=20
+		{
+			if (e.target.target=3D=3D"")
+				window.location.href =3D e.target.href;
+			else
+				window.open(e.target.href, e.target.target);
+			this.close();
+		}
+	}=20
+	else
+		this.close();
+	return false;
+}
+
+function BSSCPopup_AfterLoad(nIndex, nToken, cuswidth, cusheight)
+{=09
+	if (!window.getPopupIFrame(nIndex).document) {
+		_BSSCPopup2(getPopupURL(nIndex), cuswidth, cusheight);
+		return;
+	}
+=09
+    if (!IsValidToken(nToken)) return;
+
+	if (gbBsNS6)
+	{
+		setAbsPopupURL(nIndex, =
+window.getPopupIFrame(nIndex).document.location.href); // change URL to =
+abs url.
+		BSSCPopup_ResizeAfterLoad(nIndex, nToken, cuswidth, cusheight);
+		return;
+	}
+=09
+	if ((window.getPopupIFrame(nIndex).document.readyState =3D=3D =
+"complete") &&
+		(window.getPopupIFrame(nIndex).document.body !=3D null)) {
+			if =
+(window.getPopupIFrame(nIndex).document.location.href.indexOf("about:blan=
+k") !=3D -1) { // add this check. IE will use about:blank" as the =
+default vaule for Iframe.
+				window.getPopupIFrame(nIndex).document.location =3D =
+getPopupURL(nIndex);
+				setTimeout("BSSCPopup_AfterLoad(" + nIndex + "," + nToken + "," + =
+cuswidth + "," + cusheight + ")", 200);
+			}
+			else
+				{
+					setAbsPopupURL(nIndex, =
+window.getPopupIFrame(nIndex).document.location.href); // change URL to =
+abs url.
+					BSSCPopup_ResizeAfterLoad(nIndex, nToken, cuswidth, cusheight);
+				}
+	} else {
+		setTimeout("BSSCPopup_AfterLoad(" + nIndex + "," + nToken + "," + =
+cuswidth + "," + cusheight + ")", 200);
+	}
+}
+
+function BSSCPopup_ResizeAfterLoad(nIndex, nToken, cuswidth, cusheight)
+{
+	if (window.gbPopupTimeoutExpired) return;
+
+    if (!IsValidToken(nToken)) return;
+
+	getPopupDivStyle(nIndex).visibility =3D gBsStyVisHide;
+	getPopupIFrameStyle(nIndex).visibility =3D gBsStyVisHide;
+
+	// Determine the width and height for the window
+	_BSPSGetClientSize();
+
+	var size =3D new BSSCSize(0, 0);
+
+	if (cuswidth <=3D 0 || cusheight <=3D 0)
+		BSSCGetContentSize(window.getPopupIFrame(nIndex), size);
+	else {
+		size.x =3D cuswidth;
+		size.y =3D cusheight;
+	}
+
+	// Determine the width and height for the window
+	var nWidth =3D size.x;
+	var nHeight =3D size.y;
+
+	// for small popup size, we should allow any size.
+	// The popup size should be ok if bigger than 0
+	if (nWidth < 0 || nHeight < 0) return; 	// there must be something =
+terribly wrong.	=09
+
+	getPopupDivStyle(nIndex).width =3D nWidth;
+	getPopupDivStyle(nIndex).height =3D nHeight;
+
+	getPopupShadowStyle(nIndex).width =3D nWidth;
+	getPopupShadowStyle(nIndex).height =3D nHeight;
+	getPopupTopicStyle(nIndex).width =3D nWidth;
+	getPopupTopicStyle(nIndex).height =3D nHeight;
+	if (gbBsIE55)
+	{
+		getPopupShadowStyle(nIndex).width =3D nWidth + 2;
+		getPopupShadowStyle(nIndex).height =3D nHeight + 2;
+		getPopupTopicStyle(nIndex).width =3D nWidth + 2;
+		getPopupTopicStyle(nIndex).height =3D nHeight + 2;
+	}
+
+	getPopupIFrameStyle(nIndex).width =3D nWidth;
+	getPopupIFrameStyle(nIndex).height =3D nHeight;
+	if (gbBsIE55 || gbBsNS6)
+	{
+		getPopupIFrameStyle(nIndex).top =3D 0;
+		getPopupIFrameStyle(nIndex).left =3D 0;
+	}
+=09
+	var strURL =3D getPopupURL(nIndex);
+	if (strURL.indexOf("#") !=3D -1&&gbBsNS6)
+		getPopupIFrame(nIndex).location.reload();
+	else if (strURL.indexOf("#") !=3D -1||gbBsNS6)
+		getPopupIFrame(nIndex).location.href =3D strURL;  // reload again, =
+this will fix the bookmark misunderstand in IE5.
+	=09
+	MoveDivAndShow(nIndex, nToken, cuswidth, cusheight);
+}
+
+function getScrollLeft()
+{
+	if (document.body.scrollLeft)
+		return document.body.scrollLeft;
+	else if (window.pageXOffset)
+		return window.pageXOffset;
+	else
+		return 0;
+}
+
+function getScrollTop()
+{
+	if (document.body.scrollTop)
+		return document.body.scrollTop;
+	else if (window.pageYOffset)
+		return window.pageYOffset;
+	else
+		return 0;
+}
+
+
+function MoveDivAndShow(nIndex, nToken, cuswidth, cusheight)
+{
+	if (window.getPopupIFrame(nIndex).document.location.href !=3D =
+getAbsPopupURL(nIndex)) { // if redirect, reload again.
+			window.getPopupIFrame(nIndex).document.location =3D =
+getPopupURL(nIndex);
+			setTimeout("BSSCPopup_AfterLoad(" + nIndex + "," + nToken + "," + =
+cuswidth + "," + cusheight + ")", 200);
+			return;
+	}
+
+	// Determine the position of the window
+	var nClickX =3D window.gnPopupClickX;
+	var nClickY =3D window.gnPopupClickY;
+	var nTop =3D 0;
+	var nLeft =3D 0;
+
+	var nWidth =3D parseInt(getPopupDivStyle(nIndex).width);
+	var nHeight =3D parseInt(getPopupDivStyle(nIndex).height);
+
+	if (nClickY + nHeight + 20 < gBsClientHeight + getScrollTop()) {
+		nTop =3D nClickY + 10;
+	} else {
+		nTop =3D (getScrollTop() + gBsClientHeight) - nHeight - 20;
+	}
+	if (nClickX + nWidth < gBsClientWidth + getScrollLeft()) {
+		nLeft =3D nClickX;
+	} else {
+		nLeft =3D (getScrollLeft() + gBsClientWidth) - nWidth - 8;
+	}
+
+	if (nTop < getScrollTop()) nTop  =3D getScrollTop() + 1;
+	if (nLeft< getScrollLeft())  nLeft =3D getScrollLeft() + 1;
+
+	getPopupDivStyle(nIndex).left =3D nLeft;
+	getPopupDivStyle(nIndex).top =3D nTop;
+
+	// Set the location of the background blocks
+	getPopupShadowStyle(nIndex).left =3D 6;
+	getPopupShadowStyle(nIndex).top =3D 6;
+	if (gbBsIE55)
+	{
+		getPopupShadowStyle(nIndex).left =3D 4;
+		getPopupShadowStyle(nIndex).top =3D 4;
+	}
+
+	if (gbBsMac&&gbBsIE4) {
+		// Total hack on the iMac to get the IFrame to position properly
+		getPopupIFrameStyle(nIndex).pixelLeft =3D 100;
+		getPopupIFrameStyle(nIndex).pixelLeft =3D 0;
+		// Explicitly call BSSCOnLoad because the Mac doesn't seem to do it
+		getPopupIFrame(nIndex).window.BSSCOnLoad();
+	}
+
+	if (gbBsNS6&&IsDirty(nIndex))
+		getElement(getPopupIFrameID(nIndex)).addEventListener("load", =
+handleLoadNS, false);
+	else
+		BSSCPopup_Timeout(nIndex , nToken );
+	return;
+}
+
+function	BSSCSize(x, y)
+{
+	this.x =3D x;
+	this.y =3D y;
+}
+
+function BSSCGetContentSize(thisWindow, size)
+{
+	if (!gbBsIE4 && !gbBsOpera7 && !gbBsNS4)
+		return;
+
+	if ((gbBsMac&&gbBsIE4)||gbBsNS4||gbBsOpera7) {
+		size.x =3D 320;
+		size.y =3D 180;
+		return;
+	}
+
+	// Resize the width until it is wide enough to handle the content
+	// The trick is to start wide and determine when the scrollHeight =
+changes
+	// because then we know a scrollbar is necessary. We can then go back
+	// to the next widest size (for no scrollbar)
+
+	var ClientRate =3D gBsClientHeight / gBsClientWidth;
+
+=09
+	var GoldenSize =3D new BSSCSize(0,0);
+	GoldenSize.x =3D gBsClientWidth * gBMaxXOfParent;
+	GoldenSize.y =3D gBsClientHeight *gBMaxYOfParent ;
+
+	if (ClientRate > gBRateH_W) {
+		GoldenSize.y =3D GoldenSize.x * gBRateH_W;
+	}
+	else {
+		GoldenSize.x =3D GoldenSize.y / gBRateH_W;
+	}
+
+	// Try to using parent specified max x.
+	var x =3D 0;
+	var maxgoldx =3D GoldenSize.x;
+	var maxx =3D gBsClientWidth * gBMaxXOfParent;
+=09
+	// This double resize causes the document to re-render (and we need it =
+to)
+	if (!gbBsIE5)
+		thisWindow.moveTo(10000,10000); // this is used to fix the flash on =
+IE4.
+	=09
+	thisWindow.resizeTo(1, 1);
+	thisWindow.resizeTo(1, 1);
+	thisWindow.resizeTo(maxgoldx, thisWindow.document.body.scrollHeight + =
+gBscrollHeight);
+	thisWindow.resizeTo(maxgoldx, thisWindow.document.body.scrollHeight + =
+gBscrollHeight);
+	=09
+	var miny =3D thisWindow.document.body.scrollHeight + gBscrollHeight;
+=09
+	if (miny > GoldenSize.y) // the popup does not fix in the parent wanted =
+golden area. so try to expand itself as large as it can
+	{
+		thisWindow.resizeTo(maxx , thisWindow.document.body.scrollHeight + =
+gBscrollHeight);
+		thisWindow.resizeTo(maxx , thisWindow.document.body.scrollHeight + =
+gBscrollHeight);
+	=09
+		miny =3D 	thisWindow.document.body.scrollHeight + gBscrollHeight;
+		maxy =3D gBsClientHeight * gBMaxYOfParent;
+	=09
+		if (miny > maxy) { // the popup must have a scroll, OK let it be.
+			miny =3D maxy;
+			size.x =3D maxx;
+			size.y =3D maxy;
+			thisWindow.document.body.scroll =3D 'yes'; // At this time we do want =
+to show scroll any more. so it will looks better a little.
+		}
+		else { // popup still can fit in the parent area by someway. now we =
+choose the same h/w rate as parent.
+			size.y =3D miny;
+		=09
+			//  downsize from maxx , now I try to using binary divide.
+			x =3D maxx;
+			deltax =3D -maxx/2;
+			//j =3D 0;
+			while (true) {
+				x =3D x + deltax;
+				thisWindow.resizeTo(x, miny);
+				thisWindow.resizeTo(x, miny);
+				diffy =3D thisWindow.document.body.scrollHeight + gBscrollHeight - x =
+* ClientRate;
+				if (diffy >  gBpermitYDelta ) // it is higher than wanted, so x need =
+to be wide a little bitter
+					deltax =3D Math.abs(deltax) /2;
+				else if (diffy <  -gBpermitYDelta) // it is shorter than wanted, so =
+x need to be narrow a little bitter
+					deltax =3D -Math.abs(deltax) /2;
+				else=20
+					// the y is close enough to wanted.
+					break;
+				if (Math.abs(deltax) < gBpermitXDelta) // the next change is too =
+slight and it can be ignore.
+					break;
+			}
+			size.x =3D thisWindow.document.body.scrollWidth; //+ gBscrollWidth;
+			size.y =3D thisWindow.document.body.scrollHeight;// + gBscrollHeight;	=
+
+			thisWindow.document.body.scroll =3D 'no';
+		}
+	}
+	else {
+		if (thisWindow.document.body.scrollWidth > maxgoldx) {
+			size.x =3D maxx;=20
+			size.y =3D miny;=09
+			thisWindow.document.body.scroll =3D 'yes';
+		}
+		else {
+			//  downsize from maxgoldx , now I try to using binary divide.
+			x =3D maxgoldx;
+			deltax =3D -maxgoldx/2;
+			while (true) {
+				x =3D x + deltax;
+				thisWindow.resizeTo(x, miny);
+				thisWindow.resizeTo(x, miny);
+				diffy =3D thisWindow.document.body.scrollHeight + gBscrollHeight - x =
+* gBRateH_W;
+				if (diffy >  gBpermitYDelta ) // it is higher than wanted, so x need =
+to be wide a little bitter
+					deltax =3D Math.abs(deltax) /2;
+				else if (diffy <  -gBpermitYDelta) // it is shorter than wanted, so =
+x need to be narrow a little bitter
+					deltax =3D -Math.abs(deltax) /2;
+				else=20
+					// the y is close enough to wanted.
+					break;
+				if (Math.abs(deltax) < gBpermitXDelta) // the next change is too =
+slight and it can be ignore.
+					break;
+			}
+			size.x =3D thisWindow.document.body.scrollWidth; //+ gBscrollWidth;
+			size.y =3D thisWindow.document.body.scrollHeight ;
+			thisWindow.document.body.scroll =3D 'no'; // At this time we do not =
+want to show scroll any more. so it will looks better a little.
+			thisWindow.resizeTo(size.x, size.y);
+			if (thisWindow.document.body.scrollWidth > size.x)
+			{
+				size.x =3D thisWindow.document.body.scrollWidth;
+			}
+			if (thisWindow.document.body.scrollHeight > size.y)
+			{
+				size.y =3D thisWindow.document.body.scrollHeight;
+			}
+		}
+	}
+	thisWindow.resizeTo(size.x, size.y);
+	thisWindow.resizeTo(size.x, size.y);
+	return;
+}
+
+function BSSCPopupParentClicked()
+{
+	if (!window.gbPopupTimeoutExpired) {
+		return false;
+	}
+=09
+	document.onmousedown =3D gbOrignalOnMouseDown;
+
+	// Simply hide the popup
+	hideAll();
+
+	window.gbPopupTimeoutExpired =3D false;
+
+	return true;
+}
+
+function isInsideHyperLink(obj)
+{
+	if (obj&&obj!=3DgetParentNode(obj))
+	{
+		if (obj.tagName=3D=3D"A"||obj.tagName=3D=3D"IMG")
+			return true;
+		else
+			return isInsideHyperLink(getParentNode(obj));
+	}
+	else
+		return false;
+}
+
+function BSSCPopupClicked(e)
+{
+	if (!window.gbPopupTimeoutExpired) {
+		return false;
+	}
+
+	var popupIFrame =3D getCurrentPopupIFrame();
+	if (popupIFrame =3D=3D null) {
+		return true;
+	}
+
+	if (gbBsIE4 && (!((popupIFrame.window.event !=3D null) &&
+		(popupIFrame.window.event.srcElement !=3D null) &&
+		isInsideHyperLink(popupIFrame.window.event.srcElement)))) {
+		document.onmousedown =3D gbOrignalOnMouseDown;
+	=09
+		// Simply hide the popup
+		hideAll();
+		window.gbPopupTimeoutExpired =3D false;
+		return true;
+	}
+	else if (gbBsNS6 && (!((e !=3D null) &&
+			(e.target!=3D null) && isInsideHyperLink(e.target))))
+	{
+		document.addEventListener("mousedown", gbOrignalOnMouseDown,false);
+		// Simply hide the popup
+		hideAll();
+		window.gbPopupTimeoutExpired =3D false;
+		return true;	=09
+	}
+}
+
+//trace the mouse over's position for hotspot
+function  BSPSPopupOnMouseOver(event)
+{
+	if (gbBsIE4 || gbBsOpera7||gbBsKonqueror3) {
+		window.gnPopupClickX =3D event.clientX + getScrollLeft();
+		window.gnPopupClickY =3D event.clientY + getScrollTop();
+		window.gnPopupScreenClickX =3D event.screenX;
+		window.gnPopupScreenClickY =3D event.screenY;
+	} else if (gbBsSafari) {
+		window.gnPopupClickX =3D event.clientX + getScrollLeft();
+		window.gnPopupClickY =3D event.clientY + getScrollTop();
+		window.gnPopupScreenClickX =3D event.screenX + window.screenX;
+		window.gnPopupScreenClickY =3D event.screenY + window.screenY;
+	} else if (gbBsNS4) {
+		window.gnPopupClickX =3D event.pageX - window.pageXOffset;
+		window.gnPopupClickY =3D event.pageY - window.pageYOffset;
+		window.gnPopupScreenClickX =3D event.screenX - window.pageXOffset;
+		window.gnPopupScreenClickY =3D event.screenY - window.pageYOffset;
+	}
+}
+
+function BSSCHidePopupWindow()
+{
+	if (window.gPopupWindow !=3D null) {
+		if (gbBsNS4) {
+			if ((typeof window.gPopupWindow !=3D "undefined") && =
+(!window.gPopupWindow.closed)) {
+				window.gPopupWindow.close();
+				window.gPopupWindow =3D null;
+			}
+		}
+	}
+	return;
+}
+
+// Add the PopupOnClick to the onclick array.
+if (typeof(BsscRegisterOnClick) !=3D "undefined")
+{
+	BsscRegisterOnClick(BsPopupOnClick);
+}
+//End to support previous popup functions
+
+/// Section End  - Popup (JavaScript 1.0)
+
+/// Section Begin - Embedded Stub (JavaScript 1.0)
+
+function BSSCCreatePopupDiv()
+{
+	return;
+}
+
+function WritePopupMenuLayer()
+{
+	if (BsscHasExtJs()) {_WritePopupMenuLayer();}
+}
+
+function BSSCPopup(strURL, width, height)
+{
+	var re =3D new RegExp("'", 'g');
+	strURL =3D strURL.replace(re, "%27");
+
+	if (BsscHasExtJs())	{=20
+		_BSSCPopup(strURL, width, height);
+	}else{
+		//Create a temporary window first to ensure the real popup comes up on =
+top
+		var wndTemp =3D null;
+		if (!gbBsNS3) {
+			wndTemp =3D window.open("", "temp", =
+"titlebar=3Dno,toolbar=3Dno,status=3Dno,location=3Dno,menubar=3Dno,resiza=
+ble=3Dyes,scrollbars=3Dyes,height=3D3,width=3D4");
+		}
+		// Create the real popup window
+		var wndPopup =3D window.open(strURL, "BSSCPopup", =
+"titlebar=3Dno,toolbar=3Dno,status=3Dno,location=3Dno,menubar=3Dno,resiza=
+ble=3Dyes,scrollbars=3Dyes,height=3D300,width=3D400");
+		// Close the temporary
+		if (!gbBsNS3) {
+			wndTemp.close();
+		} else {
+			wndPopup.focus();
+		}
+	}
+}
+
+var gbWndTemp =3D null, gbWndPopupLinks =3D null;
+var gbstrParaTotal =3D "";
+
+function PopupMenu_Invoke()
+{
+	if (typeof(wfRelatedTopic) =3D=3D 'function' && =
+typeof(IsFlashSupported) =3D=3D 'function')
+	{
+		if (Number(gsSkinVersion) > 2 && IsFlashSupported())
+		{
+			return wfRelatedTopic(PopupMenu_Invoke.arguments);
+		}
+	}
+	if (BsscHasExtJs()) {
+		return _PopupMenu_Invoke(PopupMenu_Invoke.arguments);
+	}
+	if (gbBsNS3Before || gbBsIE3Before )	{
+		var argLen 	=3D PopupMenu_Invoke.arguments.length;
+		if (argLen < 5) {
+			window.document.location.href =3D PopupMenu_Invoke.arguments[3];
+			return false;
+		}
+		gbWndTemp =3D null;
+		gbWndPopupLinks =3D null;
+		gbstrParaTotal =3D "";
+		for (var i =3D 0; i < (argLen - 2) / 2; i++) {
+			var strParaLine =3D "";
+			if (gbBsNS2){
+				strParaLine +=3D "<a href=3D\"";
+				strParaLine +=3D PopupMenu_Invoke.arguments[2 * i + 3];
+				strParaLine +=3D "\">"
+				strParaLine +=3D PopupMenu_Invoke.arguments[2 * i + 2];
+				strParaLine +=3D "</a>";
+			} else {
+				strParaLine +=3D "<a href=3D\"javascript:";
+				strParaLine +=3D "gotoUrl(\'";
+				strParaLine +=3D PopupMenu_Invoke.arguments[2 * i + 3];
+				strParaLine +=3D "\');\"";
+				if (PopupMenu_Invoke.arguments[1] !=3D '') {
+					strParaLine +=3D " TARGET=3D'" + PopupMenu_Invoke.arguments[1] + =
+"'";
+				}
+				strParaLine +=3D ">";
+				strParaLine +=3D PopupMenu_Invoke.arguments[2 * i + 2];
+				strParaLine +=3D "</a>";
+			}
+			strParaLine +=3D "<br>";
+			gbstrParaTotal +=3D strParaLine;
+		}
+		var nHeight =3D argLen * 15;
+		var nWidth =3D 400;
+		var strParam =3D =
+"titlebar=3Dno,toolbar=3Dno,status=3Dno,location=3Dno,menubar=3Dno,resiza=
+ble=3Dyes,scrollbars=3Dauto";
+		strParam +=3D ",height=3D" + nHeight + ",width=3D200,resizable";
+	=09
+		//Create a temporary window first to ensure the real popup comes up on =
+top
+		//var wndTemp =3D null;
+		if (!gbBsNS3) {
+			gbWndTemp =3D window.open("", "temp", =
+"titlebar=3Dno,toolbar=3Dno,status=3Dno,location=3Dno,menubar=3Dno,resiza=
+ble=3Dyes,scrollbars=3Dyes,height=3D3,width=3D4");
+		}=20
+		gbWndPopupLinks =3D window.open("", "popuplinks", strParam);
+
+		setTimeout("Wait_PopupMenuReady()", 100);
+	}
+	return true;
+}
+
+function Wait_PopupMenuReady()=20
+{
+	if (gbWndPopupLinks !=3D null && "object" =3D=3D =
+typeof(gbWndPopupLinks.document)) {
+		PopupMenu_InvokeReady();
+	}
+	else=20
+		setTimeout("Wait_PopupMenuReady()", 100);
+}
+
+function PopupMenu_InvokeReady()
+{
+	if (gbWndPopupLinks !=3D null) {
+		gbWndPopupLinks.document.open("text/html");
+		gbWndPopupLinks.document.write("<html><head>");
+		if (gbBsNS2) {
+			gbWndPopupLinks.document.write("<base href=3D\"" + location +"\">");
+		} else {
+			//YJ: IE301,302 and NS3.x works fine
+			gbWndPopupLinks.document.write("<");
+			gbWndPopupLinks.document.write("script>");
+			gbWndPopupLinks.document.write("function gotoUrl(aUrl) =
+{opener.window.location=3DaUrl; close();}");
+			gbWndPopupLinks.document.write("<");
+			gbWndPopupLinks.document.write("/script>");
+		}
+		gbWndPopupLinks.document.write("</head><body =
+onBlur=3D\'self.focus();\'>");
+		gbWndPopupLinks.document.write(gbstrParaTotal);
+		gbWndPopupLinks.document.write("</body></html>");
+		gbWndPopupLinks.document.close();
+
+		// Close the temporary
+		if (!gbBsNS3 && gbWndTemp !=3D null) {
+			gbWndTemp.close();
+		}else {
+			gbWndPopupLinks.focus();
+		}
+
+		return true;
+	}
+	return false;
+}
+
+/// Section End - Embedded Stub (JavaScript 1.0)
+
+//// Segment End -- (JavaScript 1.0)
+
+//// Segment Begin -- (JavaScript 1.2)
+/// Section Begin  - kadov DHTM (JavaScript 1.2)
+
+//Begin to support extended and dropdown text effects.
+function kadovIsParagraph(el)
+{
+	return( el.tagName =3D=3D "P" || el.tagName.indexOf("H") =3D=3D 0 ) ? =
+true : false;
+}
+
+function kadovInitEachChild(el)
+{=09
+	for(var i=3D0; i<getChildNodes(el).length; i++)
+	{
+		var child =3D getChildNodes(el)[i];
+		if( child.tagName =3D=3D "SCRIPT" || child.tagName =3D=3D "!" )
+			continue;
+
+		if( child.id !=3D "" )
+		{
+			// to wipe out the onload effects
+			if (gbBsIE4&&!gbBsMac)
+			{
+				var onLoadEffect =3D child.style.getAttribute( "x-on-pageload" );
+				if( (onLoadEffect !=3D null) && (onLoadEffect > "") )
+					child.style.setAttribute( "x-on-pageload", "" );
+			}
+		=09
+			var href =3D child.getAttribute("href")
+			if( href !=3D null && href > "" && href.indexOf( "BSSCPopup" ) >=3D 0 =
+)
+				kadovFilePopupInit(child.id); // Init for Popup
+			else if( child.className =3D=3D "dropspot" || child.className =3D=3D =
+"expandspot" ||=20
+					 child.className =3D=3D "glossterm" )
+				kadovTextPopupInit(child.id);// Init for Expanding/Glossary or =
+DropDown text
+			else if( child.className =3D=3D "trigger")
+				kadovInitTrigger(child.id);// Init for Trigger
+			else
+			{
+				kadovInitEffects(child.id);// Init for DHTML effects
+				CEngine.SetOneTargetInitialState( child.id );
+			}
+		}
+	=09
+		if( (child.tagName =3D=3D "IMG") && (child.getAttribute("dynsrc") > =
+"") )
+			child.start =3D "mouseover";// to start a AVI file. fileopen doesn't =
+work
+
+		kadovInitEachChild(child);
+	}
+}
+
+function kadovRetrieveTextInner(el)
+{=09
+	var x =3D "";
+	if( (!el) || (el.tagName =3D=3D "!") || (el.tagName =3D=3D "SCRIPT" ))
+		return x;
+
+	if( kadovIsParagraph(el) )
+	{
+		var strNewID =3D " ";
+		if( el.id !=3D "" )
+			strNewID +=3D "id=3D" + el.id + "_NewSpan ";
+		x =3D "<span" + strNewID + "style=3D'" + el.style.cssText + "'>" + =
+el.innerHTML + "</span>";
+	}
+	else
+	{
+		for(var i=3D0; i<getChildNodes(el).length; i++)
+			x +=3D kadovRetrieveTextInner( getChildNodes(el)[i] );
+	}
+	return x;
+}
+
+function kadovRetrieveCleanHTML( strRawHTML, strTagOpen, strTagClose, =
+nDistance )
+{=09
+	var nTagOpen =3D strRawHTML.indexOf( strTagOpen, 0 );
+	if( nTagOpen < 0 )
+		return strRawHTML;
+
+	var nTagClose =3D strRawHTML.indexOf( strTagClose, nTagOpen);
+	if( nTagClose < nTagOpen )
+		return strRawHTML;
+	=09
+	if( typeof(nDistance) =3D=3D "number" && nDistance > 0 )
+		if( (nTagClose - nTagOpen) !=3D nDistance )
+			return strRawHTML;
+	=09
+	var strCleanOnce =3D strRawHTML.substring(0, nTagOpen) + =
+strRawHTML.substr(nTagClose + strTagClose.length) ;
+	return 	kadovRetrieveCleanHTML( strCleanOnce, strTagOpen, strTagClose =
+);
+}
+
+function kadovAdjustObjectTag(strRawHTML, nStartPos)
+{// adjust object tag for related topics HTML control, because innerHTML =
+misses out the item settings
+=09
+	//Is there any DTC?
+	var strDTCTagOpen =3D '<!--Metadata type=3D"DesignerControl" =
+startspan';
+	var strDTCTagClose =3D '<!--Metadata type=3D"DesignerControl" =
+endspan-->';
+	var nDTCTagOpen =3D strRawHTML.indexOf( strDTCTagOpen, nStartPos );
+	if( nDTCTagOpen < 0 )
+		return strRawHTML;
+	var nDTCTagClose =3D strRawHTML.indexOf( strDTCTagClose, nDTCTagOpen );
+	if( nDTCTagClose < nDTCTagOpen)
+		return strRawHTML; // no Design Time Controls;
+	=09
+	//Is the DTC HTML Help Control?
+	var strRTObjTagOpen =3D =
+'classid=3Dclsid:ADB880A6-D8FF-11CF-9377-00AA003B7A11';
+	var strRTObjTagClose =3D '</OBJECT>';
+	var nRTObjTagOpen =3D strRawHTML.indexOf( strRTObjTagOpen, nDTCTagOpen =
+);
+	if( nRTObjTagOpen < nDTCTagOpen )
+		return strRawHTML;
+	var nRTObjTagClose =3D strRawHTML.indexOf( strRTObjTagClose, =
+nRTObjTagOpen );
+	if( nRTObjTagClose < nRTObjTagOpen )
+		return strRawHTML; // is not a HTML help control
+	=09
+	// Is it a related Topics html help control?
+	var strRTObjLabel =3D '<PARAM NAME=3D\"Command\" VALUE=3D\"Related =
+Topics';
+	if( strRawHTML.indexOf(strRTObjLabel, nRTObjTagOpen) < 0 )
+		return strRawHTML;
+=09
+	// does the commented object tag contain a items parameters	=09
+	var strRTItemsOpen =3D '<param name=3D"Items" value=3D"';
+	var strRTItemsClose =3D '$$**$$">';
+	var nRTItemsOpen =3D strRawHTML.indexOf(strRTItemsOpen, nDTCTagOpen);
+	if( nRTItemsOpen < nDTCTagOpen )
+		return strRawHTML;
+	var nRTItemsClose =3D strRawHTML.indexOf(strRTItemsClose, =
+nRTItemsOpen);
+	if( nRTItemsClose < nRTItemsOpen )
+		return strRawHTML;
+	=09
+	// found a items string
+	var strItems =3D strRawHTML.substring( nRTItemsOpen + =
+strRTItemsOpen.length, nRTItemsClose);
+	if( strItems.length < 1 )
+		return strRawHTML;
+=09
+	// to reconstruct the item(s) param tag(s)
+	var strItemsArray =3D strItems.split('$$**$$');
+	if( strItemsArray.length < 1 )
+		return strRawHTML;
+	var strRunTimeItemParam =3D "";
+	for( var i =3D 0; i < strItemsArray.length; i++ )
+	{
+		strRunTimeItemParam +=3D '<PARAM  NAME=3D"Item' + (i+1);
+		strRunTimeItemParam +=3D '"' + '  VALUE=3D"';
+		strRunTimeItemParam +=3D strItemsArray[i];
+		strRunTimeItemParam +=3D '">';
+	}
+=09
+	// to insert the reconstructed item params into runtime object tag
+	var strAdjustedHTML =3D strRawHTML.substring(0,nRTObjTagClose) + =
+strRunTimeItemParam + strRawHTML.substring(nRTObjTagClose, =
+strRawHTML.length);
+	return kadovAdjustObjectTag(strAdjustedHTML, nDTCTagClose + =
+strDTCTagClose.length);
+}
+
+function kadovTextPopupOnLoad( el )
+{
+	if( typeof(el) =3D=3D "string" )
+		el =3D getElement(el);
+
+	var src =3D el.getAttribute( "x-use-popup" );
+	var bNeedMove=3Dtrue;
+	if(!src&&el.id)
+	{
+		for (var i=3D0;i<gPopupData.length;i++)
+			if (gPopupData[i].el=3D=3Del.id)
+			{
+				src=3DgPopupData[i].popupId;
+				bNeedMove=3Dfalse;
+				break;
+			}
+	}
+	if(!src)
+		src =3D el.style.getAttribute( "x-use-popup" );=09
+	if (!src)=09
+		return 0;
+
+	var name =3D src;
+	if( src.substr(0,1) =3D=3D "#" )=20
+		name =3D src.substr(1, src.length-1);
+	var srcDiv =3D getElement(name);
+	if( !srcDiv )
+		return 1;
+
+	if (bNeedMove)
+	{
+		var type =3D el.getAttribute( "x-popup-type" );
+		if (!type)
+			type =3D el.style.getAttribute("x-popup-type");
+		if (!type)	=09
+			return 1;	=09
+		var setup =3D el.getAttribute( "x-tmp-setup" );
+		var newId =3D name;
+		if( newId.indexOf( "_tmp") <=3D 0 )
+			newId +=3D "_tmp";
+
+		if( !setup)
+		{
+			el.setAttribute( "x-tmp-setup", 1 );
+
+			if( type =3D=3D "pulldown"  )
+			{
+				var strAdjust =3D kadovAdjustObjectTag(srcDiv.innerHTML,0);
+				var strCleanHTML =3D kadovRetrieveCleanHTML(strAdjust, "<!--", =
+"-->");
+				strCleanHTML =3D kadovRetrieveCleanHTML(strCleanHTML, "<SCRIPT", =
+"/SCRIPT>");
+			=09
+				//work around the bug in HH.exe that highlight the phrases when use =
+Search tab
+				//this approach is just removing the <FONT...> tag inserted by =
+Microsoft in the runtime
+				strCleanHTML =3D kadovRetrieveCleanHTML(strCleanHTML, "<FONT =
+color=3D#", "\">", 52);
+			=09
+				var strStyle =3D " style=3D'display:none; position:relative;";
+				var newDiv =3D "<div class=3Ddroptext id=3D" + newId + strStyle + =
+"'>" + strCleanHTML + "</div>";
+
+				removeThis(srcDiv); // empty the original DIV tag
+				var elParentPra =3D kadovFindParentParagraph(el);
+				if( elParentPra )
+					insertAdjacentHTML(elParentPra, "afterEnd", newDiv );
+			}
+			else if( type =3D=3D "expanding"  )
+			{
+				var inner =3D kadovRetrieveTextInner(srcDiv);
+				if( inner =3D=3D "" )
+					inner =3D srcDiv.innerHTML;
+				var strAdjust =3D kadovAdjustObjectTag(inner,0);
+				var strCleanHTML =3D kadovRetrieveCleanHTML(strAdjust, "<!--", =
+"-->");
+				strCleanHTML =3D kadovRetrieveCleanHTML(strCleanHTML, "<SCRIPT", =
+"/SCRIPT>");
+				var strClassName =3D (el.className =3D=3D "glossterm") ? "glosstext" =
+: "expandtext";
+				var newSpan =3D "<span class=3D" + strClassName + " =
+style=3D'display: none;' id=3D" + newId + ">&nbsp;" + strCleanHTML + =
+"</span>";
+				removeThis(srcDiv); // empty the original DIV tag
+				insertAdjacentHTML(el, "afterEnd", newSpan );
+			}
+		}
+	}
+	else
+	{
+		srcDiv.style.display =3D "none";
+	}
+	return 0;
+}
+
+function getElementsByTag(obj,sTagName)
+{
+	if(obj.getElementsByTagName)
+		return obj.getElementsByTagName(sTagName);
+	else if(obj.all)
+		return obj.all.tags(sTagName);
+	return null;
+}
+
+function getElement(sID)
+{
+	if(document.getElementById)
+		return document.getElementById(sID);
+	else if(document.all)
+		return document.all(sID);
+	return null;
+}
+
+function getParentNode(obj)
+{
+	if(obj.parentNode)
+		return obj.parentNode;
+	else if(obj.parentElement)
+		return obj.parentElement;
+	return null;
+}
+
+function getChildNodes(obj)
+{
+	if(obj.childNodes)
+	{
+		var children =3D new Array();
+		for (var i =3D 0; i < obj.childNodes.length; i++)
+		{
+			if (obj.childNodes[i].nodeType =3D=3D 1)
+				children[children.length] =3D obj.childNodes[i];
+		}
+		return children;
+	}
+	else if(obj.children)
+		return obj.children;
+	return null;=09
+}
+
+function removeThis(obj)
+{
+	if(obj.parentNode)
+		obj.parentNode.removeChild(obj);
+	else
+		obj.outerHTML=3D"";
+}
+
+function kadovTextPopup( el )
+{
+	if (!gbBsIE4 && !gbBsOpera7 && !gbBsSafari && !gbBsNS6 && =
+!gbBsKonqueror3 )
+		return;
+
+	var bNeedMove=3Dtrue;
+=09
+	if (window.event)
+		window.event.cancelBubble =3D true;
+
+	if( typeof(el) =3D=3D "string" )
+		el =3D getElement(el);
+
+	if (!el||el=3D=3Dwindow)
+		return;
+=09
+	var src =3D el.getAttribute( "x-use-popup" );
+	if(!src&&el.id)
+	{
+		for (var i=3D0;i<gPopupData.length;i++)
+			if (gPopupData[i].el=3D=3Del.id)
+			{
+				src=3DgPopupData[i].popupId;
+				bNeedMove=3Dfalse;
+				break;
+			}
+	}
+	if(!src)
+		src =3D el.style.getAttribute( "x-use-popup" );=09
+	if(!src)
+		return;
+	=09
+	var name =3D src;
+	if( src.substr(0,1) =3D=3D "#" )=20
+	if (bNeedMove)
+		name =3D src.substr(1, src.length-1) + "_tmp";
+	else
+		name =3D src.substr(1, src.length-1);
+
+	var srcDiv =3D getElement(name);
+	if( !srcDiv )
+		return;
+
+	if( srcDiv )
+	{
+		if( srcDiv.style.display =3D=3D "" )
+			srcDiv.style.display =3D "none";
+		else
+		{
+			srcDiv.style.display =3D "";
+			if( typeof(srcDiv.bInitialized) =3D=3D "undefined" )
+			{
+				srcDiv.bInitialized =3D true;
+				kadovInitEffects(name);
+				kadovInitEachChild(srcDiv);
+			}
+		}
+	}
+	if(gbBsIE4)
+		event.returnValue=3Dfalse;
+	return;
+}
+
+function kadovFindParentParagraph( el )
+{
+	if( typeof(el) =3D=3D "string" )
+		el =3D getElement(el);
+	if( (!el) || el.tagName =3D=3D "BODY" )
+		return null;
+	if( kadovIsParagraph(getParentNode(el)) )
+		return getParentNode(el);
+	else
+		return kadovFindParentParagraph( getParentNode(el) );
+}
+
+//Begin HTML code invoked function
+function kadovRegisterEventHandler( obj, strEvent, strEventHandler )
+{
+	if( !gbBsIE4 )
+		return;
+	CCSSP.RegisterEventHandler( obj, strEvent, strEventHandler );
+}
+
+function textPopupData(el, popupId)
+{
+	this.el =3D el;
+	this.popupId =3D "#"+popupId;
+}
+
+var gPopupData =3D new Array();
+
+function kadovTextPopupInit( el, popupId)
+{
+	if (!gbBsIE4 && !gbBsOpera7 && !gbBsSafari && !gbBsNS6 && =
+!gbBsKonqueror3)
+		return;
+	=09
+	if( typeof(el) =3D=3D "string" )
+	{
+		if (popupId)
+		{
+			gPopupData[gPopupData.length]=3Dnew textPopupData(el, popupId);
+		}
+		el =3D getElement(el);
+	}
+	=09
+	if( el !=3D null )
+	{
+		CCSSP.RegisterEventHandler( el, "onclick", "kadovTextPopup(\"" + el.id =
++"\");" );
+		CCSSP.RegisterEventHandler( window, "onload", =
+"kadovTextPopupOnLoad(\"" + el.id +"\");" );
+	}
+}
+//End HTML code invoked function
+
+//End to support extended and dropdown text effects.
+
+//Begin to convert iWrite format to RoboEditor Format for DHTML effects
+function kadovInitTriggersInHead( )
+{
+  if( Object.xDelayedInitElements )
+  {
+     var x =3D Object.xDelayedInitElements;
+     for(i=3D0; i<x.length; i++)
+     	kadovInitTrigger( x[i] );
+  }
+}
+
+//Begin HTML code invoked function
+function kadovFilePopupInit( el )
+{
+	if( typeof(el) =3D=3D "string" )
+		el =3D getElement(el);
+
+	if( el !=3D null )
+		CCSSP.RegisterEventHandler( el, "onmouseover", =
+"BSPSPopupOnMouseOver(event);" );
+}
+
+function kadovInitTrigger( element )
+{
+	if( !gbBsIE4 )
+		return;
+	var srcElement =3D element;
+	if( typeof(srcElement) =3D=3D "string" )
+	{
+		srcElement =3D getElement(element,0);
+		if(srcElement =3D=3D null)
+			return;
+	}
+=09
+	if( !kadovIsParentVisible(srcElement) )
+		return;
+
+	var targets =3D srcElement.getAttribute( "x-targets" );
+	if (!targets)
+		targets =3D srcElement.style.getAttribute("x-targets");
+	if (!targets)
+		return;=09
+	var arrOneTarget =3D targets.split( "," );
+	for( var i =3D 0; i < arrOneTarget.length; i ++ )
+		bsscFXInit( element, arrOneTarget[i], null, null, null, null );
+}
+
+function kadovIsParentVisible( el )
+{
+	if( typeof(el) =3D=3D "string" )
+		el =3D getElement(el);
+	if( (!el) || el.tagName =3D=3D "BODY" )
+		return true;
+	if( el.style.display =3D=3D 'none' ) //el.visibility =3D=3D 'hidden' || =
+
+		return false;
+	else
+		return kadovIsParentVisible( getParentNode(el) );
+}
+
+function kadovInitEffects( element )
+{
+	if( !gbBsIE4 )
+		return;
+	var srcElement =3D element;
+	if( typeof(srcElement) =3D=3D "string" )
+	{
+		srcElement =3D getElement(element,0);
+		if(srcElement =3D=3D null)
+			return;
+	}
+=09
+	if( !kadovIsParentVisible(srcElement) )
+		return;
+=09
+	kadovInitEffect( srcElement, "x-on-hover" );
+	kadovInitEffect( srcElement, "x-on-pageclick" );
+	kadovInitEffect( srcElement, "x-on-pageload" );
+	kadovInitEffect( srcElement, "x-on-trigger-1" );
+	kadovInitEffect( srcElement, "x-on-trigger-2" );
+}
+//End HTML code invoked function
+
+function kadovInitEffect( element, prop )
+{
+	var values =3D null;
+	if( element.getAttribute( "currentStyle" )  && =
+element.currentStyle.getAttribute)
+		values =3D element.currentStyle.getAttribute( prop );
+	else  if (element.style.getAttribute)
+		values =3D element.style.getAttribute( prop );
+	if( !values )
+		return;
+
+	var functions =3D new Array();
+	var nIdx =3D 0, nStart =3D 0;
+	var nNext =3D values.indexOf( "\)", 0);
+	while( nNext >=3D 0 && nNext < values.length )
+	{
+		functions[nIdx] =3D values.substr( nStart, nNext-nStart+1);
+		nStart =3D nNext + 1;
+		nIdx++;
+		nNext =3D values.indexOf( "\)", nStart);
+	}
+	=09
+	for( var i=3D0; i<functions.length; i++)
+	{
+		var id =3D element.getAttribute( "id" );
+		var translatedProp =3D kadovTranslateProp(prop);
+
+		var lp =3D functions[i].indexOf( "(" );
+		var fnname =3D functions[i].substring(0, lp);
+		var srcargs =3D functions[i].substring(lp+1, functions[i].length-1);
+	=09
+		var nClickTimes =3D 1;
+		var arrForClickCount =3D srcargs.split( "," );
+		for( var j =3D 0; j < arrForClickCount.length; j++ )
+		{// to locate and get the "clicks=3D99" settings
+			var nPageClick =3D arrForClickCount[j].indexOf("clicks");
+			if( nPageClick >=3D 0 )
+			{
+				nPageClick =3D arrForClickCount[j].indexOf("=3D");
+				if( nPageClick > 0 )
+				{
+					nClickTimes =3D arrForClickCount[j].substring( nPageClick + 1, =
+arrForClickCount[j].length) * 1;
+					break;
+				}
+			}
+		}
+		var args =3D srcargs;
+		if( j < arrForClickCount.length )
+		{// to strip out the "clicks=3D99" from the arguments string
+			args =3D "";
+			for( var k =3D 0; k < arrForClickCount.length; k ++ )
+			{
+				if( k !=3D j )
+				{
+					args +=3D arrForClickCount[k];
+					if( k < arrForClickCount.length - 1 )
+						args +=3D ",";
+				}
+			}
+		}
+		bsscFXInit( null, id, translatedProp, fnname, args, nClickTimes );
+	}
+}
+
+function kadovTranslateProp( prop )
+{
+	switch( prop )
+	{
+	case "x-on-hover" :     return "bsschover";
+	case "x-on-pageclick" : return "bsscpageclick";
+	case "x-on-pageload" :  return "bsscpageload";
+	case "x-on-trigger-1" : return "bssctrigger1";
+	case "x-on-trigger-2" : return "bssctrigger2";
+	}
+	return null;
+}
+//End to convert iWrite format to RoboEditor Format for DHTML effects
+
+//Begin the definition of one entry to DHTML effects
+function bsscFXInit( trigger_ID, target_ID, event_type,=20
+	action_type, action_setting, event_addional )
+{
+	if( (!gbBsWindows && !gbBsSunOS  && !(gbBsMac&&gbBsIE5)) || =
+typeof(target_ID) !=3D "string" )//MUST have a target_ID
+		return; // we don't support Navigator yet
+=09
+	if( typeof(event_type) =3D=3D "string" )
+		event_type =3D event_type.toLowerCase();
+	if( typeof(action_type) =3D=3D "string" )
+		action_type =3D action_type.toLowerCase();
+	if( typeof(action_setting) =3D=3D "string" )
+		 action_setting =3D action_setting.toLowerCase();
+=09
+	// to get the target element then add it to the target list
+	var eleTarget =3D CCSSP.GetObject( target_ID );
+	if( (eleTarget !=3D null) && (event_type !=3D null) && (action_type =
+!=3D null) )
+	{
+		CEngine.AddOneTarget( target_ID, eleTarget );
+		CEngine.BuildTargetObject(target_ID, event_type, action_type, =
+action_setting, event_addional);
+	}
+=09
+	// to validate the trigger_ID parameter
+	if( typeof(trigger_ID) =3D=3D "string" && trigger_ID !=3D "" )
+		CEngine.BuildTriggerObject( trigger_ID, target_ID );
+}=09
+//End the definition of one entry to DHTML effects
+
+/// Section End  - kadov DHTM (JavaScript 1.2)
+
+/// Section Begin  - CCSSP DHTM (JavaScript 1.2)
+
+//Begin JavaScript libary for cross-platform positioning object.
+function CCSSP(){} // constructor of CCSSP class
+
+CCSSP.GetObject =3D function( obj )
+{//convert object name string or reference into a valid object reference
+	if( typeof(obj) =3D=3D "object" )
+		return obj;
+	else if( typeof(obj) =3D=3D "string" && obj !=3D "")
+	{
+		if( gbBsNS4 )
+			return eval("document." + obj);
+		else
+			return eval("document.all(\"" + obj + "\")");
+	}
+	else
+		return null;
+}
+
+CCSSP.MoveObjectTo =3D function(obj, x, y)
+{//positioning an object at a specific pixel coordinate
+	if( gbBsNS4 )
+		obj.moveTo(x,y);
+	else
+	{
+		obj.style.pixelLeft =3D x;
+		obj.style.pixelTop =3D y;
+	}
+}
+
+CCSSP.MoveObjectBy =3D function(obj, dx, dy)
+{//moveing a object by x and/or y pixel
+	if( gbBsNS4 )
+		obj.moveBy(dx,dy);
+	else
+	{
+		obj.style.pixelLeft +=3D dx;
+		obj.style.pixelTop +=3D dy;
+	}
+}
+
+CCSSP.SetObjectBGColor =3D function(obj, color)
+{//set the background color of an object
+	if( gbBsNS4 )
+		obj.bgColor =3D color;
+	else
+		obj.style.backgroundColor =3D color;
+}
+
+CCSSP.ShowObject =3D function(obj, bShow)
+{// set the object to be visible or invisible
+	if( gbBsNS4 )
+		obj.visibility =3D (bShow =3D=3D true) ? 'show' : 'hide';
+	else
+		obj.style.visibility =3D (bShow =3D=3D true) ? 'visible' : 'hidden';// =
+when hidden, it still occupy some space.
+}
+
+CCSSP.GetObjectLeft =3D function(obj)
+{// retrieve the x coordinate of a posionable object
+	if( gbBsNS4 )
+		return obj.left;
+	else
+		return obj.style.pixelLeft;
+}
+
+CCSSP.GetObjectTop =3D function(obj)
+{// retrieve the y coordinate of a posionable object
+	if( gbBsNS4 )
+		return obj.top;
+	else
+		return obj.style.pixelTop;
+}
+
+CCSSP.GetObjectContainLeft =3D function(obj)
+{// retrieve the x coordinate of a posionable object relative to it's =
+parent element
+	if( gbBsNS4 )
+		return obj.pageX;
+	else
+	{
+		if( obj =3D=3D document.body )
+			return obj.clientLeft;
+		else
+			return obj.offsetLeft;
+	}
+}
+
+CCSSP.GetObjectWindowLeft =3D function(obj)
+{// retrieve the x coordinate of a posionable object relative to browser =
+window
+	if( gbBsNS4 )
+		return obj.pageX;
+	else
+	{
+		var nOffsetWindowLeft =3D 0;
+		for(var element =3D obj; element; element =3D element.offsetParent)
+			nOffsetWindowLeft +=3D CCSSP.GetObjectContainLeft(element);
+		return nOffsetWindowLeft;
+	}
+}
+
+CCSSP.GetObjectContainTop =3D function(obj)
+{// retrieve the y coordinate of a posionable object relative to it's =
+parent element
+	if( gbBsNS4 )
+		return obj.pageY;
+	else
+	{
+		if( obj =3D=3D document.body )
+			return obj.clientTop;
+		else
+			return obj.offsetTop;
+	}
+}
+
+CCSSP.GetObjectWindowTop =3D function(obj)
+{// retrieve the y coordinate of a posionable object relative to browser =
+window
+	if( gbBsNS4 )
+		return obj.pageY;
+	else
+	{
+		var nOffsetWindowTop =3D 0;
+		for(var element =3D obj; element; element =3D element.offsetParent)
+			nOffsetWindowTop +=3D CCSSP.GetObjectContainTop(element);
+		return nOffsetWindowTop;
+	}
+}
+
+CCSSP.GetObjectHeight =3D function(obj)
+{// retrieve the height of a posionable object
+	if( gbBsNS4 )
+		return obj.clip.height;
+	else
+		return obj.offsetHeight;
+}
+
+CCSSP.GetObjectWidth =3D function(obj)
+{// retrieve the width of a posionable object
+	if( gbBsNS4 )
+		return obj.clip.width;
+	else
+		return obj.offsetWidth;
+}
+
+CCSSP.RegisterEventHandler =3D function( srcObj, rawEventName, =
+funcHandler )
+{ // to add the "funcHandler" as the "rawEventName" 's handler to the =
+"srcObj" object,the original event handler will be combined
+	if (gbBsNS4 && !gbBsNS6)
+		return ;
+	=09
+	var oldHandler =3D "";
+
+	if (gbBsMac &&gbBsIE4&&!gbBsIE5)
+	{
+		if (typeof(srcObj[rawEventName.toLowerCase()])=3D=3D"unknown")
+		{ //search for <SCRIPT> tag which define the event handler
+			for( var i =3D 0; i < document.scripts.length; i++ )=20
+			{
+				var script =3D document.scripts[i];
+				if( (script.htmlFor =3D=3D srcObj.id || script.htmlFor =3D=3D srcObj =
+) && script.event =3D=3D rawEventName )
+				{
+					oldHandler =3D script.innerHTML;
+					break;
+				}
+			}
+		}
+	}
+	else
+	{
+		var oldInlineHandler =3D srcObj[rawEventName.toLowerCase()];
+		if( oldInlineHandler !=3D null && typeof(oldInlineHandler) !=3D =
+"undefined")
+		{
+			var functionDefinition =3D oldInlineHandler.toString();
+			var bodyStart =3D functionDefinition.indexOf( "{" );
+			var bodyEnd =3D functionDefinition.lastIndexOf( "}" );
+			if( bodyStart > 0 || bodyEnd > bodyStart )
+				oldHandler =3D functionDefinition.substr( bodyStart + 1, bodyEnd - =
+bodyStart - 2 );
+		}
+		else if( gbBsIE4 )
+		{ //search for <SCRIPT> tag which define the event handler
+			for( var i =3D 0; i < document.scripts.length; i++ )=20
+			{
+				var script =3D document.scripts[i];
+				if( (script.htmlFor =3D=3D srcObj.id || script.htmlFor =3D=3D srcObj =
+) && script.event =3D=3D rawEventName )
+				{
+					oldHandler =3D script.innerHTML;
+					break;
+				}
+			}
+		}
+	}
+	if( oldHandler.indexOf(funcHandler) >=3D 0 )
+		return;// to prevent register the funtion twice.
+
+	if( gbBsNS4 ) // only "onload, onresize, onfocus" apply to window
+	{// other raw events will apply to layer
+		var noOn =3D rawEventName.substring(2, rawEventName.length);
+		if( typeof(noOn) =3D=3D "string" && noOn.length > 3 ) {
+			if (srcObj.captureEvents)
+				srcObj.captureEvents( Event[noOn.toUpperCase()] );
+		}
+	}
+=09
+	var newHandler =3D oldHandler;
+	if( newHandler.length =3D=3D 0 )
+		newHandler =3D funcHandler;
+	else
+		newHandler +=3D "; " + funcHandler;
+=09
+	srcObj[rawEventName.toLowerCase()] =3D new Function( newHandler );
+}
+
+CCSSP.GetWindowHeight =3D function()
+{// retrieve the height of available content in browser window
+	if( gbBsNS4 )
+		return window.innerHeight;
+	else
+		return document.body.clientHeight;
+}
+
+CCSSP.GetWindowBottom =3D function()
+{// retrieve the bottom postion of browser window
+	if( gbBsNS4 )
+		return window.outerHeight + window.pageYOffset;
+	else
+		return document.body.clientHeight + document.body.scrollTop;
+}
+
+CCSSP.GetWindowWidth =3D function()
+{// retrieve the width of available content in browser window
+	if( gbBsNS4 )
+		return window.innerWidth;
+	else
+		return document.body.clientWidth;
+}
+
+CCSSP.GetWindowRight =3D function()
+{// retrieve the right postion of browser window
+	if( gbBsNS4 )
+		return window.outerWidth + window.pageXOffset;
+	else
+		return document.body.clientWidth + document.body.scrollLeft;
+}
+
+CCSSP.TrimString =3D function( objString, subtrim )
+{// to trim the "subtrim" in the beginning and ending of a string object
+	if( typeof(subtrim) !=3D "string" || subtrim =3D=3D null )
+		return objString;
+	var strHead =3D objString.substring(0, 1);
+	var strRear =3D objString.substring(objString.length-1, =
+objString.length);
+	if( strHead !=3D subtrim && strRear !=3D subtrim )
+		return objString;
+=09
+	var spacePos =3D objString.indexOf(subtrim);
+	if( spacePos < 0 )
+		return objString;
+	else if( spacePos =3D=3D objString.length - 1 )
+		return objString.substring(0, spacePos);
+	else
+	{
+		var newString =3D objString.substring( spacePos + 1, =
+objString.length);
+		return CCSSP.TrimString( newString, subtrim );
+	}
+}
+
+CCSSP.TrimSpace =3D function( objString )
+{
+	var Trim1 =3D CCSSP.TrimString( objString, " ");
+	return CCSSP.TrimString( Trim1, "\'");
+}
+
+CCSSP.GetEventElement =3D function( navEventObject )
+{// to get the element who fired the current event
+	if(gbBsNS4)=20
+		if (gbBsNS6)
+			return null;
+		else
+			 navEventObject.target;
+	else
+		return event.srcElement;
+}
+
+CCSSP.PrepareFilter =3D function( Obj )
+{//to prepare for making the filter work
+	Obj.style.filter =3D "";
+	if( Obj.style.width !=3D "" || Obj.style.height !=3D "" || =
+Obj.style.position =3D=3D "absolute" )
+		return;
+	Obj.style.height =3D CCSSP.GetObjectHeight(Obj);
+}
+
+CCSSP.IsDescendant =3D function( progenitor, progeny )
+{
+	if( typeof(progeny) =3D=3D "undefined" || progeny =3D=3D null )
+		return false;
+	else if( progeny =3D=3D progenitor )
+		return true;=20
+	else if( progeny.id =3D=3D progenitor.id )=20
+		return true;=20
+	else if( getParentNode(progeny) =3D=3D getParentNode(progenitor))
+		return false;
+	else
+		return CCSSP.IsDescendant( progenitor, getParentNode(progeny));
+}
+
+CCSSP.IsTextTag =3D function( Obj )
+{
+	if( typeof( Obj.tagName ) =3D=3D "undefined" )
+		return false;
+	return( Obj.tagName.indexOf("H") =3D=3D 0 || Obj.tagName =3D=3D "P" ||=20
+			Obj.tagName =3D=3D "FONT" || Obj.tagName =3D=3D "SPAN" );
+}
+
+//End JavaScript libary for cross-platform positioning object.
+
+/// Section End  - CCSSP DHTM (JavaScript 1.2)
+
+/// Section Begin  - CCSSP DHTM 1 (JavaScript 1.2)
+
+//Begin the definition of class CTrigger
+function CTrigger( TriggerElement )
+{
+	// object : the trigger element. Never be null.=20
+	this.eleTrigger =3D TriggerElement;
+=09
+	// number : the click counter number: only 3 values: 0,1,2;
+	this.nCounter =3D 0;=20
+=09
+	//object as associative array of string:
+	// the associate target ID strings; one element at least.		=09
+	this.objStrTarget =3D new Object();
+	this.eleTrigger.style.cursor =3D "hand";
+	if( this.eleTrigger.tagName =3D=3D "AREA" && =
+this.eleTrigger.getAttribute("href") =3D=3D "" )
+		this.eleTrigger.setAttribute("href", "#") // to make a hand cursor for =
+image map
+}
+
+CTrigger.prototype.AddTargetID =3D function( strTargetID )
+{// add one target ID string to the objStrTarget
+	if( typeof(strTargetID) !=3D "string" )
+		return ;
+	if( typeof(this.objStrTarget[strTargetID]) !=3D "string" )
+		this.objStrTarget[strTargetID] =3D strTargetID;
+}
+
+CTrigger.prototype.OnTriggerClick =3D function()
+{// to activate all asociated target
+	var strEventType =3D ( (this.nCounter++)% 2 =3D=3D 0 ) ?=20
+		"bssctrigger1" : "bssctrigger2";
+	=09
+	// to enumerate associative target element's ID string
+	for( var strTargetID in this.objStrTarget )=20
+		CEngine.SendEventToOneTarget( strTargetID, strEventType );
+}
+//End the definition of class CTrigger
+
+//Begin the definition of class CTarget
+function CTarget( TargetElement )
+{
+	// object : the target element. Never be null.
+	this.eleTarget =3D TargetElement;
+	this.objManager =3D new Object(); // object: the event manager
+}=20
+
+CTarget.nPageClickCounter =3D 0;// static class property.
+
+CTarget.prototype.GetAgencyObject =3D =
+function(str_action_type,action_setting )
+{// return the action agency ( effect )object's refernece=20
+	switch( str_action_type )
+	{
+	case "show":return new CAgencyShow( this.eleTarget, true ) ;
+	case "hide":return new CAgencyShow( this.eleTarget, false ) ;
+
+    case "flyin" :=20
+    	return new CAgencyFly(this.eleTarget, action_setting, true);
+    case "flyout" :=20
+    	return new CAgencyFly(this.eleTarget, action_setting, false);
+    case "spiralin" :=20
+    	return new CAgencySpiral(this.eleTarget, action_setting, true);
+    case "spiralout" :=20
+    	return new CAgencySpiral(this.eleTarget, action_setting, false);
+    case "zoomin" :
+    	return new CAgencyZoom(this.eleTarget, action_setting, true);
+    case "zoomout" :=20
+    	return new CAgencyZoom(this.eleTarget, action_setting, false);
+    case "elastic" :=20
+		return new CAgencyElastic(this.eleTarget, action_setting);
+	=09
+    case "fadein" :=20
+    	return (gbBsIE4)? new CAgencyAlpha(this.eleTarget, action_setting, =
+true) : null;
+    case "fadeout" :
+    	return (gbBsIE4)? new CAgencyAlpha(this.eleTarget, action_setting, =
+false) : null;
+    case "rockrollstatic" :
+    case "rockroll" :
+    	return (gbBsIE4)? new CAgencyWave(this.eleTarget, action_setting, =
+false) : null;
+=20
+    case "glow":
+    	return (gbBsIE4)? new CAgencyGlow(this.eleTarget,action_setting) : =
+null;
+    case "dropshadow":
+    	return (gbBsIE4)? new =
+CAgencyDropShadow(this.eleTarget,action_setting) : null;
+    case "transition" :
+    	return (gbBsIE4)? new =
+CAgencyRevealTrans(this.eleTarget,action_setting) : null;
+    case "blur" :
+    	return (gbBsIE4)? new CAgencyBlur(this.eleTarget,action_setting) : =
+null;
+
+    case "fliph" : // all these 4 do NOT need any parameters
+    case "flipv" :
+    case "invert":
+    case "gray" :
+    	return (gbBsIE4)? new CAgencyChangeFilter(this.eleTarget, =
+str_action_type) : null;
+   =20
+    case "fontchange": // the effects below change the style on the fly, =
+so won't work in Navigator
+    	return (gbBsIE4)? new =
+CAgencyFontChange(this.eleTarget,action_setting) : null;
+    case "boderchange":=20
+    case "stylechange":
+    	return (gbBsIE4)? new =
+CAgencyChangeStyle(this.eleTarget,action_setting) : null;
+
+	default: return null;
+	}
+}
+
+CTarget.prototype.SetEventManager =3D function(=20
+	one_event_type,str_action_type,action_setting,event_additional)
+{// to set the event manager with specified action=20
+	if( typeof( one_event_type ) !=3D "string" ||=09
+		typeof( str_action_type ) !=3D "string"||
+		typeof( action_setting ) !=3D "string" )
+		return false;
+	if( typeof(this.objManager[one_event_type]) =3D=3D "undefined" )
+	{
+		this.objManager[one_event_type] =3D new Object();
+		this.objManager[one_event_type].length =3D 0;
+	}
+=09
+	var eventAgency =3D =
+this.GetAgencyObject(str_action_type,action_setting);
+	if( eventAgency !=3D null )
+	{
+		var ct =3D this.objManager[one_event_type].length ++;
+		this.objManager[one_event_type][ct] =3D eventAgency;
+	=09
+		if( one_event_type =3D=3D "bsscpageclick" )
+		{// to deal with the "number of pageclick" stuff
+			if( typeof(event_additional) =3D=3D "number" )
+				this.objManager[one_event_type][ct].nPageClick =3D event_additional;
+			else // set the default number=20
+				this.objManager[one_event_type][ct].nPageClick =3D 1;
+		=09
+			if( (typeof(this.objManager.nMinPageClickIndex) =3D=3D "undefined") =
+||
+			    (this.objManager[one_event_type][ct].nPageClick <=20
+					=
+this.objManager[one_event_type][this.objManager.nMinPageClickIndex].nPage=
+Click) )
+				this.objManager.nMinPageClickIndex =3D ct;
+		}
+	=09
+		//hide the object blindly,SetState function will take care of the =
+final correct state
+		if( ((one_event_type =3D=3D "bsscpageclick") &&=20
+			 (this.objManager[one_event_type][ct].nPageClick =3D=3D 1)) ||
+			one_event_type =3D=3D "bsscpageload" ||
+			one_event_type =3D=3D "bssctrigger1" )
+			CCSSP.ShowObject( this.eleTarget, false );
+	=09
+		if( one_event_type =3D=3D "bssctrigger1" || one_event_type =3D=3D =
+"bssctrigger2" )
+			if( typeof( this.strTriggerEvent ) =3D=3D "undefined" )
+				this.strTriggerEvent =3D ( one_event_type =3D=3D "bssctrigger1" ) ? =
+"bssctrigger2" : "bssctrigger1";
+		=09
+		return true;
+	}
+	return false;
+}
+
+CTarget.prototype.OnEvent =3D function( strBsscEvent )
+{// response to the event ( bssc format )
+	if( typeof(this.objManager[strBsscEvent]) =3D=3D "object" )
+	{ // to get the event agency from the event manager
+		var eventAgency =3D this.objManager[strBsscEvent];
+		for( var i =3D 0; i < eventAgency.length; i++ )
+		{
+			if( strBsscEvent =3D=3D "bsscpageclick" &&=20
+			 	eventAgency[i].nPageClick !=3D CTarget.nPageClickCounter )
+				 continue;
+			else if( strBsscEvent =3D=3D "bsschover" && event.type =3D=3D =
+"mouseout" )
+				eventAgency[i].EndEffect();
+			else // to invoke the unified function in effect object=09
+				eventAgency[i].UpdateEffect();=20
+		}
+	}
+}
+
+CTarget.prototype.SetState =3D function( strBsscEvent )
+{
+	if( typeof(this.objManager[strBsscEvent]) !=3D "object" )
+		return false;
+
+	// to get the event agency from the event manager
+	var eventAgency =3D this.objManager[strBsscEvent];
+=09
+	if( strBsscEvent =3D=3D "bsscpageclick" )
+	{// we only set the initial state for the minium number of pageclick=20
+		eventAgency[this.objManager.nMinPageClickIndex].PrepareEffect();
+		return true;
+	}
+	else
+	{
+		for( var i =3D 0; i < eventAgency.length; i++ )
+			eventAgency[i].PrepareEffect(); // to invoke the unified function in =
+effect object	=20
+		if( i > 0 )
+			return true;
+		else
+			return false;
+	}
+}
+//End the definition of class CTarget
+
+//Begin the definition of CEngine class
+function CEngine(){}// all properities are going be "class" properities
+
+// object : as associative array of trigger objects
+CEngine.objTrigger =3D new Object();
+// object : as associative array of target objects=20
+CEngine.objTarget =3D new Object();=20
+
+// Array : each element is a CAgencyXXX animation object
+CEngine.arrAnimation =3D new Array();
+CEngine.PerformAnimation =3D function( nIndex )
+{// animation : update effects function
+	CEngine.arrAnimation[nIndex].UpdateEffect();
+}
+
+CEngine.AddOneTrigger =3D function(TriggerID,TriggerElement)
+{// add one Trigger object into the trigger array
+	if( typeof(TriggerID) !=3D "string" || TriggerElement =3D=3D null ||
+	    typeof(TriggerElement) !=3D "object" )
+		return;
+	if( typeof(CEngine.objTrigger[TriggerID] ) !=3D "object" )
+		CEngine.objTrigger[TriggerID] =3D new CTrigger(TriggerElement);
+}
+=09
+CEngine.AddOneTarget =3D function(TargetID, TargetElement)
+{// add one Target object into the target array
+	if( typeof(TargetID) !=3D "string" || TargetElement =3D=3D null ||
+		typeof(TargetElement) !=3D "object" )
+		return;
+	if( typeof(CEngine.objTarget[TargetID]) !=3D "object" )
+		CEngine.objTarget[TargetID] =3D new CTarget( TargetElement );
+}
+
+CEngine.SendEventToOneTarget =3D function(strTargetID, strBsscEvent )
+{// to activate one target object
+	if( typeof(CEngine.objTarget[strTargetID]) =3D=3D "object" )=20
+	{
+		if( strBsscEvent =3D=3D "bssctrigger1" || strBsscEvent =3D=3D =
+"bssctrigger2" )
+		{//now, the "bssctrigger1" and "bssctrigger2" work like a toggle
+			if( strBsscEvent =3D=3D =
+CEngine.objTarget[strTargetID].strTriggerEvent )
+				strBsscEvent =3D (strBsscEvent =3D=3D "bssctrigger1") ? =
+"bssctrigger2" : "bssctrigger1";
+			CEngine.objTarget[strTargetID].strTriggerEvent =3D strBsscEvent;
+		}
+		CEngine.objTarget[strTargetID].OnEvent( strBsscEvent );
+	}
+}
+
+CEngine.SendEventToAllTarget =3D function( strBsscEvent )
+{ //to activate all target associative to the BSSC event
+	for( var strTargetID in CEngine.objTarget ) //to enumerate all target
+		CEngine.SendEventToOneTarget( strTargetID, strBsscEvent );
+}
+
+CEngine.SetOneTargetInitialState =3D function( strTargetID )
+{// only invoked after ALL effects for the target have been set
+	if( typeof(CEngine.objTarget[strTargetID]) =3D=3D "object" )=20
+	{// to get target object
+		var objTarget =3D CEngine.objTarget[strTargetID];
+		if( objTarget.SetState( "bsscpageload" ) =3D=3D false )
+		{
+			objTarget.SetState( "bsscpageclick" );
+			objTarget.SetState( "bssctrigger1" );
+		}
+	}
+}
+
+CEngine.AdjustPageClickCounter =3D function()
+{
+	var nAdjustedClickCounter =3D CTarget.nPageClickCounter;
+	var bAdjusted =3D false;
+	for( var strTargetID in CEngine.objTarget ) //to enumerate all target
+	{// try to find the minum pageCliclConter greater than =
+CTarget.nPageClickCounter
+		var objEventPageClick =3D =
+CEngine.objTarget[strTargetID].objManager.bsscpageclick;
+		if( objEventPageClick !=3D null )
+		{
+			for( var i =3D 0; i < objEventPageClick.length; i++ )
+			{
+				var nOtherPageClick =3D objEventPageClick[i].nPageClick;
+				if( nOtherPageClick =3D=3D CTarget.nPageClickCounter )
+					return;
+				if( nOtherPageClick > CTarget.nPageClickCounter )
+				{
+					if( !bAdjusted )
+					{
+						nAdjustedClickCounter =3D nOtherPageClick;
+						bAdjusted =3D true;
+					}
+					else if( nOtherPageClick < nAdjustedClickCounter )
+						nAdjustedClickCounter =3D nOtherPageClick;
+				}
+			}
+		}
+	}
+	CTarget.nPageClickCounter =3D nAdjustedClickCounter;
+}
+
+CEngine.OnPageLoad =3D function()
+{ =09
+	// first, to set all target's initial state
+	for( var strTargetID in CEngine.objTarget )
+		CEngine.SetOneTargetInitialState( strTargetID );
+=09
+	// to invoke all target's onpageload handler
+	CEngine.SendEventToAllTarget( "bsscpageload" );
+}
+
+CEngine.OnPageClick =3D function()
+{ // to invoke all target's onpageclick handler
+	var src =3D CCSSP.GetEventElement( arguments[0] );
+	if( src =3D=3D null )
+		return;
+	=09
+	var objClickedTrigger =3D null;
+	for( var strTriggerID in CEngine.objTrigger )
+	{ // to detect which trigger is clicked
+		if( CCSSP.IsDescendant( =
+CEngine.objTrigger[strTriggerID].eleTrigger,src) )
+		{
+			objClickedTrigger =3D CEngine.objTrigger[strTriggerID];
+			break;
+		}
+	}
+=09
+	if( objClickedTrigger !=3D null) // the clicked trigger found
+		objClickedTrigger.OnTriggerClick();
+	else // no trigger is clicked
+	{ // to send PageClick event to all target
+		CTarget.nPageClickCounter++;
+		CEngine.AdjustPageClickCounter();
+		CEngine.SendEventToAllTarget( "bsscpageclick" );
+	}
+}=09
+
+CEngine.OnMouseOver =3D function()
+{ // to invoke all target's onpageload handler
+	var src =3D CCSSP.GetEventElement( arguments[0] );
+	if( src =3D=3D null )
+		return;
+	=09
+	var strHoveredTargetID =3D null;
+	for( var strTargetID in CEngine.objTarget )
+	{ // to detect which Target is hovering on
+		if( CCSSP.IsDescendant( CEngine.objTarget[strTargetID].eleTarget, src =
+) )
+	    {
+			strHoveredTargetID =3D strTargetID;
+			break;
+	    }
+	}
+=09
+	if( strHoveredTargetID !=3D null ) // the hovered target found
+		CEngine.SendEventToOneTarget( strHoveredTargetID, "bsschover" );
+}
+
+CEngine.BuildTargetObject =3D function(target_ID,event_type,action_type,
+			action_setting, event_additional)
+{// to build target object=20
+	// to get the target object
+	if( typeof( CEngine.objTarget[target_ID] ) !=3D "object" )
+		return false;// the engine's AddOneTarget function might have failed.
+	var TargetObject =3D CEngine.objTarget[target_ID];
+=09
+	// to prepare the parameters for the event manager
+	var arrEvent =3D event_type.split("|"); // to split the combined =
+event_type string
+	var arrAction =3D action_type.split("|");//to split the combined =
+action_type string
+	for( var trim =3D 0; trim < arrEvent.length; trim++ )
+		arrEvent[trim] =3D CCSSP.TrimSpace(arrEvent[trim]);
+=09
+	for( trim =3D 0; trim < arrAction.length; trim++ )
+		arrAction[trim] =3D CCSSP.TrimSpace(arrAction[trim]);
+=09
+	var arrSetting =3D new Array();=20
+	if( typeof(action_setting) =3D=3D "string" )
+		arrSetting =3D action_setting.split("|");// to split the combined =
+action_setting string
+	// to calibrate the arrays
+	for( var i =3D arrSetting.length; i < arrAction.length; i++ )
+	{
+		if( typeof(arrSetting[i]) !=3D "string" )
+			 arrSetting[i] =3D "";
+	}				=20
+
+	// to prepare for dealing with the absolute posioning element
+	TargetObject.eleTarget.ABSX =3D CCSSP.GetObjectLeft( =
+TargetObject.eleTarget );
+	TargetObject.eleTarget.ABSY =3D CCSSP.GetObjectTop( =
+TargetObject.eleTarget );
+
+	if( arrEvent.length > 1 )
+	{// if event is combined, it must be : "bssctrigger1 | bssctrigger2"
+		if( arrAction.length !=3D 2 )
+			return false; // if event is combined, there must be 2 actions
+		for( i =3D 0 ; i < 2; i++ )
+		{
+			if( TargetObject.SetEventManager(arrEvent[i], arrAction[i],=20
+				arrSetting[i], event_additional) =3D=3D false )
+				return false; // the event manager has not been set up
+		}
+	}
+	else // the event_type string is not combined
+	{
+		for( i =3D 0 ; i < arrAction.length; i++ )
+		{
+			TargetObject.SetEventManager(event_type, arrAction[i], arrSetting[i], =
+event_additional);
+			// to validate the event manager
+			if( typeof(TargetObject.objManager[event_type]) !=3D "object" ||
+					typeof(TargetObject.objManager[event_type][i]) !=3D "object" )
+				return false; // the event manager has not been set up
+		}
+	}
+	return true;
+}
+
+CEngine.BuildTriggerObject =3D function(trigger_ID, target_ID)
+{// to build the trigger object
+	var arrTrigger =3D trigger_ID.split("|"); // to split the combined =
+trigger_ID string
+	for( var i =3D 0; i < arrTrigger.length; i ++ )
+	{// to get the trigger element then add it to the trigger list
+		arrTrigger[i] =3D CCSSP.TrimSpace( arrTrigger[i] );
+		var eleTrigger =3D CCSSP.GetObject( arrTrigger[i] );
+		if( eleTrigger =3D=3D null )
+			continue; // the trigger_ID string in the HTML code maybe wrong
+		CEngine.AddOneTrigger( arrTrigger[i], eleTrigger );
+
+		// to get the target object
+		if( typeof( this.objTrigger[arrTrigger[i]] ) !=3D "object" )
+			continue;// the engine's AddOneTarget function might have failed.
+		CEngine.objTrigger[arrTrigger[i]].AddTargetID( target_ID );
+	}
+}
+//End the definition of CEngine class
+
+/// Section End  - CCSSP DHTM 1 (JavaScript 1.2)
+
+/// Section Begin  - CCSSP DHTM 2 (JavaScript 1.2)
+
+//Begin the definition of CAgencyXXXX classes
+
+//Begin of the CAgencyShow definition
+function CAgencyShow( element, bIsShow )
+{
+	this.ele =3D element;
+	this.bIsShow =3D bIsShow;
+}
+
+CAgencyShow.prototype.PrepareEffect =3D function()
+{
+	CCSSP.ShowObject( this.ele, !this.bIsShow );
+}
+
+CAgencyShow.prototype.UpdateEffect =3D function()
+{
+	CCSSP.ShowObject( this.ele, this.bIsShow );
+}
+
+CAgencyShow.prototype.EndEffect =3D function()
+{
+	CCSSP.ShowObject( this.ele, !this.bIsShow );
+}
+// End of the CAgencyShow definition
+
+// Begin of CAgencyFly definition
+function CAgencyFly( element, settings, bIsIn )
+{
+	this.ele =3D element;
+	this.bIsIn =3D bIsIn;
+	this.duration =3D 1000; // default
+	this.direction =3D "right";
+
+	var arrAllSet =3D settings.split(",");
+	for( var i =3D 0; i < arrAllSet.length; i ++ )
+	{// to retrieve the setting
+		arrAllSet[i] =3D CCSSP.TrimSpace(arrAllSet[i]);
+		var arrOneSet =3D arrAllSet[i].split("=3D");
+		for( var j =3D 0; j < arrOneSet.length; j++ )
+			arrOneSet[j] =3D CCSSP.TrimSpace(arrOneSet[j]);
+		switch( arrOneSet[0] )
+		{
+		case "speed" : this.duration =3D 100000/arrOneSet[1]; break;
+		case "direction" : this.direction =3D arrOneSet[1]; break;
+		}
+	}
+	=09
+	if( gbBsIE5 && this.ele.style.position !=3D "absolute" )
+		this.ele.style.position =3D "relative";
+	this.timer =3D null;
+	this.aniIndex =3D CEngine.arrAnimation.length;
+	CEngine.arrAnimation[this.aniIndex] =3D this;
+}
+
+CAgencyFly.prototype.PrepareEffect =3D function()
+{
+	CCSSP.ShowObject(this.ele, !this.bIsIn );
+}
+
+CAgencyFly.prototype.UpdateEffect =3D function()
+{
+	if( this.timer =3D=3D null )
+		this.ResetParameters();
+
+	var percent =3D ((new Date()).getTime() - =
+this.startTime)/this.duration;
+	if( percent >=3D 1.0 )
+		this.EndEffect();
+	else
+	{
+		var newX =3D this.startX*(1.0-percent) +  this.finalX*percent;
+		var newY =3D this.startY*(1.0-percent) +  this.finalY*percent;
+		CCSSP.MoveObjectTo(this.ele, newX, newY);
+		if( this.timer =3D=3D null )
+			this.timer =3D setInterval("CEngine.PerformAnimation(" + =
+this.aniIndex + ")", 20 );
+	}
+}
+
+CAgencyFly.prototype.EndEffect =3D function()
+{
+	clearInterval( this.timer );
+	this.timer =3D null;
+
+	if( this.bIsIn ) // FlyIn
+		CCSSP.MoveObjectTo(this.ele, this.finalX, this.finalY);
+	else // FlyOut
+		CCSSP.MoveObjectTo(this.ele, this.startX, this.startY);
+	CCSSP.ShowObject(this.ele, this.bIsIn );
+}
+
+CAgencyFly.prototype.ResetParameters =3D function()
+{
+	this.PrepareEffect();
+	CCSSP.ShowObject(this.ele, true );
+
+	this.startX =3D 0;
+	this.startY =3D 0;
+	this.finalX =3D 0;
+	this.finalY =3D 0;=20
+=09
+	var offsetLeft =3D CCSSP.GetObjectWindowLeft(this.ele) + =
+this.ele.offsetWidth;
+	var offsetTop =3D CCSSP.GetObjectWindowTop(this.ele) + =
+this.ele.offsetHeight;
+	var offsetRight =3D CCSSP.GetWindowRight();
+	var offsetBottom =3D CCSSP.GetWindowBottom();
+
+	if( this.bIsIn )
+	{ // FlyIn
+		this.finalX =3D this.ele.ABSX;
+		this.finalY =3D this.ele.ABSY;
+
+		switch( this.direction )
+		{
+		case "right": this.startX =3D offsetRight; this.startY =3D =
+this.finalY; break;
+		case "left": this.startX =3D -offsetLeft;  this.startY =3D =
+this.finalY; break;
+		case "down": this.startY =3D offsetBottom; this.startX =3D =
+this.finalX; break;
+		case "up":  this.startY =3D -offsetTop;    this.startX =3D =
+this.finalX; break;
+		case "downright":
+  			this.startX =3D ( offsetBottom < offsetRight) ? offsetBottom : =
+offsetRight;
+			this.startY =3D this.startX;		break;
+		case "upright":
+  			this.startX =3D (offsetTop < offsetRight)? offsetTop : offsetRight;
+			this.startY =3D -this.startX;		break;
+		case "upleft":
+			this.startX =3D -((offsetTop < offsetRight)? offsetTop : =
+offsetRight);
+			this.startY =3D this.startX;		break;
+		case "downleft":
+			this.startX =3D -(( offsetBottom < offsetRight) ? offsetBottom : =
+offsetRight);
+			this.startY =3D -this.startX;     break;
+		}
+	}
+	else
+	{ // FlyOut
+		this.startX =3D this.ele.ABSX;
+		this.startY =3D this.ele.ABSY;
+
+		switch( this.direction )
+		{
+		case "right": this.finalX =3D offsetRight;  this.finalY =3D =
+this.startY; break;
+		case "left": this.finalX =3D -offsetLeft;   this.finalY =3D =
+this.startY;  break;
+		case "down": this.finalY =3D offsetBottom;  this.finalX =3D =
+this.startX; break;
+		case "up":  this.finalY =3D -offsetTop;     this.finalX =3D =
+this.startX; break;
+		case "downright":
+  			this.finalX =3D ( offsetBottom < offsetRight) ? offsetBottom : =
+offsetRight;
+			this.finalY =3D this.finalX;		break;
+		case "upright":
+  			this.finalX =3D (offsetTop < offsetRight)? offsetTop : offsetRight;
+			this.finalY =3D -this.finalX;		break;
+		case "upleft":
+			this.finalX =3D -((offsetTop < offsetRight)? offsetTop : =
+offsetRight);
+			this.finalY =3D this.finalX;		break;
+		case "downleft":
+			this.finalX =3D -(( offsetBottom < offsetRight) ? offsetBottom : =
+offsetRight);
+			this.finalY =3D -this.finalX;     break;
+		}
+	}
+	CCSSP.MoveObjectTo(this.ele, this.startX, this.startY);
+	this.startTime =3D (new Date()).getTime();
+}
+// End of the CAgencyFly definition
+
+// Begin of CAgencySpiral
+function CAgencySpiral( element, settings, bIsIn )
+{
+	this.ele =3D element;
+	this.bIsIn =3D bIsIn;
+	this.duration =3D 1000; // default
+
+	var arrAllSet =3D settings.split(",");
+	for( var i =3D 0; i < arrAllSet.length; i ++ )
+	{// to retrieve the setting
+		arrAllSet[i] =3D CCSSP.TrimSpace(arrAllSet[i]);
+		var arrOneSet =3D arrAllSet[i].split("=3D");
+		for( var j =3D 0; j < arrOneSet.length; j++ )
+			arrOneSet[j] =3D CCSSP.TrimSpace(arrOneSet[j]);
+		switch( arrOneSet[0] )
+		{
+		case "speed" : this.duration =3D 100000/arrOneSet[1]; break;
+		}
+	}
+
+	if( gbBsIE5 && this.ele.style.position !=3D "absolute" )
+		this.ele.style.position =3D "relative";
+	this.timer =3D null;
+	this.aniIndex =3D CEngine.arrAnimation.length;
+	CEngine.arrAnimation[this.aniIndex] =3D this;
+}
+
+CAgencySpiral.prototype.PrepareEffect =3D function()
+{
+	CCSSP.ShowObject(this.ele, !this.bIsIn );
+}
+
+CAgencySpiral.prototype.UpdateEffect =3D function()
+{
+	if( this.timer =3D=3D null )
+		this.ResetParameters();
+
+	var percent =3D ((new Date()).getTime() - =
+this.startTime)/this.duration;
+	if( percent >=3D 1.0 )
+		this.EndEffect();
+	else
+	{
+		var rf =3D (this.bIsIn)? (1.0 - percent) : percent;=20
+		var t =3D (1.0-rf) * 4.0 * Math.PI
+		var rxP =3D (this.bIsIn)? this.startX : this.finalX;=20
+		var ryP =3D (this.bIsIn)? this.startY : this.finalY;=20
+		var rx =3D (Math.abs(rxP) < 200) ? Math.abs(rxP) : 200;
+		var ry =3D (Math.abs(ryP) < 200) ? Math.abs(ryP) : 200;
+
+		var newX =3D Math.ceil(-rf*Math.cos(t)*rx) + this.ele.ABSX;
+		var newY =3D Math.ceil(-rf*Math.sin(t)*ry) + this.ele.ABSY;
+		CCSSP.MoveObjectTo(this.ele, newX, newY);
+		if( this.timer =3D=3D null )
+			this.timer =3D setInterval("CEngine.PerformAnimation(" + =
+this.aniIndex + ")", 20 );
+	}
+}
+
+CAgencySpiral.prototype.EndEffect =3D function()
+{
+	clearInterval( this.timer );
+	this.timer =3D null;
+=09
+	if( this.bIsIn ) // In
+		CCSSP.MoveObjectTo(this.ele, this.finalX, this.finalY);
+	else // Out
+		CCSSP.MoveObjectTo(this.ele, this.startX, this.startY);
+	CCSSP.ShowObject(this.ele, this.bIsIn );
+}
+
+CAgencySpiral.prototype.ResetParameters =3D function()
+{
+	this.PrepareEffect();
+	CCSSP.ShowObject(this.ele, true );
+	this.startX =3D (this.bIsIn)? CCSSP.GetWindowRight() : this.ele.ABSX;
+	this.startY =3D (this.bIsIn)? CCSSP.GetWindowBottom() : this.ele.ABSY;
+	this.finalX =3D (this.bIsIn)? this.ele.ABSX : CCSSP.GetWindowRight();
+	this.finalY =3D (this.bIsIn)? this.ele.ABSY : CCSSP.GetWindowBottom();=20
+=09
+	CCSSP.MoveObjectTo(this.ele, this.startX, this.startY);
+	this.startTime =3D (new Date()).getTime();
+}
+// End of CAgencySpiral
+
+// Begin of CAgencyElastic
+function CAgencyElastic( element, settings)
+{
+	this.ele =3D element;
+	this.duration =3D 1000; // default
+	this.direction =3D "right";
+
+	var arrAllSet =3D settings.split(",");
+	for( var i =3D 0; i < arrAllSet.length; i ++ )
+	{// to retrieve the setting
+		arrAllSet[i] =3D CCSSP.TrimSpace(arrAllSet[i]);
+		var arrOneSet =3D arrAllSet[i].split("=3D");
+		for( var j =3D 0; j < arrOneSet.length; j++ )
+			arrOneSet[j] =3D CCSSP.TrimSpace(arrOneSet[j]);
+		switch( arrOneSet[0] )
+		{
+		case "speed" : this.duration =3D 100000/arrOneSet[1]; break;
+		case "direction" : this.direction =3D arrOneSet[1]; break;
+		}
+	}
+	=09
+	if( gbBsIE5 && this.ele.style.position !=3D "absolute" )
+		this.ele.style.position =3D "relative";
+	this.timer =3D null;
+	this.aniIndex =3D CEngine.arrAnimation.length;
+	CEngine.arrAnimation[this.aniIndex] =3D this;
+}
+
+CAgencyElastic.prototype.PrepareEffect =3D function()
+{
+	CCSSP.ShowObject(this.ele, false );
+}
+
+CAgencyElastic.prototype.UpdateEffect =3D function()
+{
+	if( this.timer =3D=3D null )
+		this.ResetParameters();
+
+	var percent =3D ((new Date()).getTime() - =
+this.startTime)/this.duration;
+	if( percent >=3D 1.0 )
+		this.EndEffect();
+	else
+	{
+		var newX =3D this.startX;
+		var newY =3D this.startY;
+		var rf =3D Math.exp(-percent*3);
+		var t =3D percent * 1.5 * Math.PI
+		var rx =3D (Math.abs(this.startX) > Math.abs(this.startY)) ? =
+this.startX : this.startY;
+		switch (this.direction )
+		{
+		case "left":  =20
+		case "right" : newX =3D rf*Math.cos(t)*rx + this.ele.ABSX; break;
+		case "up":	  =20
+		case "down" :  newY =3D rf*Math.cos(t)*rx + this.ele.ABSX; break;
+		}
+		CCSSP.MoveObjectTo(this.ele, newX, newY);
+		if( this.timer =3D=3D null )
+			this.timer =3D setInterval("CEngine.PerformAnimation(" + =
+this.aniIndex + ")", 20 );
+	}
+}
+
+CAgencyElastic.prototype.EndEffect =3D function()
+{
+	CCSSP.MoveObjectTo(this.ele, this.finalX, this.finalY);
+	clearInterval( this.timer );
+	this.timer =3D null;
+}
+
+CAgencyElastic.prototype.ResetParameters =3D function()
+{
+	CCSSP.ShowObject(this.ele, true );
+	this.startX =3D this.ele.ABSX;
+	this.finalX =3D this.ele.ABSX;
+	this.startY =3D this.ele.ABSY;
+	this.finalY =3D this.ele.ABSY;
+=09
+	switch (this.direction)
+	{=20
+	case "left":  this.startX =3D -this.ele.offsetWidth; break;
+	case "right": this.startX =3D this.ele.offsetWidth;  break;
+	case "up":    this.startY =3D -this.ele.offsetHeight;break;
+	case "down":  this.startY =3D this.ele.offsetHeight; break;
+	}
+	CCSSP.MoveObjectTo(this.ele, this.startX, this.startY);
+	this.startTime =3D (new Date()).getTime();
+}
+// End of CAgencyElastic
+
+// Begin of CAgencyZoom
+function CAgencyZoom( element, settings, bIsIn)
+{
+	this.ele =3D element;
+	this.duration =3D 1000; // default
+=09
+	var arrAllSet =3D settings.split(",");
+	for( var i =3D 0; i < arrAllSet.length; i ++ )
+	{// to retrieve the setting
+		arrAllSet[i] =3D CCSSP.TrimSpace(arrAllSet[i]);
+		var arrOneSet =3D arrAllSet[i].split("=3D");
+		for( var j =3D 0; j < arrOneSet.length; j++ )
+			arrOneSet[j] =3D CCSSP.TrimSpace(arrOneSet[j]);
+		switch( arrOneSet[0] )
+		{
+		case "speed" : this.duration =3D 100000/arrOneSet[1]; break;
+		}
+	}
+
+	this.bIsIn =3D bIsIn;
+	this.timer =3D null;
+	this.aniIndex =3D CEngine.arrAnimation.length;
+	CEngine.arrAnimation[this.aniIndex] =3D this;
+}
+
+CAgencyZoom.prototype.PrepareEffect =3D function()
+{
+	CCSSP.ShowObject(this.ele, false);
+}
+
+CAgencyZoom.prototype.UpdateEffect =3D function()
+{
+	if( this.timer =3D=3D null )
+		this.ResetParameters();
+
+	var percent =3D ((new Date()).getTime() - =
+this.startTime)/this.duration;
+	if( percent >=3D 1.0 )
+		this.EndEffect();
+	else
+	{
+		var nFactorIn =3D Math.ceil(50+50*percent);
+		var nFactorOut =3D Math.ceil(100+200*(1-percent));
+		var AlterFontsize =3D ((this.bIsIn)? nFactorIn : nFactorOut) + "%";
+		var AlterFactor =3D ((this.bIsIn)? nFactorIn : nFactorOut) / 100;
+	=09
+		this.UpdateEffectAllChildren(this.ele, AlterFontsize, AlterFactor);
+		for(var index =3D 0; index < this.ele.all.length; index++)
+			this.UpdateEffectAllChildren(this.ele.all[index], AlterFontsize, =
+AlterFactor);
+		=09
+		if( this.timer =3D=3D null )
+			this.timer =3D setInterval("CEngine.PerformAnimation(" + =
+this.aniIndex + ")", 20 );
+	}
+}
+
+CAgencyZoom.prototype.UpdateEffectAllChildren =3D function(child, =
+FontSize, Factor)
+{
+	if( CCSSP.IsTextTag(child) )
+		child.style.fontSize =3D FontSize;
+	else
+	{
+		if( typeof(child.orgWidth) =3D=3D "number" )
+			child.style.width =3D Factor * child.orgWidth;
+		if( typeof(child.orgHeight) =3D=3D "number" )
+			child.style.height =3D Factor * child.orgHeight;
+	}
+}
+
+CAgencyZoom.prototype.EndEffect =3D function()
+{
+	this.EndEffectAllChildren(this.ele);
+	for(var index =3D 0; index < this.ele.all.length; index++)
+		this.EndEffectAllChildren(this.ele.all[index]);
+=09
+	clearInterval( this.timer );
+	this.timer =3D null;
+}
+
+CAgencyZoom.prototype.EndEffectAllChildren =3D function( child )
+{=09
+	if( CCSSP.IsTextTag(child) )
+		child.style.fontSize =3D child.orgFontSize;
+	else
+	{
+		if( typeof(child.intactWidth) !=3D "undefined" )
+		{
+			child.width =3D child.intactWidth;
+			child.height =3D child.intactHeight;
+		}
+		else if( typeof(child.style.intactPixelWidth) !=3D "undefined" )
+		{
+			child.style.pixelWidth =3D child.style.intactPixelWidth;
+			child.style.pixelHeight =3D child.style.intactPixelHeight;
+		}
+	}
+}
+
+CAgencyZoom.prototype.ResetParameters =3D function()
+{
+	this.PrepareEffect();
+	this.ResetParametersAllChildren( this.ele );
+	for(var index =3D 0; index < this.ele.all.length; index++)
+		this.ResetParametersAllChildren(this.ele.all[index]);
+	=09
+	this.startTime =3D (new Date()).getTime();
+}
+
+CAgencyZoom.prototype.ResetParametersAllChildren =3D function( child )
+{
+	CCSSP.ShowObject(child, true );
+	if( (child.tagName =3D=3D "DIV") && (getParentNode(child).tagName =
+=3D=3D "TD") )
+		child.width =3D "100%";// if the div is inside a cell of table, we =
+need the this hack
+=09
+	if( CCSSP.IsTextTag(child) )
+		child.orgFontSize =3D child.style.fontSize;
+	else
+	{
+		if( child.width > "" || child.height > "" )
+		{
+			child.orgWidth =3D child.intactWidth =3D child.width;
+			child.orgHeight =3D child.intactHeight =3D child.height;
+		}
+		else if( ( typeof(child.orgWidth) !=3D "number" ) && =
+(typeof(child.orgHeight) !=3D "number") )
+		{
+			child.orgWidth =3D child.style.intactPixelWidth =3D =
+child.style.pixelWidth;
+			child.orgHeight =3D child.style.intactPixelHeight =3D =
+child.style.pixelHeight;
+		}
+	}
+}
+// End of CAgencyZoom
+
+//// the following effects will use IE's exclusive "filter" function =
+////
+// Begin of CAgencyAlpha definition
+function CAgencyAlpha( element, settings, bIsIn )
+{// because of "visual filter" style, this won't work in Navigator
+	this.ele =3D element;
+	this.bIsIn =3D bIsIn;
+
+	// to set the default value
+	this.startOpacity =3D (this.bIsIn) ? 0 : 100;
+	this.endOpacity =3D (this.bIsIn) ? 100 : 0;
+=09
+	this.duration =3D 1000; // default
+=09
+	var arrAllSet =3D settings.split(",");
+	for( var i =3D 0; i < arrAllSet.length; i ++ )
+	{// to retrieve the setting
+		arrAllSet[i] =3D CCSSP.TrimSpace(arrAllSet[i]);
+		var arrOneSet =3D arrAllSet[i].split("=3D");
+		for( var j =3D 0; j < arrOneSet.length; j++ )
+			arrOneSet[j] =3D CCSSP.TrimSpace(arrOneSet[j]);
+		switch( arrOneSet[0] )
+		{
+		case "speed" : this.duration =3D 100000/arrOneSet[1]; break;
+		}
+	}
+=09
+	this.timer =3D null;
+	this.aniIndex =3D CEngine.arrAnimation.length;
+	CEngine.arrAnimation[this.aniIndex] =3D this;
+}
+
+CAgencyAlpha.prototype.PrepareEffect =3D function()
+{// to set the visual filter function
+	// the visual filter ONLY work when set by "Width and Height" or
+	// absolute position for DIV, SPAN and normal tag ( such as p )
+	// but, "absolute" cause the following elements overlap, so:
+	CCSSP.PrepareFilter( this.ele );
+	CCSSP.ShowObject(this.ele, !this.bIsIn );
+}
+
+CAgencyAlpha.prototype.UpdateEffect =3D function()
+{// to set the visual filter function
+	if( this.timer =3D=3D null )
+		this.ResetParameters();
+	if( typeof(this.ele.filters.alpha) !=3D "object" )
+	{
+		this.EndEffect();
+		return;
+	}
+
+	var percent =3D ((new Date()).getTime() - =
+this.startTime)/this.duration;
+	if( percent >=3D 1.0 )
+		this.EndEffect();
+	else if( typeof(this.ele.filters.alpha) =3D=3D "object" )
+	{
+		this.ele.filters.alpha.opacity =3D this.startOpacity*(1.0-percent) + =
+this.endOpacity*percent;
+		if( this.timer =3D=3D null )
+			this.timer =3D setInterval("CEngine.PerformAnimation(" + =
+this.aniIndex + ")", 20 );
+	}
+}
+
+CAgencyAlpha.prototype.EndEffect =3D function()
+{// to remove the visual filter function
+	clearInterval( this.timer );
+	this.timer =3D null;
+	this.ele.style.filter =3D "";
+	CCSSP.ShowObject(this.ele, this.bIsIn );
+}
+
+CAgencyAlpha.prototype.ResetParameters =3D function()
+{
+	this.PrepareEffect();
+	CCSSP.ShowObject(this.ele, true );
+	this.ele.style.filter =3D "alpha(opacity=3D" + this.startOpacity + ")";
+	this.startTime =3D (new Date()).getTime();
+}
+// End of the CAgencyAlpha definition
+
+// Begin of CAgencyWave definition
+function CAgencyWave( element, settings )
+{// because of "visual filter" style, this won't work in Navigator
+	this.ele =3D element;
+
+	this.duration =3D 0; // default
+	this.strength =3D 10;
+	this.freq =3D 1;
+	this.lightstrength =3D 1;
+=09
+	var arrAllSet =3D settings.split(",");
+	for( var i =3D 0; i < arrAllSet.length; i ++ )
+	{// to retrieve the setting
+		arrAllSet[i] =3D CCSSP.TrimSpace(arrAllSet[i]);
+		var arrOneSet =3D arrAllSet[i].split("=3D");
+		for( var j =3D 0; j < arrOneSet.length; j++ )
+			arrOneSet[j] =3D CCSSP.TrimSpace(arrOneSet[j]);
+		switch( arrOneSet[0] )
+		{
+		case "duration" : this.duration =3D 100000/arrOneSet[1]; break;
+		case "strength" : this.strength =3D arrOneSet[1]; break;
+		case "freq" : this.freq =3D arrOneSet[1]; break;
+		case "lightstrength" : this.lightstrength =3D arrOneSet[1]; break;
+		}
+	}
+
+	this.timer =3D null;
+	this.aniIndex =3D CEngine.arrAnimation.length;
+	CEngine.arrAnimation[this.aniIndex] =3D this;
+}
+
+CAgencyWave.prototype.PrepareEffect =3D function()
+{// to set the visual filter function
+	CCSSP.PrepareFilter(this.ele);
+
+	CCSSP.ShowObject(this.ele, true );
+}
+
+CAgencyWave.prototype.UpdateEffect =3D function()
+{// to set the visual filter function
+	if( this.timer =3D=3D null )
+		this.ResetParameters();
+	if( typeof(this.ele.filters.wave) !=3D "object" )
+	{
+		this.EndEffect();
+		return;
+	}
+
+	if( this.duration > 0 )
+	{
+		var percent =3D ((new Date()).getTime() - =
+this.startTime)/this.duration;
+		if( percent >=3D 1.0 )
+		{
+			this.EndEffect();
+			return;
+		}
+	}
+=09
+	this.ele.filters.wave.phase +=3D 5;
+	this.ele.filters.wave.phase %=3D 100;
+	if( this.timer =3D=3D null )
+		this.timer =3D setInterval("CEngine.PerformAnimation(" + this.aniIndex =
++ ")", 50 );
+}
+
+CAgencyWave.prototype.EndEffect =3D function()
+{// to remove the visual filter function
+	this.ele.style.filter =3D "";
+	clearInterval( this.timer );
+	this.timer =3D null;
+}
+
+CAgencyWave.prototype.ResetParameters =3D function()
+{
+	this.PrepareEffect();
+	this.ele.style.filter =3D "wave(strength=3D" + this.strength + =
+",freq=3D" +=20
+	 this.freq +", lightstrength=3D" + this.lightstrength +",phase=3D0);";
+	this.startTime =3D (new Date()).getTime();
+}
+// End of the CAgencyWave definition
+
+// Begin of CAgencyGlow definition
+function CAgencyGlow( element, settings )
+{// because of "visual filter" style, this won't work in Navigator
+	this.ele =3D element;
+
+	// to set the default value
+	this.glowColor =3D "green";
+	this.glowStrength =3D "3";
+=09
+	var arrAllSet =3D settings.split(",");
+	for( var i =3D 0; i < arrAllSet.length; i ++ )
+	{
+		arrAllSet[i] =3D CCSSP.TrimSpace(arrAllSet[i]);
+		var arrOneSet =3D arrAllSet[i].split("=3D");
+		for( var j =3D 0; j < arrOneSet.length; j++ )
+			arrOneSet[j] =3D CCSSP.TrimSpace(arrOneSet[j]);
+		switch( arrOneSet[0] )
+		{
+		case "color" : this.glowColor =3D arrOneSet[1]; break;
+		case "strength" : this.glowStrength =3D arrOneSet[1]; break;
+		}
+	}
+}
+
+CAgencyGlow.prototype.PrepareEffect =3D function()
+{
+	CCSSP.PrepareFilter(this.ele);
+	CCSSP.ShowObject(this.ele, true );
+	if( this.ele.style.backgroundColor !=3D "" )
+	{//style.backgroundColor somehow stop the visual filter
+		this.ele.intactBackgroundColor =3D this.ele.style.backgroundColor;
+		this.ele.style.backgroundColor =3D "";
+	}
+}
+
+CAgencyGlow.prototype.UpdateEffect =3D function()
+{// to set the visual filter function
+	this.PrepareEffect();
+	this.ele.style.filter =3D "glow(Color=3D" + this.glowColor + ", =
+Strength=3D" +=20
+		this.glowStrength + ", enabled=3Dtrue" +")";
+}
+
+CAgencyGlow.prototype.EndEffect =3D function()
+{// to remove the visual filter function
+	this.ele.style.filter =3D "";
+	if( typeof(this.ele.intactBackgroundColor) !=3D "undefined" )
+		this.ele.style.backgroundColor =3D this.ele.intactBackgroundColor;
+}
+// End of the CAgencyGlow definition
+
+// Begin of CAgencyDropShadow definition
+function CAgencyDropShadow( element, settings )
+{// because of "visual filter" style, this won't work in Navigator
+	this.ele =3D element;
+
+	// to set the default value
+	this.shadowColor =3D "black";=20
+	this.shadowOffx =3D "1";
+	this.shadowOffy =3D "1";
+=09
+	var arrAllSet =3D settings.split(",");
+	for( var i =3D 0; i < arrAllSet.length; i ++ )
+	{
+		arrAllSet[i] =3D CCSSP.TrimSpace(arrAllSet[i]);
+		var arrOneSet =3D arrAllSet[i].split("=3D");
+		for( var j =3D 0; j < arrOneSet.length; j++ )
+			arrOneSet[j] =3D CCSSP.TrimSpace(arrOneSet[j]);
+		switch( arrOneSet[0] )
+		{
+		case "color" : this.shadowColor =3D arrOneSet[1]; break;
+		case "offx" : this.shadowOffx =3D arrOneSet[1]; break;
+		case "offy" : this.shadowOffy =3D arrOneSet[1]; break;
+		}
+	}
+}
+
+CAgencyDropShadow.prototype.PrepareEffect =3D function()
+{
+	CCSSP.PrepareFilter(this.ele);
+	CCSSP.ShowObject(this.ele, true );
+=09
+	if( this.ele.style.backgroundColor !=3D "" )
+	{//style.backgroundColor somehow stop the visual filter
+		this.ele.intactBackgroundColor =3D this.ele.style.backgroundColor;
+		this.ele.style.backgroundColor =3D "";
+	}
+}
+
+CAgencyDropShadow.prototype.UpdateEffect =3D function()
+{// to set the visual filter function
+	this.PrepareEffect();
+	this.ele.style.filter =3D "dropshadow(color=3D" + this.shadowColor + ", =
+offx=3D" +=20
+		this.shadowOffx + ", offy=3D" + this.shadowOffy + ")";
+}
+
+CAgencyDropShadow.prototype.EndEffect =3D function()
+{// to remove the visual filter function
+	this.ele.style.filter =3D "";
+	if( typeof(this.ele.intactBackgroundColor) !=3D "undefined" )
+		this.ele.style.backgroundColor =3D this.ele.intactBackgroundColor;
+}
+// End of the CAgencyDropShadow definition
+
+// Begin of CAgencyRevealTrans definition
+function CAgencyRevealTrans( element, settings )
+{// because of "visual filter" style, this won't work in Navigator
+	this.ele =3D element;
+
+	// to set the default value
+	this.duration =3D 1.0; //The value is specified in seconds.milliseconds =
+format (0.0000).
+	this.transition =3D 0;
+=09
+	var arrAllSet =3D settings.split(",");
+	for( var i =3D 0; i < arrAllSet.length; i ++ )
+	{
+		arrAllSet[i] =3D CCSSP.TrimSpace(arrAllSet[i]);
+		var arrOneSet =3D arrAllSet[i].split("=3D");
+		for( var j =3D 0; j < arrOneSet.length; j++ )
+			arrOneSet[j] =3D CCSSP.TrimSpace(arrOneSet[j]);
+		switch( arrOneSet[0] )
+		{
+		case "type" : this.transition =3D arrOneSet[1]; break;
+		case "duration" : this.duration =3D 100/arrOneSet[1];	break;
+		}
+	}
+}
+
+CAgencyRevealTrans.prototype.PrepareEffect =3D function()
+{
+	CCSSP.PrepareFilter(this.ele);
+	CCSSP.ShowObject( this.ele, false);
+}
+
+CAgencyRevealTrans.prototype.UpdateEffect =3D function()
+{// to set the visual filter function
+	if( typeof( this.ele.filters.RevealTrans ) =3D=3D "object" )
+	{
+		if( this.ele.filters.RevealTrans.status =3D=3D 2 )
+			this.ele.filters.RevealTrans.stop(); =20
+	}
+
+	this.PrepareEffect();
+=09
+	this.ele.style.filter =3D "RevealTrans(duration=3D" + this.duration +=20
+		", transition=3D" + this.transition + ")";
+=09
+    if( typeof( this.ele.filters.RevealTrans ) =3D=3D "object" )
+    {
+		this.ele.filters.RevealTrans.apply();
+		CCSSP.ShowObject( this.ele, true);
+		this.ele.filters.RevealTrans.play(); =20
+	}
+	else
+		CCSSP.ShowObject( this.ele, true);
+}
+
+CAgencyRevealTrans.prototype.EndEffect =3D function()
+{
+    if( typeof( this.ele.filters.RevealTrans ) =3D=3D "object" )
+		this.ele.filters.RevealTrans.stop(); =20
+	this.ele.style.filter =3D "";
+}
+// End of the CAgencyRevealTrans definition
+
+// Begin of CAgencyBlur definition
+function CAgencyBlur( element, settings )
+{// because of "visual filter" style, this won't work in Navigator
+	this.ele =3D element;
+
+	// to set the default value
+	this.strength =3D "5";
+	this.direction =3D "90";
+=09
+	var arrAllSet =3D settings.split(",");
+	for( var i =3D 0; i < arrAllSet.length; i ++ )
+	{
+		arrAllSet[i] =3D CCSSP.TrimSpace(arrAllSet[i]);
+		var arrOneSet =3D arrAllSet[i].split("=3D");
+		for( var j =3D 0; j < arrOneSet.length; j++ )
+			arrOneSet[j] =3D CCSSP.TrimSpace(arrOneSet[j]);
+		switch( arrOneSet[0] )
+		{
+		case "strength" : this.strength =3D arrOneSet[1]; break;
+		case "direction" : this.direction =3D arrOneSet[1]; break;
+		}
+	}
+}
+
+CAgencyBlur.prototype.PrepareEffect =3D function()
+{
+	CCSSP.PrepareFilter(this.ele);
+	CCSSP.ShowObject(this.ele, true );
+}
+
+CAgencyBlur.prototype.UpdateEffect =3D function()
+{// to set the visual filter function
+	CCSSP.PrepareFilter(this.ele);
+	this.ele.style.filter =3D "blur(strength=3D" + this.strength +=20
+		", direction=3D" + this.direction + ")";
+}
+
+CAgencyBlur.prototype.EndEffect =3D function()
+{// to remove the visual filter function
+	this.ele.style.filter =3D "";
+}
+// End of the CAgencyBlur definition
+
+// Begin of CAgencyChangeFilter definition
+function CAgencyChangeFilter( element, settings ) // flipH, flipV, =
+invert, grey,
+{// because of "visual filter" style, this won't work in Navigator
+	this.ele =3D element;
+
+	// to set the default value
+	this.filterFunction =3D settings;
+}
+
+CAgencyChangeFilter.prototype.PrepareEffect =3D function()
+{
+	CCSSP.PrepareFilter(this.ele);
+	CCSSP.ShowObject(this.ele, true );
+}
+
+CAgencyChangeFilter.prototype.UpdateEffect =3D function()
+{// to set the visual filter function
+	CCSSP.PrepareFilter(this.ele);
+	this.ele.style.filter =3D this.filterFunction;
+}
+
+CAgencyChangeFilter.prototype.EndEffect =3D function()
+{// to remove the visual filter function
+	this.ele.style.filter =3D "";
+}
+// End of the CAgencyChangeFilter definition
+
+// The effects below change the style on the fly, so they won't work in =
+Navigator
+
+// Begin of CAgencyFontChange definition,=20
+function CAgencyFontChange( element, settings )
+{//this class can be replace by CAgencyChangeStyle,provided the =
+"settings" is standard CSS string.
+	this.ele =3D element;
+=09
+	// to retrieve the original font style
+	this.RetrieveOldFont( this.ele );
+=09
+	// to set the default font to change
+	this.newfontFamily =3D this.ele.oldFontFamily;
+	this.newfColor =3D this.ele.oldColor;
+	this.newtextDecoration =3D this.ele.oldTextDecoration;
+	this.newfontWeight =3D this.ele.oldFontWeight;
+	this.newfontStyle =3D this.ele.oldFontStyle;
+	this.newfontSize =3D this.ele.oldFontSize;
+	this.newBackgroundColor =3D this.ele.oldBackgroundColor;
+=09
+	var arrAllSet =3D settings.split(",");
+	for( var i =3D 0; i < arrAllSet.length; i ++ )
+	{// to retrieve the setting
+		arrAllSet[i] =3D CCSSP.TrimSpace(arrAllSet[i]);
+		var arrOneSet =3D arrAllSet[i].split("=3D");
+		for( var j =3D 0; j < arrOneSet.length; j++ )
+			arrOneSet[j] =3D CCSSP.TrimSpace(arrOneSet[j]);
+		switch( arrOneSet[0] )
+		{
+		case "font-family" : this.newfontFamily =3D arrOneSet[1]; break;
+		case "color" : this.newfColor =3D arrOneSet[1]; break;
+		case "underline" : this.newtextDecoration =3D =
+(arrOneSet[1]=3D=3D"on")? "underline" : "none"; break;
+		case "bold" : this.newfontWeight =3D (arrOneSet[1]=3D=3D"on")? "bold" =
+: "normal"; break;
+		case "italic" : this.newfontStyle =3D (arrOneSet[1]=3D=3D"on")? =
+"italic" : "normal"; break;
+		case "size" : this.newfontSize =3D arrOneSet[1]; break;
+		case "background-color" : this.newBackgroundColor =3D arrOneSet[1]; =
+break;
+		}
+	}
+}
+
+CAgencyFontChange.prototype.RetrieveOldFont =3D function(objChild)
+{
+	if( typeof(objChild.oldFontFamily) =3D=3D "undefined" )
+		objChild.oldFontFamily =3D objChild.style.fontFamily;
+	if( typeof(objChild.oldColor) =3D=3D "undefined" )
+		objChild.oldColor =3D objChild.style.color;
+	if( typeof(objChild.oldTextDecoration) =3D=3D "undefined" )
+		objChild.oldTextDecoration =3D objChild.style.textDecoration;
+	if( typeof(objChild.oldFontWeight) =3D=3D "undefined" )
+		objChild.oldFontWeight =3D objChild.style.fontWeight;
+	if( typeof(objChild.oldFontStyle) =3D=3D "undefined" )
+		objChild.oldFontStyle =3D objChild.style.fontStyle;
+	if( typeof(objChild.oldFontSize) =3D=3D "undefined" )
+		objChild.oldFontSize =3D objChild.style.fontSize;
+	if( typeof(objChild.oldBackgroundColor) =3D=3D "undefined" )
+		objChild.oldBackgroundColor =3D objChild.style.backgroundColor;
+}
+
+CAgencyFontChange.prototype.PrepareEffect =3D function()
+{
+	// as for expanding text, the child is created after the constructor =
+called
+	for(var index =3D 0; index < this.ele.all.length; index++)
+		this.RetrieveOldFont(this.ele.all[index]);
+	CCSSP.ShowObject(this.ele, true );
+}
+
+CAgencyFontChange.prototype.UpdateEffect =3D function()
+{// to change the font
+	this.PrepareEffect();
+	this.UpdateEffectAllChildren( this.ele );
+	for( var index =3D 0; index < this.ele.all.length; index++)
+		this.UpdateEffectAllChildren(this.ele.all[index]);
+}
+
+CAgencyFontChange.prototype.UpdateEffectAllChildren =3D =
+function(objChild)
+{
+	objChild.style.fontFamily =3D this.newfontFamily;
+	objChild.style.color =3D this.newfColor;
+	objChild.style.textDecoration =3D this.newtextDecoration;
+	objChild.style.fontWeight =3D this.newfontWeight;
+	objChild.style.fontStyle =3D this.newfontStyle;
+	objChild.style.fontSize =3D this.newfontSize;
+	objChild.style.backgroundColor =3D this.newBackgroundColor;
+}
+
+CAgencyFontChange.prototype.EndEffect =3D function()
+{// to reinstate the original font style
+	this.EndEffectAllChildren( this.ele );
+	for( var index =3D 0; index < this.ele.all.length; index++)
+		this.EndEffectAllChildren(this.ele.all[index]);
+}
+
+CAgencyFontChange.prototype.EndEffectAllChildren =3D function( objChild =
+)
+{
+	if( typeof(objChild.oldFontFamily) !=3D "undefined" )
+		objChild.style.fontFamily =3D objChild.oldFontFamily;
+	if( typeof(objChild.oldColor) !=3D "undefined" )
+		objChild.style.color =3D objChild.oldColor;
+	if( typeof(objChild.oldFontWeight) !=3D "undefined" )
+		objChild.style.fontWeight =3D objChild.oldFontWeight;
+	if( typeof(objChild.oldFontStyle) !=3D "undefined" )
+		objChild.style.fontStyle =3D objChild.oldFontStyle;
+	if( typeof(objChild.oldFontSize) !=3D "undefined" )
+		objChild.style.fontSize =3D objChild.oldFontSize;
+	if( typeof(objChild.oldTextDecoration) !=3D "undefined" )
+		objChild.style.textDecoration =3D objChild.oldTextDecoration;
+	if( typeof(objChild.oldBackgroundColor) !=3D "undefined" )
+		objChild.style.backgroundColor =3D objChild.oldBackgroundColor;
+}
+// End of the CAgencyFontChange definition
+
+// Begin of the CAgencyChangeStyle definition
+function CAgencyChangeStyle( element, settings )
+{//this class can be replace by CAgencyChangeStyle,provided the =
+"settings" is standard CSS string.
+	this.ele =3D element;
+=09
+	// to retrieve the original style
+	this.oldstyle =3D this.ele.style.cssText;
+=09
+	// to set the default style
+	this.newStyle =3D this.oldstyle;
+=09
+	if( typeof(settings) =3D=3D "string" && settings.length > 1 )
+		this.newStyle =3D this.oldstyle + " " + settings;
+}
+
+CAgencyChangeStyle.prototype.PrepareEffect =3D function()
+{
+	CCSSP.ShowObject(this.ele, true );
+}
+
+CAgencyChangeStyle.prototype.UpdateEffect =3D function()
+{// to change the style
+	this.ele.style.cssText =3D this.newStyle;
+}
+
+CAgencyChangeStyle.prototype.EndEffect =3D function()
+{// to reinstate the original style
+	this.ele.style.cssText =3D this.oldStyle;
+}
+// End of the CAgencyChangeStyle definition
+
+//End the definition of CAgencyXXXX classes
+
+//Begin to collaborate with other event handler settings=20
+CCSSP.RegisterEventHandler( window, "onload", =
+"CEngine.OnPageLoad();BSSCOnLoad();kadovInitTriggersInHead();");
+CCSSP.RegisterEventHandler( document, "onclick", =
+"CEngine.OnPageClick();BSSCOnClick();");
+CCSSP.RegisterEventHandler( document, "onmouseover", =
+"CEngine.OnMouseOver();BSSCOnMouseOver();" );
+CCSSP.RegisterEventHandler( document, "onmouseout", =
+"CEngine.OnMouseOver();BSSCOnMouseOut();" );
+CCSSP.RegisterEventHandler( window, "onunload", "BSSCOnUnload();");
+//End to collaborate with other event handler settings
+
+/// Section End  - CCSSP DHTM 2 (JavaScript 1.2)
+
+//// Segment End -- (JavaScript 1.2)
+------=_NextPart_000_0000_01CE007E.4C2F9870
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.georeference.org/doc/whmsg.js
+
+=EF=BB=BF//	WebHelp 5.10.002
+var WH_MSG_RESIZEPANE		=3D0x0100;
+var WH_MSG_SHOWPANE			=3D0x0101;
+var WH_MSG_HIDEPANE			=3D0x0102;
+var WH_MSG_SYNCTOC			=3D0x0103;
+var WH_MSG_NEXT				=3D0x0104;
+var WH_MSG_PREV				=3D0x0105;
+var WH_MSG_NOSEARCHINPUT	=3D0x0106;
+var WH_MSG_NOSYNC			=3D0x0107;
+var WH_MSG_ENABLEWEBSEARCH 	=3D0x0108;
+
+var WH_MSG_ISPANEVISIBLE	=3D0x0109;
+var WH_MSG_PANESTATUE		=3D0x010a;
+
+var	WH_MSG_SYNCINFO			=3D0x010b;
+var WH_MSG_PANEINFO			=3D0x010c;
+var WH_MSG_WEBSEARCH		=3D0x010d;
+
+var WH_MSG_SEARCHINDEXKEY 	=3D0x0201;
+
+var WH_MSG_SEARCHFTSKEY 	=3D0x020a;
+
+var WH_MSG_PROJECTREADY		=3D0x0301;
+var WH_MSG_GETPROJINFO 		=3D0x0302;
+
+var WH_MSG_SHOWTOC 			=3D0x0401;
+var WH_MSG_SHOWIDX 			=3D0x0402;
+var WH_MSG_SHOWFTS 			=3D0x0403;
+var WH_MSG_SHOWGLO 			=3D0x0404;
+
+var WH_MSG_SHOWGLODEF 		=3D0x0500;
+
+var WH_MSG_GETTOCPATHS 		=3D0x0600;
+var WH_MSG_GETAVIAVENUES 	=3D0x0601;
+var WH_MSG_GETCURRENTAVENUE =3D0x0602;
+var WH_MSG_GETPANEINFO		=3D0x0603;
+var WH_MSG_AVENUEINFO		=3D0x0604;
+
+var WH_MSG_GETSTARTFRAME 	=3D0x0701;
+var WH_MSG_GETDEFAULTTOPIC	=3D0x0702;
+
+var WH_MSG_SEARCHTHIS		=3D0x0801;
+var WH_MSG_GETSEARCHS		=3D0x0802;
+
+var WH_MSG_ISINFRAMESET		=3D0x0900;
+
+var WH_MSG_TOOLBARORDER		=3D0x0a00;
+var WH_MSG_MINIBARORDER		=3D0x0a01;
+var WH_MSG_ISSYNCSSUPPORT	=3D0x0a02;
+var WH_MSG_ISSEARCHSUPPORT	=3D0x0a03;
+var WH_MSG_GETPANETYPE		=3D0x0a04;
+var WH_MSG_BACKUPSEARCH		=3D0x0a05;
+var WH_MSG_GETPANES			=3D0x0a06;
+var WH_MSG_INITSEARCHSTRING =3D0x0a07;
+var WH_MSG_RELOADNS6		=3D0x0a08;
+var WH_MSG_ISAVENUESUPPORT	=3D0x0a09;
+
+var WH_MSG_GETCMD			=3D0x0b00;
+var	WH_MSG_GETPANE			=3D0x0b01;
+var WH_MSG_GETDEFPANE		=3D0x0b02;
+
+function whMessage(nMessageId,wSender,nVersion,oParam)
+{
+	this.nMessageId=3DnMessageId;
+	this.wSender=3DwSender;
+	this.nVersion=3DnVersion;
+	this.oParam=3DoParam;
+}
+var gbWhMsg=3Dtrue;
+------=_NextPart_000_0000_01CE007E.4C2F9870
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.georeference.org/doc/whver.js
+
+=EF=BB=BF//	WebHelp 5.10.006
+var gbNav=3Dfalse;
+var gbNav6=3Dfalse;
+var gbNav61=3Dfalse;
+var gbNav7=3Dfalse;
+var gbNav4=3Dfalse;
+var gbIE4=3Dfalse;
+var gbIE=3Dfalse;
+var gbIE5=3Dfalse;
+var gbIE55=3Dfalse;
+var gbIE6=3Dfalse;
+var gbOpera6=3Dfalse;
+var gbOpera7=3Dfalse;
+var gbKonqueror3=3Dfalse;
+
+var gAgent=3Dnavigator.userAgent.toLowerCase();
+var gbMac=3D(gAgent.indexOf("mac")!=3D-1);
+var gbSunOS=3D(gAgent.indexOf("sunos")!=3D-1);
+var gbOpera=3D(gAgent.indexOf("opera")!=3D-1);
+var gbKonqueror=3D(gAgent.indexOf("konqueror")!=3D -1);
+var gbSafari=3D(gAgent.indexOf("safari")!=3D -1);
+var gbWindows=3D((gAgent.indexOf('win')!=3D =
+-1)||(gAgent.indexOf('16bit')!=3D -1));
+var gbMozilla=3D((gAgent.indexOf('gecko')!=3D-1) && =
+(gAgent.indexOf('netscape')=3D=3D-1));
+
+
+var gVersion=3Dnavigator.appVersion.toLowerCase();
+
+var gnVerMajor=3DparseInt(gVersion);
+var gnVerMinor=3DparseFloat(gVersion);
+
+if(!gbOpera&&!gbKonqueror&&!gbSafari) // opera can mimic IE or Netscape =
+by settings.
+{
+	gbIE=3D(navigator.appName.indexOf("Microsoft")!=3D-1);
+	gbNav=3D(gAgent.indexOf('mozilla')!=3D-1) && =
+((gAgent.indexOf('spoofer')=3D=3D-1) && =
+(gAgent.indexOf('compatible')=3D=3D-1));
+	if(gnVerMajor>=3D4)
+	{
+		if(navigator.appName=3D=3D"Netscape")
+		{
+			gbNav4=3Dtrue;
+			if(gnVerMajor>=3D5)
+				gbNav6=3Dtrue;
+		}
+		gbIE4=3D(navigator.appName.indexOf("Microsoft")!=3D-1);
+	}
+	if(gbNav6)
+	{
+		var nPos=3DgAgent.indexOf("gecko");
+		if(nPos!=3D-1)
+		{
+			var nPos2=3DgAgent.indexOf("/", nPos);
+			if(nPos2!=3D-1)
+			{
+				var nVersion=3DparseFloat(gAgent.substring(nPos2+1));
+				if(nVersion>=3D20010726)
+				{
+					gbNav61=3Dtrue;
+					if (nVersion>=3D20020823)
+						gbNav7=3Dtrue;
+				}
+			}
+		}
+	}else if(gbIE4)
+	{
+		var nPos=3DgAgent.indexOf("msie");
+		if(nPos!=3D-1)
+		{
+			var nVersion=3DparseFloat(gAgent.substring(nPos+5));
+			if(nVersion>=3D5)
+			{
+				gbIE5=3Dtrue;
+				if(nVersion>=3D5.5)
+					gbIE55=3Dtrue;
+			}
+			if (nVersion>=3D6)
+			{
+				gbIE6=3Dtrue;
+			}
+		}
+	}
+}
+else if (gbOpera)
+{
+	var nPos =3D gAgent.indexOf("opera");
+	if(nPos!=3D-1)
+	{
+		var nVersion=3DparseFloat(gAgent.substring(nPos+6));
+		if(nVersion>=3D6)
+		{
+			gbOpera6=3Dtrue;
+			if(nVersion>=3D7)
+				gbOpera7=3Dtrue;
+		}
+	}
+}
+else if (gbKonqueror)
+{
+	var nPos =3D gAgent.indexOf("konqueror");
+	if(nPos!=3D-1)
+	{
+		var nVersion =3D parseFloat(gAgent.substring(nPos+10));
+		if (nVersion >=3D 3)
+		{
+			gbKonqueror3=3Dtrue;
+		}
+	}
+}
+
+var gbWhVer=3Dtrue;
+------=_NextPart_000_0000_01CE007E.4C2F9870
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.georeference.org/doc/whproxy.js
+
+=EF=BB=BF//	WebHelp 5.10.001
+var gbInited=3Dfalse;
+var gWndStubPage=3Dnull;
+function getStubPage()
+{
+	if(!gbInited)
+	{
+		gWndStubPage=3DgetStubPage_inter(window);
+		gbInited=3Dtrue;
+	}
+	return gWndStubPage;
+}
+
+function getStubPage_inter(wCurrent)
+{
+	if(null=3D=3DwCurrent.parent||wCurrent.parent=3D=3DwCurrent)
+		return null;
+
+	=
+if(typeof(wCurrent.parent.whname)=3D=3D"string"&&"wh_stub"=3D=3DwCurrent.=
+parent.whname)
+		return wCurrent.parent;
+	else
+		if(wCurrent.parent.frames.length!=3D0&&wCurrent.parent!=3DwCurrent)
+			return getStubPage_inter(wCurrent.parent);
+		else
+			return null;
+}
+
+function RegisterListener(framename,nMessageId)
+{
+	var wSP=3DgetStubPage();
+	if(wSP&&wSP!=3Dthis)
+		return wSP.RegisterListener(framename,nMessageId);
+	else
+		return false;
+}
+
+function RegisterListener2(oframe,nMessageId)
+{
+	var wSP=3DgetStubPage();
+	if(wSP&&wSP!=3Dthis)
+		return wSP.RegisterListener2(oframe,nMessageId);
+	else
+		return false;
+}
+
+function UnRegisterListener2(oframe,nMessageId)
+{
+	var wSP=3DgetStubPage();
+	if(wSP&&wSP!=3Dthis&&wSP.UnRegisterListener2)
+		return wSP.UnRegisterListener2(oframe,nMessageId);
+	else
+		return false;
+}
+
+function SendMessage(oMessage)
+{
+	var wSP=3DgetStubPage();
+	if(wSP&&wSP!=3Dthis&&wSP.SendMessage)
+		return wSP.SendMessage(oMessage);
+	else
+		return false;
+}
+
+var gbWhProxy=3Dtrue;
+
+var gbPreview=3Dfalse;
+gbPreview=3Dfalse;=20
+if (gbPreview)
+	document.oncontextmenu=3DcontextMenu;
+
+function contextMenu()
+{
+	return false;
+}
+
+------=_NextPart_000_0000_01CE007E.4C2F9870
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.georeference.org/doc/whutils.js
+
+=EF=BB=BF//	WebHelp 5.10.004
+var gsFileName=3D"";
+var gsDivName=3D"";
+var xmlDoc=3Dnull;
+var sdocPath=3Dnull;
+var gsInsertBeforeEndHTML=3D"";
+var sReplaceStringsSrc=3Dnew Array();
+var gsDivName=3D"dataDiv";
+var gnLoadDivNum=3D0;
+sReplaceStringsSrc[0]=3D"&amp;";
+sReplaceStringsSrc[1]=3D"&gt;";
+sReplaceStringsSrc[2]=3D"&lt;";
+sReplaceStringsSrc[3]=3D"&quot;";
+sReplaceStringsSrc[4]=3DString.fromCharCode(8364);
+sReplaceStringsSrc[5]=3D"&nbsp;";
+
+var sReplaceStringsDst=3Dnew Array();
+sReplaceStringsDst[0]=3D"&";
+sReplaceStringsDst[1]=3D">";
+sReplaceStringsDst[2]=3D"<";
+sReplaceStringsDst[3]=3D"\"";
+sReplaceStringsDst[4]=3DString.fromCharCode(128);
+sReplaceStringsDst[5]=3D" ";
+var goHighLighted=3Dnull;
+
+function _getRelativePath(strParentPath,strCurrentPath)
+{
+	if(_isAbsPath(strCurrentPath)) return _getPath(strCurrentPath);
+	strParentPath=3D_replaceSlash(strParentPath);
+	strParentPath=3D_getPath(strParentPath);
+	strCurrentPath=3D_replaceSlash(strCurrentPath);
+	strCurrentPath=3D_getPath(strCurrentPath);
+	for(var i=3D0;i<strParentPath.length&&i<strCurrentPath.length;i++)
+	{
+		if(strParentPath.charAt(i)!=3DstrCurrentPath.charAt(i))
+			break;
+	}
+=09
+	strParentPath=3DstrParentPath.substring(i);
+	strCurrentPath=3DstrCurrentPath.substring(i);=09
+=09
+	var nPathPos=3D0;
+	while(nPathPos!=3D-1)
+	{
+		nPathPos=3DstrParentPath.indexOf("/");
+		if(nPathPos!=3D-1)
+		{
+			strParentPath=3DstrParentPath.substring(nPathPos+1);
+			strCurrentPath=3D"../"+strCurrentPath;
+		}
+	}
+	return strCurrentPath;
+}
+
+function _getRelativeFileName(strParentPath,strCurrentPath)
+{
+	strParentPath=3D_replaceSlash(strParentPath);
+	strParentPath=3D_getPath(strParentPath);
+	strCurrentPath=3D_replaceSlash(strCurrentPath);
+	for(var i=3D0;i<strParentPath.length&&i<strCurrentPath.length;i++)
+	{
+		if(strParentPath.charAt(i)!=3DstrCurrentPath.charAt(i))
+			break;
+	}
+=09
+	strParentPath=3DstrParentPath.substring(i);
+	strCurrentPath=3DstrCurrentPath.substring(i);=09
+=09
+	var nPathPos=3D0;
+	while(nPathPos!=3D-1)
+	{
+		nPathPos=3DstrParentPath.indexOf("/");
+		if(nPathPos!=3D-1)
+		{
+			strParentPath=3DstrParentPath.substring(nPathPos+1);
+			strCurrentPath=3D"../"+strCurrentPath;
+		}
+	}
+	return strCurrentPath;
+}
+
+function _isAbsPathToHost(sPath)
+{
+	return (sPath.indexOf("/")=3D=3D0);
+}
+
+function _getHost(sPath)
+{
+	var nPos=3DsPath.indexOf("//");
+	if(nPos>0)
+	{
+		var nPosx=3DsPath.indexOf("/",nPos+2);
+		if(nPosx>0)
+			return sPath.substring(0,nPosx);
+		else
+			return sPath;
+	}
+	return sPath;
+}
+
+function _getFullPath(sPath,sRelPath)
+{
+	if(_isAbsPath(sRelPath))
+		return sRelPath;
+	else if(_isAbsPathToHost(sRelPath))
+		return _getHost(sPath)+sRelPath;
+	else
+	{
+		var sFullPath=3DsPath;
+		var nPathPos=3D0;
+		while(nPathPos!=3D-1)
+		{
+			var nPathPos=3DsRelPath.indexOf("../");
+			if(nPathPos!=3D-1)
+			{
+				sRelPath=3DsRelPath.substring(nPathPos+3);
+				sFullPath=3DsFullPath.substring(0,sFullPath.length-1);
+				var nPos2=3DsFullPath.lastIndexOf("/");
+				if(nPos2!=3D-1)
+					sFullPath=3DsFullPath.substring(0,nPos2+1);
+				else
+					break;
+			}
+		}
+		sFullPath+=3DsRelPath;
+		return sFullPath;
+	}=09
+}
+
+function _isAbsPath(strPath)
+{
+	var strUpper=3DstrPath.toUpperCase();
+	return (strUpper.indexOf(":")!=3D-1||strUpper.indexOf("\\\\")=3D=3D0);
+}
+
+function _replaceSlash(strURL)
+{=09
+	var re=3Dnew RegExp("\\\\","g");
+	var strReplacedURL=3DstrURL.replace(re,"/");
+	return strReplacedURL;
+}
+
+function _getPath(strURL)
+{
+	pathpos=3DstrURL.lastIndexOf("/");
+	if(pathpos>0)
+		return strURL.substring(0,pathpos+1);
+	else
+		return "";
+}
+
+function removeItemFromArray(oArray,i)
+{
+	if(oArray.length&&i>=3D0&&i<oArray.length)
+	{
+		var len=3DoArray.length;
+		for(var s=3Di;s<len-1;s++)
+			oArray[s]=3DoArray[s+1];
+		oArray.length=3Dlen-1;
+	}
+}
+
+function insertItemIntoArray(oArray,i,obj)
+{
+	if(oArray.length&&i>=3D0&&i<=3DoArray.length)
+	{
+		var len=3DoArray.length;
+		for(var s=3Dlen;s>i;s--)
+			oArray[s]=3DoArray[s-1];
+		oArray[i]=3Dobj;	=09
+	}
+}
+
+function loadData(sFileName)
+{
+	var i=3DgnLoadDivNum;
+	var sName=3DgsDivName+gnLoadDivNum++;
+	loadData_2(sFileName,sName);
+}
+
+function loadData_2(sFileName,sDivName)
+{
+	if(!getElement(sDivName))
+	{
+		if(!insertDataDiv(sDivName))
+		{
+			gsFileName=3DsFileName;
+			gsDivName=3DsDivName;
+			return;
+		}
+	}
+	var sHTML=3D"";
+	if(gbMac)
+		sHTML+=3D"<iframe src=3D\""+sFileName+"\"></iframe>";
+	else
+		sHTML+=3D"<iframe style=3D\"visibility:hidden;width:0;height:0\" =
+src=3D\""+sFileName+"\"></iframe>";
+=09
+	var oDivCon=3DgetElement(sDivName);
+	if(oDivCon)
+	{
+		if(gbNav6)
+		{
+			=
+if(oDivCon.getElementsByTagName&&oDivCon.getElementsByTagName("iFrame").l=
+ength>0)
+			{
+				oDivCon.getElementsByTagName("iFrame")[0].src=3DsFileName;
+			}
+			else
+				oDivCon.innerHTML=3DsHTML;
+		}
+		else
+			oDivCon.innerHTML=3DsHTML;
+	}
+}
+
+function loadDataXML(sFileName)
+{
+	var sCurrentDocPath=3D_getPath(document.location.href);
+	sdocPath=3D_getFullPath(sCurrentDocPath,sFileName);
+	if(gbIE5)
+	{
+		xmlDoc=3Dnew ActiveXObject("Microsoft.XMLDOM");
+		xmlDoc.async=3Dtrue;
+		xmlDoc.onreadystatechange=3DcheckState;
+		if(document.body!=3Dnull)
+			xmlDoc.load(sdocPath);
+	}
+	else if(gbNav6)
+	{
+		xmlDoc=3Ddocument.implementation.createDocument("","",null);
+		xmlDoc.addEventListener("load",initializeData,false);
+		xmlDoc.load(sdocPath,"text/xml");
+	}
+}
+
+function initializeData()
+{
+	if(xmlDoc!=3Dnull)
+		putDataXML(xmlDoc,sdocPath);
+}
+
+function checkState()
+{
+	if(xmlDoc!=3Dnull)
+	{
+		var state=3DxmlDoc.readyState;
+		if(state=3D=3D4)
+		{
+			var err=3DxmlDoc.parseError;
+			if(err.errorCode=3D=3D0)
+				putDataXML(xmlDoc,sdocPath);
+			else
+				onLoadXMLError();
+		}
+	}
+}
+
+function insertDataDiv(sName)
+{
+	var sHTML=3D"";
+	if(gbMac)
+		sHTML+=3D"<div id=3D"+sName+" style=3D\"display:none;\"></div>";
+	else
+		sHTML+=3D"<div id=3D"+sName+" style=3D\"visibility:hidden\"></div>";
+	if((gbIE5||gbNav6)&&document.body)
+		document.body.insertAdjacentHTML("beforeEnd",sHTML);
+	else
+	{
+		gsInsertBeforeEndHTML=3DsHTML;
+		setTimeout("insertWhenBodyReady();",100);
+		return false;
+	}
+	return true;
+}
+
+function insertWhenBodyReady()
+{
+	if(gsInsertBeforeEndHTML=3D=3D"") return;
+	if(document.body)
+	{
+		document.body.insertAdjacentHTML("beforeEnd",gsInsertBeforeEndHTML);
+		gsInsertBeforeEndHTML=3D"";
+		loadData_2(gsFileName,gsDivName);
+	}
+	else
+	{
+		setTimeout("insertWhenBodyReady();",100);
+	}
+}
+
+function window_BUnload()
+{
+	for(var i=3D0;i<gnLoadDivNum;i++)
+	{
+		var oDivCon=3DgetElement(gsDivName+i);
+		if(oDivCon)
+			oDivCon.innerHTML=3D"";
+	}
+}
+
+function removeThis(obj)
+{
+	if(obj.parentNode)
+		obj.parentNode.removeChild(obj);
+	else
+		obj.outerHTML=3D"";
+}
+
+function getParentNode(obj)
+{
+	if(obj.parentNode)
+		return obj.parentNode;
+	else if(obj.parentElement)
+		return obj.parentElement;
+	return null;
+}
+
+function getElement(sID)
+{
+	if(document.getElementById)
+		return document.getElementById(sID);
+	else if(document.all)
+		return document.all(sID);
+	return null;
+}
+
+function getChildrenByTag(obj,sTagName)
+{
+	if(obj.getElementsByTagName)
+	{
+		var aChildren=3Dnew Array();
+		var aElements=3DgetElementsByTag(obj,sTagName);
+		if(aElements!=3Dnull)
+		{
+			for(var i=3D0;i<aElements.length;i++)
+			{
+				if(aElements[i].parentNode=3D=3Dobj)
+					aChildren[aChildren.length]=3DaElements[i];
+			}
+			return aChildren;
+		}
+		else
+			return new Array();
+	}
+	else if(obj.children)
+		return obj.children.tags(sTagName);
+}
+
+function getElementsByTag(obj,sTagName)
+{
+	if(obj.getElementsByTagName)
+		return obj.getElementsByTagName(sTagName);
+	else if(obj.all)
+		return obj.all.tags(sTagName);
+	return null;
+}
+
+function _htmlToText(sHTML)
+{
+	if(sHTML=3D=3Dnull) return null;
+	var sText=3DsHTML;
+	for(var i=3D0;i<sReplaceStringsSrc.length;i++)
+	{
+		var re=3Dnew RegExp(sReplaceStringsSrc[i],"g");
+		sText=3DsText.replace(re,sReplaceStringsDst[i]);
+	}=09
+	return sText;
+}
+
+function _textToHtml_nonbsp(sText)
+{
+	if(sText=3D=3Dnull) return null;
+	var sHTML=3DsText;
+	for(var i=3D0;i<sReplaceStringsSrc.length-1;i++)
+	{
+		var re=3Dnew RegExp(sReplaceStringsDst[i],"g");
+		sHTML=3DsHTML.replace(re,sReplaceStringsSrc[i]);
+	}=09
+	return sHTML;
+}
+
+function _textToHtml(sText)
+{
+	if(sText=3D=3Dnull) return null;
+	var sHTML=3DsText;
+	for(var i=3D0;i<sReplaceStringsSrc.length;i++)
+	{
+		var re=3Dnew RegExp(sReplaceStringsDst[i],"g");
+		sHTML=3DsHTML.replace(re,sReplaceStringsSrc[i]);
+	}=09
+	return sHTML;
+}
+
+
+function getInnerText(obj)
+{
+	var renbsp2sp=3Dnew RegExp("\xa0","g");
+	if(obj.innerText)
+	{
+		var sText=3Dobj.innerText;
+		sText=3DsText.replace(renbsp2sp," ");
+		return sText;
+	}
+	else
+	{
+		if(obj.nodeValue)
+		{
+			var sValue=3Dobj.nodeValue;
+			sValue=3DsValue.replace(renbsp2sp," ");
+			return sValue;
+		}
+		else
+		{
+			var sText=3D"";
+			var oChild=3Dobj.firstChild;
+			while(oChild!=3Dnull)
+			{
+				sText+=3DgetInnerText(oChild);
+				oChild=3DoChild.nextSibling;
+			}
+			return sText;
+		}
+	}
+	=09
+}
+
+function HighLightElement(obj,sHighLightColor,sNormalColor)
+{
+	if(obj!=3Dnull)
+	{
+		resetHighLight(sNormalColor);
+		if (obj.style)
+			obj.style.backgroundColor=3DsHighLightColor;
+		goHighLighted=3Dobj;
+	}
+}
+
+function resetHighLight(sNormalColor)
+{
+	if(goHighLighted!=3Dnull)
+	{
+		if (goHighLighted.style)
+			goHighLighted.style.backgroundColor=3DsNormalColor;
+		goHighLighted=3Dnull;
+	}
+}
+
+function whFont(sName,sSize,sColor,sStyle,sWeight,sDecoration)
+{
+	this.sName=3DsName;
+	this.sSize=3DsSize;
+	this.sColor=3DsColor;
+	this.sStyle=3DsStyle;
+	this.sWeight=3DsWeight;
+	this.sDecoration=3DsDecoration;
+}
+
+function getFontStyle(oFont)
+{
+	var sStyle=3D"";
+	if(oFont)
+	{
+		sStyle+=3D"font-family:"+oFont.sName+";";
+		if(gbMac)
+		{
+			var nSize=3DparseInt(oFont.sSize);
+			if(gbIE5)
+				nSize+=3D2;
+			else
+				nSize+=3D4;
+			sStyle+=3D"font-size:"+nSize+"pt;";
+		}
+		else
+			sStyle+=3D"font-size:"+oFont.sSize+";";
+		=09
+		sStyle+=3D"font-style:"+oFont.sStyle+";";
+		sStyle+=3D"font-weight:"+oFont.sWeight+";";
+		sStyle+=3D"text-decoration:"+oFont.sDecoration+";";
+		sStyle+=3D"color:"+oFont.sColor+";";
+	}
+	return sStyle;
+}
+
+function _browserStringToText(sBStr)
+{
+	var sText=3D"";
+	// change %xxx back to the real char.
+	var nPos=3DsBStr.indexOf('%');
+	while(nPos!=3D-1)
+	{
+		sText+=3DsBStr.substring(0,nPos);
+		sBStr=3DsBStr.substring(nPos+1);
+		var sNum=3D"";
+		var i=3D0;
+		while(sBStr.charAt(i)>=3D'0'&&sBStr.charAt(i)<=3D'9')
+		{
+			sNum+=3DsBStr.charAt(i++);=09
+		}
+		if(sNum!=3D""){
+			var nNum=3DparseInt(sNum,16);
+			sText+=3DString.fromCharCode(nNum);
+			sBStr=3DsBStr.substring(i);
+		}
+		nPos=3DsBStr.indexOf('%');
+	}
+	sText+=3DsBStr;
+	return sText;
+}
+
+function excapeSingleQuotandSlash(str)
+{
+	if(str=3D=3Dnull) return null;
+	var nPos=3D0;
+	var sRes=3D"";
+	var nPosNew=3Dstr.indexOf("\\",nPos);
+	while(nPosNew!=3D-1){
+		sRes+=3Dstr.substring(nPos,nPosNew+1)+"\\";
+		nPos=3DnPosNew+1;
+		nPosNew=3Dstr.indexOf("\\",nPos);
+	}
+	if(nPos<str.length)
+		sRes+=3Dstr.substring(nPos);
+	var re=3Dnew RegExp("'","g");
+	sRes=3DsRes.replace(re,"\\'");
+	return sRes;
+}
+
+var gbWhUtil=3Dtrue;
+------=_NextPart_000_0000_01CE007E.4C2F9870
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.georeference.org/doc/whtopic.js
+
+=EF=BB=BF//	WebHelp 5.10.005
+var gsPPath=3D"";
+var gaPaths=3Dnew Array();
+var gaAvenues=3Dnew Array();
+
+var goFrame=3Dnull;
+var gsStartPage=3D"";
+var gsRelCurPagePath=3D"";
+var gsSearchFormHref=3D"";
+var gnTopicOnly=3D-1;
+var gnOutmostTopic=3D-1;
+
+var BTN_TEXT=3D1;
+var BTN_IMG=3D2;
+
+var goSync=3Dnull;
+
+var goShow=3Dnull;
+var goHide=3Dnull;
+
+var goPrev=3Dnull;
+var goNext=3Dnull;
+var gnForm=3D0;
+var goShowNav=3Dnull;
+var goHideNav=3Dnull;
+
+var goWebSearch=3Dnull;
+
+var gsBtnStyle=3D"";
+var gaButtons=3Dnew Array();
+var gaTypes=3Dnew Array();
+var whtopic_foldUnload=3Dnull;
+var gbWhTopic=3Dfalse;
+var gbCheckSync=3Dfalse;
+var gbSyncEnabled=3Dfalse;
+
+function =
+setButtonFont(sType,sFontName,sFontSize,sFontColor,sFontStyle,sFontWeight=
+,sFontDecoration)
+{
+	var vFont=3Dnew =
+whFont(sFontName,sFontSize,sFontColor,sFontStyle,sFontWeight,sFontDecorat=
+ion);
+	gsBtnStyle+=3D".whtbtn"+sType+"{"+getFontStyle(vFont)+"}";
+}
+
+function writeBtnStyle()
+{
+	if(gaButtons.length>0)
+	{
+		if(gsBtnStyle.length>0)
+		{
+			var sStyle=3D"<style type=3D'text/css'>";
+			sStyle+=3DgsBtnStyle+"</style>";
+			document.write(sStyle);
+		}
+	}
+}
+
+function button(sText,nWidth,nHeight)
+{
+	this.sText=3DsText;
+	this.nWidth=3DnWidth;
+	this.nHeight=3DnHeight;
+=09
+	this.aImgs=3Dnew Array();
+	var i=3D0;
+	while(button.arguments.length>i+3)
+	{
+		this.aImgs[i]=3Dbutton.arguments[3+i];
+		i++;
+	}
+}
+
+//project info
+function setRelStartPage(sPath)
+{
+	if(gsPPath.length=3D=3D0)
+	{
+		=
+gsPPath=3D_getFullPath(_getPath(document.location.href),_getPath(sPath));=
+
+		gsStartPage=3D_getFullPath(_getPath(document.location.href),sPath);
+		=
+gsRelCurPagePath=3D_getRelativeFileName(gsStartPage,document.location.hre=
+f);
+	}
+}
+
+function getImage(oImage,sType)
+{
+	var sImg=3D"";
+	if(oImage&&oImage.aImgs&&(oImage.aImgs.length>0))
+	{
+		sImg+=3D"<img alt=3D\""+sType+"\" src=3D\""+oImage.aImgs[0]+"\"";
+		if(oImage.nWidth>0)
+			sImg+=3D" width=3D"+oImage.nWidth;
+		if(oImage.nHeight>0)
+			sImg+=3D" height=3D"+oImage.nHeight;
+		sImg+=3D" border=3D0>";
+	}
+	return sImg;
+}
+
+function addTocInfo(sTocPath)
+{
+	gaPaths[gaPaths.length]=3DsTocPath;
+}
+
+function addAvenueInfo(sName,sPrev,sNext)
+{
+	gaAvenues[gaAvenues.length]=3Dnew avenueInfo(sName,sPrev,sNext);=09
+}
+
+function =
+addButton(sType,nStyle,sText,sHref,sOnClick,sOnMouseOver,sOnLoad,nWidth,n=
+Height,sImg1,sImg2,sImg3)
+{
+	var sButton=3D"";
+	var nBtn=3DgaButtons.length;
+	if(sType=3D=3D"prev")
+	{
+		if(canGo(false))
+		{
+			var sTitle=3D"Previous Topic";
+			goPrev=3Dnew button(sText,nWidth,nHeight,sImg1,sImg2,sImg3);
+			sButton=3D"<a title=3D\""+sTitle+"\" class=3D\"whtbtnprev\" =
+href=3D\"javascript:void(0);\" onclick=3D\"goAvenue(false);return =
+false;\">";
+			if(nStyle=3D=3DBTN_TEXT)
+				sButton+=3DgoPrev.sText;
+			else
+				sButton+=3DgetImage(goPrev,sTitle);
+			sButton+=3D"</a>";
+		}
+	}
+	else if(sType=3D=3D"next")
+	{
+		if(canGo(true))
+		{
+			var sTitle=3D"Next Topic";
+			goNext=3Dnew button(sText,nWidth,nHeight,sImg1,sImg2,sImg3);
+			sButton=3D"<a title=3D\""+sTitle+"\" class=3D\"whtbtnnext\" =
+href=3D\"javascript:void(0);\" onclick=3D\"goAvenue(true);return =
+false;\">";
+			if(nStyle=3D=3DBTN_TEXT)
+				sButton+=3DgoNext.sText;
+			else
+				sButton+=3DgetImage(goNext,sTitle);
+			sButton+=3D"</a>";
+		}
+	}
+	else if(sType=3D=3D"show")
+	{
+		if(isTopicOnly()&&(!gbOpera6||gbOpera7))
+		{
+			var sTitle=3D"Show Navigation Component";
+			goShow=3Dnew button(sText,nWidth,nHeight,sImg1,sImg2,sImg3);
+			sButton=3D"<a title=3D\""+sTitle+"\" class=3D\"whtbtnshow\" =
+href=3D\"javascript:void(0);\" onclick=3D\"show();return false;\">";
+			if(nStyle=3D=3DBTN_TEXT)
+				sButton+=3DgoShow.sText;
+			else
+				sButton+=3DgetImage(goShow,sTitle);
+			sButton+=3D"</a>";
+		}
+	}
+	else if(sType=3D=3D"hide")
+	{
+		if(!isTopicOnly()&&!gbOpera6)
+		{
+			var sTitle=3D"Hide Navigation Component";
+			goHide=3Dnew button(sText,nWidth,nHeight,sImg1,sImg2,sImg3);
+			sButton=3D"<a title=3D\""+sTitle+"\" class=3D\"whtbtnhide\" =
+href=3D\"javascript:void(0);\" onclick=3D\"hide();return false;\">";
+			if(nStyle=3D=3DBTN_TEXT)
+				sButton+=3DgoHide.sText;
+			else
+				sButton+=3DgetImage(goHide,sTitle);
+			sButton+=3D"</a>";
+		}
+	}
+	else if(sType=3D=3D"shownav")
+	{
+		if(isShowHideEnable())
+		{
+			var sTitle=3D"Show Navigation Component";
+			goShowNav=3Dnew button(sText,nWidth,nHeight,sImg1,sImg2,sImg3);
+			sButton=3D"<a title=3D\""+sTitle+"\" class=3D\"whtbtnshownav\" =
+href=3D\"javascript:void(0);\" onclick=3D\"showHidePane(true);return =
+false;\">";
+			if(nStyle=3D=3DBTN_TEXT)
+				sButton+=3DgoShowNav.sText;
+			else
+				sButton+=3DgetImage(goShowNav,sTitle);
+			sButton+=3D"</a>";
+		}
+	}
+	else if(sType=3D=3D"hidenav")
+	{
+		if(isShowHideEnable())
+		{
+			var sTitle=3D"Hide Navigation Component";
+			goHideNav=3Dnew button(sText,nWidth,nHeight,sImg1,sImg2,sImg3);
+			sButton=3D"<a title=3D\""+sTitle+"\" class=3D\"whtbtnhidenav\" =
+href=3D\"javascript:void(0);\" onclick=3D\"showHidePane(false);return =
+false;\">";
+			if(nStyle=3D=3DBTN_TEXT)
+				sButton+=3DgoHideNav.sText;
+			else
+				sButton+=3DgetImage(goHideNav,sTitle);
+			sButton+=3D"</a>";
+		}
+	}
+	else if(sType=3D=3D"synctoc")
+	{
+		if(gaPaths.length>0)
+		{
+			var sTitle=3D"Sync TOC";
+			goSync=3Dnew button(sText,nWidth,nHeight,sImg1,sImg2,sImg3);
+			sButton=3D"<a title=3D\""+sTitle+"\" class=3D\"whtbtnsynctoc\" =
+href=3D\"javascript:void(0);\" onclick=3D\"syncWithShow();return =
+false;\">";
+			if(nStyle=3D=3DBTN_TEXT)
+				sButton+=3DgoSync.sText;
+			else
+				sButton+=3DgetImage(goSync,sTitle);
+			sButton+=3D"</a>";
+		}
+	}
+	else if(sType=3D=3D"websearch")
+	{
+		if(gsSearchFormHref.length>0)
+		{
+			var sTitle=3D"WebSearch";
+			goWebSearch=3Dnew button(sText,nWidth,nHeight,sImg1,sImg2,sImg3);
+			sButton=3D"<a title=3D\""+sTitle+"\" class=3D\"whtbtnwebsearch\" =
+href=3D\""+gsSearchFormHref+"\">";
+			if(nStyle=3D=3DBTN_TEXT)
+				sButton+=3DgoWebSearch.sText;
+			else
+				sButton+=3DgetImage(goWebSearch,sTitle);
+			sButton+=3D"</a>";
+		}
+	}
+	else if(sType=3D=3D"searchform")
+	{
+		gaButtons[nBtn]=3D"NeedSearchForm";
+		gaTypes[nBtn]=3DsType;
+	}
+	if(sButton.length!=3D0)
+	{
+		if(nStyle=3D=3DBTN_TEXT)
+			sButton+=3D"&nbsp;";
+		gaButtons[nBtn]=3D"<td>"+sButton+"</td>";
+		gaTypes[nBtn]=3DsType;
+	}
+}
+
+function isSyncEnabled()
+{
+	if(!gbCheckSync)
+	{
+		var oMsg=3Dnew whMessage(WH_MSG_ISSYNCSSUPPORT,this,1,null);
+		if(SendMessage(oMsg))
+		{
+			gbSyncEnabled=3DoMsg.oParam;
+		}
+		gbCheckSync=3Dtrue;
+	}
+	return gbSyncEnabled;
+}
+
+function isInPopup()
+{
+	return (window.name.indexOf("BSSCPopup")!=3D-1);
+}
+
+function getIntopicBar(sAlign)
+{
+	var sHTML=3D"";
+	if(gaButtons.length>0)
+	{
+		sHTML+=3D"<div align=3D"+sAlign+">";
+
+		sHTML+=3D"<table cellpadding=3D\"2\" cellspacing=3D\"0\" =
+border=3D\"0\"><tr>";
+		for(var i=3D0;i<gaButtons.length;i++)
+		{
+			if(gaTypes[i]!=3D"synctoc"||isSyncEnabled())
+			{
+				if(gaButtons[i]=3D=3D"NeedSearchForm")
+					sHTML+=3DgetSearchFormHTML();
+				else
+					sHTML+=3DgaButtons[i];
+			}
+		}
+		sHTML+=3D"</tr></table>";
+
+		sHTML+=3D"</div>";
+	}
+	return sHTML;
+}
+
+
+function writeIntopicBar(nAligns)
+{
+	if(isInPopup()) return;
+	if(gaButtons.length>0)
+	{
+		var sHTML=3D"";
+		if(nAligns!=3D0)
+		{
+			sHTML+=3D"<table width=3D100%><tr>"
+			if(nAligns&1)
+				sHTML+=3D"<td width=3D33%>"+getIntopicBar("left")+"</td>";
+			if(nAligns&2)
+				sHTML+=3D"<td width=3D34%>"+getIntopicBar("center")+"</td>";
+			if(nAligns&4)
+				sHTML+=3D"<td width=3D33%>"+getIntopicBar("right")+"</td>";
+			sHTML+=3D"</tr></table>";
+			document.write(sHTML);
+		}
+	}
+}
+
+function sendAveInfoOut()
+{
+	if(!isInPopup())
+		setTimeout("sendAveInfo();",100);
+}
+
+function sendAveInfo()
+{
+	var oMsg=3Dnew whMessage(WH_MSG_AVENUEINFO,this,1,gaAvenues);
+	SendMessage(oMsg);
+}
+
+
+function onNext()
+{
+	var oMsg=3Dnew whMessage(WH_MSG_NEXT,this,1,null);
+	SendMessage(oMsg);
+}
+
+function onPrev()
+{
+	var oMsg=3Dnew whMessage(WH_MSG_PREV,this,1,null);
+	SendMessage(oMsg);
+}
+
+function createSyncInfo()
+{
+	var oParam=3Dnew Object();
+	if(gsPPath.length=3D=3D0)
+		gsPPath=3D_getPath(document.location.href);
+	oParam.sPPath=3DgsPPath;
+	oParam.sTPath=3Ddocument.location.href;
+	oParam.aPaths=3DgaPaths;
+	return oParam;
+}
+
+function syncWithShow()
+{
+	if(isTopicOnly())
+		show();
+	else
+	{
+		sync();
+		showTocPane();
+	}
+}
+
+function showTocPane()
+{
+	var oMsg=3Dnew whMessage(WH_MSG_SHOWTOC,this,1,null);
+	SendMessage(oMsg);
+}
+
+function sendSyncInfo()
+{
+	if(!isInPopup())
+	{
+		var oParam=3Dnull;
+		if(gaPaths.length>0)
+		{
+			oParam=3DcreateSyncInfo();
+		}
+		var oMsg=3Dnew whMessage(WH_MSG_SYNCINFO,this,1,oParam);
+		SendMessage(oMsg);
+	}
+}
+
+function sendInvalidSyncInfo()
+{
+	if(!isInPopup())
+	{
+		var oMsg=3Dnew whMessage(WH_MSG_SYNCINFO,this,1,null);
+		SendMessage(oMsg);
+	}
+}
+
+function enableWebSearch(bEnable)
+{
+	if(!isInPopup())
+	{
+		var oMsg=3Dnew whMessage(WH_MSG_ENABLEWEBSEARCH,this,1,bEnable);
+		SendMessage(oMsg);
+	}
+}
+
+function autoSync(nSync)
+{
+	if(nSync=3D=3D0) return;
+	if(isInPopup()) return;
+	if(isOutMostTopic())
+		sync();
+}
+
+function isOutMostTopic()
+{
+	if(gnOutmostTopic=3D=3D-1)
+	{
+		var oMessage=3Dnew whMessage(WH_MSG_ISINFRAMESET,this,1,null);
+		if(SendMessage(oMessage))
+			gnOutmostTopic=3D0;
+		else
+			gnOutmostTopic=3D1;
+	}
+	return (gnOutmostTopic=3D=3D1);
+}
+
+function sync()
+{
+	if(gaPaths.length>0)
+	{
+		var oParam=3DcreateSyncInfo();
+		var oMessage=3Dnew whMessage(WH_MSG_SYNCTOC,this,1,oParam);
+		SendMessage(oMessage);
+	}
+}
+
+
+function avenueInfo(sName,sPrev,sNext)
+{
+	this.sName=3DsName;
+	this.sPrev=3DsPrev;
+	this.sNext=3DsNext;
+}
+
+function getCurrentAvenue()
+{
+	var oParam=3Dnew Object();
+	oParam.sAvenue=3Dnull;
+	var oMessage=3Dnew whMessage(WH_MSG_GETCURRENTAVENUE,this,1,oParam);
+	SendMessage(oMessage);
+	return oParam.sAvenue;
+}
+
+function unRegisterListener()
+{
+	sendInvalidSyncInfo();
+	enableWebSearch(false);
+	if(whtopic_foldUnload)
+		whtopic_foldUnload();
+}
+
+function onSendMessage(oMsg)
+{
+	var nMsgId=3DoMsg.nMessageId;
+	if(nMsgId=3D=3DWH_MSG_GETAVIAVENUES)
+	{
+		oMsg.oParam.aAvenues=3DgaAvenues;
+		return false;
+	}
+	else if(nMsgId=3D=3DWH_MSG_GETTOCPATHS)
+	{
+		if(isOutMostTopic())
+		{
+			oMsg.oParam.oTocInfo=3DcreateSyncInfo();
+			return false;	=09
+		}
+		else
+			return true;
+	}
+	else if(nMsgId=3D=3DWH_MSG_NEXT)
+	{
+		goAvenue(true);
+	}
+	else if(nMsgId=3D=3DWH_MSG_PREV)
+	{
+		goAvenue(false);
+	}
+	else if(nMsgId=3D=3DWH_MSG_WEBSEARCH)
+	{
+		websearch();
+	}
+	return true;
+}
+
+function goAvenue(bNext)
+{
+	var sTopic=3Dnull;
+	var sAvenue=3DgetCurrentAvenue();
+	var nAvenue=3D-1;
+	if(sAvenue!=3Dnull&&sAvenue!=3D"")
+	{
+		for(var i=3D0;i<gaAvenues.length;i++)
+		{
+			if(gaAvenues[i].sName=3D=3DsAvenue)
+			{
+				nAvenue=3Di;
+				break;
+			}
+		}
+		if(nAvenue!=3D-1)
+		{
+			if(bNext)
+				sTopic=3DgaAvenues[nAvenue].sNext;
+			else
+				sTopic=3DgaAvenues[nAvenue].sPrev;
+		}
+	}
+	else
+	{
+		for(var i=3D0;i<gaAvenues.length;i++)
+		{
+			if(gaAvenues[i].sNext!=3Dnull&&gaAvenues[i].sNext.length>0&&bNext)
+			{
+				sTopic=3DgaAvenues[i].sNext;
+				break;
+			}
+			else =
+if(gaAvenues[i].sPrev!=3Dnull&&gaAvenues[i].sPrev.length>0&&!bNext)
+			{
+				sTopic=3DgaAvenues[i].sPrev;
+				break;
+			}
+		}
+	}
+=09
+	if(sTopic!=3Dnull&&sTopic!=3D"")
+	{
+		if(gsPPath!=3Dnull&&gsPPath!=3D"")
+		{
+			sFullTopicPath=3D_getFullPath(gsPPath,sTopic);
+			document.location=3DsFullTopicPath;
+		}
+	}
+}
+
+function canGo(bNext)
+{
+	for(var i=3D0;i<gaAvenues.length;i++)
+	{
+		if((gaAvenues[i].sNext!=3Dnull&&gaAvenues[i].sNext.length>0&&bNext)||
+			(gaAvenues[i].sPrev!=3Dnull&&gaAvenues[i].sPrev.length>0&&!bNext))
+			return true;
+	}
+	return false;
+}
+
+function show()
+{
+	if(gsStartPage!=3D"")
+		window.location=3DgsStartPage+"#"+gsRelCurPagePath;
+}
+
+function hide()
+{
+	if(goFrame!=3Dnull)
+	{
+		goFrame.location=3Dwindow.location;
+	}
+}
+
+function isTopicOnly()
+{
+	if(gnTopicOnly=3D=3D-1)
+	{
+		var oParam=3Dnew Object();
+		oParam.oFrame=3Dnull;
+		var oMsg=3Dnew whMessage(WH_MSG_GETSTARTFRAME,this,1,oParam);
+		if(SendMessage(oMsg))
+		{
+			goFrame=3DoParam.oFrame;
+			gnTopicOnly=3D0;
+		}
+		else
+			gnTopicOnly=3D1;
+	}
+	if(gnTopicOnly=3D=3D1)
+		return true;
+	else
+		return false;
+}
+
+function websearch()
+{
+	if(gbNav4)
+	{
+		if(document.ehelpform)
+			document.ehelpform.submit();
+	}
+	else
+	{
+		if(window.ehelpform)
+			window.ehelpform.submit();
+	}
+}
+
+function addSearchFormHref(sHref)
+{
+	gsSearchFormHref=3DsHref;
+	enableWebSearch(true);
+}
+
+function searchB(nForm)
+{
+	var sValue=3Deval("document.searchForm"+nForm+".searchString.value");
+	var oMsg=3Dnew whMessage(WH_MSG_SEARCHTHIS,this,1,sValue);
+	SendMessage(oMsg);
+}
+
+function getSearchFormHTML()
+{
+	var sHTML=3D"";
+	gnForm++;
+	var sFormName=3D"searchForm"+gnForm;
+	var sButton=3D"<form name=3D\""+sFormName+"\" method=3D\"POST\" =
+action=3D\"javascript:searchB("+gnForm+")\">"
+	sButton+=3D"<input type=3D\"text\" name=3D\"searchString\" value=3D\"- =
+Full Text search -\" size=3D\"20\"/>";
+	if(""=3D=3D"text")
+	{
+		sButton+=3D"<a class=3D\"searchbtn\" href=3D\"javascript:void(0);\" =
+onclick=3D\""+sFormName+".submit();return false;\"></a>";
+	}
+	else if(""=3D=3D"image")
+	{
+		sButton+=3D"<a class=3D\"searchbtn\" href=3D\"javascript:void(0);\" =
+onclick=3D\""+sFormName+".submit();return false;\">"
+		sButton+=3D"<img src=3D\"\" border=3D0></a>";
+	}
+	sButton+=3D"</form>";
+	sHTML=3D"<td align=3D\"center\">"+sButton+"</td>";
+	return sHTML;
+}
+
+function showHidePane(bShow)
+{
+	var oMsg=3Dnull;
+	if(bShow)
+		oMsg=3Dnew whMessage(WH_MSG_SHOWPANE,this,1,null);
+	else
+		oMsg=3Dnew whMessage(WH_MSG_HIDEPANE,this,1,null);
+	SendMessage(oMsg);
+}
+
+function isShowHideEnable()
+{
+	if(gbIE4)
+		return true;
+	else
+		return false;
+}
+
+
+function PickupDialog_Invoke()
+{
+	if(!gbIE4||gbMac)
+	{
+		if(typeof(_PopupMenu_Invoke)=3D=3D"function")
+			return _PopupMenu_Invoke(PickupDialog_Invoke.arguments);
+	}
+	else
+	{
+		if(PickupDialog_Invoke.arguments.length>2)
+		{
+			var sPickup=3D"whskin_pickup.htm";
+			var sPickupPath=3DgsPPath+sPickup;
+			if(gbIE4)
+			{
+				var sFrame=3DPickupDialog_Invoke.arguments[1];
+				var aTopics=3Dnew Array();
+				for(var i=3D2;i<PickupDialog_Invoke.arguments.length;i+=3D2)
+				{
+					var j=3DaTopics.length;
+					aTopics[j]=3Dnew Object();
+					aTopics[j].m_sName=3DPickupDialog_Invoke.arguments[i];
+					aTopics[j].m_sURL=3DPickupDialog_Invoke.arguments[i+1];
+				}
+
+				if(aTopics.length>1)
+				{
+					var nWidth=3D300;
+					var nHeight=3D180;
+					var	nScreenWidth=3Dscreen.width;
+					var	nScreenHeight=3Dscreen.height;
+					var nLeft=3D(nScreenWidth-nWidth)/2;
+					var nTop=3D(nScreenHeight-nHeight)/2;
+					if(gbIE4)
+					{
+						var =
+vRet=3Dwindow.showModalDialog(sPickupPath,aTopics,"dialogHeight:"+nHeight=
++"px;dialogWidth:"+nWidth+"px;resizable:yes;status:no;scroll:no;help:no;c=
+enter:yes;");
+						if(vRet)
+						{
+							var sURL=3DvRet.m_url;
+							if(sFrame)
+								window.open(sURL,sFrame);
+							else
+								window.open(sURL,"_self");
+						}
+					}
+				}
+				else if(aTopics.length=3D=3D1)
+				{
+					var sURL=3DaTopics[0].m_sURL
+					if(sFrame)
+						window.open(sURL,sFrame);
+					else
+						window.open(sURL,"_self");
+				}
+			}
+		}
+	}
+}
+
+if(window.gbWhUtil&&window.gbWhMsg&&window.gbWhVer&&window.gbWhProxy)
+{
+	RegisterListener("bsscright",WH_MSG_GETAVIAVENUES);
+	RegisterListener("bsscright",WH_MSG_GETTOCPATHS);
+	RegisterListener("bsscright",WH_MSG_NEXT);
+	RegisterListener("bsscright",WH_MSG_PREV);
+	RegisterListener("bsscright",WH_MSG_WEBSEARCH);
+	if(gbMac&&gbIE4)
+	{
+		if(typeof(window.onunload)!=3D"unknown")
+			if(window.onunload.toString!=3DunRegisterListener.toString)
+				whtopic_foldUnload=3Dwindow.onunload;
+	}
+	else
+	{
+		if(window.onunload)
+			if(window.onunload.toString!=3DunRegisterListener.toString)
+				whtopic_foldUnload=3Dwindow.onunload;
+	}
+	window.onunload=3DunRegisterListener;
+	setButtonFont("show","","10pt","","","","");
+
+	gbWhTopic=3Dtrue;
+}
+else
+	document.location.reload();
+------=_NextPart_000_0000_01CE007E.4C2F9870--

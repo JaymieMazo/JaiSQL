@@ -1,0 +1,3467 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0044)http://www.tar.hu/sqlbible/sqlbible0076.html -->
+<HTML><HEAD><TITLE>Chapter 10: SQL Functions</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1"><LINK 
+href="sqlbible0076_files/xpolecat.css" type=text/css rel=STYLESHEET><LINK 
+href="sqlbible0076_files/ie.content.css" type=text/css rel=STYLESHEET>
+<META content="MSHTML 6.00.2800.1543" name=GENERATOR></HEAD>
+<BODY>
+<SCRIPT src="sqlbible0076_files/reload.js" type=text/javascript></SCRIPT>
+
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <DIV style="MARGIN-LEFT: 0.15in"><A 
+      href="http://www.tar.hu/sqlbible/index.html"><IMG height=15 
+      alt="Table of Contents" src="sqlbible0076_files/toc.gif" width=100 
+      border=0></A></DIV></TD>
+    <TD class=v2 vAlign=top align=right>
+      <DIV style="MARGIN-RIGHT: 0.15in"><A 
+      href="http://www.tar.hu/sqlbible/sqlbible0075.html"><IMG height=15 
+      alt="Previous Section" src="sqlbible0076_files/previous.gif" width=62 
+      border=0></A> <A href="http://www.tar.hu/sqlbible/sqlbible0077.html"><IMG 
+      height=15 alt="Next Section" src="sqlbible0076_files/next.gif" width=41 
+      border=0></A> </DIV></TD></TR></TBODY></TABLE>
+<DIV class=chapter>
+<H1 class=chapter-title><SPAN class=chapter-titlelabel>Chapter 10: </SPAN>SQL 
+Functions</H1>
+<DIV class=section>
+<H2 class=sect2-title><A name=600></A><A name=wbp17Chapter10P2></A>Overview</H2>
+<P class=first-para><A name=601></A>SQL functions exist to make your life easier 
+when you need to manipulate data retrieved from a table. While SQL query, which 
+is composed of the statements, is busy retrieving some data for you, the 
+functions used within that query are validating, converting, calculating, 
+getting the system information, and much more.</P>
+<P class=para>Think of the SQL functions as tools designed to accomplish a 
+single well-defined task, for example, calculating square root or converting 
+lowercase letters into uppercase. You invoke a function within SQL query by name 
+(usually a single keyword). Some functions accept arguments and some do not, but 
+what differentiates a function from every other executable module in RDBMS is 
+that it always returns value.</P>
+<P class=para>While SQL itself is not a procedural language — that is, it lacks 
+procedural features such as flow control structures and loops — using functions 
+allows you, to a certain extent, to alleviate problems stemming from this 
+deficiency.</P>
+<P class=para>All functions could be divided into two broad categories: <I 
+class=emphasis>deterministic</I> functions and <I 
+class=emphasis>nondeterministic</I> functions. Deterministic functions always 
+return the same result if you pass into the same arguments; nondeterministic 
+functions might return different results, even if they are called with exactly 
+the same arguments. For example function <SPAN class=fixed>ABS,</SPAN> which 
+returns the absolute value of a number passed to it as an argument, is a 
+deterministic function — no matter how many times you call it with, say 
+argument, -5, it will always return 5 as a result. For example, the Microsoft 
+SQL Server function <SPAN class=fixed>GETDATE()</SPAN> — when it accepts no 
+arguments and returns only the current date and time on the RDBMS server — is an 
+example of a nondeterministic function: each time you call it a new date and 
+time is returned, even if the difference is one second.</P>
+<P class=para>Some RDBMS restrict use of the nondeterministic function in 
+database objects such as <SPAN class=fixed>INDEX</SPAN> or <SPAN 
+class=fixed>VIEW</SPAN>. For example, the MS SQL Server disallows use of such 
+functions for indexed computed columns and indexed views; the IBM DB2 UDB does 
+not allow nondeterministic functions in the join condition expression, and you 
+cannot use these function in Oracle's function-based index.<A name=602></A> </P>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top>Note&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>Virtually every database vendor provides procedural 
+      extensions for use with their database products. Oracle has built-in 
+      PL/SQL, Microsoft uses its own dialect of Transact-SQL, and DB2 UDB uses 
+      IBM SQL (which is similar to Transact-SQL). Unlike SQL, these procedural 
+      extensions allow for creating full-fledged programs within their 
+      respective host environments. User-defined custom functions are usually 
+      created using one of their procedural languages.</P></TD></TR></TBODY></TABLE>
+<P class=para>The list of SQL functions available for use within a particular 
+RDBMS implementation grows with every new release, and some vendors are allowing 
+users to define their own custom functions to perform nonstandard tasks. In this 
+chapter we provide only a short list of the most helpful functions and their 
+uses. Differences between vendor-specific implementations are highlighted.</P>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top>Note&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>The portability problem with using functions in a 
+      query is the possibility that the query might not run properly with 
+      competitors' products. Some functions are identical in name and usage, 
+      some have only a different name, and some exist only within a particular 
+      RDBMS implementation.</P></TD></TR></TBODY></TABLE>
+<P class=para>Not all of these functions (some would say most of them are not) 
+are part of the SQL standard — be it SQL89 (SQL1), SQL92 (SQL2), or even SQL99 
+(SQL3). In fact, all of these standards specify only a handful of functions as a 
+requirement for conformance to a specific level (entry, intermediate, or full). 
+The old saying that you cannot program a standard still keeps true. The list of 
+the functions specified in the SQL2 standard is given in <A class=internaljump 
+href="http://www.tar.hu/sqlbible/sqlbible0076.html#wbp17Chapter10T1P1" 
+role="targetype:table">Table 10-1</A>.<A name=603></A> </P><A name=604></A><A 
+name=wbp17Chapter10T1P1></A>
+<TABLE class=table width="100%" border=1>
+  <CAPTION class=table-title><SPAN class=table-title><SPAN 
+  class=table-titlelabel>Table 10-1: </SPAN>Standard SQL2 Functions</SPAN> 
+  </CAPTION>
+  <THEAD>
+  <TR vAlign=top>
+    <TH class=th scope=col align=left width="40%">
+      <P class=table-para>SQL Function</P></TH>
+    <TH class=th scope=col align=left width="60%">
+      <P class=table-para>Description</P></TH></TR></THEAD>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=td align=left width="40%">
+      <P class=table-para><SPAN class=fixed>BIT_LENGTH</SPAN> 
+(expression)</P></TD>
+    <TD class=td align=left width="60%">
+      <P class=table-para>Returns the length of the expression, usually string, 
+      in bits.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="40%">
+      <P class=table-para><SPAN class=fixed>CAST</SPAN> (value AS data 
+    type)</P></TD>
+    <TD class=td align=left width="60%">
+      <P class=table-para>Converts supplied value from one data type into 
+      another <I class=emphasis>compatible</I> data type.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="40%">
+      <P class=table-para><SPAN class=fixed>CHAR_LENGTH</SPAN> 
+    (expression)</P></TD>
+    <TD class=td align=left width="60%">
+      <P class=table-para>Returns the length of the expression, usually string, 
+      in characters.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="40%">
+      <P class=table-para><SPAN class=fixed>CONVERT</SPAN> (expression <SPAN 
+      class=fixed>USING</SPAN> conversion)</P></TD>
+    <TD class=td align=left width="60%">
+      <P class=table-para>Returns string converted according to the rules 
+      specified in the conversion parameter.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="40%">
+      <P class=table-para><SPAN class=fixed>CURRENT_DATE</SPAN> </P></TD>
+    <TD class=td align=left width="60%">
+      <P class=table-para>Returns current date of the system.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="40%">
+      <P class=table-para><SPAN class=fixed>CURRENT_TIME</SPAN> 
+    (precision)</P></TD>
+    <TD class=td align=left width="60%">
+      <P class=table-para>Returns current time of the system, of the specified 
+      precision.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="40%">
+      <P class=table-para><SPAN class=fixed>CURRENT_TIMESTAMP</SPAN> 
+      (precision)</P></TD>
+    <TD class=td align=left width="60%">
+      <P class=table-para>Returns current time <I class=emphasis>and</I> the 
+      current date of the system, of the specified precision.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="40%">
+      <P class=table-para><SPAN class=fixed>EXTRACT</SPAN> (part <SPAN 
+      class=fixed>FROM</SPAN> expression)</P></TD>
+    <TD class=td align=left width="60%">
+      <P class=table-para>Extracts specified named part of the 
+  expression.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="40%">
+      <P class=table-para><SPAN class=fixed>LOWER</SPAN> (expression)</P></TD>
+    <TD class=td align=left width="60%">
+      <P class=table-para>Converts character string from uppercase (or mixed 
+      case) into lowercase letters.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="40%">
+      <P class=table-para><SPAN class=fixed>OCTET_LENGTH</SPAN> (<I 
+      class=emphasis>expression</I>)</P></TD>
+    <TD class=td align=left width="60%">
+      <P class=table-para>Returns the length of the expression in <I 
+      class=emphasis>bytes </I>(each byte containing 8 bits).</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="40%">
+      <P class=table-para><SPAN class=fixed>POSITION</SPAN> (<I 
+      class=emphasis>char expression </I><SPAN class=fixed><I 
+      class=emphasis>I</I>N</SPAN> <I class=emphasis>source</I>)</P></TD>
+    <TD class=td align=left width="60%">
+      <P class=table-para>Returns position of the char expression in the 
+      source.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="40%">
+      <P class=table-para><SPAN class=fixed>SUBSTRING</SPAN> (<I 
+      class=emphasis>string expression, start, length</I>)</P></TD>
+    <TD class=td align=left width="60%">
+      <P class=table-para>Returns the string part of a <I class=emphasis>string 
+      expression</I>, from the <I class=emphasis>start</I> position up to 
+      specified <I class=emphasis>length</I>.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="40%">
+      <P class=table-para><SPAN class=fixed>TRANSLATE</SPAN> (<I 
+      class=emphasis>string expression</I> USING <I class=emphasis>translation 
+      rule</I>)</P></TD>
+    <TD class=td align=left width="60%">
+      <P class=table-para>Returns string translated into another string 
+      according to specified rules.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="40%">
+      <P class=table-para><SPAN class=fixed>TRIM</SPAN>(<SPAN 
+      class=fixed>LEADING</SPAN> | <SPAN class=fixed>TRAILING</SPAN> | <SPAN 
+      class=fixed>BOTH</SPAN> <I class=emphasis>char expression</I> <SPAN 
+      class=fixed>FROM</SPAN> <I class=emphasis>string expression</I>)</P></TD>
+    <TD class=td align=left width="60%">
+      <P class=table-para>Returns string from a string expression where <I 
+      class=emphasis>leading</I>, <I class=emphasis>trailing,</I> or <I 
+      class=emphasis>both</I> char expression characters are removed.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="40%">
+      <P class=table-para><SPAN class=fixed>UPPER</SPAN> (<I 
+      class=emphasis>expression</I>)</P></TD>
+    <TD class=td align=left width="60%">
+      <P class=table-para>Converts character string from lowercase (or mixed 
+      case) into uppercase letters.</P></TD></TR></TBODY></TABLE>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top width=136>Cross-References&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>For obvious reasons, it would be very beneficial to 
+      have a clear picture of what functions are available in the most popular 
+      RDBMS as well as mapping of those functions between different 
+      implementations. In <A class=chapterjump 
+      href="http://www.tar.hu/sqlbible/sqlbible0147.html#1228">Appendix D</A>, 
+      we've attempted to provide list of all functions, their respective mapping 
+      to each other, and brief explanations for the "big three" — Oracle 9<I 
+      class=emphasis>i</I>, IBM DB2 UDB 8.1, and Microsoft SQL Server 
+    2000.</P></TD></TR></TBODY></TABLE>
+<P class=para>Every vendor has its own classifications of the functions 
+supported in its database product. IBM groups its DB2 UDB functions into <I 
+class=emphasis>column functions, scalar functions, row functions and table 
+functions;</I> whereas Oracle uses terms like <I class=emphasis>single-row</I> 
+<I class=emphasis>functions, aggregate functions, analytic functions, and 
+object-reference functions; </I>and Microsoft sports the most detailed 
+classifications of <I class=emphasis>configuration functions, cursor, date and 
+time, mathematical functions, aggregate functions, metadata, security, string, 
+system functions, and system statistical functions, </I>as well as <I 
+class=emphasis>text and image functions, and rowset functions.</I> </P>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top>Note&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>IBM makes a distinction between <SPAN 
+      class=fixed>SYSIBM</SPAN> and <SPAN class=fixed>SYSFUN</SPAN> schema 
+      functions; they differ in the way they handle data; for example, sometimes 
+      one is handling numeric input while the other handling character input. 
+      Consider it an IBM implementation of function overloading where a 
+      different task is expected of a function based on the argument data types 
+      passed into the function.</P></TD></TR></TBODY></TABLE>
+<P class=para>This chapter concentrates on the functions that could be used in 
+any implementation context, leaving out many proprietary extensions. The 
+XML-related functions are discussed in <A class=chapterjump 
+href="http://www.tar.hu/sqlbible/sqlbible0125.html#1121">Chapter 17</A>, 
+security functions are in <A class=chapterjump 
+href="http://www.tar.hu/sqlbible/sqlbible0088.html#745">Chapter 12</A>, and 
+metadata functions are in <A class=chapterjump 
+href="http://www.tar.hu/sqlbible/sqlbible0098.html#846">Chapter 13</A>.</P>
+<P class=para>All the examples, unless otherwise stated, use the ACME database. 
+You could run them directly against this database installed in the RDBMS of your 
+choice.<A name=605></A> </P>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top width=136>Cross-References&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>Refer to <A class=chapterjump 
+      href="http://www.tar.hu/sqlbible/sqlbible0153.html#1346">Appendix F</A> on 
+      instructions for installing ACME database, and <A class=chapterjump 
+      href="http://www.tar.hu/sqlbible/sqlbible0150.html#1309">Appendix E</A> 
+      for how to start a command line or visual interface for the RDBMS of your 
+      choice.</P></TD></TR></TBODY></TABLE>
+<DIV class=section>
+<H3 class=sect3-title><A name=606></A><A name=wbp17Chapter10P21></A>Numeric 
+functions</H3>
+<P class=first-para>We grouped some functions into numeric functions because 
+they are operating with numbers — both input and output parameters are usually 
+numeric: <SPAN class=fixed>INTEGER</SPAN>, <SPAN class=fixed>DECIMAL,</SPAN> and 
+so on. The list of most common numeric functions is given in <A 
+class=internaljump 
+href="http://www.tar.hu/sqlbible/sqlbible0076.html#wbp17Chapter10T2P2" 
+role="targetype:table">Table 10-2</A>.</P><A name=607></A><A 
+name=wbp17Chapter10T2P2></A>
+<TABLE class=table width="100%" border=1>
+  <CAPTION class=table-title><SPAN class=table-title><SPAN 
+  class=table-titlelabel>Table 10-2: </SPAN>Numeric Functions</SPAN> </CAPTION>
+  <THEAD>
+  <TR vAlign=top>
+    <TH class=th scope=col align=left width="22%">
+      <P class=table-para>Oracle 9i</P></TH>
+    <TH class=th scope=col align=left width="20%">
+      <P class=table-para>IBM DB2 UDB 8.1</P></TH>
+    <TH class=th scope=col align=left width="22%">
+      <P class=table-para>MS SQL Server 2000</P></TH>
+    <TH class=th scope=col align=left width="36%">
+      <P class=table-para>Description</P></TH></TR></THEAD>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para><SPAN class=fixed>ABS</SPAN> <SPAN 
+      class=fixed>(n)</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>ABSs</SPAN> <SPAN 
+      class=fixed>(n)</SPAN> </P></TD>
+    <TD class=td align=left width="22%">
+      <P class=table-para><SPAN class=fixed>ABS</SPAN> <SPAN 
+      class=fixed>(n)</SPAN> </P></TD>
+    <TD class=td align=left width="36%">
+      <P class=table-para>Returns absolute value of a number <I 
+      class=emphasis>n</I>.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para><SPAN class=fixed>CEIL</SPAN> <SPAN 
+      class=fixed>(n)</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>CEIL[ING]</SPAN> <SPAN 
+      class=fixed>(n)</SPAN> </P></TD>
+    <TD class=td align=left width="22%">
+      <P class=table-para><SPAN class=fixed>CEILING</SPAN> <SPAN 
+      class=fixed>(n)</SPAN> </P></TD>
+    <TD class=td align=left width="36%">
+      <P class=table-para>Returns smallest integer that is greater than or equal 
+      to <I class=emphasis>n</I>.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para><SPAN class=fixed>EXP</SPAN> <SPAN 
+      class=fixed>(n)</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>EXP</SPAN> <SPAN 
+      class=fixed>(n)</SPAN> </P></TD>
+    <TD class=td align=left width="22%">
+      <P class=table-para><SPAN class=fixed>EXP</SPAN> <SPAN 
+      class=fixed>(n)</SPAN> </P></TD>
+    <TD class=td align=left width="36%">
+      <P class=table-para>Returns exponential value of <I 
+      class=emphasis>n</I>.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para><SPAN class=fixed>FLOOR</SPAN> <SPAN 
+      class=fixed>(n)</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>FLOOR</SPAN> <SPAN 
+      class=fixed>(n)</SPAN> </P></TD>
+    <TD class=td align=left width="22%">
+      <P class=table-para><SPAN class=fixed>FLOOR</SPAN> <SPAN 
+      class=fixed>(n)</SPAN> </P></TD>
+    <TD class=td align=left width="36%">
+      <P class=table-para>Returns the largest integer less than or equal to <I 
+      class=emphasis>n</I>. </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para><SPAN class=fixed>MOD.(n,m)</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>MOD.(n,m)</SPAN> </P></TD>
+    <TD class=td align=left width="22%">
+      <P class=table-para>Operator <SPAN class=fixed>%</SPAN> </P></TD>
+    <TD class=td align=left width="36%">
+      <P class=table-para>Returns remainder of <I class=emphasis>n</I> divided 
+      by <I class=emphasis>m</I>. </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para><SPAN class=fixed>POWER.(m,n)</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>POWER.(m,n)</SPAN> </P></TD>
+    <TD class=td align=left width="22%">
+      <P class=table-para><SPAN class=fixed>POWER.(m,n)</SPAN> </P></TD>
+    <TD class=td align=left width="36%">
+      <P class=table-para>Returns value of <I class=emphasis>m</I> raised into 
+      <I class=emphasis>n</I><SUP>th</SUP> power.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para><SPAN class=fixed>N/A</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>RAND.(n)</SPAN> </P></TD>
+    <TD class=td align=left width="22%">
+      <P class=table-para><SPAN class=fixed>RAND.(n)</SPAN> </P></TD>
+    <TD class=td align=left width="36%">
+      <P class=table-para>Returns a random number between 0 and 1.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para><SPAN class=fixed>ROUND(n,[m])</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>ROUND</SPAN> <SPAN 
+      class=fixed>(n,[m])</SPAN> </P></TD>
+    <TD class=td align=left width="22%">
+      <P class=table-para><SPAN class=fixed>ROUND</SPAN> <SPAN 
+      class=fixed>(n,m,[0])</SPAN> </P></TD>
+    <TD class=td align=left width="36%">
+      <P class=table-para>Returns number <I class=emphasis>n</I> rounded to <I 
+      class=emphasis>m</I> decimal places. For MS SQL Server, the last argument 
+      — zero — is a default.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para><SPAN class=fixed>SIGN(n)</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>SIGN(n)</SPAN> </P></TD>
+    <TD class=td align=left width="22%">
+      <P class=table-para><SPAN class=fixed>SIGN(n)</SPAN> </P></TD>
+    <TD class=td align=left width="36%">
+      <P class=table-para>Returns -1, if <I class=emphasis>n</I> is a negative 
+      number, 1 if it is a positive number, and 0 if the number is 
+  zero.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para><SPAN class=fixed>TRUNC</SPAN> <SPAN 
+      class=fixed>(n,[m])</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>TRUNC[ATE]</SPAN> <SPAN 
+      class=fixed>(n,[m])</SPAN> </P></TD>
+    <TD class=td align=left width="22%">
+      <P class=table-para><SPAN class=fixed>ROUND</SPAN> <SPAN 
+      class=fixed>(n,m,&lt;&gt;0)</SPAN> </P></TD>
+    <TD class=td align=left width="36%">
+      <P class=table-para>Returns <I class=emphasis>n</I> truncated to <I 
+      class=emphasis>m</I> decimal places. For MS SQL Server, when the last 
+      argument has a value other than zero, the result of the function is 
+      truncation.</P></TD></TR></TBODY></TABLE>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top width=136>Cross-References&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para><A name=608></A>See <A class=chapterjump 
+      href="http://www.tar.hu/sqlbible/sqlbible0020.html#116">Chapter 3</A> for 
+      more information on data types.</P></TD></TR></TBODY></TABLE>
+<DIV class=section>
+<H4 class=sect4-title>CEIL</H4>
+<P class=first-para>By definition, function <SPAN class=fixed>CEIL</SPAN> 
+returns the <I class=emphasis>least</I> integer of the argument passed; that 
+means that the function rounds the values up. The syntax and usage are identical 
+for all three databases.</P>
+<P class=para>The argument could be a number or a column value; the output is 
+shown underneath the query:</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT CEILING (prod_price_n)
+			 ceil_price, prod_price_n FROM product; ceil_price prod_price_n ------------
+			 ------------ 19 18.24 34 33.28 27 26.82</PRE></DIV>
+<P class=para>The <SPAN class=fixed>FLOOR</SPAN> function acts in a very similar 
+fashion, rounding <I class=emphasis>down.</I> The syntax is identical across all 
+three databases: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT FLOOR (prod_price_n)
+			 floor_price, prod_price_n FROM product; floor_price prod_price_n ------------
+			 ------------ 18 18.24 33 33.28 26 26.82</PRE></DIV>
+<TABLE class=tip cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top>Tip&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>The command line interface is different in all three 
+      implementations. Oracle uses SQL*Plus, Microsoft uses the OSQL utility, 
+      and IBM the command line processor. To execute an SQL command (after 
+      connection is established), type the command into the window of the 
+      utility (DOS window on the Windows platform, command prompt on 
+      UNIX/LINUX), and press Enter for DB2 UDB or type in a semicolon (<SPAN 
+      class=fixed>;</SPAN>) and Enter for Oracle, or type <SPAN 
+      class=fixed>GO</SPAN> and press Enter for the MS SQL Server. Each of these 
+      interfaces is customizable, and you could "teach," for instance, the MS 
+      SQL Server to accept a semicolon in lieu of <SPAN class=fixed>GO</SPAN> 
+      statement.<A name=609></A> </P></TD></TR></TBODY></TABLE></DIV>
+<DIV class=section>
+<H4 class=sect4-title>ROUND</H4>
+<P class=first-para>One might wonder how that is different from the <SPAN 
+class=fixed>TRUNC</SPAN> function. This function rounds a number to a specific 
+length or precision, and works almost identically in all three RDBMS 
+implementations.</P>
+<P class=para>In the following example, all the values of the <SPAN 
+class=fixed>PROD_PRICE_N</SPAN> column from the table <SPAN 
+class=fixed>PRODUCT</SPAN> are rounded to 1 decimal digit of precision: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT ROUND(prod_price_n,1)
+			 round_price, prod_price_n FROM product; round_price prod_price_n ------------
+			 ------------ 18.20 18.24 33.30 33.28 26.80 26.82</PRE></DIV>
+<P class=para>Since our query requested precision 2, the numbers were rounded <I 
+class=emphasis>up</I> and <I class=emphasis>down</I> — depending on the number 
+itself: 33.28 was rounded to 33.30, and 18.24 was rounded to 18.20.</P>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top>Note&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>The Microsoft SQL Server's version of the <SPAN 
+      class=fixed>ROUND</SPAN> function behaves somewhat differently than its 
+      equivalents in Oracle and DB2 UDB — it has a third optional argument 
+      (function) that by default is 0. When this argument is omitted or 
+      explicitly set to 0, the result is rounding — exactly as seen in the 
+      foregoing example; when the value is other than 0, the result will be 
+      truncated.</P></TD></TR></TBODY></TABLE>
+<P class=para>The second integer argument could be negative to round numbers on 
+the left of the decimal point, the integral part of the number:</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT ROUND (prod_price_n,1)
+			 round_price_right, ROUND (prod_price_n,-1) round_price_left, prod_price_n FROM
+			 product; round_price_right round_price_left prod_price_n -----------------
+			 ---------------- ------------ 18.30 20.00 18.32 34.10 30.00 34.09 26.90 30.00
+			 26.92 16.00 20.00 15.98<A name=610></A>
+</PRE></DIV>
+<P class=last-para>Here, specifying -1 as the second argument of the - function, 
+we are getting the result of a rounded value for the digits on the left side of 
+the decimal point.</P></DIV>
+<DIV class=section>
+<H4 class=sect4-title>TRUNC</H4>
+<P class=first-para>Function <SPAN class=fixed>TRUNC</SPAN> returns its argument 
+truncated to the number of decimal places specified with the second argument. 
+The example shown applies to Oracle and IBM DB2 UDB; the MS SQL Server uses the 
+<SPAN class=fixed>ROUND</SPAN> function to truncate: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT TRUNC(prod_price_n, 1)
+			 trunc_price, prod_price_n FROM product; trunc_price product_price_n
+			 ------------ ------------ 18.2 18.24 33.2 33.28 26.8 26.82</PRE></DIV>
+<P class=para>There is a special case where function <SPAN 
+class=fixed>TRUNC</SPAN> is used to truncate dates in Oracle. It produces the 
+midnight value for the date argument, that is, it truncates off all the hours, 
+minutes, and seconds: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT SYSDATE,
+			 TRUNC(SYSDATE) truncated FROM dual; SYSDATE TRUNCATED ---------------------
+			 ---------------------- 9/22/2003 10:53:36 AM 9/22/2003 00:00:00
+			 AM</PRE></DIV></DIV>
+<DIV class=section>
+<H4 class=sect4-title>RAND</H4>
+<P class=first-para><SPAN class=fixed>The</SPAN> <SPAN class=fixed>RAND</SPAN> 
+function is used to generate some random numbers at runtime. The syntax and 
+usage are almost identical for DB2 UDB and the MS SQL Server 2000. (There is no 
+analog function in Oracle, although it could be emulated through use of PL/SQL 
+packages.) It accepts an optional seed argument (integer) and would produce a 
+random float number in the range between 1 and 0 (inclusive).<A name=611></A> 
+</P>
+<P class=para>The MS SQL Server 2000 syntax is:</P><PRE class=programlisting>SELECT RAND(1) random_number
+			 random_number --------------------- 0.71359199321292355</PRE>
+<P class=para>The DB2 UDB Syntax produces analogous results in somewhat 
+different format:</P><PRE class=programlisting>SELECT RAND(5) FROM
+			 sysibm.sysdummy1 random_number ---------------------
+			 +1.64799951170385E-03</PRE>
+<P class=para>There are some nuances to <SPAN class=fixed>RAND</SPAN> function 
+usage: called several times within a session with the same seed value, it will 
+produce exactly the same output. To get different pseudo-random numbers you need 
+to specify different seed values, or use different sessions.</P>
+<DIV class=sidebar><A name=612></A><A name=wbp17Chapter10P119></A>
+<TABLE class=BlueLine cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD class=bluecell bgColor=#000080><FONT face=Arial color=#010100 
+      size=2><B><IMG height=2 alt="Start Sidebar" src="sqlbible0076_files/_.gif" 
+      width=1 border=0></B></FONT></TD></TR></TBODY></TABLE><SPAN 
+class=sidebar-title><B>
+<CENTER>Getting Random Numbers in a Different Range</CENTER></B></SPAN>
+<P class=first-para>What do you do when random numbers of a range different from 
+0 to 1 are required? In this case you could multiply the output of the - 
+function by the range factor, and then TRUNCATE or ROUND the result. Here is an 
+example of producing a set of pseudo-random values in the range of 0 to 10000 in 
+MS SQL Server 2000 syntax:</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT ROUND((RAND(15)*
+				10000),0) from_zero_to_10000 from_zero_to_10000 --------------------------
+				7139.0</PRE></DIV>
+<P class=last-para>Encapsulating this functionality in a custom-made function 
+would be the most rational solution. All three vendors provide the ability to 
+create user-defined functions in their RDBMS software.</P>
+<TABLE class=BlueLine cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD class=bluecell bgColor=#000080><FONT face=Arial color=#010100 
+      size=2><B><IMG height=2 alt="End Sidebar" src="sqlbible0076_files/_.gif" 
+      width=1 border=0></B></FONT></TD></TR></TBODY></TABLE></DIV>
+<TABLE class=BlankSpace cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD height=16></TD></TR></TBODY></TABLE></DIV>
+<DIV class=section>
+<H4 class=sect4-title>SIGN</H4>
+<P class=first-para><A name=613></A>The <SPAN class=fixed>SIGN</SPAN> function 
+works exactly the same way in all three implementations. It is used to determine 
+the sign of the numeric expression argument: if the number is positive, then the 
+function returns 1; if the number is negative (the result will be -1, if the 
+argument is zero), then 0 is returned. In our example all 1s were returned since 
+the price is expressed in positive numbers: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT SIGN (prod_price_n)
+			 sign_price, prod_price_n FROM product; sign_price prod_price_n ------------
+			 ------------ 118.24 1 33.28 1 26.82</PRE></DIV>
+<P class=para>You could use just a literal number in place of the value from a 
+table's column. Since all implementations use <SPAN class=fixed>SELECT</SPAN> as 
+the keyword to execute a function, you need something to select from.</P>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top>Note&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>The <SPAN class=fixed>DUAL</SPAN> table was introduced 
+      by Chuck Weiss of Oracle as an underlying object in the Oracle Data 
+      Dictionary. It was never meant to be seen by itself, but rather to be used 
+      in some complex <SPAN class=fixed>JOIN</SPAN> operations (discussed in <A 
+      class=chapterjump 
+      href="http://www.tar.hu/sqlbible/sqlbible0069.html#538">Chapter 9</A>); it 
+      logically fits the <SPAN class=fixed>SELECT</SPAN> notion as it implies 
+      that the <SPAN class=fixed>FROM</SPAN> clause is to be used with each 
+      statement.</P></TD></TR></TBODY></TABLE></DIV></DIV>
+<DIV class=section>
+<H3 class=sect3-title><A name=614></A><A name=wbp17Chapter10P142></A>String 
+functions</H3>
+<P class=first-para>String functions are grouped together because they perform 
+some operations specifically pertaining to strings characters — that is, 
+manipulation of the strings: changing the letter case, changing alignment, 
+finding ASCII codes, and so on. Usually, but not always the output of such 
+functions is a string. Some of the most common string functions are listed in <A 
+class=internaljump 
+href="http://www.tar.hu/sqlbible/sqlbible0076.html#wbp17Chapter10T3P3" 
+role="targetype:table">Table 10-3</A>.</P><A name=615></A><A 
+name=wbp17Chapter10T3P3></A>
+<TABLE class=table width="100%" border=1>
+  <CAPTION class=table-title><SPAN class=table-title><SPAN 
+  class=table-titlelabel>Table 10-3: </SPAN>String Functions</SPAN> </CAPTION>
+  <THEAD>
+  <TR vAlign=top>
+    <TH class=th scope=col align=left width="25%">
+      <P class=table-para>ORACLE 9i</P></TH>
+    <TH class=th scope=col align=left width="20%">
+      <P class=table-para>IBM DB2 UDB 8.1</P></TH>
+    <TH class=th scope=col align=left width="20%">
+      <P class=table-para>MS SQL Server 2000</P></TH>
+    <TH class=th scope=col align=left width="34%">
+      <P class=table-para>Description</P></TH></TR></THEAD>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>ASCII</SPAN> (string)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>ASCII</SPAN> (string)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>ASCII</SPAN> (string)</P></TD>
+    <TD class=td align=left width="34%">
+      <P class=table-para>Returns ASCII code of the first character of a 
+      string.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>CHR</SPAN> (number)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>CHR</SPAN> (number)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>CHAR</SPAN> (number)<SPAN 
+      class=fixed> NCHAR</SPAN> (number)</P></TD>
+    <TD class=td align=left width="34%">
+      <P class=table-para>Returns character for the ASCII code.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>CONCAT</SPAN> (string1, 
+    string2)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>CONCAT</SPAN> (string1, 
+    string2)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para>operator '+'</P></TD>
+    <TD class=td align=left width="34%">
+      <P class=table-para>Returns result of concatenation of two 
+  strings.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>INSTR</SPAN> (string, substring, 
+      start position, occurrence)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>LOCATE</SPAN> (string1, string2, 
+      n)<BR style="LINE-HEIGHT: 1"><SPAN class=fixed>POSSTR</SPAN> (string1, 
+      string2, n)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>CHARINDEX</SPAN> (string1,string2, 
+      n)<BR style="LINE-HEIGHT: 1"><SPAN class=fixed>PATINDEX</SPAN> <BR 
+      style="LINE-HEIGHT: 1">(&lt;pattern&gt;, &lt;string&gt;)</P></TD>
+    <TD class=td align=left width="34%">
+      <P class=table-para>Returns position of an occurrence of a substring 
+      within the string. <BR style="LINE-HEIGHT: 1">The <SPAN 
+      class=fixed>POSSTR</SPAN> test is case sensitive.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>SUBSTR</SPAN> (1,n)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>LEFT</SPAN> (string, n)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>LEFT</SPAN> (string, n)</P></TD>
+    <TD class=td align=left width="34%">
+      <P class=table-para>Returns <I class=emphasis>n</I> number of characters 
+      starting from the left.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>LENGTH</SPAN> (string)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>LENGTH</SPAN> (string)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>LEN</SPAN> (string)</P></TD>
+    <TD class=td align=left width="34%">
+      <P class=table-para>Returns number of characters in a string.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>LENGTHB</SPAN> (expression)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>LENGTH</SPAN> (expression)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>DATALENGTH</SPAN> 
+(expression)</P></TD>
+    <TD class=td align=left width="34%">
+      <P class=table-para>Returns number of bytes in the expression, which could 
+      be any data type.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>LOWER</SPAN> (string)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>LOWER</SPAN> (string)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>LOWER</SPAN> (string) <BR 
+      style="LINE-HEIGHT: 1"><SPAN class=fixed>LCASE</SPAN> (string)</P></TD>
+    <TD class=td align=left width="34%">
+      <P class=table-para>Converts all characters in a string to 
+    lowercase.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>LPAD</SPAN> (string1,n, string 
+    2)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>REPEAT</SPAN> (char expression, 
+      integer)<BR style="LINE-HEIGHT: 1"><SPAN class=fixed>SPACE</SPAN> 
+      (integer)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>REPLICATE</SPAN> (char expression, 
+      integer)<BR style="LINE-HEIGHT: 1"><SPAN 
+      class=fixed>SPACE</SPAN>(integer)</P></TD>
+    <TD class=td align=left width="34%">
+      <P class=table-para>Returns <I class=emphasis>string1</I> padded from the 
+      left with<I class=emphasis> string2</I> <I class=emphasis>n</I> 
+    times.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>LTRIM</SPAN> (string, set)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>LTRIM</SPAN> (string)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>LTRIM</SPAN> (string)</P></TD>
+    <TD class=td align=left width="34%">
+      <P class=table-para>Returns string with leading blank characters 
+      removed.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>REPLACE</SPAN> (string1, string2, 
+      string3)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>REPLACE</SPAN> (string1, string2, 
+      string3)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>REPLACE</SPAN> (string1, string2, 
+      string3)</P></TD>
+    <TD class=td align=left width="34%">
+      <P class=table-para>Replaces all occurrences of <I 
+      class=emphasis>string1</I> within <I class=emphasis>string2</I> with <I 
+      class=emphasis>string3</I>.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>RPAD</SPAN> (string1,n, 
+    string2)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>SPACE</SPAN> (integer)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>SPACE</SPAN> (integer)</P></TD>
+    <TD class=td align=left width="34%">
+      <P class=table-para>Returns <I class=emphasis>string1</I> padded from the 
+      left with <I class=emphasis>string2</I> <I class=emphasis>n</I> 
+    times.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>LPAD</SPAN>/<SPAN 
+      class=fixed>RPAD</SPAN> combination</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>REPEAT</SPAN> (string, n)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>REPLICATE</SPAN> (string, n)</P></TD>
+    <TD class=td align=left width="34%">
+      <P class=table-para>Returns string consisting of the argument repeated <I 
+      class=emphasis>n</I> times.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>RTRIM</SPAN> (string, set) </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>RTRIM</SPAN> (string)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>RTRIM</SPAN> (string)</P></TD>
+    <TD class=td align=left width="34%">
+      <P class=table-para>Returns string with trailing blank characters removed. 
+      </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> (expression)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>CHAR</SPAN> (expression)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>STR</SPAN> (expression)</P></TD>
+    <TD class=td align=left width="34%">
+      <P class=table-para>Converts argument expression into a character 
+      string.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>SUBSTR</SPAN> (string, n, m)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>SUBSTR</SPAN> (string, n, m)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>SUBSTRING</SPAN> (string, n, 
+    m)</P></TD>
+    <TD class=td align=left width="34%">
+      <P class=table-para>Returns a part of a string starting from <I 
+      class=emphasis>n</I><SUP>th</SUP> character for the length of <I 
+      class=emphasis>m</I> characters.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>TRANSLATE</SPAN> (string1, string2, 
+      string3)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>TRANSLATE</SPAN> (string1, string2, 
+      string3)<BR style="LINE-HEIGHT: 1"><SPAN class=fixed>INSERT</SPAN> (works 
+      similar to <SPAN class=fixed>STUFF</SPAN>)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>STUFF</SPAN> (&lt;char_ 
+      expression1&gt;,&lt;start&gt;, 
+    &lt;length&gt;,&lt;char_expression1&gt;)</P></TD>
+    <TD class=td align=left width="34%">
+      <P class=table-para>Replaces all occurrences of <I 
+      class=emphasis>string1</I> within <I class=emphasis>string2 translated</I> 
+      into <I class=emphasis>string3</I>. Functions <SPAN 
+      class=fixed>STUFF</SPAN> and<SPAN class=fixed> INSERT</SPAN> add/replace 
+      strings within strings.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>TRIM</SPAN> (string)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>LTRIM</SPAN> (<SPAN 
+      class=fixed>RTRIM</SPAN> (string))</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>LTRIM</SPAN> (<SPAN 
+      class=fixed>RTRIM</SPAN> (string))</P></TD>
+    <TD class=td align=left width="34%">
+      <P class=table-para>Trims leading or trailing spaces off the string, or 
+      both.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>UPPER</SPAN> (string)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>UPPER</SPAN> (string)<BR 
+      style="LINE-HEIGHT: 1"><SPAN class=fixed>UCASE</SPAN> (string)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>UPPER</SPAN> (string)</P></TD>
+    <TD class=td align=left width="34%">
+      <P class=table-para>Converts all characters <BR style="LINE-HEIGHT: 1">of 
+      a string into uppercase.</P></TD></TR></TBODY></TABLE>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top width=136>Cross-References&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>Refer to <A class=chapterjump 
+      href="http://www.tar.hu/sqlbible/sqlbible0157.html#1360">Appendix G</A> 
+      for a comprehensive list of vendor-specific functions.<A name=616></A><A 
+      name=617></A> </P></TD></TR></TBODY></TABLE>
+<P class=para>String functions are arguably the most widely used and the most 
+confusing of the SQL functions. Here we are giving the examples of some we are 
+using daily.</P>
+<DIV class=section>
+<H4 class=sect4-title>CONCAT</H4>
+<P class=first-para>The <SPAN class=fixed>CONCAT</SPAN> function simply 
+concatenates two strings. This function could be replaced with an operator — 
+<SPAN class=fixed>+</SPAN> for SQL Server, and <SPAN class=fixed>||</SPAN> for 
+Oracle and DB2 UDB.</P>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top>Note&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>You could use output of one function to be an input 
+      for another — this is not RDBMS- or even SQL-specific; it is a general 
+      programming concept.</P></TD></TR></TBODY></TABLE>
+<P class=para>Here is a concatenation example in Oracle 9<I class=emphasis>i</I> 
+syntax:</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT CONCAT( '$',
+			 TO_CHAR(prod_price_n)) display_price FROM product;<A name=618></A>
+			 display_price ------------------------------- $18.24 $33.28
+			 $26.82</PRE></DIV>
+<P class=para>For DB2 UDB the syntax will be:</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT '$' ||
+			 CHAR(prod_price_n) display_price FROM product; display_price -------------
+			 $00000018.24 $00000033.28 $00000026.82</PRE></DIV>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top>Note&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>That <SPAN class=fixed>CHAR</SPAN> function converts 
+      numeric data into a fixed-length string, and the final result will be 
+      padded with zeroes from the left. The number of zeroes depends on the 
+      numeric data type converted. You could use additional 
+      formatting/conversion functions to produce results identical to these 
+      produced by Oracle or the MS SQL Server.</P></TD></TR></TBODY></TABLE>
+<P class=para>Here is an equivalent MS SQL Server 2000 syntax:</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT '$' +
+			 CONVERT(varchar, prod_price_n) display_price FROM product;</PRE></DIV>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top>Note&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>We used conversion functions <SPAN 
+      class=fixed>CHAR</SPAN>, <SPAN class=fixed>TO</SPAN>_<SPAN 
+      class=fixed>CHAR,</SPAN> and <SPAN class=fixed>CONVERT</SPAN> to convert a 
+      numeric expression into a string data type to combine two different types. 
+      Some implementations would implicitly convert compatible data types; some 
+      require explicit conversion to take place. It is usually a good idea not 
+      to rely on implicit conversions but rather explicitly convert the values. 
+      There is more on conversion later in this chapter.<A name=619></A> 
+  </P></TD></TR></TBODY></TABLE></DIV>
+<DIV class=section>
+<H4 class=sect4-title>CHARINDEX, INSTR, LOCATE, and POSSTR</H4>
+<P class=first-para>SQL is a language specifically designed to handle 
+information. As such it has a rich toolset for manipulating strings and 
+characters. The three functions <SPAN class=fixed>INSTR</SPAN>, <SPAN 
+class=fixed>LOCATE</SPAN>, and <SPAN class=fixed>CHARINDEX</SPAN> are used to 
+determine the position of a specific character (or combination of characters) 
+within a string; based on this information, you can slice and dice text 
+information in a number of ways.</P>
+<P class=para>For example, to locate the position of the end of the first word, 
+use a blank space to separate the words in the description (assuming that every 
+value in the column <SPAN class=fixed>PROD_DESCRIPTION_S</SPAN> would have at 
+least one blank space).</P>
+<P class=para>In MS SQL Server 2000 syntax, the blank space is indicated as 
+<SPAN class=fixed>'</SPAN> <SPAN class=fixed>'</SPAN>. You can use ASCII code 32 
+to specify blank space — <SPAN class=fixed>CHAR</SPAN> (32). The following two 
+statements are equivalent and produce identical results: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT CHARINDEX(' ',
+			 prod_description_s, 1) FROM product; SELECT CHARINDEX(CHAR(32),
+			 prod_description_s, 1) char_position FROM product; char_position -------------
+			 7 6 6 6 5 8 4 4 6 8 (10 row(s) affected)</PRE></DIV>
+<P class=para>Oracle's INSTR function syntax is slightly different — Oracle 
+allows you to specify occurrence of the string within a string — first, second, 
+and so on. Most of the arguments are optional.</P>
+<P class=para>This query, executed in Oracle 9i SQL*Plus, looks for a <I 
+class=emphasis>second </I>occurrence of the blank space within the string:</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 INSTR(PROD_DESCRIPTION_S, CHAR(32),1,2) char_position FROM product;<A name=620></A>
+</PRE></DIV>
+<P class=para>The following query executed in IBM DB2 UDB produces a result 
+identical to that shown for MS SQL Server: it finds the first occurrence of a 
+blank space in the string (both starting char and occurrence are optional 
+arguments, if omitted defaults to 1):</P><PRE class=programlisting>SELECT LOCATE('
+			 ',PROD_DESCRIPTION_S) char_position FROM product;</PRE>
+<P class=para>To use IBM DB2 UDB function POSSTR you would need to change order 
+of arguments:</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 POSSTR(PROD_DESCRIPTION_S,' ') char_position FROM product;</PRE></DIV>
+<P class=para>The results of the both queries will be identical, and match that 
+produced for MS SQL Server. </P>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top>Note&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>Optional arguments are the arguments that have some 
+      predefined default value that is assumed if the argument is missing from 
+      the list. Since the order of arguments is fixed, you must enter all the 
+      arguments prior to the one that you decided to specify; in the foregoing 
+      example, once you've specified occurrence value (fourth argument) you no 
+      longer can omit starting position (third 
+argument).</P></TD></TR></TBODY></TABLE></DIV>
+<DIV class=section>
+<H4 class=sect4-title>SUBSTR and SUBSTRING</H4>
+<P class=first-para>The <SPAN class=fixed>SUBSTR</SPAN> (<SPAN 
+class=fixed>SUBSTRING</SPAN> on MS SQL Server) function returns part of an 
+argument string, which is designated by starting position and required character 
+length. Here is a query example using the function to return only the first 
+three characters of the column <SPAN class=fixed><I 
+class=emphasis>prod_description_s</I></SPAN> value: </P><PRE class=programlisting>SELECT
+			 SUBSTR(prod_description_s,1,3) FROM product;</PRE>
+<P class=para>The third argument, specifying the required length, is optional 
+for Oracle and DB2 UDB, and is mandatory for MS SQL Server's <SPAN 
+class=fixed>SUBSTRING</SPAN> function. If the third argument is omitted, the 
+function would return all characters after the starting position in Oracle and 
+DB2 UDB; for SQL Server to simulate this behavior, use an <SPAN 
+class=fixed>LEN</SPAN> / <SPAN class=fixed>LENGTH</SPAN> function (see later in 
+the chapter) to determine the total length of the string, or a number large 
+enough to exceed any possible length of the string (no greater than 8000). For 
+example, in the SQL Server this query would return all characters in the column 
+<SPAN class=fixed><I class=emphasis>prod_description_s</I></SPAN>, beginning 
+from the second character:<A name=621></A> </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 SUBSTRING(prod_description_s, 2, LEN(prod_description_s)) FROM
+			 product;</PRE></DIV>
+<P class=para>Let's make our output slightly more complex. Say a user wants 
+results to be mangled in a special way to produce an output that combines 
+product number, product price, and product description in the format <SPAN 
+class=fixed>&lt;first</SPAN> <SPAN class=fixed>word</SPAN> <SPAN 
+class=fixed>of</SPAN> <SPAN class=fixed>product</SPAN> <SPAN 
+class=fixed>description&gt; &lt;pound</SPAN> <SPAN 
+class=fixed>sign&gt;&lt;product_number&gt;&lt;pound</SPAN> <SPAN 
+class=fixed>sign&gt;&lt;dollar</SPAN> <SPAN class=fixed>sign&gt;&lt;</SPAN> 
+<SPAN class=fixed>product_price&gt;</SPAN> for some company application. This 
+could be done in a number of ways, one of which is the following query below (in 
+MS SQL Server syntax): </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 LEFT(prod_description_s, CHARINDEX(CHAR(32), prod_description_s, 1)-1) + '#'+
+			 prod_num_s + '#' + '$' + CONVERT(VARCHAR,prod_price_n) display FROM product;
+			 display ------------------------- SPRUCE#990#$18.24 STEEL#1880#$33.28
+			 STOOL#2871#$26.82 STOOL#3045#$15.92 HAND#4000#$11.80</PRE></DIV>
+<P class=para>In Oracle this result can be produced with this query:</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 SUBSTR(prod_description_s,1 INSTR(CHAR(32), prod_description_s, 1,1)-1) || '#'
+			 || prod_num_s || '#' || '$' || TO_CHAR(prod_price_n)display FROM product;
+			 display ------------------------- SPRUCE#990#$18.24 STEEL#1880#$33.28
+			 STOOL#2871#$26.82 STOOL#3045#$15.92 HAND#4000#$11.80<A name=622></A>
+</PRE></DIV>
+<P class=para>IBM DB2 UDB uses the <SPAN class=fixed>POSSTR</SPAN> (or <SPAN 
+class=fixed>LOCATE</SPAN>) function in place of Oracle's <SPAN 
+class=fixed>INSTR</SPAN> function, and function <SPAN class=fixed>CHR</SPAN> to 
+produce a blank character from ASCII code 32 and converts number to string with 
+the <SPAN class=fixed>CHAR</SPAN> function (instead of Oracle's <SPAN 
+class=fixed>TO_CHAR</SPAN>): </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 SUBSTR(prod_description_s,1 POSSTR(prod_description_s, CHR(32))-1) || '#' ||
+			 prod_num_s || '#' || '$' || CHAR(prod_price_n) display FROM product; display
+			 ------------------------------------- SPRUCE#990#$18.24 STEEL#1880#$33.28
+			 STOOL#2871#$26.82 STOOL#3045#$15.92 HAND#4000#$11.80</PRE></DIV>
+<P class=para>While this query might look a bit scary, there is nothing 
+mysterious about it. The <SPAN class=fixed>CHARINDEX</SPAN> / <SPAN 
+class=fixed>INSTR</SPAN> / <SPAN class=fixed>POSSTR</SPAN> functions find the 
+position of blank space — <SPAN class=fixed>CHAR</SPAN>(32) — and subtract 1 
+from that number so a blank space is not included in the final result. We use 
+the position value as input for the function <SPAN class=fixed>LEFT,</SPAN> 
+specifying from which position it should return the characters (column <SPAN 
+class=fixed>PROD_ DESCRIPTION_S</SPAN>) to the left (Oracle and DB2 UDB use the 
+<SPAN class=fixed>SUBSTR</SPAN> function; MS SQL Server uses <SPAN 
+class=fixed>SUBSTRING</SPAN> — which, in a sense, is a more generic version of 
+its own <SPAN class=fixed>LEFT</SPAN>/<SPAN class=fixed>RIGHT</SPAN> functions); 
+the rest is a simple concatenation of characters, discussed previously.</P>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top>Note&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>You may have noticed that we did not use the available 
+      function <SPAN class=fixed>LEFT</SPAN> in DB2 UDB; this is because this 
+      function works differently from the similarly named function in the MS SQL 
+      Server. In the IBM DB2 UDB database, function <SPAN 
+      class=fixed>LEFT</SPAN> returns a string consisting of the leftmost <I 
+      class=emphasis>expression2 </I>bytes in <I 
+      class=emphasis>expression1</I>.</P>
+      <P class=last-para>Also, function <SPAN class=fixed>LOCATE</SPAN> has a 
+      third optional argument with which to specify what character the search 
+      should start from. (<SPAN class=fixed>POSSTR</SPAN> always starts at the 
+      first character.)</P></TD></TR></TBODY></TABLE></DIV>
+<DIV class=section>
+<H4 class=sect4-title>LENGTH</H4>
+<P class=first-para>The function <SPAN class=fixed>LENGTH</SPAN> (<SPAN 
+class=fixed>LEN</SPAN> for MS SQL Server) returns a number of characters (not a 
+number of bytes! — see <A class=chapterjump 
+href="http://www.tar.hu/sqlbible/sqlbible0020.html#116">Chapter 3</A> for more 
+details) in the argument. If an argument is not of a character type, it will be 
+implicitly converted into string, and its length will be returned. Oracle also 
+provides a number of variations of the function: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 LENGTH(prod_description_s) length_of_string FROM product;<A name=623></A>
+</PRE></DIV>
+<P class=para>To return a number of bytes in the expression, use <SPAN 
+class=fixed>LENGTHB</SPAN> and <SPAN class=fixed>DATALENGTH</SPAN> for Oracle 
+and SQL Server, respectively. IBM and Oracle also overload their <SPAN 
+class=fixed>LENGTH</SPAN> functions — the same function could return length in 
+characters or bytes, depending upon the data type of the argument. These 
+functions do not convert argument into string, but rather give the internal 
+storage size for the data type as it is defined in the RDBMS. For example, the 
+query </P><PRE class=programlisting>SELECT LENGTHB(SYSDATE) FROM
+			 dual;</PRE>
+<P class=para>returns 9 for Oracle (internal storage for current system date). 
+The MS SQL Server equivalent expression</P><PRE class=programlisting>SELECT
+			 DATALENGTH(GETDATE())</PRE>
+<P class=para>reports that 8 bytes are used to store system date. IBM UDB2, for 
+example, uses 4 bytes for date storage and 10 bytes for timestamp:</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT LENGTH(CURRENT DATE)
+			 date_length, LENGTH(CURENT TIMESTAMP) timestamp_length FROM sysibm.sysdummy1
+			 date_length timestamp_length ------------ ----------------- 4
+			 10</PRE></DIV>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top width=136>Cross-References&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>For more information on data types and their internal 
+      storage, see <A class=chapterjump 
+      href="http://www.tar.hu/sqlbible/sqlbible0020.html#116">Chapter 
+    3</A>.</P></TD></TR></TBODY></TABLE></DIV>
+<DIV class=section>
+<H4 class=sect4-title>LOWER and UPPER</H4>
+<P class=first-para>The functions <SPAN class=fixed>LOWER</SPAN> and <SPAN 
+class=fixed>UPPER</SPAN> are the rare examples of functions mandated by the 
+SQL92/99 standard and implemented across all three RDBMS without modifications. 
+These functions are simple and intuitive to use. They convert string expressions 
+into lowercase or uppercase, respectively: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 UPPER(prod_description_s) upper_case, LOWER(prod_description_s) lower_case FROM
+			 product; upper_case lower_case ------------------------ -----------------------
+			 SPRUCE LUMBER 30X40X50 spruce lumber 30x40x50<A name=624></A> STEEL NAILS
+			 6'' steel nails 6'' STOOL CAPS 5'' stool caps 5''</PRE></DIV>
+<P class=last-para>IBM DB2 UDB also contains additional versions of the 
+functions <SPAN class=fixed>LCASE</SPAN> and <SPAN class=fixed>UCASE</SPAN>, 
+most probably due to being in business for a long time — you certainly 
+accumulate some baggage after being on the market for over 30 years.</P></DIV>
+<DIV class=section>
+<H4 class=sect4-title>TO_CHAR, CHAR, and STR</H4>
+<P class=first-para>These functions fall into the broader range of Conversion 
+Functions, which are discussed later in this chapter. They are used to convert 
+one data type into character data type, for example, a number into a string or 
+date/time data into a string (this might be needed to produce a report that 
+accepts character data only). In addition, these functions allow you to format 
+output when used to convert, for instance, date and time data types.</P>
+<P class=para>The usage examples are shown in the <SPAN 
+class=fixed>CONCAT</SPAN> function above. Since this function accepts only 
+strings, it is necessary to convert all the numbers into strings to avoid an 
+error in IBM DB2 UDB; Oracle 9<I class=emphasis>i</I> implicitly converts all 
+concatenated values into strings.</P>
+<P class=para>Microsoft function <SPAN class=fixed>STR</SPAN> differs from 
+Oracle's <SPAN class=fixed>TO_CHAR</SPAN> and IBM's <SPAN 
+class=fixed>CHAR</SPAN> in that it accepts only numeric input — no date/time or 
+even string. It has optional arguments that specify total length of the result 
+(including decimal point) as well as number decimal places. For example, the 
+following query converts a float number 123.35 (two decimal places) into a 
+string (MS SQL Server 2000 syntax): </P><PRE class=programlisting>SELECT STR(123.35) result
+			 result ---------- 123</PRE>
+<P class=para>Since both optional arguments — total length (default 10) and 
+precision (default 0) — were omitted, the result is truncation. The following 
+query takes into account that the expected result should be 7 characters long 
+and have 3 decimal places (specifying 2 decimal places — less than is present — 
+would result in rounding the final output):</P><PRE class=programlisting>SELECT STR(123.235,7,3)
+			 result result ------- 123.235<A name=625></A>
+</PRE></DIV>
+<DIV class=section>
+<H4 class=sect4-title>REPLACE</H4>
+<P class=first-para>The <SPAN class=fixed>REPLACE</SPAN> function found in IBM 
+DB2 UDB, Oracle, and MS SQL Server returns a string (<SPAN 
+class=fixed>CHAR</SPAN> data type); every occurrence of an expression2 is 
+replaced with expression3, for example: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 REPLACE('aabbaabbaa','aa','bb') FROM dual; result ------------
+			 bbbbbbbbbb</PRE></DIV>
+<P class=last-para>This query returns a '<I class=emphasis>bbbbbbbbbb'</I> 
+string since every occurrence of '<I class=emphasis>aa'</I> is replaced with '<I 
+class=emphasis>bb'</I>. To run this query against SQL Server, just remove the 
+<SPAN class=fixed>FROM</SPAN> clause.</P></DIV>
+<DIV class=section>
+<H4 class=sect4-title>REPLICATE and REPEAT</H4>
+<P class=first-para>To replicate a character or sequence of characters you may 
+use the <SPAN class=fixed>REPLICATE</SPAN> and <SPAN class=fixed>REPEAT</SPAN> 
+functions. These functions pertain to IBM DB2 UDB and the Microsoft SQL Server; 
+in Oracle similar functionality is achieved with a combination of functions 
+<SPAN class=fixed>LPAD</SPAN>/<SPAN class=fixed>RPAD</SPAN>. It is a fairly 
+intuitive to use this function because the DB2 UDB syntax produces a string 
+where a word repeat is replicated three times (note the absence of a blank space 
+separator between the words): </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT REPEAT('repeat',3)
+			 example FROM SYSIBM.SYSDUMMY1 example ------------------------------
+			 repeatrepeatrepeat</PRE></DIV>
+<P class=para>There is a limit to the total length of the resulting string 
+imposed by the argument's data type — the maximum number of replications must 
+not exceed the upper range of integer values for the system (for 32-bit 
+machines, up to 2,147,483,647). The results from MS SQL Server would be 
+identical with the following syntax:</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT REPLICATE('repeat',3)
+			 example example ------------------------------ repeatrepeatrepeat<A name=626></A>
+</PRE></DIV>
+<P class=para>Here is an example of using the <SPAN class=fixed>RPAD</SPAN> 
+function to replicate a string: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 RPAD('repeat',LENGTH('repeat')*3,'repeat') example FROM dual; example
+			 ------------------------------ repeatpepeatrepeat</PRE></DIV>
+<P class=last-para>The second argument of the function specifies the total 
+length of the resulting string, and the function <SPAN class=fixed>LENGTH</SPAN> 
+is used to generically determine the length of the initial string. Multiplying 
+it by three specifies that the string is to be repeated three times.</P></DIV>
+<DIV class=section>
+<H4 class=sect4-title>TRANSLATE</H4>
+<P class=first-para>This is a smart version of the <SPAN 
+class=fixed>REPLACE</SPAN> function. It uses pattern matching to find and 
+replace characters within a string; the following query replaces all numbers 
+(from 0 through 9) with 0, and all letters — except <SPAN class=fixed>K</SPAN> — 
+with an asterisk (<SPAN class=fixed>*</SPAN>); the letter K is replaced with 
+<SPAN class=fixed>X</SPAN>: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 TRANSLATE('2KRW229', '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+			 '0000000000**********X***************') translate_example FROM DUAL;
+			 translate_example ------------------------------ 0X**000</PRE></DIV>
+<P class=para>This function is useful for security purposes: inside the SQL code 
+you can use the exact values (say, credit card numbers), but the produced output 
+is obfuscated. Here is a credit card example, which replaces all numbers with 
+asterisks:</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT TRANSLATE('4526 43567
+			 6091 1506', '0123456789', '**********') visa_card_number FROM dual;
+			 visa_card_number ------------------------ **** ***** **** ****<A name=627></A>
+</PRE></DIV>
+<P class=para>The usage is identical in Oracle and DB2 UDB, while the SQL Server 
+does not have a built-in function to do this; its function <SPAN 
+class=fixed>STUFF</SPAN> removes a specified number of characters at a specific 
+point, and stuffs in another specified string of characters. The first argument 
+is the string itself, the second specifies at what character to start, the third 
+argument tells the function how many characters to remove (0 or greater), and 
+the fourth — the last — argument specifies what characters to insert at this 
+point. In this example an insertion of the <SPAN class=fixed>bbb</SPAN> string 
+is made at the third character in the argument string, replacing this character 
+in the process: </P><PRE class=programlisting>SELECT STUFF('aaaaaaaaa', 3,
+			 1, 'bbb') result result ----------- aabbbaaaaaa</PRE>
+<P class=last-para>One could use the <SPAN class=fixed>STUFF</SPAN> function (in 
+conjunction with some other SQL functions) to duplicate Oracle and DB2 UDB 
+functionality by creating customized, user-defined functions. (The creation of 
+user-defined functions, which are mentioned at the end of this chapter, is 
+beyond scope of this book.)</P></DIV>
+<DIV class=section>
+<H4 class=sect4-title>TRIM, LTRIM, and RTRIM</H4>
+<P class=first-para>Although it might not be apparent, blank spaces could be a 
+major concern. Usually, blank spaces are not shown in the user interface when 
+typing in some character value, and that could easily cause mistakes. RDBMS 
+requires absolute precision — the string 'user' and the string 'user ' (with a 
+trailing blank space) are never the same.</P>
+<P class=para>These functions act similarly in all three RDBMS: they remove 
+leading and/or trailing characters from a string expression. The main difference 
+is that Oracle 9<I class=emphasis>i</I> supports more of the SQL standard syntax 
+(<SPAN class=fixed>TRIM</SPAN> in addition to <SPAN class=fixed>LTRIM</SPAN> and 
+<SPAN class=fixed>RTRIM</SPAN>), and allows for trimming characters other than 
+blank spaces; while IBM DB2 UDB and the Microsoft SQL Server use this function 
+for blank spaces only.</P>
+<P class=para>Consider the following example, which works in IBM UDB2:</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT LENGTH(LTRIM('
+			 three_blanks')) ltrimmed, LENGTH(' three_blanks') with_leading_blanks FROM
+			 sysibm.sysdummy1 ltrimmed with_leading_blanks ----------- -------------------
+			 12 15<A name=628></A>
+</PRE></DIV>
+<P class=para>A similar script in the MS SQL Server produces identical 
+results:</P><PRE class=programlisting>SELECT LEN(LTRIM('
+			 three_blanks')) ltrimmed, LEN(' three_blanks')
+			 with_leading_blanks</PRE>
+<P class=para>To achieve the same results in Oracle 9<I class=emphasis>i</I>, 
+use either the <SPAN class=fixed>LTRIM</SPAN> function or the <SPAN 
+class=fixed>TRIM</SPAN> function. The <SPAN class=fixed>LTRIM</SPAN> example 
+looks almost identical to IBM DB2 UDB (just replace <I 
+class=emphasis>sysibm.sysdummy1 </I>with <I class=emphasis>dual</I>), and 
+therefore is omitted: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT LENGTH(TRIM(LEADING
+			 FROM ' three_blanks')) ltrimmed, LENGTH(' three_blanks') with_leading_blanks
+			 FROM dual; ltrimmed with_leading_blanks ----------- ------------------- 12
+			 @code last w/ rule Char:15</PRE></DIV>
+<P class=para>Note that blank spaces are default for the <SPAN 
+class=fixed>TRIM</SPAN> function. To use this function to trim characters other 
+than blank spaces from a string expression, the following syntax could be used. 
+For example, to remove the letter <SPAN class=fixed>M</SPAN> from both the 
+beginning (leading) and end (trailing) of the string value <SPAN 
+class=fixed>M&amp;M</SPAN> <SPAN class=fixed>or</SPAN> <SPAN 
+class=fixed>IBM</SPAN>: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT TRIM(BOTH 'M' FROM
+			 'M&amp;M or IBM') trimmed FROM dual; trimmed ----------- &amp;M or
+			 IB</PRE></DIV>
+<P class=last-para>The argument specifying what letter is to be removed is 
+always case-sensitive.</P></DIV></DIV>
+<DIV class=section>
+<H3 class=sect3-title><A name=629></A><A name=wbp17Chapter10P421></A>Date and 
+time functions</H3>
+<P class=first-para>The functions grouped in <A class=internaljump 
+href="http://www.tar.hu/sqlbible/sqlbible0076.html#wbp17Chapter10T4P4" 
+role="targetype:table">Table 10-4</A> deal with date and time; they accept a 
+wide range of parameter data types and produce output strings (characters), 
+date/times, and numbers.<A name=630></A> </P><A name=631></A><A 
+name=wbp17Chapter10T4P4></A>
+<TABLE class=table width="100%" border=1>
+  <CAPTION class=table-title><SPAN class=table-title><SPAN 
+  class=table-titlelabel>Table 10-4: </SPAN>Date and Time Functions</SPAN> 
+  </CAPTION>
+  <THEAD>
+  <TR vAlign=top>
+    <TH class=th scope=col align=left width="20%">
+      <P class=table-para>ORACLE 9i</P></TH>
+    <TH class=th scope=col align=left width="20%">
+      <P class=table-para>IBM DB2 UDB 8.1</P></TH>
+    <TH class=th scope=col align=left width="20%">
+      <P class=table-para>MS SQL Server 2000</P></TH>
+    <TH class=th scope=col align=left width="40%">
+      <P class=table-para>Description</P></TH></TR></THEAD>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>ADD_MONTHS</SPAN> <SPAN 
+      class=fixed>(date,</SPAN> <SPAN class=fixed>n)</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>DATE</SPAN> <SPAN 
+      class=fixed>+</SPAN> <SPAN class=fixed>n</SPAN> <SPAN class=fixed>MONTHS 
+      </SPAN></P>
+      <P class=table-para><SPAN class=fixed>TIME</SPAN> <SPAN 
+      class=fixed>+</SPAN> <SPAN class=fixed>n</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>DATEADD</SPAN> <SPAN 
+      class=fixed>(month,</SPAN> <SPAN class=fixed>number,</SPAN> <SPAN 
+      class=fixed>date)</SPAN> </P></TD>
+    <TD class=td align=left width="40%">
+      <P class=table-para>Returns date plus <I class=emphasis>n</I> months 
+      (Oracle); returns date plus date partyear, month, day(MS SQL 
+    Server).</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>CURRENT_DATE</SPAN> <SPAN 
+      class=fixed>CURRENT_ TIMESTAMP(precision)</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>CURRENT</SPAN> <SPAN 
+      class=fixed>DATE</SPAN> <BR style="LINE-HEIGHT: 1"><SPAN 
+      class=fixed>CURRENT</SPAN> <SPAN class=fixed>TIME</SPAN> <BR 
+      style="LINE-HEIGHT: 1"><SPAN class=fixed>CURRENT TIMESTAMP</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>GETDATE**</SPAN> <BR 
+      style="LINE-HEIGHT: 1"><SPAN class=fixed>GETUTCDATE**</SPAN> <BR 
+      style="LINE-HEIGHT: 1"><SPAN class=fixed>CURRENT_ TIMESTAMP</SPAN> </P></TD>
+    <TD class=td align=left width="40%">
+      <P class=table-para>Returns current date in session's time zone.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>TO_DATE</SPAN> <SPAN 
+      class=fixed>(value, format, nls_param)</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>DATE</SPAN> <SPAN 
+      class=fixed>(value)</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>CONVERT**</SPAN> <BR 
+      style="LINE-HEIGHT: 1"><SPAN class=fixed>CAST**</SPAN> </P></TD>
+    <TD class=td align=left width="40%">
+      <P class=table-para>Returns date from the value according to specific 
+      format, national language(Oracle) (**).</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>EXTRACT</SPAN> <SPAN 
+      class=fixed>(day)</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>DAY</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>DAY</SPAN> </P></TD>
+    <TD class=td align=left width="40%">
+      <P class=table-para>Returns <SPAN class=fixed>DAY</SPAN> part (integer) of 
+      the specified datetime expression.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(date,</SPAN> <SPAN class=fixed>'day'/month)</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>DAYNAME</SPAN> <BR 
+      style="LINE-HEIGHT: 1"><SPAN class=fixed>MONTHNAME</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>DATENAME</SPAN> <SPAN 
+      class=fixed>(date</SPAN> <SPAN class=fixed>part,</SPAN> <SPAN 
+      class=fixed>datetime)</SPAN> </P></TD>
+    <TD class=td align=left width="40%">
+      <P class=table-para>Returns a name of the requested date part: day or 
+      month.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>EXTRACT</SPAN> <SPAN 
+      class=fixed>(datetime)</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>MONTH,</SPAN> <SPAN 
+      class=fixed>DAY,</SPAN> <SPAN class=fixed>HOUR</SPAN> <SPAN 
+      class=fixed>etc</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>DATEPART</SPAN> <SPAN 
+      class=fixed>(date</SPAN> <SPAN class=fixed>part,</SPAN> <SPAN 
+      class=fixed>datetime)</SPAN> </P></TD>
+    <TD class=td align=left width="40%">
+      <P class=table-para>Returns requested date part (day, month, 
+  year).</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>MONTH_BETWEEN</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>Date</SPAN> <SPAN 
+      class=fixed>arithmetic</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>DATEDIFF</SPAN> </P></TD>
+    <TD class=td align=left width="40%">
+      <P class=table-para>Calculates difference between two dates.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>NEW_TIME</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>CURRENT</SPAN> <SPAN 
+      class=fixed>TIMEZONE</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>GETUTCDATE</SPAN> </P></TD>
+    <TD class=td align=left width="40%">
+      <P class=table-para>Returns datetime relative to current datetime on the 
+      server.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>NEXT_DAY</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>Date</SPAN> <SPAN 
+      class=fixed>arithmetic</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>DATEADD</SPAN> <SPAN 
+      class=fixed>(day,</SPAN> <SPAN class=fixed>n,</SPAN> <SPAN 
+      class=fixed>m)</SPAN> </P></TD>
+    <TD class=td align=left width="40%">
+      <P class=table-para>Calculates what day would be next relative to some 
+      other supplied date.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>SYSDATE</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>CURRENT</SPAN> <SPAN 
+      class=fixed>DATE</SPAN> <BR style="LINE-HEIGHT: 1"><SPAN 
+      class=fixed>CURRENT</SPAN> <SPAN class=fixed>TIME</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>GETDATE</SPAN> </P></TD>
+    <TD class=td align=left width="40%">
+      <P class=table-para>Returns current datetime on the RDBMS 
+server.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>EXTRACT</SPAN> <SPAN 
+      class=fixed>(year)</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>YEAR</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>YEAR</SPAN> </P></TD>
+    <TD class=td align=left width="40%">
+      <P class=table-para>Returns <SPAN class=fixed>YEAR</SPAN> part of the 
+      specified datetime expression.</P></TD></TR></TBODY></TABLE>
+<DIV class=section>
+<H4 class=sect4-title>GETDATE, SYSDATE, and CURRENT DATE</H4>
+<P class=first-para><A name=632></A>Keeping a time track of the changes in the 
+database requires access to the system's date and time settings. Oracle 
+implemented <SPAN class=fixed>SYSDATE</SPAN> pseudo column (which can be 
+considered a function for our purposes) that returns the system's current date 
+and time, the Microsoft SQL Server has function <SPAN class=fixed>GETDATE</SPAN> 
+<SPAN class=fixed>()</SPAN>, and IBM DB2 UDB uses a <SPAN 
+class=fixed>CURRENT</SPAN> <SPAN class=fixed>DATE</SPAN> clause in the <SPAN 
+class=fixed>SELECT</SPAN> part of the query. These functions are listed in <A 
+class=internaljump 
+href="http://www.tar.hu/sqlbible/sqlbible0076.html#wbp17Chapter10T5P5" 
+role="targetype:table">Table 10-5</A>.</P><A name=633></A><A 
+name=wbp17Chapter10T5P5></A>
+<TABLE class=table width="100%" border=1>
+  <CAPTION class=table-title><SPAN class=table-title><SPAN 
+  class=table-titlelabel>Table 10-5: </SPAN>Getting Current Date Out of 
+  RDBMS</SPAN> </CAPTION>
+  <THEAD>
+  <TR vAlign=top>
+    <TH class=th scope=col align=left width="34%">
+      <P class=table-para>ORACLE</P></TH>
+    <TH class=th scope=col align=left width="33%">
+      <P class=table-para>IBM DB2 UDB</P></TH>
+    <TH class=th scope=col align=left width="33%">
+      <P class=table-para>SQL Server 2000</P></TH></TR></THEAD>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=td align=left width="34%">
+      <P class=table-para><SPAN class=fixed>SELECT</SPAN> <SPAN 
+      class=fixed>SYSDATE</SPAN> </P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para><SPAN class=fixed>SELECT</SPAN> <SPAN 
+      class=fixed>CURRENT</SPAN> <SPAN class=fixed>DATE</SPAN> </P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para><SPAN class=fixed>SELECT</SPAN> <SPAN 
+      class=fixed>GETDATE()</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="34%">
+      <P class=table-para><SPAN class=fixed>[FROM</SPAN> <SPAN 
+      class=fixed>DUAL];</SPAN> </P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para><SPAN class=fixed>[FROM</SPAN> <SPAN 
+      class=fixed>SYSIBM.SYSDUMMY1]</SPAN> </P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para><SPAN class=fixed>2003-09-05</SPAN> <SPAN 
+      class=fixed>13:54:18.873</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="34%">
+      <P class=table-para><SPAN class=fixed>----------------</SPAN> </P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para><SPAN class=fixed>-----------------</SPAN> </P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para><SPAN class=fixed>---------------</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="34%">
+      <P class=table-para><SPAN class=fixed>05-SEP-03</SPAN> <SPAN 
+      class=fixed>9:47:01</SPAN> <SPAN class=fixed>PM</SPAN> </P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para><SPAN class=fixed>9/5/2003</SPAN> </P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para><SPAN class=fixed>2003-09-05</SPAN> <SPAN 
+      class=fixed>13:54:18.873</SPAN> </P></TD></TR></TBODY></TABLE>
+<P class=last-para>The date output can be formatted using various 
+vendor-specific masks, arguments, or conversion functions. Refer to the RDBMS 
+manual for more information.</P></DIV>
+<DIV class=section>
+<H4 class=sect4-title>Time zone functions</H4>
+<P class=first-para>These functions deal with the Earth's different time zones. 
+The "standard" functions always return the time zone in which the machine is 
+located, and sometimes — especially when telecommuting to a central location 
+from a different time zone — it is not what is needed. </P>
+<P class=para>The MS SQL server function <SPAN class=fixed>GETUTCDATE</SPAN> 
+returns current UTC time (Universal Time Coordinate or Greenwich Mean Time). 
+Consider the following query, which returns results from both the <SPAN 
+class=fixed>GETDATE</SPAN> and <SPAN class=fixed>GETUTCDATE</SPAN> functions: 
+</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 GETUTCDATE() utc_time, GETDATE() local_time utc_time local_time
+			 --------------------------- ----------------------------- 2003-09-06
+			 00:06:14.660 2003-09-05 19:04:14.660<A name=634></A>
+</PRE></DIV>
+<P class=para>Oracle's approximate equivalents to this function are <SPAN 
+class=fixed>TZ_OFFSET</SPAN> and <SPAN class=fixed>SYS_EXTRACT_UTC</SPAN>, while 
+<SPAN class=fixed>NEW_TIME</SPAN> returns the time that would be in zone 2 when 
+the date/time in zone 1 is the specified value.</P>
+<P class=para>For example, to find out the date and time in New York, NY, when 
+it is September 5, 2002, 7:23:45 p.m. in Seattle, WA, using Oracle RDBMS 
+software, you would run the following query (to force Oracle SQL*Plus to show 
+date/time in the extended format, use <SPAN class=fixed>ALTER</SPAN> <SPAN 
+class=fixed>SESSION</SPAN> statement explained later in this chapter): </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 NEW_TIME(TO_DATE('09-05-2003 7:23:45 AM', 'MM-DD-YY HH:MI:SS PM' 'PST', 'EST')
+			 eastern_time FROM dual; eastern_time --------------------------- 05-SEP-2003
+			 10:23:45 PM</PRE></DIV>
+<P class=para>The function NEW_TIME takes only arguments specified in <A 
+class=internaljump 
+href="http://www.tar.hu/sqlbible/sqlbible0076.html#wbp17Chapter10T6P6" 
+role="targetype:table">Table 10-6</A>. The function FROM_TZ could use many more 
+time zones values.</P><A name=635></A><A name=wbp17Chapter10T6P6></A>
+<TABLE class=table width="100%" border=1>
+  <CAPTION class=table-title><SPAN class=table-title><SPAN 
+  class=table-titlelabel>Table 10-6: </SPAN>Valid Range of the Time-Zone Values 
+  for Oracle's NEW_TIME Function:</SPAN> </CAPTION>
+  <THEAD>
+  <TR vAlign=top>
+    <TH class=th scope=col align=left width="30%">
+      <P class=table-para>Time Zone</P></TH>
+    <TH class=th scope=col align=left width="70%">
+      <P class=table-para>Description</P></TH></TR></THEAD>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=td align=left width="30%">
+      <P class=table-para>AST (ADT)</P></TD>
+    <TD class=td align=left width="70%">
+      <P class=table-para>Atlantic Standard (or Daylight Time)</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="30%">
+      <P class=table-para>BST (BDT)</P></TD>
+    <TD class=td align=left width="70%">
+      <P class=table-para>Bering Standard (or Daylight Time)</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="30%">
+      <P class=table-para>CST (CDT)</P></TD>
+    <TD class=td align=left width="70%">
+      <P class=table-para>Central Standard (or Daylight Time)</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="30%">
+      <P class=table-para>EST (EDT)</P></TD>
+    <TD class=td align=left width="70%">
+      <P class=table-para>Eastern Standard (or Daylight Time)</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="30%">
+      <P class=table-para>GMT</P></TD>
+    <TD class=td align=left width="70%">
+      <P class=table-para>Greenwich Mean Time </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="30%">
+      <P class=table-para>HST (HDT)</P></TD>
+    <TD class=td align=left width="70%">
+      <P class=table-para>Alaska-Hawaii Standard Time or Daylight Time</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="30%">
+      <P class=table-para>MST (MDT)</P></TD>
+    <TD class=td align=left width="70%">
+      <P class=table-para>Mountain Standard or Daylight Time</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="30%">
+      <P class=table-para>NST</P></TD>
+    <TD class=td align=left width="70%">
+      <P class=table-para>Newfoundland Standard Time</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="30%">
+      <P class=table-para>PST (PDT)</P></TD>
+    <TD class=td align=left width="70%">
+      <P class=table-para>Pacific Standard or Daylight Time</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="30%">
+      <P class=table-para>YST (YDT)</P></TD>
+    <TD class=td align=left width="70%">
+      <P class=table-para>Yukon Standard or Daylight 
+Time</P></TD></TR></TBODY></TABLE>
+<P class=para><A name=636></A>In DB2 UDB you can use <SPAN 
+class=fixed>CURRENT</SPAN> <SPAN class=fixed>TIMEZONE</SPAN> to find out the 
+difference between UTC and your current time zone. In our example it shows 7 
+hours difference between Pacific Time Zone and UTC (Coordinated Universal Time): 
+</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT HOUR(CURRENT
+			 TIMEZONE) utc_difference FROM sysibm.sysdummy1 utc_difference --------------
+			 -7</PRE></DIV>
+<P class=para>Oracle's function <SPAN class=fixed>CURRENT_DATE</SPAN> returns 
+the current date of the session, not the server.</P>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top>Note&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>UTC is an abbreviation corresponding to Coordinated 
+      Universal Time, formerly known as Greenwich Mean Time (GMT). The GMT is 
+      based on the time at the zero meridian that crosses Greenwich, England; it 
+      became the de-facto standard in the nineteenth century, largely because of 
+      the successes of British Navy and English traders. UTC is essentially GMT, 
+      only "politically corrected." It uses 24-hour time 
+  notation.</P></TD></TR></TBODY></TABLE>
+<P class=para>The following examples demonstrate this. First, to instruct Oracle 
+to return the extended date/time value format for your SQL*Plus session:</P>
+<DIV class=widecontent><PRE class=programlisting>SQL&gt;
+			 ALTER SESSION SET NLS_DATE_FORMAT='DD-MON-YYYY HH24:MI:SS' Session
+			 altered.</PRE></DIV>
+<P class=para>To use the function <SPAN class=fixed>SYSDATE</SPAN> to get the 
+current system date: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT SYSDATE server_date,
+			 CURRENT_DATE session_date FROM dual; server_datesession_date
+			 -------------------- -------------------- 30-SEP-2003 19:05:35 30-SEP-2003
+			 19:05:35<A name=637></A>
+</PRE></DIV>
+<P class=para>As you can see, the session time and the system time are 
+identical. To change the session time, say, for Portugal's time zone ('WET'), 
+eight hours ahead, code:</P><PRE class=programlisting>SQL&gt; ALTER SESSION SET
+			 TIME_ZONE ='WET'; Session altered.</PRE>
+<TABLE class=tip cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top>Tip&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>You could specify the time in HH:MI format or supply 
+      some predefined <SPAN class=fixed>TIME_ZONE</SPAN> value set for the 
+      system. To find out the list of valid values for this parameter, query 
+      Oracle's dynamic performance view <SPAN 
+      class=fixed>V$TIMEZONE_NAMES</SPAN>.</P></TD></TR></TBODY></TABLE>
+<P class=para>And now our session time is eight hours ahead of our system 
+time:</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT SYSDATE server_date,
+			 CURRENT_DATE session_date FROM dual; server_datesession_date
+			 -------------------- -------------------- 30-SEP-2002 19:05:39 01-OCT-2002
+			 03:05:39</PRE></DIV>
+<P class=last-para>These examples by far do not exhaust the topic of time zone 
+functions. Refer to the specific RDBMS manuals to learn more.</P></DIV>
+<DIV class=section>
+<H4 class=sect4-title>ADD_MONTHS and DATEADD</H4>
+<P class=first-para>The MS SQL Server <SPAN class=fixed>DATEADD</SPAN> function 
+returns a new datetime value calculated by adding a specified date part on top 
+of the date argument. It is not as straightforward as it may seem.</P>
+<P class=para>The following example query returns the date that is exactly five 
+months from date '2002-09-05' (refer to <A class=chapterjump 
+href="http://www.tar.hu/sqlbible/sqlbible0020.html#116">Chapter 3</A> for more 
+information on this datetime type and its use of literals):</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 DATEADD(month,5,'2003-09-05') months months ---------------------------
+			 2003-02-05 00:00:00.000<A name=638></A>
+</PRE></DIV>
+<P class=para><SPAN class=fixed>The</SPAN> <SPAN class=fixed>DATEADD</SPAN> 
+function can also add days, hours, and minutes to a date; Oracle and DB2 UDB use 
+date arithmetic to accomplish this task.</P>
+<P class=para>The same results can be produced in Oracle with the following 
+query:</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 ADD_MONTHS(TO_DATE('2003-09-05','YYYY-MM-DD'),5) months FROM dual; months
+			 --------------------------- 05-FEB-2004</PRE></DIV>
+<P class=para>Oracle is much less flexible in accepting literals as dates — 
+hence the need for explicit conversion of the literal '2003-09-05' into date 
+type. (See <A class=chapterjump 
+href="http://www.tar.hu/sqlbible/sqlbible0020.html#116">Chapter 3</A> for 
+literals usage; conversion functions are discussed later in the chapter.) Also, 
+the default output format depends on the machine settings and could be 
+overridden by an application — that is, forward slashes can be replaced with 
+dashes, the year can be put in front followed by month and date.</P>
+<P class=para>To add, say, 20 days to a current date, use the following query in 
+Oracle:</P><PRE class=programlisting>SELECT SYSDATE + 20 FROM
+			 DUAL;</PRE>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top width=136>Cross-References&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>Oracle 9<I class=emphasis>i</I> introduced the <SPAN 
+      class=fixed>INTERVAL</SPAN> data type, which could be used in date/time 
+      arithmetic, effectively obliterating the <SPAN 
+      class=fixed>ADD_MONTH</SPAN> function. Refer to <A class=chapterjump 
+      href="http://www.tar.hu/sqlbible/sqlbible0020.html#116">Chapter 3</A> for 
+      more information on using interval literals.</P></TD></TR></TBODY></TABLE>
+<P class=para>IBM DB2 UDB does not have a special function for date and time 
+arithmetic. To add five months to a date you can use the following query:</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT (CURRENT DATE + 5
+			 MONTH)add_months FROM sysibm.sysdummy1 add_months ----------
+			 02/05/2003<A name=639></A>
+</PRE></DIV>
+<P class=para>The same syntax serves for adding days, hours, and so on:</P><PRE class=programlisting>SELECT (CURRENT DATE + 5
+			 DAYS)add_days FROM sysibm.sysdummy1 add_days ----------
+			 09/10/2002</PRE>
+<P class=last-para>You may substitute the date value with that from the table in 
+a query, or use a literal.</P></DIV>
+<DIV class=section>
+<H4 class=sect4-title>EXTRACT and DATEPART</H4>
+<P class=first-para>Oracle's <SPAN class=fixed>EXTRACT</SPAN> function returns 
+the value of a specified part of a date/time expression. The acceptable parts 
+are <SPAN class=fixed>YEAR</SPAN>, <SPAN class=fixed>MONTH</SPAN>, <SPAN 
+class=fixed>DAY</SPAN>, <SPAN class=fixed>HOUR</SPAN>, <SPAN 
+class=fixed>MINUTE</SPAN>, and <SPAN class=fixed>SECOND</SPAN>. It also allows 
+you to specify <SPAN class=fixed>TIMEZONE_HOUR</SPAN>, <SPAN 
+class=fixed>TIMEZONE_MINUTE</SPAN>, <SPAN class=fixed>TIMEZONE_REGION</SPAN>, 
+and <SPAN class=fixed>TIMEZONE_ABBR</SPAN> (for 'abbreviation'); these are added 
+to accommodate time zone differences. This sample query extracts the <SPAN 
+class=fixed>YEAR</SPAN> part from the current date: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT EXTRACT(YEAR FROM
+			 SYSDATE) year_part FROM DUAL; year_part -------------- 2002</PRE></DIV>
+<P class=para>The date/time expression must be in correct format; for example, 
+asking for a <SPAN class=fixed>MINUTE</SPAN> portion of the expression would be 
+meaningless (defaults to 00) if that expression does not have minutes in it.</P>
+<P class=para>The Microsoft SQL Server uses the <SPAN 
+class=fixed>DATEPART</SPAN> function to extract parts of the date/time 
+expression. In addition to the standard arguments like <SPAN 
+class=fixed>YEAR</SPAN>, <SPAN class=fixed>MONTH</SPAN>, <SPAN 
+class=fixed>DAY</SPAN>, <SPAN class=fixed>HOUR</SPAN>, <SPAN 
+class=fixed>MINUTE</SPAN>, and <SPAN class=fixed>SECOND</SPAN>, it also returns 
+milliseconds — if required: </P><PRE class=programlisting>SELECT DATEPART( month,
+			 '09-08-2002') month_part month_part -------------- 9<A name=640></A>
+</PRE></DIV>
+<DIV class=section>
+<H4 class=sect4-title>DAYNAME, MONTHNAME, and DATENAME</H4>
+<P class=first-para>DB2 UDB and the SQL Server have special functions to return 
+the name of the part of the date. Here is an example of such a function in IBM 
+DB2 UDB:</P><PRE class=programlisting>SELECT DAYNAME(CURRENT DATE)
+			 day_name FROM sysibm.sysdummy1 day_name --------------
+			 Saturday</PRE>
+<P class=para>The function <SPAN class=fixed>MONTHNAME</SPAN> would have 
+returned 'September'.</P>
+<P class=para>The MS SQL Server has a <SPAN class=fixed>DATENAME</SPAN> function 
+that encompasses functionality of both <SPAN class=fixed>DAYNAME</SPAN> and 
+<SPAN class=fixed>MONTHNAME</SPAN> functions of IBM. The following query returns 
+the name of the month: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT DATENAME(MONTH,
+			 GETDATE()) month_name month_name ---------------- September</PRE></DIV>
+<P class=para>And this function returns the name of the day of the week:</P><PRE class=programlisting>SELECT DATENAME(WEEKDAY,
+			 GETDATE()) day_name day_name ---------------- Thursday</PRE>
+<P class=para>As said before, Oracle does not have any specific functions to 
+accomplish these tasks, but you can use the conversion function with applied 
+format. This function is similar to the <SPAN class=fixed>DATENAME</SPAN> 
+function of the SQL Server.<A name=641></A> </P>
+<P class=para>This query returns day name of the today's date:</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 TO_CHAR(SYSDATE,'DAY') day_name_upper, TO_CHAR(SYSDATE,'Day') day_name_mixed
+			 FROM dual; day_name_upper day_name_mixed ---------------- ------------------
+			 THURSDAY Thursday</PRE></DIV>
+<P class=para>And this query returns month name of the current date:</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 TO_CHAR(SYSDATE,'MONTH') day_name_upper, TO_CHAR(SYSDATE,'month')
+			 day_name_lower FROM dual; day_name_upperday_name_lower
+			 ---------------------------------- SEPTEMBER september</PRE></DIV>
+<P class=last-para>Note that using a different letter case to specify the date 
+part name in Oracle 9<I class=emphasis>i</I> results in different output 
+formatting. This does not apply to either the MS SQL Server, or IBM DB2 UDB 
+v8.1.</P></DIV>
+<DIV class=section>
+<H4 class=sect4-title>MONTHS_BETWEEN and DATEDIFF</H4>
+<P class=first-para>The Oracle function <SPAN class=fixed>MONTHS_BETWEEN</SPAN> 
+returns the number of the months between two dates: if the first date is later 
+than the second, the result is a positive number; if the first date is earlier 
+than the second, the returned number will be negative. When compared dates have 
+the same day portion, the result is always an integer; otherwise, Oracle returns 
+a fractional value based on 31-day month and takes into consideration time 
+portion of the dates: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT MONTHS_BETWEEN
+			 (TO_DATE('09-05-2002','MM-DD-YYYY'), TO_DATE('11-05-2002','MM-DD-YYYY'))
+			 months_in_between FROM dual; months_in_between ----------------- -2<A name=642></A>
+</PRE></DIV>
+<P class=para>The <SPAN class=fixed>DATEDIFF</SPAN> function in the MS SQL 
+Server returns a specified date part (or all of them) between the two dates. It 
+obeys the same rules as Oracle's function, but is different in that its return 
+value could represent days, months, minutes, and so on: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 datediff(month, '09-05-2002','11-05-2002') months_in_between months_in_between
+			 ----------------- 2</PRE></DIV>
+<P class=para>For DB2 UDB, use date arithmetic:</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT (MONTH('09-05-2002')
+			 – MONTH('11-05-2002')) months_in_between FROM sysibm.sysdummy1
+			 months_in_between ----------------- 2</PRE></DIV>
+<P class=last-para>In exacltly the same way you can calculate, for example, the 
+number of days, hours, minutes, or seconds, using <SPAN class=fixed>DAY</SPAN>, 
+<SPAN class=fixed>HOUR,</SPAN> <SPAN class=fixed>MINUTE</SPAN>, or <SPAN 
+class=fixed>SECOND</SPAN> functions, respectively.</P></DIV></DIV>
+<DIV class=section>
+<H3 class=sect3-title><A name=643></A><A name=wbp17Chapter10P620></A>Aggregate 
+functions</H3>
+<P class=first-para>While aggregate functions (listed in <A class=internaljump 
+href="http://www.tar.hu/sqlbible/sqlbible0076.html#wbp17Chapter10T7P7" 
+role="targetype:table">Table 10-7</A>) logically belong with the <SPAN 
+class=fixed>SELECT</SPAN> statement discussed in <A class=chapterjump 
+href="http://www.tar.hu/sqlbible/sqlbible0060.html#472">Chapter 8</A> and are 
+thoroughly covered there, it is appropriate to include a brief description in 
+this chapter for reference. </P><A name=644></A><A name=wbp17Chapter10T7P7></A>
+<TABLE class=table width="100%" border=1>
+  <CAPTION class=table-title><SPAN class=table-title><SPAN 
+  class=table-titlelabel>Table 10-7: </SPAN>Aggregate Functions</SPAN> 
+</CAPTION>
+  <THEAD>
+  <TR vAlign=top>
+    <TH class=th scope=col align=left width="20%">
+      <P class=table-para>ORACLE 9i</P></TH>
+    <TH class=th scope=col align=left width="20%">
+      <P class=table-para>IBM DB2 UDB</P></TH>
+    <TH class=th scope=col align=left width="20%">
+      <P class=table-para>MS SQL Server 2000</P></TH>
+    <TH class=th scope=col align=left width="40%">
+      <P class=table-para>Description</P></TH></TR></THEAD>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>AVG</SPAN> <SPAN 
+      class=fixed>(number)</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>AVG</SPAN> <SPAN 
+      class=fixed>(number)</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>AVG</SPAN> <SPAN 
+      class=fixed>(number)</SPAN> </P></TD>
+    <TD class=td align=left width="40%">
+      <P class=table-para>Calculates average for a range of numeric 
+    values.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>COUNT</SPAN> <SPAN 
+      class=fixed>(number)</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>COUNT</SPAN> <SPAN 
+      class=fixed>(integer)</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>COUNT</SPAN> <SPAN 
+      class=fixed>(integer)</SPAN> <BR style="LINE-HEIGHT: 1"><SPAN 
+      class=fixed>COUNT_BIG</SPAN> <SPAN class=fixed>(bigint)</SPAN> </P></TD>
+    <TD class=td align=left width="40%">
+      <P class=table-para>Returns number of rows in a <SPAN 
+      class=fixed>SELECT</SPAN> statement.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>MAX</SPAN> <SPAN 
+      class=fixed>(number)</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>MAX</SPAN> <SPAN 
+      class=fixed>(number)</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>MAX</SPAN> <SPAN 
+      class=fixed>(number)</SPAN> </P></TD>
+    <TD class=td align=left width="40%">
+      <P class=table-para>Returns max value among selected values.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>MIN</SPAN> <SPAN 
+      class=fixed>(number)</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>MIN</SPAN> <SPAN 
+      class=fixed>(number)</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>MIN</SPAN> <SPAN 
+      class=fixed>(number)</SPAN> </P></TD>
+    <TD class=td align=left width="40%">
+      <P class=table-para>Returns min value among selected values.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>SUM</SPAN> <SPAN 
+      class=fixed>(number)</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>SUM</SPAN> <SPAN 
+      class=fixed>(number)</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>SUM</SPAN> <SPAN 
+      class=fixed>(number)</SPAN> </P></TD>
+    <TD class=td align=left width="40%">
+      <P class=table-para>Calculates sum of the selected 
+  values.</P></TD></TR></TBODY></TABLE>
+<P class=para>Aggregate functions return a single value based on a specific 
+calculation within a set (group) of values; usually they are tied to the <SPAN 
+class=fixed>GROUP</SPAN> <SPAN class=fixed>BY</SPAN> clause of the <SPAN 
+class=fixed>SELECT</SPAN> statement, though it is not a requirement for some of 
+them. When used with a <SPAN class=fixed>GROUP</SPAN> <SPAN 
+class=fixed>BY</SPAN> clause, each aggregate function produces a single value 
+for each group, not to the whole table.</P>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top>Note&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>Of course, since aggregate functions are mathematical 
+      in nature, they work exclusively with numbers; arguments must be of 
+      built-in numeric data types, and the result of the function must be within 
+      the range defined for this data type.<A name=645></A> 
+</P></TD></TR></TBODY></TABLE>
+<DIV class=section>
+<H4 class=sect4-title>SUM</H4>
+<P class=first-para>The <SPAN class=fixed>SUM</SPAN> function sums up all the 
+values in the specified column. If you, for example, needed to know the total 
+amount of all your sales, this query would bring the answer: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT SUM(total_price)
+			 total_sale FROM v_customer_totals; total_sale ---------------
+			 457000.40</PRE></DIV>
+<P class=para>For the total of all your sales grouped by customer, use the 
+query:</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 customer_name, SUM(total_price) total_sale FROM v_customer_totals GROUP BY
+			 customer_name; customer_name total_sale --------------------------- ----------
+			 WILE BESS COMPANY 276775.60<A name=646></A> WILE
+			 ELECTROMATIC INC. 30956.20 WILE ELECTROMUSICAL INC. 19824.00 WILE ELECTRONICS
+			 INC. 28672.80 WILE SEAL CORP. 100771.80</PRE></DIV>
+<P class=para>This query summed up the values contained in the <SPAN 
+class=fixed><I class=emphasis>total_price</I></SPAN> column for each customer 
+separately and produced total sales for each customer in the <SPAN 
+class=fixed><I class=emphasis>total_sale</I></SPAN> column.</P>
+<P class=para>This function can be used with <SPAN class=fixed>ALL</SPAN> or 
+<SPAN class=fixed>DISTINCT</SPAN> predicates. The concept behind these is quite 
+simple: <SPAN class=fixed>ALL</SPAN> counts each and every value found in the 
+column, while <SPAN class=fixed>DISTINCT</SPAN> counts identical values only 
+once (i.e., if there are several sales in the amount of $6608.00, only one of 
+the sales is counted). Consider the following query comparing outcome of the 
+<SPAN class=fixed>SUM</SPAN> functions with and without the <SPAN 
+class=fixed>DISTINCT</SPAN> predicate: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT SUM(DISTINCT
+			 total_price)distinct_price, SUM(ALL total_price) total_sale FROM
+			 v_customer_totals; distinct_price total_sale -----------------
+			 -------------------- 165405.80 457000.40</PRE></DIV>
+<P class=para>Comparing results of this query with previous examples, you can 
+see that the <SPAN class=fixed>ALL</SPAN> predicate is specified by default. The 
+syntax for the <SPAN class=fixed>SUM</SPAN> function is identical for all three 
+RDBMS.</P>
+<P class=para>You could specify the <SPAN class=fixed>WHERE</SPAN> clause to 
+further restrict the values, for example, to find total sales for the last 
+quarter.</P>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top width=136>Cross-References&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>Refer to <A class=chapterjump 
+      href="http://www.tar.hu/sqlbible/sqlbible0060.html#472">Chapter 8</A> for 
+      more detailed discussion of the aggregate functions uses, including 
+      examples.</P></TD></TR></TBODY></TABLE></DIV>
+<DIV class=section>
+<H4 class=sect4-title>COUNT</H4>
+<P class=first-para>This function returns the total number of records in the 
+table/view. To find how many orders were placed by customers in the ACME 
+database, all you have to do is query the <SPAN 
+class=fixed>V_CUSTOMER_TOTALS</SPAN> view: </P><PRE class=programlisting>SELECT COUNT(order_number)
+			 total_orders FROM v_customer_totals;
+			 <A name=647></A>
+			 total_orders ------------ 51</PRE>
+<P class=para>The same result could be achieved by issuing another <SPAN 
+class=fixed>COUNT</SPAN> query: </P><PRE class=programlisting>SELECT COUNT(*) total_orders
+			 FROM v_customer_totals; total_orders ------------ 51 </PRE>
+<P class=para>The results are dependent on whether the <SPAN 
+class=fixed>ALL</SPAN> (default) or <SPAN class=fixed>DISTINCT</SPAN> predicates 
+are applied. <SPAN class=fixed>ORDER_NUMBER</SPAN> is unique within the view; 
+that's why counting order numbers produces results identical to counting the 
+total number of records in the view. However, if we count customers who placed 
+these orders in the <SPAN class=fixed>CUSTOMER_NAME</SPAN> column, the results 
+will be different. Here is the query that uses <SPAN class=fixed>COUNT</SPAN> in 
+the <SPAN class=fixed>CUSTOMER_NAME</SPAN> column twice — once with the <SPAN 
+class=fixed>DISTINCT</SPAN> predicate and one with the <SPAN 
+class=fixed>ALL</SPAN> predicate (default): </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT COUNT(DISTINCT
+			 customer_name)total_customers, COUNT(ALL customer_name) all_records FROM
+			 v_customer_totals; total_customers all_records --------------- ----------- 5 51
+			 (1 row(s) affected)</PRE></DIV>
+<P class=para>To find out how many orders each customer placed, use the <SPAN 
+class=fixed>GROUP</SPAN> <SPAN class=fixed>BY</SPAN> clause. The following query 
+accomplishes this task: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT customer_name,
+			 COUNT(order_number) total_orders FROM v_customer_totals GROUP BY customer_name;
+			 customer_name total_orders ---------------------------- ---------- WILE BESS
+			 COMPANY 31<A name=648></A> WILE ELECTROMATIC INC. 4 WILE ELECTROMUSICAL INC. 3 WILE
+			 ELECTRONICS INC. 3 WILE SEAL CORP. 10</PRE></DIV>
+<P class=para>You could use SQL predicates <SPAN class=fixed>DISTINCT</SPAN> and 
+<SPAN class=fixed>ALL</SPAN> with the <SPAN class=fixed>COUNT</SPAN> function, 
+<SPAN class=fixed>ALL</SPAN> being the default. In the foregoing example, orders 
+are grouped by <SPAN class=fixed>CUSTOMER_NAME</SPAN> to get the total orders 
+for a customer; imagine that you are asked, "How many customers do you have?" 
+Obviously, using the <SPAN class=fixed>COUNT</SPAN> function in the <SPAN 
+class=fixed>CUSTOMER_NAME</SPAN> column would not produce the desired results 
+because it counts each of the multiple entries of the same company; you need to 
+use the <SPAN class=fixed>DISTINCT</SPAN> predicate here: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT COUNT(customer_name)
+			 all_records, COUNT(DISTINCT customer_name) distinct_records FROM
+			 v_customer_totals all_records distinct_records ----------- ---------------- 51
+			 5</PRE></DIV>
+<P class=para>As you can see, only five different customers placed the 51 orders 
+recorded in the view.</P>
+<DIV class=sidebar><A name=649></A><A name=wbp17Chapter10P715></A>
+<TABLE class=BlueLine cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD class=bluecell bgColor=#000080><FONT face=Arial color=#010100 
+      size=2><B><IMG height=2 alt="Start Sidebar" src="sqlbible0076_files/_.gif" 
+      width=1 border=0></B></FONT></TD></TR></TBODY></TABLE><SPAN 
+class=sidebar-title><B>
+<CENTER>NULL and Aggregate Functions</CENTER></B></SPAN>
+<P class=first-para>You also should know about the use of <SPAN 
+class=fixed>NULL</SPAN> in aggregate functions. <SPAN class=fixed>NULL</SPAN> 
+values are not included for calculations; if all values are NULL, that is what 
+will be returned, not 0. Consider the following query, which returns counts for 
+the column <SPAN class=fixed>PHONE_SALESMANID_FN</SPAN>: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+				COUNT(phone_salesmanid_fn) count_for_nulls, COUNT (*)count_all FROM phone;
+				count_for_nulls count_all ---------------- ----------- 12 @SB code
+				last:86</PRE></DIV>
+<P class=last-para>Notice that all the <SPAN class=fixed>NULL</SPAN>s are simply 
+ignored when they are used for calculating averages, sums, and so on. Should you 
+specifically request records "WHERE phone_salesmanid_fn IS NULL" an exact 74 
+records would be returned, which together with 12 not NULL values make up the 
+total 86.</P>
+<TABLE class=BlueLine cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD class=bluecell bgColor=#000080><FONT face=Arial color=#010100 
+      size=2><B><IMG height=2 alt="End Sidebar" src="sqlbible0076_files/_.gif" 
+      width=1 border=0></B></FONT></TD></TR></TBODY></TABLE></DIV>
+<TABLE class=BlankSpace cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD height=16></TD></TR></TBODY></TABLE></DIV>
+<DIV class=section>
+<H4 class=sect4-title>AVG</H4>
+<P class=first-para><A name=650></A>This function produces average value of a 
+group of numeric values. For example, if you would like to know the average 
+value of the orders you have in the <SPAN class=fixed>V_CUSTOMER_TOTALS</SPAN> 
+view, you would issue the following statement: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT AVG(total_price)
+			 average_price FROM v_customer_totals; average_price ----------------
+			 8960.792156</PRE></DIV>
+<P class=para>What this function did was sum up the <SPAN 
+class=fixed>total_price</SPAN> value for every record in the view and then 
+divide it by the number of records. You can produce the same result by using a 
+combination of the <SPAN class=fixed>SUM</SPAN> and <SPAN 
+class=fixed>COUNT</SPAN> functions: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 SUM(total_price)/COUNT(order_number) average_price, FROM v_customer_totals;
+			 average_price ------------------- 8960.792156</PRE></DIV>
+<P class=para>To get the average order placed per customer, use the <SPAN 
+class=fixed>GROUP</SPAN> <SPAN class=fixed>BY</SPAN> clause: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 customer_name, AVG(total_price) average_order FROM v_customer_totals GROUP BY
+			 customer_name; customer_name average_order -------------------------
+			 ------------- WILE BESS COMPANY 8928.245161 WILE ELECTROMATIC INC. 7739.050000
+			 WILE ELECTROMUSICAL INC. 6608.000000 WILE ELECTRONICS INC. 9557.600000 WILE
+			 SEAL CORP. 10077.180000<A name=651></A>
+</PRE></DIV></DIV>
+<DIV class=section>
+<H4 class=sect4-title>MIN and MAX</H4>
+<P class=first-para>These functions select minimum and maximum values from the 
+list of values in the column. The following example finds the biggest and the 
+smallest orders ever placed, looking at all customers:</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT MAX(total_price)
+			 max_order, MIN(total_price) min_order FROM v_customer_totals; max_order
+			 min_order --------------- ------------- 15456.80 6608.00</PRE></DIV>
+<P class=para>To find out the minimum and maximum orders placed by a particular 
+customer, use the <SPAN class=fixed>GROUP</SPAN> <SPAN class=fixed>BY</SPAN> 
+clause in your query: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 customer_name, MAX(total_price) max_order, MIN(total_price) min_order FROM
+			 v_customer_totals GROUP BY customer_name; customer_name max_order min_order
+			 -------------------------- --------- ----------- WILE BESS COMPANY 15402.20
+			 6608.00 WILE ELECTROMATIC INC. 9038.00 6608.00 WILE ELECTROMUSICAL INC. 6608.00
+			 6608.00 WILE ELECTRONICS INC. 15456.80 6608.00 WILE SEAL CORP. 15456.80
+			 6608.00</PRE></DIV>
+<P class=para>You can also use SQL predicates DISCTINCT and ALL with the MIN and 
+MAX functions.</P>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top>Note&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>Oracle 9<I class=emphasis>i</I> also uses aggregate 
+      functions with the analytic clause <SPAN class=fixed>OVER</SPAN>. There is 
+      no direct equivalent to this functionality in MS SQL Server 2000 and IBM 
+      DB2 UDB.</P></TD></TR></TBODY></TABLE>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top width=136>Cross-References&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>There are more aggregate functions implemented by the 
+      vendors in their products. For a comprehensive list of the vendor-specific 
+      implementations, refer to <A class=chapterjump 
+      href="http://www.tar.hu/sqlbible/sqlbible0157.html#1360">Appendix 
+      G</A>.</P></TD></TR></TBODY></TABLE></DIV></DIV>
+<DIV class=section>
+<H3 class=sect3-title><A name=652></A><A name=wbp17Chapter10P786></A>Conversion 
+functions</H3>
+<P class=first-para><A name=653></A>Sometimes it is necessary to convert one 
+data type into another. In the examples with <SPAN class=fixed>CONCAT</SPAN> 
+function, we had to convert numbers into string before being able to concatenate 
+then with other string values. As it becoming clearer that English is not the 
+only language on Earth, there is ever-increasing demand for national characters 
+databases: conversion functions provide translation for data so it could be 
+correctly represented in the character set of the native alphabets. Some of the 
+most common conversion functions are listed in <A class=internaljump 
+href="http://www.tar.hu/sqlbible/sqlbible0076.html#wbp17Chapter10T8P8" 
+role="targetype:table">Table 10-8</A>.</P><A name=654></A><A 
+name=wbp17Chapter10T8P8></A>
+<TABLE class=table width="100%" border=1>
+  <CAPTION class=table-title><SPAN class=table-title><SPAN 
+  class=table-titlelabel>Table 10-8: </SPAN>Conversion Functions</SPAN> 
+  </CAPTION>
+  <THEAD>
+  <TR vAlign=top>
+    <TH class=th scope=col align=left width="20%">
+      <P class=table-para>ORACLE 9i</P></TH>
+    <TH class=th scope=col align=left width="20%">
+      <P class=table-para>IBM DB2 UDB 8.1</P></TH>
+    <TH class=th scope=col align=left width="20%">
+      <P class=table-para>MS SQL Server 2000</P></TH>
+    <TH class=th scope=col align=left width="40%">
+      <P class=table-para>Description</P></TH></TR></THEAD>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>CAST</SPAN> (data type AS data 
+      type)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>CAST</SPAN> (data type AS data 
+      type)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>CAST</SPAN> (data type AS data 
+      type)</P>
+      <P class=table-para><SPAN class=fixed>CONVERT</SPAN> (into data type, 
+      value, format)</P></TD>
+    <TD class=td align=left width="40%">
+      <P class=table-para>Converts one data type into another, compatible data 
+      type.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>CONVERT</SPAN> </P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para>N/A</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para>N/A</P></TD>
+    <TD class=td align=left width="40%">
+      <P class=table-para>Converts character data from one character set into 
+      another character set.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> (expression)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>CHAR</SPAN> (expression)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>CAST</SPAN> (expression as 
+      VARCHAR/CHAR (N))</P></TD>
+    <TD class=td align=left width="40%">
+      <P class=table-para>Converts an expression of a compatible data type into 
+      a string of characters.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>TO_DATE</SPAN> (expression)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>DATE</SPAN> (expression)</P></TD>
+    <TD class=td align=left width="20%">
+      <P class=table-para><SPAN class=fixed>CAST</SPAN> (expression as 
+      DATETIME)</P></TD>
+    <TD class=td align=left width="40%">
+      <P class=table-para>Converts an expression of a compatible data 
+      type/format into DATE/DATETIME data type.</P></TD></TR></TBODY></TABLE>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top>Note&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>Sometimes RDBMS converts data implicitly from one type 
+      to another; while this feature might be convenient, it is also something 
+      to worry about. One example is the loss of precision when inserting the 
+      <SPAN class=fixed>FLOAT</SPAN> data type intro a column that was declared 
+      as <SPAN class=fixed>INTEGER</SPAN> — the number would lose all decimal 
+      numbers because it would be truncated when converted implicitly into <SPAN 
+      class=fixed>INTEGER</SPAN>.</P></TD></TR></TBODY></TABLE>
+<DIV class=section>
+<H4 class=sect4-title>Conversion between different data types</H4>
+<P class=first-para>There are two general functions that perform this type of 
+conversion: <SPAN class=fixed>CAST</SPAN> and <SPAN class=fixed>CONVERT</SPAN>. 
+These functions convert one data type into another. The function <SPAN 
+class=fixed>CAST</SPAN> is used almost identically across all three RDBMS. <SPAN 
+class=fixed>CONVERT</SPAN>, however, is used for conversion from one character 
+set to another Oracle 9<I class=emphasis>i</I> (discussed later in this 
+chapter), and in the Microsoft SQL Server it is almost a synonym for the 
+function <SPAN class=fixed>CAST</SPAN>.</P>
+<P class=para>The <SPAN class=fixed>CAST</SPAN> function syntax is as follows: 
+</P><PRE class=programlisting>CAST (&lt;from datatype&gt;
+			 AS &lt;into datatype&gt;)
+			 <A name=655></A>
+</PRE>
+<P class=para>There are slight differences in the <SPAN class=fixed>CAST</SPAN> 
+function's capabilities among the three implementations: the IBM DB2 UDB and the 
+SQL Server can cast any built-in data type into another built-in data type, 
+while Oracle allows collection-based data types (like <SPAN 
+class=fixed>VARRAY</SPAN>) to be used as valid arguments for this function.</P>
+<P class=para>In comparison, the SQL Server's <SPAN class=fixed>CONVERT</SPAN> 
+function's syntax is more convoluted; it can deal not only with data type but 
+also with how the output is formatted. The parameters <I 
+class=emphasis>length</I> and <I class=emphasis>style</I> are optional: <I 
+class=emphasis>length</I> is used for data types that could have length — like 
+<SPAN class=fixed>VARCHAR</SPAN>, <SPAN class=fixed>CHAR</SPAN>, <SPAN 
+class=fixed>NCHAR</SPAN>, <SPAN class=fixed>VARBINARY</SPAN> — and <I 
+class=emphasis>style</I> is used to convert datetime and smalldatetime into 
+text. (It defines how the resulting string is formatted, e.g., with century or 
+without, with milliseconds or not.) The data type must be system-defined data 
+types; user-defined data types are not permissible: </P><PRE class=programlisting>CONVERT 
+			 <B class=bold>( &lt;</B>data_type&gt; [(length)] 
+			 <B class=bold>,</B> &lt;expression&gt; [<B class=bold>,</B>style ]) </PRE>
+<P class=para>For example, the ACME database view <SPAN 
+class=fixed>V_CUSTOMER_TOTAL</SPAN> has a column <SPAN 
+class=fixed>TOTAL_PRICE</SPAN> with a numeric data type; in order to display 
+this data with a preceding dollar sign (<SPAN class=fixed>$</SPAN>), you must 
+convert a number into a character data type first. (Oracle would perform an 
+implicit conversion in this case, while DB2 UDB and the MS SQL Server would both 
+generate an error.)</P>
+<P class=para>Oracle implicitly converts the numeric data types into character 
+string data types when concatenating numbers (values in the <SPAN 
+class=fixed>TOTAL_PRICE</SPAN> column) and strings (<SPAN class=fixed>$</SPAN>) 
+as follows: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 customer_name, ('$' || total_price) price FROM v_customer_totals customer_name
+			 price --------------------------- ---------- WILE BESS COMPANY $7511.00 WILE
+			 BESS COMPANY $8390.00 WILE ELECTROMUSICAL INC. $6608.00</PRE></DIV>
+<P class=para>Here is the SQL Server syntax for the query (the MS SQL Server 
+also could use the <SPAN class=fixed>CONVERT</SPAN> function to achieve the same 
+result): </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 customer_name, '$' + CAST(TOTAL_PRICE as VARCHAR(10)) price FROM
+			 v_customer_totals customer_name price --------------------------- ----------
+			 WILE BESS COMPANY $7511.00<A name=656></A> WILE BESS
+			 COMPANY $8390.00 WILE ELECTROMUSICAL INC. $6608.00</PRE></DIV>
+<P class=para>A similar result in DB2 UDB is produced with the following 
+query:</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 customer_name, CONCAT('$', CAST(total_price as CHAR(32)) price FROM
+			 v_customer_totals customer_name price --------------------------- ----------
+			 WILE BESS COMPANY $7511.00 WILE BESS COMPANY $8390.00 WILE ELECTROMUSICAL INC.
+			 $6608.00</PRE></DIV>
+<P class=para>DB2 UDB insists on including leading zeroes in the final result, 
+which for the <SPAN class=fixed>DECIMAL</SPAN> data type is 32 characters long 
+(since the precision is 32 for the <SPAN class=fixed>TOTAL_PRICE</SPAN> column 
+data type); the result is $00000000000000000000000007511.00. To reduce the 
+number of leading zeroes, the first step is to cast <SPAN 
+class=fixed>TOTAL_CAST</SPAN> value to a <SPAN class=fixed>DECIMAL</SPAN> with a 
+different precision: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 customer_name, CONCAT('$', CAST(CAST(total_price as DECIMAL(7,2)) AS CHAR(12))
+			 price FROM v_customer_totals customer_name price ---------------------------
+			 ---------- WILE BESS COMPANY $07511.00 WILE BESS COMPANY $08390.00 WILE
+			 ELECTROMUSICAL INC. $06608.00</PRE></DIV>
+<P class=para>Notice that there is still one leading zero, since specifying, for 
+example, <SPAN class=fixed>DECIMAL</SPAN> (6, 2) would lead to an overflow error 
+for the values that exceed this precision (while producing correct results for 
+the three result values).</P>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top>Note&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>Format templates (models) are literals that define how 
+      the date or number would be represented in a string, or how a string is to 
+      be interpreted for conversion into date or number. A format template does 
+      not change the internal representation of the data; it only affects how it 
+      is displayed. Oracle and IBM use format templates, while the MS SQL Server 
+      has assigned codes for these.<A name=657></A> </P></TD></TR></TBODY></TABLE>
+<P class=para>When using the MS SQL Server <SPAN class=fixed>CONVERT</SPAN> 
+function, you must correctly format the output results. To display current date 
+in <I class=emphasis>mon dd yyyy hh:mi:ss:mmmAM (or PM) </I>format: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT CONVERT(VARCHAR(25),
+			 GETDATE(),109) formatted_date ------------------------- Sep 11 2002
+			 3:30:03:037P</PRE></DIV>
+<P class=para>To format the same output into the Japanese standard YYYY/MM/DD, 
+the following query would be used:</P><PRE class=programlisting>SELECT CONVERT(VARCHAR(25),
+			 GETDATE(),111) formatted_date -------------------------
+			 2002/09/11</PRE>
+<P class=para>The third parameter in the code above (111) specifies an output 
+format. Some useful formats for the SQL Server <SPAN class=fixed>CONVERT</SPAN> 
+function are given in <A class=internaljump 
+href="http://www.tar.hu/sqlbible/sqlbible0076.html#wbp17Chapter10T9P9" 
+role="targetype:table">Table 10-9</A>. The last column in the table, <I 
+class=emphasis>Input/Output, </I>shows <I class=emphasis>input</I> when 
+converting into the datetime data type, and shows <I class=emphasis>output</I> 
+when converting datetime data into character strings.<A name=658></A> </P><A 
+name=659></A><A name=wbp17Chapter10T9P9></A>
+<TABLE class=table width="100%" border=1>
+  <CAPTION class=table-title><SPAN class=table-title><SPAN 
+  class=table-titlelabel>Table 10-9: </SPAN>Formatting MS SQL Server CONVERT 
+  Function Output for Dates</SPAN> </CAPTION>
+  <THEAD>
+  <TR vAlign=top>
+    <TH class=th scope=col align=left width="21%">
+      <P class=table-para>Standard</P></TH>
+    <TH class=th scope=col align=left width="22%">
+      <P class=table-para>With century (YYYY)</P></TH>
+    <TH class=th scope=col align=left width="24%">
+      <P class=table-para>Without century (YY)</P></TH>
+    <TH class=th scope=col align=left width="33%">
+      <P class=table-para>Input/Output</P></TH></TR></THEAD>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=td align=left width="21%">
+      <P class=table-para>Default</P></TD>
+    <TD class=td align=left width="22%">
+      <P class=table-para>0 or 100</P></TD>
+    <TD class=td align=left width="24%">
+      <P class=table-para>N/A</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para>MON DD YYYY hh:mi AM/PM</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="21%">
+      <P class=table-para>USA</P></TD>
+    <TD class=td align=left width="22%">
+      <P class=table-para>101</P></TD>
+    <TD class=td align=left width="24%">
+      <P class=table-para>1</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para>MM/DD/[YY]YY</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="21%">
+      <P class=table-para>ANSI</P></TD>
+    <TD class=td align=left width="22%">
+      <P class=table-para>102</P></TD>
+    <TD class=td align=left width="24%">
+      <P class=table-para>2</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para>[YY]YY.mm.dd</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="21%">
+      <P class=table-para>British/French</P></TD>
+    <TD class=td align=left width="22%">
+      <P class=table-para>103</P></TD>
+    <TD class=td align=left width="24%">
+      <P class=table-para>3</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para>DD/MM/[YY]YY</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="21%">
+      <P class=table-para>German</P></TD>
+    <TD class=td align=left width="22%">
+      <P class=table-para>104</P></TD>
+    <TD class=td align=left width="24%">
+      <P class=table-para>4</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para>DD.MM.YY[YY]</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="21%">
+      <P class=table-para>Italian</P></TD>
+    <TD class=td align=left width="22%">
+      <P class=table-para>105</P></TD>
+    <TD class=td align=left width="24%">
+      <P class=table-para>5</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para>DD-MM-[YY]YY</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="21%">
+      <P class=table-para>N/A</P></TD>
+    <TD class=td align=left width="22%">
+      <P class=table-para>106</P></TD>
+    <TD class=td align=left width="24%">
+      <P class=table-para>6</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para>DD MM [YY]YY</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="21%">
+      <P class=table-para>N/A</P></TD>
+    <TD class=td align=left width="22%">
+      <P class=table-para>107</P></TD>
+    <TD class=td align=left width="24%">
+      <P class=table-para>7</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para>MON DD, [YY]YY</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="21%">
+      <P class=table-para>N/A</P></TD>
+    <TD class=td align=left width="22%">
+      <P class=table-para>108</P></TD>
+    <TD class=td align=left width="24%">
+      <P class=table-para>8</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para>hh:mm:ss</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="21%">
+      <P class=table-para>Default and milliseconds</P></TD>
+    <TD class=td align=left width="22%">
+      <P class=table-para>9 or 109</P></TD>
+    <TD class=td align=left width="24%">
+      <P class=table-para>N/A</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para>MON DD YYYY</P>
+      <P class=table-para>hh:mi:ss:mmm AM/PM</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="21%">
+      <P class=table-para>USA</P></TD>
+    <TD class=td align=left width="22%">
+      <P class=table-para>110</P></TD>
+    <TD class=td align=left width="24%">
+      <P class=table-para>10</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para>MM-DD-[YY]YY</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="21%">
+      <P class=table-para>Japan</P></TD>
+    <TD class=td align=left width="22%">
+      <P class=table-para>111</P></TD>
+    <TD class=td align=left width="24%">
+      <P class=table-para>11</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para>[YY]YY/MM/DD</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="21%">
+      <P class=table-para>International Standards Organization (ISO)</P></TD>
+    <TD class=td align=left width="22%">
+      <P class=table-para>112</P></TD>
+    <TD class=td align=left width="24%">
+      <P class=table-para>12</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para>[YY]YYMMDD</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="21%">
+      <P class=table-para>Europe default and milliseconds</P></TD>
+    <TD class=td align=left width="22%">
+      <P class=table-para>13 or 113</P></TD>
+    <TD class=td align=left width="24%">
+      <P class=table-para>N/A</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para>DD MON YYYY</P>
+      <P class=table-para>hh:mm:ss:mmm (24 h)</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="21%">
+      <P class=table-para>N/A</P></TD>
+    <TD class=td align=left width="22%">
+      <P class=table-para>114</P></TD>
+    <TD class=td align=left width="24%">
+      <P class=table-para>14</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para>hh:mm:ss:mmm (24 h)</P></TD></TR></TBODY></TABLE>
+<P class=para>Oracle offers a variety of formats for the character-to-number, 
+character-to-date types of conversion. Here are just a few of the most useful 
+formats (shown in <A class=internaljump 
+href="http://www.tar.hu/sqlbible/sqlbible0076.html#wbp17Chapter10T10P10" 
+role="targetype:table">Table 10-10</A>).</P><A name=660></A><A 
+name=wbp17Chapter10T10P10></A>
+<TABLE class=table width="100%" border=1>
+  <CAPTION class=table-title><SPAN class=table-title><SPAN 
+  class=table-titlelabel>Table 10-10: </SPAN>Selected Oracle Datetime Format 
+  Templates</SPAN> </CAPTION>
+  <THEAD>
+  <TR vAlign=top>
+    <TH class=th scope=col align=left width="22%">
+      <P class=table-para>Format Element</P></TH>
+    <TH class=th scope=col align=left width="39%">
+      <P class=table-para>Description</P></TH>
+    <TH class=th scope=col align=left width="39%">
+      <P class=table-para>Example</P></TH></TR></THEAD>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>AD</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para>AD indicator</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(SYSDATE,'YYYY</SPAN> <SPAN class=fixed>AD')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>AM</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para>Meridian indicator (AM/PM)</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(SYSDATE,'HH:MI:SS</SPAN> <SPAN class=fixed>AM')</SPAN> 
+  </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>BC</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para>BC indicator (Before Common era/Before Christ)</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(SYSDATE,'YYYY</SPAN> <SPAN class=fixed>BC')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>D</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para>Day of the week (from 1 to 7)</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(SYSDATE,'D')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>DAY</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para>Name of the day, padded with blank spaces to the total 
+      length of 9 characters</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(SYSDATE,'DAY')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>DD</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para>Day of the month (from 1 to 31)</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(SYSDATE,'DD')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>DDD</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para>Day of the year (from 1 to 366)</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(SYSDATE,'DDD')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>DY</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para>Abbreviated name of the day</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(SYSDATE,'DY')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>HH</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para>Hour of the day (from 1 to 12)</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(SYSDATE,'HH')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>HH12</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para>Hour of the day (from 1 to 12)</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(SYSDATE,'HH12')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>HH24</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para>Hour of the day (from 0 to 23)</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(SYSDATE,'HH24')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>MI</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para>Minute (from 0 to 59)</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(SYSDATE,'MI')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>MM</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para>Month (from 01 to 12)</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(SYSDATE,'MO')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>MON</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para>Abbreviated name of the month</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(SYSDATE,'MON')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>MONTH</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para>Name of the month, padded with blank spaces to the 
+      total length of 9 characters</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(SYSDATE,'MONTH')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>PM</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para>Meridian indicator (AM/PM)</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(SYSDATE,'PM')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>RM</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para>Roman numeral month (from I to XII)</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(SYSDATE,'RM')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>RR</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para>Calculates full year given 2 digits</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(SYSDATE,'RR')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>SS</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para>Second (from 0 to 59)</P></TD>
+    <TD class=td align=left width="39%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR(SYSDATE,'SS')</SPAN> 
+  </P></TD></TR></TBODY></TABLE>
+<P class=para>Character-to-date/date-to-character format templates are accepted 
+by the date-related functions <SPAN class=fixed>TO_DATE</SPAN>, <SPAN 
+class=fixed>TO_TIMESTAMP</SPAN>, <SPAN class=fixed>TO_TIMESTAMP_TZ</SPAN>, <SPAN 
+class=fixed>TO_YMINTERVAL</SPAN>, and <SPAN class=fixed>TO_DS_INTERVAL</SPAN> 
+(see <A class=chapterjump 
+href="http://www.tar.hu/sqlbible/sqlbible0157.html#1360">Appendix G</A> for 
+their syntax and brief descriptions). Function <SPAN class=fixed>TO_CHAR</SPAN> 
+also accepts these format templates when converting character data into date 
+type data. The separator characters between these format elements could be 
+dashes (<SPAN class=fixed>-</SPAN>), forward slashes (<SPAN 
+class=fixed>/</SPAN>), commas (<SPAN class=fixed>,</SPAN>), semicolons (<SPAN 
+class=fixed>;</SPAN>), apostrophes (<SPAN class=fixed>'</SPAN>), or colons 
+(<SPAN class=fixed>:</SPAN>). The Example column shows how to use the format 
+template against a current date returned by Oracle's <SPAN 
+class=fixed>SYSDATE</SPAN> function.<A name=661></A> </P>
+<P class=para>Each of these elements can be used in conjunction with all other 
+valid elements in the table. For example, to produce a string representing a 
+current date in format <SPAN class=fixed>&lt;date&gt;&lt;full</SPAN> <SPAN 
+class=fixed>day's</SPAN> <SPAN class=fixed>name&gt;&lt;full</SPAN> <SPAN 
+class=fixed>month</SPAN> <SPAN class=fixed>name&gt;&lt;spelled</SPAN> <SPAN 
+class=fixed>out</SPAN> <SPAN class=fixed>year&gt;</SPAN> this SQL query would 
+help:<A name=662></A> </P>
+<DIV class=widecontent><PRE class=programlisting>select
+			 TO_CHAR(SYSDATE,'DD-DAY-MONTH-YEAR') LONG_DATE FROM dual; LONG_DATE
+			 -------------------------------------- 12-THURSDAY -SEPTEMBER-TWO THOUSAND
+			 TWO</PRE></DIV>
+<P class=para>The RR date format element needs a little more explanation. It 
+represents an incomplete two-digit year (remember the so-called "Y2K" scare?). 
+If the input for the <SPAN class=fixed>TO_DATE</SPAN> function is a year with 
+the last two digits less than 50, and the current year's last two digits are 
+equal to or less than 50, then the date will be in the current century: </P>
+<DIV class=widecontent><PRE class=programlisting>select
+			 TO_DATE('09/12/49','DD/MM/RR') a_date FROM dual; a_date --------------
+			 09-DEC-49</PRE></DIV>
+<P class=para>To make this output more intelligible, we need to see all four 
+digits of the year part of the date. The time zone examples given earlier in 
+this chapter showed how to change output display format by altering a session's 
+settings. Similarly, the following statement displays all four digits in 
+Oracle's SQL*Plus utility:</P><PRE class=programlisting>ALTER SESSION SET
+			 NLS_DATE_FORMAT = 'DD-MON-YYYY';</PRE>
+<P class=para>The same query would produce a four-digit year output:</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 TO_DATE('09/12/49','DD/MM/RR') a_date FROM dual; a_date --------------
+			 09-DEC-2049<A name=663></A>
+</PRE></DIV>
+<P class=para>If supplied date digits are equal to or over 50, and the current 
+year's last two digits are less than or equal to 50, then the resulting date 
+will be from the previous century (current year's first two digits minus 1):</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 TO_DATE('09/12/51','DD/MM/RR') a_date FROM dual; a_date -----------
+			 09-DEC-1951</PRE></DIV>
+<P class=para>The format templates in <A class=internaljump 
+href="http://www.tar.hu/sqlbible/sqlbible0076.html#wbp17Chapter10T10P10" 
+role="targetype:table">Table 10-10</A> are used to convert numeric data into a 
+character string of specific format. For example, the following query displays 
+the result of a conversion using the <SPAN class=fixed>TO_CHAR</SPAN> function 
+(see <A class=internaljump 
+href="http://www.tar.hu/sqlbible/sqlbible0076.html#wbp17Chapter10T11P11" 
+role="targetype:table">Table 10-11</A> for the conversion format templates): 
+</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 TO_CHAR(-1234,'9999MI') result FROM dual; result ----------- 1234-<A name=664></A>
+</PRE></DIV><A name=665></A><A name=wbp17Chapter10T11P11></A>
+<TABLE class=table width="100%" border=1>
+  <CAPTION class=table-title><SPAN class=table-title><SPAN 
+  class=table-titlelabel>Table 10-11: </SPAN>Selected Oracle Number Format 
+  Templates</SPAN> </CAPTION>
+  <THEAD>
+  <TR vAlign=top>
+    <TH class=th scope=col align=left width="22%">
+      <P class=table-para>Format element</P></TH>
+    <TH class=th scope=col align=left width="46%">
+      <P class=table-para>Description</P></TH>
+    <TH class=th scope=col align=left width="33%">
+      <P class=table-para>Example</P></TH></TR></THEAD>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>$</P></TD>
+    <TD class=td align=left width="46%">
+      <P class=table-para>Returns value with appended dollar sign at the 
+      beginning.</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(1234,'$9999')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>0</P></TD>
+    <TD class=td align=left width="46%">
+      <P class=table-para>Returns leading and/or trailing zeroes.</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(1234,'09999')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>9</P></TD>
+    <TD class=td align=left width="46%">
+      <P class=table-para>Returns value of the specified number of digits, 
+      adding leading blank space for positive numbers or leading minus sign for 
+      negatives.</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(1234,'9999')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>B</P></TD>
+    <TD class=td align=left width="46%">
+      <P class=table-para>Returns blanks for the integer of a fixed-point 
+      number, where the integer part of the number is zero.</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(1234,'B9999')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>C</P></TD>
+    <TD class=td align=left width="46%">
+      <P class=table-para>Returns ISO currency symbol (as defined by Oracle's 
+      NLS_ISO_CURRENCY parameter) in the requested position.</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(1234,'C9999')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>D</P></TD>
+    <TD class=td align=left width="46%">
+      <P class=table-para>Returns ISO decimal character (as defined by Oracle's 
+      NLS_NUMERIC_CHARACTER parameter) in the requested position.</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(1234.5,'99D99')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>EEEE</P></TD>
+    <TD class=td align=left width="46%">
+      <P class=table-para>Returns value in scientific notation.</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(1234,'9.9EEEE')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>FM</P></TD>
+    <TD class=td align=left width="46%">
+      <P class=table-para>Returns value with no leading or trailing blank 
+      spaces.</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(1234,'FM9999')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>MI</P></TD>
+    <TD class=td align=left width="46%">
+      <P class=table-para>Returns negative value with the trailing minus sign; 
+      positive values are returned with a trailing blank space.</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(-1234,'9999MI')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>PR</P></TD>
+    <TD class=td align=left width="46%">
+      <P class=table-para>Returns negative value in the angle brackets, and 
+      positive value with leading and trailing blank spaces.</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(-1234,'9999PR')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>RN / rn</P></TD>
+    <TD class=td align=left width="46%">
+      <P class=table-para>Returns value as a Roman numeral in uppercase/or 
+      lowercase.</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(1234,'RN')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>S</P></TD>
+    <TD class=td align=left width="46%">
+      <P class=table-para>Appends minus or plus signs either in the beginning or 
+      at the end of the number.</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(1234,'S9999')</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="22%">
+      <P class=table-para>X</P></TD>
+    <TD class=td align=left width="46%">
+      <P class=table-para>Returns hexadecimal value of the specified number of 
+      digits; noninteger values are rounded.</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para><SPAN class=fixed>TO_CHAR</SPAN> <SPAN 
+      class=fixed>(1234,'XXXX')</SPAN> </P></TD></TR></TBODY></TABLE>
+<P class=para>IBM DB2 UDB does not offer multiple formatting options for any of 
+its functions. It solves formatting problems by offering an incredible number of 
+single functions dealing with every imaginable part of a date, for example, 
+functions <SPAN class=fixed>DAY</SPAN>, <SPAN class=fixed>YEAR</SPAN>, <SPAN 
+class=fixed>MICROSECOND</SPAN>, <SPAN class=fixed>MINUTE</SPAN>, and <SPAN 
+class=fixed>MIDNIGHT_SECONDS</SPAN>.<A name=666></A> </P>
+<P class=para>To convert literal strings into a date or time, the string must be 
+in one of the formats listed in <A class=internaljump 
+href="http://www.tar.hu/sqlbible/sqlbible0076.html#wbp17Chapter10T12P12" 
+role="targetype:table">Table 10-12</A> and <A class=internaljump 
+href="http://www.tar.hu/sqlbible/sqlbible0076.html#wbp17Chapter10T13P13" 
+role="targetype:table">Table 10-13</A>.</P><A name=667></A><A 
+name=wbp17Chapter10T12P12></A>
+<TABLE class=table width="100%" border=1>
+  <CAPTION class=table-title><SPAN class=table-title><SPAN 
+  class=table-titlelabel>Table 10-12: </SPAN>IBM DB2 UDB Date Strings 
+  Formats</SPAN> </CAPTION>
+  <THEAD>
+  <TR vAlign=top>
+    <TH class=th scope=col align=left width="51%">
+      <P class=table-para>Format</P></TH>
+    <TH class=th scope=col align=left width="33%">
+      <P class=table-para>Template</P></TH>
+    <TH class=th scope=col align=left width="16%">
+      <P class=table-para>Example</P></TH></TR></THEAD>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=td align=left width="51%">
+      <P class=table-para>International Standard Organization (ISO)</P>
+      <P class=table-para>Japanese Industrial Standard Christian Era 
+(JIS)</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para>YYYY-MM-DD</P></TD>
+    <TD class=td align=left width="16%">
+      <P class=table-para><SPAN class=fixed>2002-09-12</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="51%">
+      <P class=table-para>IBM USA Standard</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para>MM/DD/YYYY</P></TD>
+    <TD class=td align=left width="16%">
+      <P class=table-para><SPAN class=fixed>09/12/2002</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="51%">
+      <P class=table-para>IBM European Standard</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para>DD.MM.YYYY</P></TD>
+    <TD class=td align=left width="16%">
+      <P class=table-para><SPAN class=fixed>12.09.2002</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="51%">
+      <P class=table-para>Database Custom Defined</P></TD>
+    <TD class=td align=left width="33%">
+      <P class=table-para>Depends on the database country code</P></TD>
+    <TD class=td align=left width="16%">
+      <P class=table-para>N/A</P></TD></TR></TBODY></TABLE><A name=668></A><A 
+name=wbp17Chapter10T13P13></A>
+<TABLE class=table width="100%" border=1>
+  <CAPTION class=table-title><SPAN class=table-title><SPAN 
+  class=table-titlelabel>Table 10-13: </SPAN>IBM DB2 UDB Time String 
+  Formats</SPAN> </CAPTION>
+  <THEAD>
+  <TR vAlign=top>
+    <TH class=th scope=col align=left width="51%">
+      <P class=table-para>Format</P></TH>
+    <TH class=th scope=col align=left width="36%">
+      <P class=table-para>Template</P></TH>
+    <TH class=th scope=col align=left width="13%">
+      <P class=table-para>Example</P></TH></TR></THEAD>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=td align=left width="51%">
+      <P class=table-para>International Standard Organization (ISO)</P>
+      <P class=table-para>Japanese Industrial Standard Christian Era 
+(JIS)</P></TD>
+    <TD class=td align=left width="36%">
+      <P class=table-para>HH.MM.SS</P></TD>
+    <TD class=td align=left width="13%">
+      <P class=table-para><SPAN class=fixed>22.45.02</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="51%">
+      <P class=table-para>IBM USA Standard</P></TD>
+    <TD class=td align=left width="36%">
+      <P class=table-para>HH:MM AM/PM</P></TD>
+    <TD class=td align=left width="13%">
+      <P class=table-para><SPAN class=fixed>10.45</SPAN> <SPAN 
+      class=fixed>PM</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="51%">
+      <P class=table-para>IBM European Standard</P></TD>
+    <TD class=td align=left width="36%">
+      <P class=table-para>HH.MM.SS</P></TD>
+    <TD class=td align=left width="13%">
+      <P class=table-para><SPAN class=fixed>22.45.02</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="51%">
+      <P class=table-para>Database Custom Defined</P></TD>
+    <TD class=td align=left width="36%">
+      <P class=table-para>Depends on the database country code</P></TD>
+    <TD class=td align=left width="13%">
+      <P class=table-para><SPAN class=fixed>N/A</SPAN> </P></TD></TR></TBODY></TABLE>
+<P class=para>For example, this query accepts data in any of the formats in the 
+table and converts it into data type <SPAN class=fixed>DATE</SPAN> in the 
+internal IBM format: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT DATE('2002-09-12')
+			 ISO DATE('09/12/2002') USA DATE('12.09.2002') EUR FROM sysibm.sysdummy1 ISO USA
+			 EUR ----------- ----------- ----------- 09/12/2002 09/12/2002
+			 09/12/2002</PRE></DIV>
+<P class=para>The DB2 UDB <SPAN class=fixed>TIMESTAMP</SPAN>/<SPAN 
+class=fixed>TIMESTAMP_FORMAT</SPAN> function has only two formats (<SPAN 
+class=fixed>YYYY-MM-DD</SPAN> <SPAN class=fixed>HH:MM:SS</SPAN> and <SPAN 
+class=fixed>YYYY-MM-DD</SPAN> <SPAN class=fixed>HH:MM:SS:nnnnnn)</SPAN> to use 
+when either converting a string into a timestamp or a timestamp into a 
+string.</P>
+<P class=para>As for the <SPAN class=fixed>CHAR</SPAN> and <SPAN 
+class=fixed>VARCHAR</SPAN> functions that could be used to convert a <SPAN 
+class=fixed>DATE</SPAN> or <SPAN class=fixed>TIME</SPAN> into a string, there 
+are no templates to be applied; the resulting string is always in the 
+system-specified format. You could bypass this deficiency by implementing a 
+custom function for this purpose.</P>
+<P class=last-para>The data type can only be casted/converted into a compatible 
+data type. To make things worse, every database has its own compatibility 
+criteria: compatible types in one RDBMS might be incompatible in another. In the 
+foregoing example, for instance, we cannot cast <SPAN class=fixed>DECIMAL</SPAN> 
+to <SPAN class=fixed>VARCHAR</SPAN> in DB2 UDB as these are incompatible for 
+this RDBMS, while the same operation in the MS SQL Server or Oracle would be 
+perfectly legal.<A name=669></A> </P></DIV>
+<DIV class=section>
+<H4 class=sect4-title>Conversion between different character sets</H4>
+<P class=first-para>The Microsoft SQL Server uses functions <SPAN 
+class=fixed>NCHAR</SPAN> and <SPAN class=fixed>UNICODE</SPAN> for the conversion 
+purpose. The <SPAN class=fixed>NCHAR</SPAN> function returns the <SPAN 
+class=fixed>UNICODE</SPAN> character being given an integer code as defined by 
+the Unicode standard, and the <SPAN class=fixed>UNICODE</SPAN> function returns 
+the character corresponding to the integer code.</P>
+<P class=para>For example, the following operations take the Scandinavian 
+character 'Ø' to find a <SPAN class=fixed>UNICODE</SPAN> number for it: </P><PRE class=programlisting>SELECT UNICODE('Ø') uni_code
+			 uni_code ---------- 216</PRE>
+<P class=para>It then displays the character again by passing this number into 
+the <SPAN class=fixed>NCHAR</SPAN> function: </P><PRE class=programlisting>SELECT NCHAR(216)
+			 uni_character uni_char -------- Ø</PRE>
+<DIV class=section>
+<H5 class=sect5-title>Oracle 9<I class=emphasis>i</I> CONVERT, TRANSLATE ... 
+USING and UNISTR</H5>
+<P class=first-para>The function <SPAN class=fixed>TRANSLATE...USING</SPAN> 
+converts text from one database default char-acter set into another. In a sense 
+it works like Oracle's <SPAN class=fixed>CONVERT</SPAN> function, except that 
+the former deals with strings (as opposed to <I class=emphasis>text</I>), which 
+could be <SPAN class=fixed>NCHAR</SPAN> or <SPAN class=fixed>NVARCHAR</SPAN> 
+data types.<A name=670></A> </P>
+<P class=para>The following example converts three characters — one is 'A 
+umlaut' (signified by two dots at the top of the letter, found in German and 
+Scandinavian languages), the letter 'Ø' (from the Scandinavian alphabet), and 
+another being just plain 'A' from the ISO 8859-1 West European 8-bit character 
+set into a U.S. 7-bit ASCII character set:</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT CONVERT('Ä A Ø',
+				'US7ASCII', 'WE8ISO8859P1') translation FROM dual; translation
+				-------------------- A A ?</PRE></DIV>
+<P class=para>As you can see, the 'A umlaut' is translated into regular 'A' 
+because this character does not exist in the English-based U.S. 7-bit ASCII 
+character set. When no replacement is available, a question mark appears. The 
+replacement character's mapping could be defined in the character set 
+itself.</P>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top>Note&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>The <SPAN class=fixed>CHAR_CS</SPAN> value returns 
+      Oracle's database character set ID that is specified for the server. Its 
+      <SPAN class=fixed>NCHAR_CS</SPAN> equivalent does the same for the 
+      national character set.</P></TD></TR></TBODY></TABLE>
+<P class=para>The function <SPAN class=fixed>TRANSLATE</SPAN> <SPAN 
+class=fixed>...</SPAN> <SPAN class=fixed>USING</SPAN> returns similar results: 
+</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT TRANSLATE('Ä A Ø'
+				USING CHAR_CS) translation FROM dual; translation -------------------- A A
+				?</PRE></DIV>
+<P class=para>The function <SPAN class=fixed>UNISTR</SPAN> performs string 
+conversion from any character set into Unicode (see <A class=chapterjump 
+href="http://www.tar.hu/sqlbible/sqlbible0016.html#85">Chapter 2</A> for more 
+information on Unicode); a backslash in the value is an escape character that 
+signifies the input is a hexadecimal number to be converted into a Unicode 
+character (see <A class=chapterjump 
+href="http://www.tar.hu/sqlbible/sqlbible0170.html#1493">Appendix L</A> for more 
+about hexadecimal numbers): </P><PRE class=programlisting>SELECT UNISTR('\00F5'||
+				'\00D1') FROM dual; UN --- 
+				<SPAN class=inlinemediaobject><IMG height=15 alt="" src="sqlbible0076_files/icon01.jpeg" width=14 border=0></SPAN> 
+				<FONT face=symbol>W</FONT><A name=671></A>
+</PRE>
+<P class=para>If you check the number of bytes (using the Oracle function <SPAN 
+class=fixed>LENGTHB</SPAN>) allocated by Oracle to each of these characters, you 
+will find an interesting fact: a length <I class=emphasis>in characters </I>is 
+identical for ASCII and Unicode characters, but the length<I class=emphasis> in 
+bytes </I>shows that a Unicode character occupies 2 bytes as opposed to one for 
+ASCII: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+				LENGTHB(unistr('\00F5')) in_bytes, LENGTH(unistr('\00F5')) in_chars,
+				LENGTHB('A') in_bytes, LENGTH(unistr('A')) in_chars FROM dual; IN_BYTES
+				IN_CHARS IN_BYTES IN_CHARS ---------- ---------- ---------- ---------- 2 1 1
+				1</PRE></DIV>
+<P class=last-para>IBM DB2 UDB uses <SPAN class=fixed>VARGRAPHIC</SPAN> for 
+conversion. The absence of the rich set of functions found in other RDBMS shows 
+the AS/400 legacy. IBM assumes that you set up a database to work in a specific 
+character set and stay there. In the personal edition of DB2 UDB version 8.1 
+this function is not supported.</P></DIV></DIV>
+<DIV class=section>
+<H4 class=sect4-title>Data type specific conversion functions</H4>
+<P class=first-para>In addition to the universal <SPAN class=fixed>CAST</SPAN> 
+function, Oracle has a number of conversion functions specifically for one data 
+type; the same goes for DB2 UDB where data type declarations are conversion 
+functions at the same time.</P>
+<P class=para>There is no difference in results produced by either function, and 
+the only reason for using them is convenience.</P>
+<P class=para>The use of</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT CAST (SYSDATE AS
+			 VARCHAR2(10)) char_date FROM dual; char_date ----------- 10-SEP-02<A name=672></A>
+</PRE></DIV>
+<P class=para>is equivalent to Oracle's</P><PRE class=programlisting>SELECT TO_CHAR(SYSDATE) FROM
+			 dual; char_date ----------- 10-SEP-02</PRE>
+<P class=para>and is identical to IBM DB2 UDB's</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT CHAR(CURRENT DATE)
+			 char_date FROM sysibm.sysdummy1 char_date ----------- 09/10/02</PRE></DIV>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top>Note&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>The actual format of the displayed string depends on 
+      your system settings, and it always could be changed with a formatting 
+      function.</P></TD></TR></TBODY></TABLE>
+<P class=para>Oracle's conversion function for a specific type includes <SPAN 
+class=fixed>TO_DATE</SPAN>, <SPAN class=fixed>TO_CHAR</SPAN>, <SPAN 
+class=fixed>TO_NUMBER</SPAN>, and <SPAN class=fixed>TO_CLOB</SPAN>. For IBM DB2 
+UDB, as mentioned before, the data type declaration is overloaded with an 
+additional conversion functionality.</P>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top width=136>Cross-References&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>For a comprehensive list of vendor-specific functions, 
+      see <A class=chapterjump 
+      href="http://www.tar.hu/sqlbible/sqlbible0157.html#1360">Appendix 
+      G</A>.</P></TD></TR></TBODY></TABLE>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top width=136>Cross-References&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>A data type could be converted into another data type 
+      only if the type it is converted into is compatible with the original. 
+      Since each RDBMS implements its own data types, the conversion rules are 
+      different for each of them. <A class=chapterjump 
+      href="http://www.tar.hu/sqlbible/sqlbible0169.html#1486">Appendix K</A> 
+      contains a matrix table of data conversions for the MS SQL Server, Oracle 
+      9<I class=emphasis>i</I>, and IBM DB2 UDB data 
+types.</P></TD></TR></TBODY></TABLE></DIV></DIV>
+<DIV class=section>
+<H3 class=sect3-title><A name=673></A><A 
+name=wbp17Chapter10P1014></A>Miscellaneous functions</H3>
+<P class=first-para>With every classification there are always some functions 
+that do not fit into a single well-defined category. We've grouped such 
+functions into a "Miscellaneous" category (<A class=internaljump 
+href="http://www.tar.hu/sqlbible/sqlbible0076.html#wbp17Chapter10T14P14" 
+role="targetype:table">Table 10-14</A>).<A name=674></A> </P><A name=675></A><A 
+name=wbp17Chapter10T14P14></A>
+<TABLE class=table width="100%" border=1>
+  <CAPTION class=table-title><SPAN class=table-title><SPAN 
+  class=table-titlelabel>Table 10-14: </SPAN>Miscellaneous Functions</SPAN> 
+  </CAPTION>
+  <THEAD>
+  <TR vAlign=top>
+    <TH class=th scope=col align=left width="25%">
+      <P class=table-para>ORACLE 9i</P></TH>
+    <TH class=th scope=col align=left width="25%">
+      <P class=table-para>IBM DB2 UDB 8.1</P></TH>
+    <TH class=th scope=col align=left width="25%">
+      <P class=table-para>MS SQL Server 2000</P></TH>
+    <TH class=th scope=col align=left width="25%">
+      <P class=table-para>Description</P></TH></TR></THEAD>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>COALESCE</SPAN> (expression1, 
+      expression2, expression3 ...)</P></TD>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>COALESCE</SPAN> (expression1, 
+      expression2, expression3 ...)</P></TD>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>COALESCE</SPAN> (expression1, 
+      expression2, expression3 ...)</P></TD>
+    <TD class=td align=left width="25%">
+      <P class=table-para>Returns first argument on the list that is not <SPAN 
+      class=fixed>NULL. VALUE</SPAN> </P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>CASE</SPAN> (expression) <BR 
+      style="LINE-HEIGHT: 1"><SPAN class=fixed>WHEN</SPAN> &lt;compare value&gt; 
+      <BR style="LINE-HEIGHT: 1"><SPAN class=fixed>THEN</SPAN> &lt;substitute 
+      value&gt; <BR style="LINE-HEIGHT: 1"><SPAN class=fixed>ELSE</SPAN> <SPAN 
+      class=fixed>END</SPAN> </P>
+      <P class=table-para><SPAN class=fixed>DECODE</SPAN> <BR 
+      style="LINE-HEIGHT: 1">(expression compare value, substitute value 
+    ...)</P></TD>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>CASE</SPAN> (expression) <BR 
+      style="LINE-HEIGHT: 1"><SPAN class=fixed>WHEN</SPAN> &lt;compare value&gt; 
+      <BR style="LINE-HEIGHT: 1"><SPAN class=fixed>THEN</SPAN> &lt;substitute 
+      value&gt; <BR style="LINE-HEIGHT: 1"><SPAN class=fixed>ELSE</SPAN> <SPAN 
+      class=fixed>END</SPAN> </P></TD>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>CASE</SPAN> (expression) <BR 
+      style="LINE-HEIGHT: 1"><SPAN class=fixed>WHEN</SPAN> &lt;compare value&gt; 
+      <BR style="LINE-HEIGHT: 1"><SPAN class=fixed>THEN</SPAN>&lt;substitute 
+      value&gt; <BR style="LINE-HEIGHT: 1"><SPAN class=fixed>ELSE</SPAN> <SPAN 
+      class=fixed>END</SPAN> </P></TD>
+    <TD class=td align=left width="25%">
+      <P class=table-para>Compares input expression to some predefined values, 
+      and outputs a substitute value, either hard coded or calculated.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>NULLIF</SPAN> (expression1, 
+      expression2)</P></TD>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>NULLIF</SPAN> (expression1, 
+      expression2)</P></TD>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>NULLIF</SPAN> (expression1, 
+      expression2)</P></TD>
+    <TD class=td align=left width="25%">
+      <P class=table-para>Compares two expressions; if they are null, returns 
+      <SPAN class=fixed>NULL</SPAN>, otherwise the first expression is 
+      returned.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>NVL</SPAN> <BR 
+      style="LINE-HEIGHT: 1">(expression, value)</P></TD>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>COALESCE</SPAN> <BR 
+      style="LINE-HEIGHT: 1">(expression, value)</P></TD>
+    <TD class=td align=left width="25%">
+      <P class=table-para><SPAN class=fixed>ISNULL</SPAN> (expression, 
+    value)</P></TD>
+    <TD class=td align=left width="25%">
+      <P class=table-para>Checks whether expression is null, and if it is 
+      returns specified value.</P></TD></TR>
+  <TR vAlign=top>
+    <TD class=td align=left width="25%">
+      <P class=table-para>NVL2 (expression, value1, value2)</P></TD>
+    <TD class=td align=left width="25%">
+      <P class=table-para>N/A</P></TD>
+    <TD class=td align=left width="25%">
+      <P class=table-para>N/A</P></TD>
+    <TD class=td align=left width="25%">
+      <P class=table-para>If the expression is <SPAN class=fixed>NULL</SPAN>, 
+      returns first value, otherwise returns the second 
+one.</P></TD></TR></TBODY></TABLE>
+<DIV class=section>
+<H4 class=sect4-title>DECODE and CASE</H4>
+<P class=first-para><SPAN class=fixed>CASE</SPAN> is an SQL99 keyword that is 
+implemented as a <SPAN class=fixed>DECODE</SPAN> function in Oracle. Microsoft 
+and DB2 UDB allow the <SPAN class=fixed>CASE</SPAN> statement to be used with a 
+standard <SPAN class=fixed>SELECT</SPAN> statement, and DB2 UDB also uses it as 
+a part of its procedural extension to SQL.<A name=676></A> </P>
+<P class=para>Oracle's <SPAN class=fixed>DECODE</SPAN> function allows you to 
+modify the output of the <SPAN class=fixed>SELECT</SPAN> statement depending on 
+certain conditions. It compares an expression (usually a column value) to each 
+search value one by one. If a match is found, the function returns the 
+corresponding result, otherwise it returns the default value; if no match is 
+found and no default specified, the function returns <SPAN 
+class=fixed>NULL</SPAN>. In addition to <SPAN class=fixed>DECODE</SPAN>, Oracle 
+9<I class=emphasis>i</I> also has a <SPAN class=fixed>CASE</SPAN> statement that 
+is identical in usage to that of the other RDBMS discussed.</P>
+<P class=para>The <SPAN class=fixed>CASE</SPAN> statement produces similar 
+results though using somewhat different syntax — and no function is 
+involved.</P>
+<P class=para>For example, you can prepare a list where a customer's name is 
+listed alongside its credit status. In our ACME database table <SPAN 
+class=fixed>CUSTOMER,</SPAN> column <SPAN class=fixed>CUST_CREDHOLD_S</SPAN> 
+defines whether this particular customer is allowed to order on credit. If it 
+is, the column value is 'Y,' otherwise it displays 'N.' The simple <SPAN 
+class=fixed>SELECT</SPAN> that fetches two columns looks as follows (the syntax 
+is valid for all three vendors): </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT cust_name_s,
+			 cust_credhold_s FROM customer; cust_name_s cust_credhold_s
+			 ---------------------------- --------------- WILE SEAL CORP. Y MAGNETICS USA
+			 INC. N MAGNETOMETRIC DEVICES INC. N FAIR PARK GARDENS N</PRE></DIV>
+<P class=para>While technically correct, such a report requires additional 
+information on how to interpret the somewhat cryptic 'Y' and 'N.' The query that 
+would resolve the problem in Oracle (old syntax) is:</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT cust_name_s,
+			 DECODE(cust_credhold_s, 'Y', 'good credit', 'N', 'on hold', 'undefined') FROM
+			 customer; cust_name_s ---------------------------- --------------- WILE SEAL
+			 CORP. 'good credit' MAGNETICS USA INC. 'on hold' MAGNETOMETRIC DEVICES INC. 'on
+			 hold' FAIR PARK GARDENS 'on hold'<A name=677></A>
+</PRE></DIV>
+<P class=para>And this example produces identical results in the MS SQL Server 
+2000, IBM DB2 UDB, and Oracle 9<I class=emphasis>i:</I> </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT cust_name_s, CASE
+			 cust_credhold_s WHEN 'Y' THEN 'good credit' WHEN 'N' THEN 'on hold' ELSE
+			 'undefined' END FROM customer cust_name_s ----------------------------
+			 --------------- WILE SEAL CORP. 'good credit' MAGNETICS USA INC. 'on hold'
+			 MAGNETOMETRIC DEVICES INC. 'on hold' FAIR PARK GARDENS 'on
+			 hold'</PRE></DIV>
+<P class=para>In plain English the <SPAN class=fixed>DECODE</SPAN> statement in 
+this query means: if the value in the column <SPAN 
+class=fixed>CUST_CREDHOLD_S</SPAN> is 'Y,' then replace it in the output with 
+'good credit' string; if the value is 'N,' then put 'on hold' in its place, if 
+it is neither 'Y' nor 'N,' then replace it with 'undefined.'</P>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top>Note&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>Oracle introduced <SPAN class=fixed>CASE</SPAN> 
+      expressions in version 9<I class=emphasis>i;</I> previous versions used 
+      the <SPAN class=fixed>DECODE</SPAN> function exclusively, and it is still 
+      supported for backward compatibility.</P>
+      <P class=last-para>When using <SPAN class=fixed>CASE</SPAN> expressions 
+      with DB2 UDB, you must have the <SPAN class=fixed>ELSE</SPAN> clause; if 
+      there is no action to take and there is no matching case, add ELSE 
+      NULL.</P></TD></TR></TBODY></TABLE>
+<P class=para>You could use both functions in several ways; here we're just 
+showing a few basic examples of how they are used. For instance, usage is not 
+limited to <SPAN class=fixed>SELECT</SPAN> queries, you also can use them in 
+<SPAN class=fixed>UPDATE</SPAN>. The column <SPAN 
+class=fixed>CUST_STATUS_S</SPAN> can only accept values 'Y' and 'N,' but the 
+following query reverses these values, putting 'N' in place of 'Y' and vice 
+versa: </P>
+<DIV class=widecontent><PRE class=programlisting>UPDATE CUSTOMER SET
+			 cust_status_s = CASE cust_status_s WHEN 'Y' then 'N' ELSE 'Y' END (37 row(s)
+			 affected)</PRE></DIV>
+<P class=last-para>Other uses for the function include the <SPAN 
+class=fixed>WHERE</SPAN> clause and nested queries. Refer to the vendor's 
+documentation for detailed discussions of these features.<A name=678></A> 
+</P></DIV>
+<DIV class=section>
+<H4 class=sect4-title>COALESCE and NULLIF</H4>
+<P class=first-para>These two functions are special cases of the Oracle <SPAN 
+class=fixed>DECODE</SPAN> function and the <SPAN class=fixed>CASE</SPAN> 
+expression, dealing with <SPAN class=fixed>NULL</SPAN> values exclusively; they 
+are found in all three databases.</P>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top>Note&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>IBM DB2 UDB also has a <SPAN class=fixed>VALUE</SPAN> 
+      function that operates in exactly the same way as <SPAN 
+      class=fixed>COALESCE;</SPAN> Oracle's function <SPAN 
+      class=fixed>VALUE</SPAN> has nothing to do with NULLs and belongs to the 
+      object-oriented features domain.</P></TD></TR></TBODY></TABLE>
+<P class=para>The function <SPAN class=fixed>NULLIF</SPAN> compares two 
+expressions; if they are equal, it returns <SPAN class=fixed>NULL</SPAN>, 
+otherwise it returns the first expression. For example, in our <SPAN 
+class=fixed>CUSTOMER</SPAN> table we not only have <SPAN 
+class=fixed>CUST_CREDHOLD_S</SPAN> information but also a <SPAN 
+class=fixed>CUST_STATUS_S</SPAN> column that tells us whether or not this 
+customer is active. If <SPAN class=fixed>CUST_CREDHOLD_S</SPAN> and <SPAN 
+class=fixed>CUST_STATUS_S</SPAN> <SPAN class=fixed><I 
+class=emphasis>s</I></SPAN> contain the same values, we return <SPAN 
+class=fixed>NULL</SPAN>, otherwise <SPAN class=fixed>CUST_CREDHOLD_S</SPAN> 
+<SPAN class=fixed>value</SPAN>. Such a technique might be useful for discovering 
+discrepancies in the company rules. If customer credit is on hold (<SPAN 
+class=fixed>N</SPAN>), then its status also has to be <SPAN 
+class=fixed>N;</SPAN>, if <SPAN class=fixed>NULL</SPAN>s are detected, the 
+conflict must be resolved manually by one of the managers: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 NULLIF(cust_credhold_s, cust_status_s) compare_stat FROM customer compare_stat
+			 ------------ NULL N N N</PRE></DIV>
+<P class=para>The syntax for the <SPAN class=fixed>NULLIF</SPAN> function is 
+identical across all three RDBMS.</P>
+<P class=para>The <SPAN class=fixed>COALESCE</SPAN> function takes the principle 
+of <SPAN class=fixed>NULLIF</SPAN> a step further — it returns the very first 
+argument on the list that is not <SPAN class=fixed>NULL</SPAN>. For example, 
+you've devised several methods for your customers to pay their bills — credit 
+account, direct deposit, and mail-in check. If you are about to send a customer 
+a bill but do not remember which method was approved for this particular 
+customer, this query might help: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT customer_id,
+			 COALESCE(visa_account, direct_deposit, check_account) FROM
+			 account_management</PRE></DIV>
+<P class=last-para>The <SPAN class=fixed>ACCOUNT_MANAGEMENT</SPAN> table is not 
+in our ACME database, but this example gives you an idea how to use the <SPAN 
+class=fixed>COALESCE</SPAN> function. The syntax for this function is identical 
+for all three RDBMS vendors.<A name=679></A> </P></DIV>
+<DIV class=section>
+<H4 class=sect4-title>NVL, NVL2, and ISNULL</H4>
+<P class=first-para>These functions are used to detect <SPAN 
+class=fixed>NULL</SPAN>s in the fetched values and take action by replacing 
+<SPAN class=fixed>NULL</SPAN> values with non-<SPAN class=fixed>NULL</SPAN> 
+values. <SPAN class=fixed>NVL</SPAN> is Oracle's equivalent of the SQL Server's 
+<SPAN class=fixed>ISNULL</SPAN> function; DB2 UDB does not have <SPAN 
+class=fixed>NULL</SPAN> detection functions, but you may use the <SPAN 
+class=fixed>COALESCE</SPAN> function to achieve similar results.</P>
+<P class=para>An example of Oracle's <SPAN class=fixed>NVL</SPAN> function is: 
+</P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 cust_name_s, NVL(cust_alias_s, 'undefined') FROM customer; cust_name_s
+			 alias_status --------------------- ----------------- WILE SEAL CORP. MNGA71396
+			 MAGNETICS USA INC. MNGA71398 MAGNETOMETRIC DEVICES INC. MNGA71400 FAIR PARK
+			 GARDENS undefined INTEREX USA undefined</PRE></DIV>
+<P class=para>This query will return a list of customer names and their 
+corresponding aliases. For the customers where an alias value is not yet entered 
+(and therefore contains <SPAN class=fixed>NULL</SPAN>), the resulting list would 
+contain 'undefined.' In the SQL Server's syntax this query would look as 
+follows: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 cust_name_s, ISNULL(cust_alias_s, 'undefined') alias_status FROM customer
+			 cust_name_s alias_status ----------------------------- --------------- WILE
+			 SEAL CORP. MNGA71396 MAGNETICS USA INC. MNGA71398 MAGNETOMETRIC DEVICES INC.
+			 MNGA71400 FAIR PARK GARDENS undefined INTEREX USA undefined</PRE></DIV>
+<P class=para>As we've mentioned, the DB2 UDB equivalent would use the <SPAN 
+class=fixed>COALESCE</SPAN> function: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 cust_name_s, COALESCE(cust_alias_s, 'undefined') alias_status FROM customer
+			 cust_name_s alias_status -----------------------------
+			 ---------------<A name=680></A> WILE SEAL CORP. MNGA71396 MAGNETICS USA INC. MNGA71398
+			 MAGNETOMETRIC DEVICES INC. MNGA71400 FAIR PARK GARDENS undefined INTEREX USA
+			 undefined</PRE></DIV>
+<P class=para>The result of this query in DB2 UDB and the SQL Server is 
+identical to that shown previously for Oracle 9<I class=emphasis>i</I>.</P>
+<P class=para>Oracle 9<I class=emphasis>i</I> also has a more evolved NVL2 
+function, which differs in action from the regular <SPAN class=fixed>NVL</SPAN> 
+function. It allows for more than one substitution based on whether the 
+expression is <SPAN class=fixed>NULL</SPAN> or not. If, for instance, you wish 
+to check what customers were assigned aliases and which were not, this query 
+would do the job: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT
+			 cust_name_s, NVL2(cust_alias_s, 'alias assigned', 'not assigned' ) alias_status
+			 FROM customer; cust_name_s alias_status --------------------- -----------------
+			 WILE SEAL CORP. alias assigned MAGNETICS USA INC. alias assigned MAGNETOMETRIC
+			 DEVICES INC. alias assigned FAIR PARK GARDENS not assigned INTEREX USA not
+			 assigned</PRE></DIV>
+<P class=para>In the above query, if the customer alias column contains <SPAN 
+class=fixed>NULL</SPAN> then 'not assigned' will be included in the final 
+resultset, otherwise 'alias assigned' will be included.</P>
+<P class=para>The arguments for <I class=emphasis>expression2 </I>and <I 
+class=emphasis>expression3</I> can be of any data type except <SPAN 
+class=fixed>LONG</SPAN>, the <I class=emphasis>expression1 </I>can be of any 
+data type.<A name=681></A> </P>
+<TABLE class=note cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=admon-check vAlign=top></TD>
+    <TD class=admon-title vAlign=top>Note&nbsp;</TD>
+    <TD class=admon-body vAlign=top>
+      <P class=first-para>All three RDBMS have a number of functions that are 
+      not covered in this chapter. This refers to Oracle 9<I 
+      class=emphasis>i</I> cursor, analytical, and object reference functions; 
+      IBM DB2 UDB table functions and expressions; as well as Microsoft SQL 
+      Server 2000 system functions, text and image functions, rowset functions, 
+      and so on. These functions represent vendor-specific extensions and are 
+      rarely used; they also require advanced understanding of a particular 
+      RDBMS structure. Most of these are mentioned in <A class=chapterjump 
+      href="http://www.tar.hu/sqlbible/sqlbible0157.html#1360">Appendix 
+      G</A>.</P></TD></TR></TBODY></TABLE>
+<DIV class=sidebar><A name=682></A><A name=wbp17Chapter10P1154></A>
+<TABLE class=BlueLine cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD class=bluecell bgColor=#000080><FONT face=Arial color=#010100 
+      size=2><B><IMG height=2 alt="Start Sidebar" src="sqlbible0076_files/_.gif" 
+      width=1 border=0></B></FONT></TD></TR></TBODY></TABLE><SPAN 
+class=sidebar-title><B>
+<CENTER>Conversion Pitfalls</CENTER></B></SPAN>
+<P class=first-para>For every function that substitutes one value for another, 
+it is important to specify data of compatible data types: the substitute value 
+must match that of the column. For example, if instead of 'undefined' we put a 
+number 0, the MS SQL Server and IBM DB2 UDB databases would generate an error 
+complaining about inability to convert <SPAN class=fixed>VARCHAR</SPAN> into 
+<SPAN class=fixed>INTEGER</SPAN>.</P>
+<P class=para>Oracle would implicitly convert <SPAN class=fixed>NUMBER</SPAN> 
+into <SPAN class=fixed>VARCHAR2</SPAN>, but not vice versa. The following query 
+demonstrates this distinctive Oracle' behavior: </P>
+<DIV class=widecontent><PRE class=programlisting>SELECT '4'||5
+				concat_value, '4'+ 5 sum_value FROM dual; concat_value sum_value
+				---------------- ----------- 45 @SB code:9 </PRE></DIV>
+<P class=last-para>Based on the operator's function, Oracle implicitly converted 
+the literal 4 (a character, defined by single quotes) into the <SPAN 
+class=fixed>NUMBER</SPAN> data type for the <SPAN class=fixed>SUM_VALUES</SPAN> 
+(operator +), and for the <SPAN class=fixed>CONCAT_VALUE</SPAN> (operator ||). 
+The number 5 was converted into a string.</P>
+<TABLE class=BlueLine cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD class=bluecell bgColor=#000080><FONT face=Arial color=#010100 
+      size=2><B><IMG height=2 alt="End Sidebar" src="sqlbible0076_files/_.gif" 
+      width=1 border=0></B></FONT></TD></TR></TBODY></TABLE></DIV>
+<TABLE class=BlankSpace cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD height=16></TD></TR></TBODY></TABLE></DIV></DIV>
+<DIV class=section>
+<H3 class=sect3-title><A name=683></A><A 
+name=wbp17Chapter10P1168></A>User-Defined Functions</H3>
+<P class=first-para>User-defined functions extend the built-in functionality 
+provided with RDBMS products. They are not a part of the SQL standard, and as 
+such are out of the scope of this book. The syntax for creating a function 
+within RDBMS (the <SPAN class=fixed>CREATE</SPAN> <SPAN 
+class=fixed>FUNCTION)</SPAN> is similar across all three vendors; it is created 
+just as any other RDBMS object.</P>
+<P class=para>Although not every vendor provides an ability to add custom 
+functions, all "big three" RDBMS vendors provide this capability with their 
+RDBMS, thus enabling code reuse (the same functions could be called by many 
+users/programs).</P>
+<P class=para>The user-defined functions are usually implemented in a procedural 
+language, which includes Java and PL/SQL for Oracle, Transact-SQL and C (for 
+extended stored procedures) for the Microsoft SQL Server 2000, and Java and IBM 
+SQL for IBM DB2 UDB 8.1. The syntax vastly differs among these RDBMS.</P>
+<P class=para>In addition to the functions created and maintained within RDBMS, 
+all three vendors provide <I class=emphasis>scripts</I> and <I 
+class=emphasis>executables</I> capabilities for calling external objects 
+maintained by the operating system. The mechanisms for invoking external 
+programs are different, but the principle is the same — provide an ability to 
+communicate with outside OS, without restrictions imposed by RDBMS framework. 
+Such programs could be written in any language supported by OS.<A name=684></A> 
+</P>
+<P class=last-para>The MS SQL Server 2000 also has the ability to invoke and 
+execute OLE (ActiveX) objects within SQL code inside stored procedures via a 
+special set of system-stored procedures.</P></DIV></DIV></DIV><BR>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <DIV style="MARGIN-LEFT: 0.15in"><A 
+      href="http://www.tar.hu/sqlbible/index.html"><IMG height=15 
+      alt="Table of Contents" src="sqlbible0076_files/toc.gif" width=100 
+      border=0></A></DIV></TD>
+    <TD class=v2 vAlign=top align=right>
+      <DIV style="MARGIN-RIGHT: 0.15in"><A 
+      href="http://www.tar.hu/sqlbible/sqlbible0075.html"><IMG height=15 
+      alt="Previous Section" src="sqlbible0076_files/previous.gif" width=62 
+      border=0></A> <A href="http://www.tar.hu/sqlbible/sqlbible0077.html"><IMG 
+      height=15 alt="Next Section" src="sqlbible0076_files/next.gif" width=41 
+      border=0></A> </DIV></TD></TR></TBODY></TABLE></BODY></HTML>

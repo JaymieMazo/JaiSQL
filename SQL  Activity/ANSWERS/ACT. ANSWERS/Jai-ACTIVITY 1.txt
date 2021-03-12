@@ -1,0 +1,131 @@
+CREATE DATABASE Jai
+****************************************
+
+CREATE TABLE Friends
+(
+Lastname VarChar(10)
+Firstname VarChar(20)
+AreaCode Int
+Phone VarChar(8)
+ST VarChar(2)
+ZIP Int
+)
+******************************************
+
+INSERT INTO Friends
+VALUES ('BUNDY' ,'AL', 100,'555-1111', 'IL' ,22333)
+
+INSERT INTO Friends
+VALUES ('MEZA' ,'AL', 200,'555-2222', 'UK' ,NULL)
+
+INSERT INTO Friends
+VALUES ('MERRICK' ,'BUD', 300,'555-6666', 'IL' ,80212)
+
+
+INSERT INTO Friends
+VALUES ('MAST' ,'JD', 381,'555-6767', 'CO' ,23456)
+
+
+INSERT INTO Friends
+VALUES ('BULHER' ,'FERRIS', 345,'555-3223', 'LA' ,23332)
+
+INSERT INTO Friends
+VALUES ('PERKINS' ,'ALTON', 911,'555-3116', 'CA' ,95633)
+
+INSERT INTO Friends
+VALUES ('BOSS ' ,'SIR', 204,'555-2345', 'CT' ,95633)
+
+************************************************************************************
+
+Select * from Friends
+
+************************************************************************************
+
+1. Write a query that returns everyone in the database whose last name begins with M. 
+
+Select * from Friends
+Where Lastname Like 'M%'
+
+2. Write a query that returns everyone who lives in Illinois with a first name of AL. 
+
+Select * from Friends
+Where ST= 'IL' AND Firstname ='AL'
+
+3. Write a query that returns everyone whose area code is between 200 and 910.
+
+Select * from Friends
+Where AreaCode BETWEEN 200 and 910
+
+4. Display the LastName in reverse alphabetical order.
+
+Select * from Friends
+Order by Lastname DESC
+
+
+5. Using the FRIENDS table, write a query that returns the following: 
+
+NAME                ST
+------------------- --
+AL             FROM IL
+
+
+
+Select Firstname +  '      FROM' as NAME , ST from Friends
+Where Firstname='AL' AND ST='IL'
+
+6. Using the FRIENDS table, write a query that returns the following: 
+NAME                       PHONE
+-------------------------- ------------
+MERRICK, BUD               300-555-6666
+MAST, JD                 381-555-6767
+BULHER, FERRIS            345-555-3223
+
+Select Lastname + ', ' +  Firstname as NAME , Phone as PHONE from Friends
+Where Lastname='MERRICK' OR  Lastname='MAST'  OR  Lastname='BULHER'
+
+7. Display all records whose ZIP Code contains number 33.
+
+Select * from Friends
+where ZIP like '%33%'
+
+
+8. Change the last name BOSS to BUNDY
+
+Update  dbo.Friends
+set lastname='BUNDY'
+Where lastname='BOSS' 
+
+9.  Display the FirstName in Alphabetical order
+Select * from Friends
+Order by Firstname ASC
+
+10. Display the all records whose Firstname is AL and lastname is BUNDY.
+
+Select * from Friends
+where Firstname ='AL' AND Lastname ='BUNDY'
+
+11.  Display the all records whose Firstname is AL and all lastname is BUNDY.
+
+Select * from Friends
+WHERE Firstname = 'AL'  OR  lastname ='BUNDY'
+
+
+12.  Display the persons with the Firstname AL or FERRIS.
+
+Select * from Friends
+WHERE Firstname = 'AL'  OR  Firstname = 'FERRIS'
+
+13.  Display the count of all employees whose Firstname is AL
+
+Select count(*) from Friends
+where Firstname='AL'
+
+14.  Display LastName and Zip  as  ZIPCODE
+
+Select  lastname + '     '    +   convert (VARCHAR(10),ZIP) as ZIPCODE
+from Friends 
+
+15. Delete the records of persons whom the ZIP have no value
+
+Delete from friends
+where zip is NULL

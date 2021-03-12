@@ -1,0 +1,160 @@
+Using multiple tables in a query
+
+The SELECT operator syntax given at the end of the previous chapter shows that more than one table may be pointed in the FROM clause. 
+A table listing that does not use WHERE clause is practically unused because this produces the relational operation of the Cartesian product of the tables involved. 
+That is, each record in one table meshes with each record in another table. For example, the tables A      B 
+A	B
+a b  	c d 
+1 2  	2 4 
+2 1  	3 3 
+
+in the query SELECT * FROM A, B; 
+produce the following result:
+
+a b c d 
+1 2 2 4 
+1 2 3 3 
+2 1 2 4 
+2 1 3 3 
+
+
+
+As a rule, the table listing is used with the condition of joining records from different tables in the WHERE clause. The condition for the above tables may be a coincidence of the values, say, in the columns a and c: SELECT * FROM A, B WHERE a=c; 
+
+
+
+Now the result set of that query is the following table: a b c d 
+2 1 2 4 
+
+
+i.e. only those table rows that have equal values in specified columns (equi-join) are joined. Although some arbitrary conditions may be used, nevertheless the equi-join is most commonly used because this operation reproduces a certain entity split by two entities as a result of a normalization process. 
+
+Even though different tables have columns with the same names, the dot notation is needed for uniqueness: 
+
+    <table name>.<column name> 
+
+In cases where ambiguity is not available, that notation need not be used. 
+
+Example. Find the model and the maker of PC priced below $600: SELECT DISTINCT PC.model, maker
+FROM PC, Product
+WHERE PC.model = Product.model AND price < 600; 
+
+As a result each model of the same maker occurs in the result set only once:
+
+model maker 
+1232 A 
+1260 E 
+
+
+Sometimes the table in the FROM clause need to be pointed more than once. In this case renaming is indispensable. 
+
+Example. Find the model pairs with equal price: SELECT DISTINCT A.model AS model_1, B.model AS model_2
+FROM PC AS A, PC B
+WHERE A.price = B.price AND A.model < B.model; 
+
+Here the condition A.model < B.model is to issue one of similar pairs that is only distinguished by rearrangement, for example: 1232, 1233 and 1233, 1232. The DISTINCT keyword is only used to eliminate duplicate rows because equal models with the same price are in the PC table. As a result, we get the following table:
+
+model_1 model_2 
+1232 1233 
+1232 1260 
+
+
+Renaming is also needed in case the FROM clause uses a subquery. So, the first example can be rewritten as follows: SELECT DISTINCT PC.model, maker
+FROM PC,
+       (SELECT maker, model
+       FROM Product) AS prod
+WHERE PC.model = prod.model AND price < 600; 
+
+
+
+Note that in this case the Product qualifier may not be already used in other clauses of the SELECT statement. This is because the Product table is just out of use. Instead of this name the prod alias is used. Moreover, references are only possible to those Product table columns listed in the subquery. 
+
+Explicit join operations
+Explicit join operation for two and more tables may be present in the FROM clause. Among the join operation series described in the SQL standard, the join-on-predicate operation is only supported by the number of database servers. A join-on-predicate syntax is: 
+FROM <table1> [INNER]
+       | {{LEFT | RIGHT | FULL } [OUTER]} JOIN <table2>
+[ON <predicate>] 
+
+A join type may be either the inner or one of the outers. The INNER and OUTER keywords may be omitted, because the outer join is uniquely defined by its type: LEFT, RIGHT, or FULL, whereas the inner join is simply refered to as JOIN. 
+
+A predicate specifies the condition of joining the rows from different tables. In so doing INNER JOIN means that the result set will only include those combinations of rows in two tables for which the predicate elavuates to TRUE. As a rule, the predicate specifies the equi-join on foreign and primary keys of the tables joined, although need not be so. 
+
+Example. Find the maker, model number, and price for each computer in the database: SELECT maker, Product.model AS model_1, PC.model AS model_2, price
+FROM Product INNER JOIN PC ON PC.model = Product.model
+ORDER BY maker, PC.model; 
+
+In this example, the query returns only the row combinations from the PC and Product tables with identical model numbers.
+For better control, the result includes the model number both in the PC table and in the Product table:
+
+maker model_1 model_2 price 
+A 1232 1232 600.0 
+A 1232 1232 400.0 
+A 1232 1232 350.0 
+A 1232 1232 350.0 
+A 1233 1233 600.0 
+A 1233 1233 950.0 
+A 1233 1233 980.0 
+B 1121 1121 850.0 
+B 1121 1121 850.0 
+B 1121 1121 850.0 
+E 1260 1260 350.0 
+
+
+The LEFT JOIN implies that all the rows from the first (left) table are to be in the result set along with the rows for which the predicate evaluates to true. 
+In so doing, the non-matching colunm values in the right table are returned as null values. 
+
+Example. Find all PC models, makers, and prices: SELECT maker, Product.model AS model_1, PC.model AS model_2, price
+FROM Product LEFT JOIN PC ON PC.model = Product.model
+WHERE type = 'PC'
+ORDER BY maker, PC.model; 
+
+It is essential that using the WHERE clause is indispensable for sampling only PC makers as compared with the previous example.
+ Otherwise, laptop and printer models will also get into the result set. 
+This condition is negligible for the above example because the rows only were joined with identical model numbers, and the PC table was between the two joined tables.
+ Here is the result set:
+
+maker model_1 	model_2 price 
+A 	1232 	1232 	600.0 
+A	 1232 	1232 	400.0 
+A 	1232 	1232 	350.0 
+A 	1232 	1232 	350.0 
+A 	1233 	1233 	600.0 
+A	1233 	1233 	950.0 
+A 	1233	1233 	980.0 
+B 	1121 	1121 	850.0 
+B	1121 	1121 	850.0 
+B	1121 	1121 	850.0 
+E	2111 	NULL 	NULL 
+E	2112 	NULL 	NULL 
+E	1260 	1260 	350.0 
+
+
+Because models 2111 and 2112 in the Product table are absent in the PC table, the columns of the PC table contain NULL.
+The RIGHT JOIN is the reverse of the LEFT JOIN, i.e. the result set will include all the rows from the second table and only those rows from the first table for which the join condition is met. In our case the left join 
+
+Product LEFT JOIN PC ON PC.model = Product.model 
+
+will be equivalent to the following right join 
+
+PC RIGHT JOIN Product ON PC.model = Product.model 
+
+Just the query SELECT maker, Product.model AS model_1, PC.model AS model_2, price
+FROM Product RIGHT JOIN PC ON PC.model = Product.model
+ORDER BY maker, PC.model; 
+
+gives the same results as those for inner join, because the right table (PC) has no models that would be missing from the left table (Product), which is reasonable for one-to-many relationship type that occurs between the PC and Product tables. Finally, the result set with FULL JOIN will include not only the matching rows in the both tables but also all conceivable nonmatching rows in initial tables. All the nonmatching colunm values in both tables are returned as null values. A full join presents the combination of the left and right outer joins. 
+So, for the above mentioned A and B tables, the query SELECT A.*, B.*
+FROM A FULL JOIN B
+ON A.a = B.c; 
+
+gives the following result set:
+
+a b c d 
+1 2 NULL NULL 
+2 1 2 4 
+NULL NULL 3 3 
+
+Note this join is symmetrical, i.e. "A FULL JOIN B" is equivalent to "B FULL JOIN A". Also, it should be noted that notation A.* implies "all column from the „@ table". 
+
+
+

@@ -1,0 +1,20 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0032)http://advert.hu/ad/adframe?z=50 -->
+<HTML><HEAD>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<SCRIPT language=JavaScript type=text/javascript>
+var ad_code = '';
+ad_code += '<'+'object classid=\'clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\' codebase=\'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6\' width=\'468\' height=\'60\''+'>';
+ad_code += '<'+'param name=\'movie\' value=\'http://advert.hu/ads/ad.advert.hu/ad1852.swf?clickTAG=http://advert.hu/ad/adclick?z=50%26c=1313%26a=1852\''+'>';
+ad_code += '<'+'param name=\'quality\' value=\'high\''+'>';
+ad_code += '<'+'embed src=\'http://advert.hu/ads/ad.advert.hu/ad1852.swf?clickTAG=http://advert.hu/ad/adclick?z=50%26c=1313%26a=1852\' quality=\'high\' width=\'468\' height=\'60\' type=\'application/x-shockwave-flash\' pluginspace=\'http://www.macromedia.com/go/getflashplayer\''+'>';
+ad_code += '<'+'/embed>';
+ad_code += '<'+'/object'+'>';
+ad_code += '<'+'div style=\'position: absolute; left: 0px; top: 0px; visibility: hidden;\''+'>';
+ad_code += '<'+'img src=\'http://advert.hu/ad/adlog?z=50&c=1313&a=1852\' width=\'0\' height=\'0\''+'>';
+ad_code += '<'+'/div'+'>';
+document.write(ad_code);
+</SCRIPT>
+
+<META content="MSHTML 6.00.2800.1543" name=GENERATOR></HEAD>
+<BODY></BODY></HTML>

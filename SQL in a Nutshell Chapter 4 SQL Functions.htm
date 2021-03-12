@@ -1,0 +1,4035 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0055)http://www.oreilly.com/catalog/sqlnut/chapter/ch04.html -->
+<HTML><HEAD><TITLE>SQL in a Nutshell: Chapter 4: SQL Functions</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=shift_jis">
+<META content="MSHTML 6.00.2800.1543" name=GENERATOR></HEAD>
+<BODY text=#000000 vLink=#0000cc link=#990000 bgColor=#ffffff>
+<TABLE cellSpacing=0 cellPadding=0 width="90%" border=0>
+  <TBODY>
+  <TR>
+    <TD colSpan=2><IMG height=37 alt="Search the Catalog" isMap 
+      src="SQL in a Nutshell Chapter 4 SQL Functions_files/catalog_header_buttons.gif" 
+      width=515 align=bottom useMap=#catalog_header_buttons border=0> <MAP 
+      name=catalog_header_buttons><AREA shape=RECT coords=407,17,512,32 
+        href="http://www.oreilly.com/catalog/search.html"><AREA shape=RECT 
+        coords=431,3,512,18 
+      href="http://www.oreilly.com/catalog/prdindex.html"></MAP></TD></TR>
+  <TR>
+    <TD vAlign=top width="25%"><A 
+      href="http://www.oreilly.com/catalog/sqlnut/"><IMG alt="SQL in a Nutshell" 
+      hspace=10 
+      src="SQL in a Nutshell Chapter 4 SQL Functions_files/sqlnut.s.gif" 
+      align=left vspace=10 border=0 valign="top"> </A></TD>
+    <TD vAlign=top height=105><BR>
+      <H2>SQL in a Nutshell</H2><FONT size=-1>By Kevin Kline with Daniel Kline, 
+      Ph.D.<BR>January 2001<BR>1-56592-744-3, Order Number: 7443<BR>224 pages, 
+      $29.95 </FONT></TD></TR></TBODY></TABLE>
+<HR noShade SIZE=1>
+<!--sample chapter begins -->
+<BLOCKQUOTE>
+  <H2 class=ChapterTitle>Chapter 4 <BR><A name=_Toc484170282></A>SQL 
+  Functions</H2>
+  <P class=Body>A <EM class=Filename>function</EM> is a special type of command 
+  word in the SQL99 command set. In effect, functions are one-word commands that 
+  return a single value. The value of a function can be determined by input 
+  parameters, as with a function that averages a list of database values. But 
+  many functions do not use any type of input parameter, such as the function 
+  that returns the current system time, <EM 
+class=Filename>CURRENT_TIME</EM>.</P>
+  <P class=Body>The SQL99 standard supports a number of useful functions. This 
+  chapter covers those functions, providing detailed descriptions and examples. 
+  In addition, each database vendor maintains a long list of their own internal 
+  functions that are outside of the scope of the SQL standard. Lists and 
+  descriptions are provided for each database implementation's internal 
+  functions.</P>
+  <P class=Body>In addition, most database vendors support the ability to create 
+  user-defined functions (UDF). For more information on UDFs, refer to the <EM 
+  class=Filename>CREATE FUNCTION</EM> command in <EM class=EmphasisRoman>Chapter 
+  3, </EM><CITE class=Citation>SQL Statements Command Reference</CITE>.</P>
+  <H2 class=HeadA><A name=_Toc484170283></A>Deterministic and Nondeterministic 
+  Functions</H2>
+  <P class=Body>Functions can be either deterministic or nondeterministic. A <EM 
+  class=Emphasis>deterministic</EM> function always returns the same results if 
+  given the same input values. A <EM class=Emphasis>nondeterministic</EM> 
+  function returns different results every time it is called, even when the same 
+  input values are provided.</P>
+  <P class=Body>Why is this important? It is important because of how functions 
+  may be used within views, user-defined functions, and stored procedures. The 
+  restrictions vary across implementations, but these objects sometimes allow 
+  only deterministic functions within their defining code. For example, 
+  Microsoft SQL Server allows the creation of an index on a column 
+  expression--as long as the expression does not contain nondeterministic 
+  functions. Rules and restrictions vary between the vendors, so check their 
+  documentation when using functions.</P>
+  <H2 class=HeadA><A name=_Toc484170284></A>Types of Functions</H2>
+  <P class=Body>There are several basic types and categories of functions in 
+  SQL99 and vendor implementations of SQL. The basic types of functions are: 
+</P>
+  <DL>
+    <DT class=ListVariableTerm>Aggregate functions 
+    <DD class=ListVariable>Operate against a collection of values, but return a 
+    single, summarizing value. 
+    <P></P>
+    <DT class=ListVariableTerm>Scalar functions 
+    <DD class=ListVariable>Operate against a single value, and return a single 
+    value based on the input value. Some scalar functions, <EM 
+    class=Filename>CURRENT_TIME</EM> for example, do not require any arguments. 
+    <P></P></DD></DL>
+  <H3 class=HeadB><A name=_Toc484170285></A>Aggregate Functions</H3>
+  <P class=Body>Aggregate functions return a single value based upon a set of 
+  other values. If used among many other expressions in the item list of a <EM 
+  class=Emphasis>SELECT</EM> statement, the <EM class=Emphasis>SELECT</EM> must 
+  have a <EM class=Emphasis>GROUP BY</EM> clause. No <EM class=Emphasis>GROUP 
+  BY</EM> clause is required if the aggregate function is the only value 
+  retrieved by the <EM class=Emphasis>SELECT</EM> statement. The supported 
+  aggregate functions and their syntax are listed in <A class=XRef 
+  href="http://www.oreilly.com/catalog/sqlnut/chapter/ch04.html#71858">Table 
+  4-1</A>.</P>
+  <P>
+  <TABLE border=1>
+    <CAPTION><B class=TableLabel><A name=71858>Table 4-1:</A></B> <B 
+    class=TableTitle>SQL99 Aggregate Functions </B></CAPTION>
+    <TBODY>
+    <TR>
+      <TH>
+        <P class=CellHeading><EM class=Emphasis>Function</EM></P></TH>
+      <TH>
+        <P class=CellHeading>Usage</P></TH></TR>
+    <TR>
+      <TD>
+        <P class=CellCode><EM class=Filename>AVG(expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Computes the average value of a column by the 
+        expression </P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellCode><EM class=Filename>COUNT(expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Counts the rows defined by the expression</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellCode><EM class=Filename>COUNT(*)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Counts all rows in the specified table or 
+    view</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellCode><EM class=Filename>MIN(expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Finds the minimum value in a column by the 
+        expression</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellCode><EM class=Filename>MAX(expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Finds the maximum value in a column by the 
+        expression</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellCode><EM class=Filename>SUM(expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Computes the sum of column values by the 
+      expression</P></TD></TR></TBODY></TABLE>
+  <P class=Body>Technically speaking, <EM class=Filename>ANY</EM>, <EM 
+  class=Filename>EVERY</EM>, and <EM class=Filename>SOME</EM> are considered 
+  aggregate functions. However, they have been discussed as range search 
+  criteria since they are most often used that way. Refer to the <EM 
+  class=Filename>SELECT</EM> . . . <EM class=Filename>WHERE</EM> topic in the 
+  previous chapter for more information on these functions.</P>
+  <P class=Body>The number of values processed by an aggregate varies depending 
+  on the number of rows queried from the table. This behavior makes aggregate 
+  functions different from scalar functions, which require a fixed number and 
+  fixed type of parameters. </P>
+  <P class=Body>The general syntax of an aggregate function is:</P><PRE><CODE class=Code>aggregate_function_name ( [ALL | DISTINCT] expression )  </CODE>
+</PRE>
+  <P class=Body>The aggregate function name may be <EM class=Filename>AVG</EM>, 
+  <EM class=Filename>COUNT</EM>, <EM class=Filename>MAX</EM>, <EM 
+  class=Filename>MIN</EM>, or <EM class=Filename>SUM</EM>. The<KBD 
+  class=Command> </KBD><EM class=Filename>ALL</EM><KBD class=Command> 
+  </KBD>clause, which is the default behavior and does not actually need to be 
+  specified, evaluates all rows when aggregating the value of the function. The 
+  <EM class=Filename>DISTINCT</EM> clause uses only distinct values when 
+  evaluating the function.</P>
+  <P class=RefName><A name=_Toc398833891></A><A name=_Toc401849062></A><A 
+  name=_Toc484170286></A>AVG and SUM</P>
+  <P class=Body>The <EM class=Filename>AVG</EM> function computes the average of 
+  values in a column or an expression. <EM class=Filename>SUM</EM> computes the 
+  sum. Both functions work with numeric values and ignore NULL values. They also 
+  can be used to compute the average or sum of all <EM class=Emphasis>distinct 
+  </EM>values of a column or expression.</P>
+  <P class=Body><EM class=Emphasis>AVG</EM> and <EM class=Emphasis>SUM</EM> are 
+  supported by Microsoft SQL Server, MySQL, Oracle, and PostgreSQL.</P>
+  <P class=RefSectA><A name=_Toc484170287></A>Example</P>
+  <P class=Body>The following query computes average year-to-date sales for each 
+  type of book:</P><PRE><CODE class=Code>SELECT   type, AVG( ytd_sales ) AS "average_ytd_sales"</CODE>
+<CODE class=Code>FROM     titles </CODE>
+<CODE class=Code>GROUP BY type;</CODE>
+</PRE>
+  <P class=Body>This query returns the sum of year-to-date sales for each type 
+  of book:</P><PRE><CODE class=Code>SELECT   type, SUM( ytd_sales ) </CODE>
+<CODE class=Code>FROM     titles </CODE>
+<CODE class=Code>GROUP BY type;</CODE>
+</PRE>
+  <P class=RefName><A name=_Toc398833892></A><A name=_Toc401849063></A><A 
+  name=_Toc484170288></A>COUNT</P>
+  <P class=Body>The <EM class=Filename>COUNT</EM> function has three variations. 
+  <EM class=Filename>COUNT(*) </EM>counts all the rows in the target table 
+  whether they include nulls or not. <EM class=Filename>COUNT(expression)</EM> 
+  computes the number of rows with non-NULL values in a specific column or 
+  expression. <EM class=Filename>COUNT(DISTINCT expression)</EM> computes the 
+  number of distinct non-NULL values in a column or expression. </P>
+  <P class=RefSectA><A name=_Toc398833893></A><A 
+  name=_Toc484170289></A>Examples</P>
+  <P class=Body>This query counts all rows in a table:</P><PRE><CODE class=Code>SELECT COUNT(*) FROM publishers;</CODE>
+</PRE>
+  <P class=Body>The following query finds the number of different countries 
+  where publishers are located:</P><PRE><CODE class=Code>SELECT COUNT(DISTINCT country) "Count of Countries" </CODE>
+<CODE class=Code>FROM   publishers</CODE>
+</PRE>
+  <P class=RefName><A name=_Toc401849064></A><A name=_Toc484170290></A>MIN and 
+  MAX</P>
+  <P class=Body><EM class=Filename>MIN(expression)</EM><EM class=Emphasis> and 
+  </EM><EM class=Filename>MAX(expression)</EM><EM class=Emphasis> </EM>find the 
+  minimum and maximum value (string, datetime, or numeric) in a set of rows. <EM 
+  class=Filename>DISTINCT</EM> or <EM class=Filename>ALL</EM> may be used with 
+  these functions, but they do not affect the result. </P>
+  <P class=Body><EM class=Emphasis>MIN</EM> and <EM class=Emphasis>MAX</EM> are 
+  supported by Microsoft SQL Server, MySQL, Oracle, and PostgreSQL.</P>
+  <P class=Body>MySQL also supports the functions <EM class=Filename>LEAST( 
+  )</EM> and <EM class=Filename>GREATEST( )</EM>, providing the same 
+  capabilities.</P>
+  <P class=RefSectA><A name=_Toc484170291></A>Examples</P>
+  <P class=Body>The following query finds the best and worst sales for any title 
+  on record:</P><PRE><CODE class=Code>SELECT  'MIN' = MIN(ytd_sales), 'MAX' = MAX(ytd_sales) </CODE>
+<CODE class=Code>FROM    titles;</CODE>
+</PRE>
+  <P class=Body>Aggregate functions are used often in the <EM 
+  class=Filename>HAVING</EM> clause of queries with <EM class=Filename>GROUP 
+  BY</EM>. The following query selects all categories (types) of books that have 
+  an average price for all books in the category higher than $15.00:</P><PRE><CODE class=Code>SELECT  type 'Category', AVG( price ) 'Average Price'</CODE>
+<CODE class=Code>FROM    titles </CODE>
+<CODE class=Code>GROUP BY type </CODE>
+<CODE class=Code>HAVING AVG(price) &gt; 15</CODE>
+</PRE>
+  <H3 class=HeadB><A name=_Toc484170292></A>Scalar Functions</H3>
+  <P class=Body>Scalar functions fall into the categories listed in <A 
+  class=XRef 
+  href="http://www.oreilly.com/catalog/sqlnut/chapter/ch04.html#49091">Table 
+  4-2</A>.</P>
+  <P>
+  <TABLE border=1>
+    <CAPTION><B class=TableLabel><A name=49091>Table 4-2:</A></B> <B 
+    class=TableTitle>Categories of Scalar Functions </B></CAPTION>
+    <TBODY>
+    <TR>
+      <TH>
+        <P class=CellHeading>Function Category</P></TH>
+      <TH>
+        <P class=CellHeading>Explanation</P></TH></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>Built-in</EM></P></TD>
+      <TD>
+        <P class=CellBody>Performs operations on values or settings built into 
+        the database.</P>
+        <P class=CellBody>Oracle uses the term "built-in" to describe all the 
+        specialty functions that are provided by Oracle, and thus "built into" 
+        their DBMS. This is a distinct and separate usage from the built-in 
+        functions described here.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>Date &amp; Time </EM></P></TD>
+      <TD>
+        <P class=CellBody>Performs operations on datetime fields and returns 
+        values in datetime format.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>Numeric </EM></P></TD>
+      <TD>
+        <P class=CellBody>Performs operations on numeric values and returns 
+        numeric values.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>String </EM></P></TD>
+      <TD>
+        <P class=CellBody>Performs operations on character values (<EM 
+        class=Filename>char</EM><B class=EmphasisBold> ,</B> <EM 
+        class=Filename>varchar, nchar, nvarchar, and CLOB</EM>) and returns a 
+        string or numeric value.</P></TD></TR></TBODY></TABLE>
+  <P class=Body>Note that <EM class=Filename>CASE</EM> and <EM 
+  class=Filename>CAST</EM> are both functions. However, they are detailed in 
+  Chapter 3 because of their complexity and frequent usage in SQL-data 
+  statements. </P>
+  <H3 class=HeadB>Built-in Scalar Functions</H3>
+  <P class=Body>SQL99 built-in scalar functions identify the current user 
+  session, and also characteristics of the current user session, such as the 
+  current session privileges. Built-in scalar functions are almost always 
+  nondeterministic. The first three functions listed in <A class=XRef 
+  href="http://www.oreilly.com/catalog/sqlnut/chapter/ch04.html#84804">Table 
+  4-3</A> are built-in functions that fall into the date-and-time category of 
+  functions. Although the four vendors provide many additional functions beyond 
+  these SQL built-ins, the SQL standard declares only those listed in <A 
+  class=XRef 
+  href="http://www.oreilly.com/catalog/sqlnut/chapter/ch04.html#84804">Table 
+  4-3</A>.</P>
+  <P>
+  <TABLE border=1>
+    <CAPTION><B class=TableLabel><A name=84804>Table 4-3:</A></B> <B 
+    class=TableTitle>SQL99 Built-in Scalar Functions </B></CAPTION>
+    <TBODY>
+    <TR>
+      <TH>
+        <P class=CellHeading><EM class=Emphasis>Function</EM></P></TH>
+      <TH>
+        <P class=CellHeading>Usage</P></TH></TR>
+    <TR>
+      <TD>
+        <P class=CellCode><EM class=Filename>CURRENT_DATE</EM></P></TD>
+      <TD>
+        <P class=CellBody>Identifies the current date. </P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellCode><EM class=Filename>CURRENT_TIME</EM></P></TD>
+      <TD>
+        <P class=CellBody>Identifies the current time.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellCode><EM class=Filename>CURRENT_TIMESTAMP</EM></P></TD>
+      <TD>
+        <P class=CellBody>Identifies the current date and time.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellCode><EM class=Filename>CURRENT_USER</EM></P></TD>
+      <TD>
+        <P class=CellBody>Identifies the currently active user within the 
+        database server.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellCode><EM class=Filename>SESSION_USER</EM></P></TD>
+      <TD>
+        <P class=CellBody>Identifies the currently active Authorization ID, if 
+        it differs from the user.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellCode><EM class=Filename>SYSTEM_USER</EM></P></TD>
+      <TD>
+        <P class=CellBody>Identifies the currently active user within the host 
+        operating system.</P></TD></TR></TBODY></TABLE>
+  <P class=Body>Microsoft SQL Server supports all the built-in scalar functions. 
+  Oracle does not support the built-in scalar functions shown above; however, it 
+  supports <EM class=Filename>USER</EM> as a synonym of <EM 
+  class=Filename>CURRENT_USER</EM> and <EM class=Filename>SYSDATE</EM> as a 
+  synonym of <EM class=Filename>CURRENT_TIMESTAMP</EM>. MySQL supports all the 
+  SQL99 built-in scalar functions, plus both of Oracle's variants. PostgreSQL 
+  supports <EM class=Filename>USER</EM>, as defined in SQL99, as a synonym for 
+  <EM class=Filename>CURRENT_USER</EM>. In addition, MySQL supports <EM 
+  class=Filename>NOW( )</EM> and <EM class=Filename>UNIX_TIMESTAMP( )</EM> as 
+  synonyms of the function <EM class=Filename>CURRENT_TIMESTAMP</EM>. PostgreSQL 
+  supports all the SQL99 built-in scalar functions except <EM 
+  class=Filename>SESSION_USER</EM>.</P>
+  <H4 class=HeadC><A name=_Toc484170293></A>Example</H4>
+  <P class=Body>The following queries retrieve the values from built-in 
+  functions. Notice that the various vendors return dates in their native 
+  formats:</P><PRE><CODE class=Code>/* On MySQL */</CODE>
+<CODE class=Code>SELECT CURRENT_TIMESTAMP;</CODE>
+<CODE class=Code>-&gt; '2001-12-15 23:50:26'</CODE>
+<CODE class=Code>&nbsp;</CODE>
+<CODE class=Code>/* On Microsoft SQL Server */</CODE>
+<CODE class=Code>SELECT CURRENT_TIMESTAMP</CODE>
+<CODE class=Code>GO</CODE>
+<CODE class=Code>-&gt; 'Dec 15,2001 23:50:26'</CODE>
+<CODE class=Code>&nbsp;</CODE>
+<CODE class=Code>/* On Oracle */</CODE>
+<CODE class=Code>SELECT USER FROM dual;</CODE>
+<CODE class=Code>-&gt; dylan</CODE>
+</PRE>
+  <H3 class=HeadB><A name=_Toc484170294></A>Numeric Scalar Functions</H3>
+  <P class=Body>The list of official SQL99 numeric functions is rather small. 
+  The various vendors provide quite a large supplement of mathematical and 
+  statistical functions. MySQL supports many of these commands in its SQL99 
+  incarnations. The other database products offer the same capabilities of 
+  numeric scalar functions through their own internally defined functions, but 
+  they do not share the same name as those declared by the SQL standard. The 
+  supported numeric functions and syntax are listed in <A class=XRef 
+  href="http://www.oreilly.com/catalog/sqlnut/chapter/ch04.html#70012">Table 
+  4-4</A>.</P>
+  <P>
+  <TABLE border=1>
+    <CAPTION><B class=TableLabel><A name=70012>Table 4-4:</A></B> <B 
+    class=TableTitle>SQL99 Numeric Functions </B></CAPTION>
+    <TBODY>
+    <TR>
+      <TH>
+        <P class=CellHeading><EM class=Emphasis>Function</EM></P></TH>
+      <TH>
+        <P class=CellHeading>Usage</P></TH></TR>
+    <TR>
+      <TD>
+        <P class=CellCode><EM class=Filename>BIT_LENGTH(expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns an integer value representing the number of 
+        bits in an expression.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellCode><EM class=Filename>CHAR_LENGTH(expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns an integer value representing the number of 
+        characters in an expression.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellCode><EM class=Filename>EXTRACT(datetime_expression 
+        datepart FROM expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Allows the datepart to be extracted (<EM 
+        class=Filename>YEAR</EM>, <EM class=Filename>MONTH</EM>, <EM 
+        class=Filename>DAY</EM>, <EM class=Filename>HOUR</EM>, <EM 
+        class=Filename>MINUTE</EM>, <EM class=Filename>SECOND</EM>, <EM 
+        class=Filename>TIMEZONE_HOUR</EM>, or <EM class=Filename>TIMEZONE_MINUTE 
+        </EM>) from an expression.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellCode><EM 
+class=Filename>OCTET_LENGTH(expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns an integer value representing the number of 
+        octets in an expression. This value is the same as <EM 
+        class=Filename>BIT_LENGTH</EM>/8.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellCode><EM class=Filename>POSITION(starting_string </EM></P>
+        <P class=CellCode><EM class=Filename>IN search_string)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns an integer value representing the starting 
+        position of a string within the search string.</P></TD></TR></TBODY></TABLE>
+  <P class=RefName>BIT_LENGTH, CHAR_LENGTH, and OCTET_LENGTH</P>
+  <P class=Body>The closest any of the vendors get to the <EM 
+  class=Filename>BIT_LENGTH</EM> function is Oracle. Oracle supports the <EM 
+  class=Filename>LENGTHB</EM> function, which returns an integer value 
+  representing the number of bytes in an expression. </P>
+  <P class=Body>MySQL and PostgreSQL support <EM class=Filename>CHAR_LENGTH</EM> 
+  and the SQL99 synonym <EM class=Filename>CHARACTER_LENGTH( )</EM>. PostgreSQL 
+  also supports <EM class=Filename>EXTRACT( )</EM>, <EM 
+  class=Filename>OCTET_LENGTH( )</EM>, and <EM class=Filename>POSITION( )</EM> 
+  as per the SQL99 standard. The other two vendors each have a similar function 
+  that provides identical functionality. SQL Server provides the <EM 
+  class=Filename>LEN</EM> function and Oracle provides the <EM 
+  class=Filename>LENGTH</EM> function. </P>
+  <P class=Body>MySQL and PostgreSQL also fully support the <EM 
+  class=Filename>OCTET_LENGTH</EM> function. </P>
+  <P class=RefSectA><A name=_Toc484170296></A>Example </P>
+  <P class=Body>The following example determines the length of a string and a 
+  value retrieved from a column:</P><PRE><CODE class=Code>/* On MySQL and PostgreSQL */</CODE>
+<CODE class=Code>SELECT CHAR_LENGTH('hello');</CODE>
+<CODE class=Code>SELECT OCTET_LENGTH(book_title) FROM titles;</CODE>
+<CODE class=Code>&nbsp;</CODE>
+<CODE class=Code>/* On Microsoft SQL Server */</CODE>
+<CODE class=Code>SELECT DATALENGTH(title) </CODE>
+<CODE class=Code>FROM titles</CODE>
+<CODE class=Code>WHERE type = 'popular_comp'</CODE>
+<CODE class=Code>GO</CODE>
+<CODE class=Code>&nbsp;</CODE>
+<CODE class=Code>/* On Oracle */</CODE>
+<CODE class=Code>SELECT LENGTH('HORATIO') "Length of characters"</CODE>
+<CODE class=Code>FROM dual;</CODE>
+</PRE>
+  <P class=RefName><A name=_Toc484170297></A>EXTRACT </P>
+  <P class=Body>The <EM class=Filename>EXTRACT</EM> function is not supported by 
+  the database vendors, except for PostgreSQL and MySQL. </P>
+  <P class=Body>Each vendor supports a separate command to accomplish the same 
+  functionality. Oracle uses the <EM class=Filename>TO_CHAR</EM> function to 
+  extract a portion of a date into a character string. SQL Server uses the <EM 
+  class=Filename>CONVERT</EM> function to extract a portion of a date.</P>
+  <P class=Body>MySQL implementation is extended somewhat beyond the SQL99 
+  standard. The SQL99 standard does not have a provision for returning multiple 
+  fields in the same call to <EM class=Filename>EXTRACT( )</EM> (e.g., 
+  "DAY_HOUR"). The MySQL extensions try to accomplish what the combination <EM 
+  class=Filename>DATE_TRUNC( )</EM> and <EM class=Filename>DATE_PART( )</EM> do 
+  in PostgreSQL. MySQL supports the dateparts listed in <A class=XRef 
+  href="http://www.oreilly.com/catalog/sqlnut/chapter/ch04.html#89585">Table 
+  4-5</A>.</P>
+  <P>
+  <TABLE border=1>
+    <CAPTION><B class=TableLabel><A name=89585>Table 4-5:</A></B> <B 
+    class=TableTitle>MySQL Dateparts </B></CAPTION>
+    <TBODY>
+    <TR>
+      <TH>
+        <P class=CellHeading>Type value </P></TH>
+      <TH>
+        <P class=CellHeading>Meaning</P></TH>
+      <TH>
+        <P class=CellHeading>Expected format</P></TH></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>SECOND </EM></P></TD>
+      <TD>
+        <P class=CellBody>Seconds</P></TD>
+      <TD>
+        <P class=CellBody>SECONDS</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>MINUTE </EM></P></TD>
+      <TD>
+        <P class=CellBody>Minutes</P></TD>
+      <TD>
+        <P class=CellBody>MINUTES</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>HOUR </EM></P></TD>
+      <TD>
+        <P class=CellBody>Hours</P></TD>
+      <TD>
+        <P class=CellBody>HOURS</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>DAY </EM></P></TD>
+      <TD>
+        <P class=CellBody>Days</P></TD>
+      <TD>
+        <P class=CellBody>DAYS</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>MONTH </EM></P></TD>
+      <TD>
+        <P class=CellBody>Months</P></TD>
+      <TD>
+        <P class=CellBody>MONTHS</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>YEAR </EM></P></TD>
+      <TD>
+        <P class=CellBody>Years</P></TD>
+      <TD>
+        <P class=CellBody>YEARS</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>MINUTE_SECOND </EM></P></TD>
+      <TD>
+        <P class=CellBody>Minutes and seconds</P></TD>
+      <TD>
+        <P class=CellBody>"MINUTES:SECONDS"</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>HOUR_MINUTE </EM></P></TD>
+      <TD>
+        <P class=CellBody>Hours and minutes</P></TD>
+      <TD>
+        <P class=CellBody>"HOURS:MINUTES"</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>DAY_HOUR </EM></P></TD>
+      <TD>
+        <P class=CellBody>Days and hours</P></TD>
+      <TD>
+        <P class=CellBody>"DAYS HOURS"</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>YEAR_MONTH </EM></P></TD>
+      <TD>
+        <P class=CellBody>Years and months</P></TD>
+      <TD>
+        <P class=CellBody>"YEARS-MONTHS"</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>HOUR_SECOND </EM></P></TD>
+      <TD>
+        <P class=CellBody>Hours, minutes, seconds</P></TD>
+      <TD>
+        <P class=CellBody>"HOURS:MINUTES:SECONDS"</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>DAY_MINUTE </EM></P></TD>
+      <TD>
+        <P class=CellBody>Days, hours, minutes</P></TD>
+      <TD>
+        <P class=CellBody>"DAYS HOURS:MINUTES"</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>DAY_SECOND </EM></P></TD>
+      <TD>
+        <P class=CellBody>Days, hours, minutes, seconds</P></TD>
+      <TD>
+        <P class=CellBody>"DAYSHOURS:MINUTES:SECONDS"</P></TD></TR></TBODY></TABLE>
+  <P class=RefSectA><A name=_Toc484170298></A>Example</P>
+  <P class=Body>This example extracts dateparts from several datetime 
+values:</P><PRE><CODE class=Code>/* On MySQL  */</CODE>
+<CODE class=Code>SELECT EXTRACT(YEAR FROM "2013-07-02");</CODE>
+<CODE class=Code>-&gt; 1999</CODE>
+<CODE class=Code>SELECT EXTRACT(YEAR_MONTH FROM "2013-07-02 01:02:03");</CODE>
+<CODE class=Code>-&gt; 199907</CODE>
+<CODE class=Code>SELECT EXTRACT(DAY_MINUTE FROM "2013-07-02 01:02:03");</CODE>
+<CODE class=Code>-&gt; 20102</CODE>
+</PRE>
+  <P class=RefName><A name=_Toc484170299></A>POSITION</P>
+  <P class=Body>The <EM class=Filename>POSITION</EM> function returns an integer 
+  that indicates the starting position of a string within the search string. 
+  MySQL and PostgreSQL support the <EM class=Filename>POSITION</EM> function 
+  with no variation from the SQL99 syntax. PostgreSQL has a synonymous function, 
+  <EM class=Filename>TEXTPOS,</EM> while MySQL has the synonymous function, <EM 
+  class=Filename>LOCATE</EM>.</P>
+  <P class=Body>Oracle's equivalent function is called <EM 
+  class=Filename>INSTR</EM>. Microsoft SQL Server has both <EM 
+  class=Filename>CHARINDEX</EM> and <EM class=Filename>PATINDEX</EM>. The <EM 
+  class=Filename>CHARINDEX</EM> and <EM class=Filename>PATINDEX</EM> are very 
+  similar, except that <EM class=Filename>PATINDEX</EM> allows the use of 
+  wildcard characters in the search criteria. For example:</P><PRE><CODE class=Code>/* On MySQL */</CODE>
+<CODE class=Code>SELECT LOCATE('bar', 'foobar');</CODE>
+<CODE class=Code>-&gt; 4</CODE>
+<CODE class=Code>&nbsp;</CODE>
+<CODE class=Code>/* On MySQL and PostgreSQL */</CODE>
+<CODE class=Code>SELECT POSITION('fu' IN 'snafhu');</CODE>
+<CODE class=Code>-&gt; 0</CODE>
+<CODE class=Code>&nbsp;</CODE>
+<CODE class=Code>/* On Microsoft SQL Server */</CODE>
+<CODE class=Code>SELECT CHARINDEX( 'de', 'abcdefg' )</CODE>
+<CODE class=Code>GO</CODE>
+<CODE class=Code>-&gt; 4</CODE>
+<CODE class=Code>SELECT PATINDEX( '%fg', 'abcdefg' )</CODE>
+<CODE class=Code>GO</CODE>
+<CODE class=Code>-&gt; 6</CODE>
+</PRE>
+  <H3 class=HeadB><A name=_Toc484170300></A>String Functions</H3>
+  <P class=Body>Basic string functions offer a number of capabilities and return 
+  a string value as a result set. Some string functions are dyadic, indicating 
+  that they operate on two strings at once. SQL99 supports the string functions 
+  listed in <A class=XRef 
+  href="http://www.oreilly.com/catalog/sqlnut/chapter/ch04.html#27402">Table 
+  4-6</A>.</P>
+  <P>
+  <TABLE border=1>
+    <CAPTION><B class=TableLabel><A name=27402>Table 4-6:</A></B> <B 
+    class=TableTitle>SQL String Functions </B></CAPTION>
+    <TBODY>
+    <TR>
+      <TH>
+        <P class=CellHeading><EM class=Emphasis>Function</EM></P></TH>
+      <TH>
+        <P class=CellHeading>Usage</P></TH></TR>
+    <TR>
+      <TD>
+        <P class=CellCode><EM class=Filename>CONCATENATE <BR>(expression || 
+        expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Appends two or more literal expressions, column 
+        values, or variables together into one string.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellCode><EM class=Filename>CONVERT</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts a string to a different representation within 
+        the same character set.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellCode><EM class=Filename>LOWER</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts a string to all lowercase 
+    characters.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellCode><EM class=Filename>SUBSTRING</EM></P></TD>
+      <TD>
+        <P class=CellBody>Extracts a portion of a string.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellCode><EM class=Filename>TRANSLATE</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts a string from one character set to 
+        another.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellCode><EM class=Filename>TRIM</EM></P></TD>
+      <TD>
+        <P class=CellBody>Removes leading characters, trailing characters, or 
+        both from a character string.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellCode><EM class=Filename>UPPER</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts a string to all uppercase 
+    characters.</P></TD></TR></TBODY></TABLE>
+  <P class=RefName>CONCATENATE</P>
+  <P class=Body>SQL99 defines a concatenation operator ( || ), which joins two 
+  distinct strings into one string value. The <EM 
+  class=Filename>CONCATENATE</EM> function appends two or more strings together, 
+  producing a single output string. PostgreSQL and Oracle support the 
+  double-pipe concatenation operator. Microsoft SQL Server uses the plus sign 
+  (+) concatenation operator.</P>
+  <P class=Body>MySQL supports a similar function, <EM class=Filename>CONCAT( 
+  )</EM>. Refer to the "Concatenation Operators" section <EM 
+  class=EmphasisRoman>Chapter 3, </EM><CITE class=Citation>SQL Statements 
+  Command Reference</CITE>, for more information on concatenation within Oracle, 
+  PostgreSQL, and Microsoft SQL Server.</P>
+  <P class=RefSectA><A name=_Toc484170302></A>SQL99 Syntax</P><PRE><CODE class=Code>CONCATENATE('string1' || 'string2')</CODE>
+</PRE>
+  <P class=RefSectA><A name=_Toc484170303></A>MySQL Syntax</P><PRE><CODE class=Code>CONCAT(str1, str2, [,...n])</CODE>
+</PRE>
+  <P class=Body>If any of the concatenation values are null, the entire returned 
+  string is null. Also, if a numeric value is concatenated, it is implicitly 
+  converted to a character string:</P><PRE><CODE class=Code>SELECT CONCAT('My ', 'bologna ', 'has ', 'a ', 'first ', 'name...');</CODE>
+<CODE class=Code>-&gt; 'My bologna has a first name...'</CODE>
+<CODE class=Code>SELECT CONCAT('My ', NULL, 'has ', 'first ', 'name...');</CODE>
+<CODE class=Code>-&gt; NULL</CODE>
+</PRE>
+  <P class=RefName><A name=_Toc484170304></A>CONVERT and TRANSLATE</P>
+  <P class=Body>The <EM class=Filename>CONVERT</EM> function alters the 
+  representation of a character string within its character set and collation. 
+  For example, <EM class=Filename>CONVERT</EM> might be used to alter the number 
+  of bits per character.</P>
+  <P class=Body><EM class=Filename>TRANSLATE</EM> alters the character set of a 
+  string value from one base-character set to another. Thus, <EM 
+  class=Emphasis>TRANSLATE</EM> might be used to translate a value from the 
+  English character set to a Kanji (Japanese) or Russian character set. The 
+  translation must already exist, either by default or having been created using 
+  the <EM class=Filename>CREATE TRANSLATION </EM>command.</P>
+  <P class=RefSectA><A name=_Toc484170305></A>SQL99 Syntax</P><PRE><CODE class=Code>CONVERT (char_value target_char_set USING form_of_use source_char_name)</CODE>
+<CODE class=Code>&nbsp;</CODE>
+<CODE class=Code>TRANSLATE(char_value target_char_set USING translation_name)</CODE>
+</PRE>
+  <P class=Body>Among the database vendors, only Oracle supports <EM 
+  class=Filename>CONVERT</EM> and <EM class=Filename>TRANSLATE</EM> with the 
+  same meaning as SQL99. Oracle's implementation of <EM 
+  class=Filename>TRANSLATE</EM> is very similar to SQL99, but not identical. In 
+  its implementation, Oracle accepts only two arguments and allows translating 
+  only between the database character set or the national language support 
+  character set.</P>
+  <P class=Body>MySQL's implementation of the <EM class=Filename>CONVERT</EM> 
+  function only translates numbers from one base to another. In contrast, 
+  Microsoft SQL Server's implementation of <EM class=Filename>CONVERT</EM> is a 
+  very rich utility that alters the base datatype of an expression, but is 
+  otherwise dissimilar to the SQL99 <EM class=Filename>CONVERT</EM> function. 
+  PostgreSQL does not support <EM class=Filename>CONVERT</EM>, and its 
+  implementation of <EM class=Filename>TRANSLATE</EM> serves to morph any 
+  occurrence of a character string to any other character string.</P>
+  <P class=RefSectA><A name=_Toc484170306></A>MySQL Syntax and Variations</P><PRE><CODE class=Code>CONV(int, from_base, to_base)</CODE>
+</PRE>
+  <P class=Body>MySQL does not support <EM class=Filename>TRANSLATE</EM>. This 
+  implementation of <EM class=Filename>CONVERT</EM> returns a string value 
+  representing the number as it is converted from the <EM 
+  class=Filename>from_base</EM> value to the <EM class=Filename>to_base</EM> 
+  value. If any of the numbers are NULL, then the function returns NULL. 
+  Following are some examples:</P><PRE><CODE class=Code>SELECT CONV("a",16,2);</CODE>
+<CODE class=Code>-&gt; '1010'</CODE>
+<CODE class=Code>SELECT CONV("6E",18,8);</CODE>
+<CODE class=Code>-&gt; '172'</CODE>
+<CODE class=Code>SELECT CONV(-17,10,-18);</CODE>
+<CODE class=Code>-&gt; '-H'</CODE>
+</PRE>
+  <P class=RefSectA><A name=_Toc484170307></A>Microsoft SQL Server Syntax and 
+  Variations</P><PRE><CODE class=Code>CONVERT (data_type[(length) | (precision,scale)], expression[,style])</CODE>
+</PRE>
+  <P class=Body>Microsoft SQL Server does not support <EM 
+  class=Filename>TRANSLATE</EM>. Microsoft's implementation of the <EM 
+  class=Filename>CONVERT</EM> function does not follow the SQL99 specification. 
+  Instead, it is functionally equivalent to the <EM class=Filename>CAST</EM> 
+  function. The <EM class=Filename>style</EM> clause is used to define the 
+  format of a date conversion. Refer to the vendor documentation for more 
+  information. Following is an example:</P><PRE><CODE class=Code><EM class=HTML-Code>SELECT title, CONVERT(char(7), ytd_sales)</EM></CODE>
+<CODE class=Code><EM class=HTML-Code>FROM titles</EM></CODE>
+<CODE class=Code><EM class=HTML-Code>ORDER BY title</EM></CODE>
+<CODE class=Code><EM class=HTML-Code>GO</EM></CODE>
+</PRE>
+  <P class=RefSectA><A name=_Toc484170308></A>Oracle Syntax and Variations</P><PRE><CODE class=Code>CONVERT('char_value', target_char_set, source_char_set)</CODE>
+<CODE class=Code>&nbsp;</CODE>
+<CODE class=Code>TRANSLATE('char_value', 'from_text', 'to_text')</CODE>
+</PRE>
+  <P class=Body>Under Oracle's implementation, the <EM 
+  class=Filename>CONVERT</EM> function returns the <EM 
+  class=Emphasis>char_value</EM> in the target character set. The <EM 
+  class=Emphasis>char_value</EM> is the string being converted, while the <EM 
+  class=Emphasis>target_char_set</EM> is the name of the character set where the 
+  <EM class=Emphasis>char_value</EM> is converted. <EM 
+  class=Emphasis>Source_char_set</EM> is the name of the character set where the 
+  <EM class=Emphasis>char_value</EM> was originally stored. </P>
+  <P class=Body>Both the target and source character set can be either literals 
+  strings, variables, or columns containing the name of the character set. Note 
+  that inadequate replacement characters might be substituted when converting 
+  from or to a character set that does not support a representation of all the 
+  characters used in the conversion. </P>
+  <P class=Body>Oracle supports several common character sets including <EM 
+  class=Emphasis>US7ASCII</EM>, <EM class=Emphasis>WE8DECDEC</EM>, <EM 
+  class=Emphasis>WE8HP</EM>, <EM class=Emphasis>F7DEC</EM>, <EM 
+  class=Emphasis>WE8EBCDIC500</EM>, <EM class=Emphasis>WE8PC850</EM>, and <EM 
+  class=Emphasis>WE8ISO8859P1</EM>. For example: </P><PRE><CODE class=Code>SELECT CONVERT('Gro&szlig;', 'US7ASCII', 'WE8HP')</CODE>
+<CODE class=Code>FROM DUAL;</CODE>
+<CODE class=Code>-&gt;Gross</CODE>
+</PRE>
+  <P class=RefSectA><A name=_Toc484170309></A>PostgreSQL Syntax and 
+  Variations</P><PRE><CODE class=Code>TRANSLATE (character_string, from_text, to_text)</CODE>
+</PRE>
+  <P class=Body>PostgreSQL does not support <EM class=Filename>CONVERT</EM>. 
+  PostgreSQL's implementation of the <EM class=Filename>TRANSLATE</EM> function 
+  offers a large superset of functions compared to that found in the SQL99 
+  specification. Instead, it converts any occurrence of one text string to 
+  another within another specified string. Here is an example:</P><PRE><CODE class=Code>SELECT TRANSLATE('12345abcde', '5a', 'XX');</CODE>
+<CODE class=Code>-&gt; 1234XXbcde</CODE>
+<CODE class=Code>&nbsp;</CODE>
+<CODE class=Code>SELECT TRANSLATE(title, 'Computer', 'PC')</CODE>
+<CODE class=Code>FROM  titles</CODE>
+<CODE class=Code>WHERE type = 'Personal_computer'</CODE>
+</PRE>
+  <P class=RefName><A name=_Toc484170310></A>LOWER and UPPER</P>
+  <P class=Body>The functions <EM class=Filename>LOWER</EM> and <EM 
+  class=Filename>UPPER</EM> allow the case of a string to be altered quickly and 
+  easily, so that all the characters are lower- or uppercase, respectively. 
+  These functions are supported in all the database implementations covered in 
+  this book.</P>
+  <P class=RefSectA><A name=_Toc484170311></A>Example</P><PRE><CODE class=Code>SELECT LOWER('You Talkin To ME?'), UPPER('you talking to me?!');</CODE>
+<CODE class=Code>-&gt; you talking to me?, YOU TALKIN TO ME?!</CODE>
+</PRE>
+  <P class=Body>The various database vendors also support a variety of other 
+  text formatting functions that are specific to their implementation.</P>
+  <P class=RefName><A name=_Toc484170312></A><A 
+  name=_Toc484170315></A>SUBSTRING</P>
+  <P class=Body><A name=_Toc484170316></A>The <EM class=Filename>SUBSTRING</EM> 
+  function allows one character string to be extracted from another.</P>
+  <P class=RefSectA>SQL99 Syntax</P><PRE><CODE class=Code>SUBSTRING(extraction_string FROM starting_position [FOR length]</CODE>
+<CODE class=Code>[COLLATE collation_name])</CODE>
+</PRE>
+  <P class=Body>If any of the inputs are NULL, the <EM 
+  class=Filename>SUBSTRING</EM> function returns a NULL. The <EM 
+  class=Filename>extraction_string</EM> is where the character value is 
+  extracted from. It may be a literal string, a column in a table with a 
+  character datatype, or a variable with a character datatype. The <EM 
+  class=Filename>starting_position</EM> is an integer value telling the function 
+  at which position to perform the extract. The optional <EM 
+  class=Filename>length</EM> is an integer value that tells the function how 
+  many characters to extract, starting at the <EM 
+  class=Filename>starting_position</EM>. </P>
+  <P class=RefSectA><A name=_Toc484170317></A>MySQL Syntax and Variations</P><PRE><CODE class=Code>SUBSTRING(extraction_string FROM starting_position)</CODE>
+</PRE>
+  <P class=Body><A name=_Toc484170318></A>MySQL's implementation assumes that 
+  the characters are to be extracted from the starting position continuing to 
+  the end of the character string.</P>
+  <P class=RefSectA>Microsoft SQL Server Syntax and Variations</P><PRE><CODE class=Code>SUBSTRING(extraction_string [FROM starting_position] [FOR length])</CODE>
+</PRE>
+  <P class=Body>Microsoft SQL Server largely supports the SQL99 standard, except 
+  that it does not allow the <EM class=Filename>COLLATE</EM> clause. Microsoft 
+  allows this command to be applied to text, image, and binary datatypes; 
+  however, the <EM class=Filename>starting_position</EM> and <EM 
+  class=Filename>length</EM> represent the number of bytes rather than the 
+  number of characters to count.</P>
+  <P class=RefSectA><A name=_Toc484170319></A>Oracle Syntax and Variations</P><PRE><CODE class=Code>SUBSTR(extraction_string, starting_position [, length])</CODE>
+</PRE>
+  <P class=Body>Oracle's implementation, <EM class=Filename>SUBSTR</EM>, largely 
+  functions the same way as SQL99. It does not support the <EM 
+  class=Filename>COLLATE</EM> clause. When a <EM 
+  class=Filename>starting_value</EM> is a negative number, Oracle counts from 
+  the end of the <EM class=Filename>extraction_string</EM>. If <EM 
+  class=Filename>length</EM> is omitted, the remainder of the string (starting 
+  at <EM class=Filename>starting_position</EM>) is returned.</P>
+  <P class=RefSectA><A name=_Toc484170320></A>PostgreSQL Syntax and 
+  Variations</P><PRE><CODE class=Code>SUBSTRING(extraction_string [FROM starting_position] [FOR length])</CODE>
+</PRE>
+  <P class=Body>PostgreSQL largely supports the SQL99 standard, except that it 
+  does not accept the <EM class=Filename>COLLATE</EM> clause.</P>
+  <P class=RefSectA><A name=_Toc484170321></A>Examples</P>
+  <P class=Body>These examples generally work on any one of the four database 
+  vendors profiled in this book. Only the second Oracle example, with a negative 
+  starting position, fails on the others (assuming, of course, that Oracle's <EM 
+  class=Filename>SUBSTR</EM> is translated into <EM 
+  class=Filename>SUBSTRING</EM> ):</P><PRE><CODE class=Code>/* On Oracle, counting from the left */</CODE>
+<CODE class=Code>SELECT SUBSTR('ABCDEFG',3,4) FROM DUAL;</CODE>
+<CODE class=Code>-&gt; CDEF</CODE>
+<CODE class=Code>&nbsp;</CODE>
+<CODE class=Code>/* On Oracle, counting from the right */</CODE>
+<CODE class=Code>SELECT SUBSTR('ABCDEFG',-5,4) FROM DUAL;</CODE>
+<CODE class=Code>-&gt; CDEF</CODE>
+<CODE class=Code>&nbsp;</CODE>
+<CODE class=Code>/* On MySQL */</CODE>
+<CODE class=Code>SELECT SUBSTRING('Be vewy, vewy quiet',5);</CODE>
+<CODE class=Code>-&gt; 'wy, vewy quiet''</CODE>
+<CODE class=Code>&nbsp;</CODE>
+<CODE class=Code>/* On PostgreSQL or SQL Server */</CODE>
+<CODE class=Code>SELECT au_lname, SUBSTRING(au_fname, 1, 1)</CODE>
+<CODE class=Code>FROM authors</CODE>
+<CODE class=Code>WHERE au_lname = 'Carson'</CODE>
+<CODE class=Code>-&gt; Carson     C </CODE>
+</PRE>
+  <P class=RefName>TRIM</P>
+  <P class=Body>The <EM class=Filename>TRIM</EM> function removes leading 
+  spaces, trailing characters, or both from a specified character string. This 
+  function also removes other types of characters from a specified character 
+  string. The default function is to trim the specified character from both 
+  sides of the character string. If no removal string is specified, <EM 
+  class=Filename>TRIM</EM> removes spaces by default.</P>
+  <P class=RefSectA><A name=_Toc484170313></A>SQL99 Syntax</P><PRE><CODE class=Code>TRIM( [ [{LEADING | TRAILING | BOTH}] [removal_string] FROM ]</CODE>
+<CODE class=Code>  target_string </CODE>
+<CODE class=Code>  [COLLATE collation_name])</CODE>
+</PRE>
+  <P class=Body>The <EM class=Filename>removal_string</EM> is the character 
+  string to be stripped out. The <EM class=Filename>target _string</EM> is the 
+  character string from which characters are to be taken. If a <EM 
+  class=Filename>removal_string</EM> is not specified, then <EM 
+  class=Filename>TRIM</EM> strips out spaces. The <EM 
+  class=Filename>COLLATE</EM> clause forces the result set of the function into 
+  another preexisting collation set.</P>
+  <P class=Body>MySQL, PostgreSQL, and Oracle support the SQL99 syntax of <EM 
+  class=Filename>TRIM</EM>.</P>
+  <P class=Body>Microsoft SQL Server (and the other vendors for that matter) 
+  provide the functions <EM class=Filename>LTRIM</EM> and <EM 
+  class=Filename>RTRIM</EM> to trim off leading spaces or trailing spaces, 
+  respectively. <EM class=Filename>LTRIM</EM> and <EM class=Filename>RTRIM</EM> 
+  cannot be used to trim other types of characters.</P>
+  <P class=RefSectA><A name=_Toc484170314></A>Examples</P><PRE><CODE class=Code>SELECT TRIM('   wamalamadingdong  ');</CODE>
+<CODE class=Code>-&gt; 'wamalamadingdong'</CODE>
+<CODE class=Code>&nbsp;</CODE>
+<CODE class=Code>SELECT TRIM(LEADING '19' FROM '1976 AMC GREMLIN');</CODE>
+<CODE class=Code>-&gt; '76 AMC GREMLIN'</CODE>
+<CODE class=Code>&nbsp;</CODE>
+<CODE class=Code>SELECT TRIM(BOTH 'x' FROM 'xxxWHISKEYxxx');</CODE>
+<CODE class=Code>-&gt; 'WHISKEY'</CODE>
+<CODE class=Code>&nbsp;</CODE>
+<CODE class=Code>SELECT TRIM(TRAILING 'snack' FROM 'scooby snack');</CODE>
+<CODE class=Code>-&gt; 'scooby '</CODE>
+</PRE>
+  <H2 class=HeadA>Vendor Extensions</H2>
+  <P class=Body>The following section provides a full listing and description of 
+  each vendor-supported function. These functions are vendor-specific. Thus, a 
+  MySQL function, for example, is not guaranteed to be supported by any other 
+  vendor. MySQL functions are provided to give an idea of the capabilities 
+  available within the various products. Refer to the vendor's documentation for 
+  exact syntax usage.</P>
+  <H3 class=HeadB>Microsoft SQL Server-Supported Functions </H3>
+  <P class=Body><A class=XRef 
+  href="http://www.oreilly.com/catalog/sqlnut/chapter/ch04.html#65646">Table 
+  4-7</A> provides an alphabetical listing of Microsoft SQL Server-supported 
+  functions.</P>
+  <P>
+  <TABLE border=1>
+    <CAPTION><B class=TableLabel><A name=65646>Table 4-7:</A></B> <B 
+    class=TableTitle>Microsoft SQL Server-Supported Functions </B></CAPTION>
+    <TBODY>
+    <TR>
+      <TH>
+        <P class=CellHeading><EM class=Filename>Function</EM></P></TH>
+      <TH>
+        <P class=CellHeading>Description</P></TH></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>abs(numeric_expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns absolute value.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>acos( float_expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns angle (in radians) whose cosine is the 
+        specified argument.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>app_name( )</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns application name for current session; set by 
+        application.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM 
+      class=Filename>ascii(character_expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts character to a numeric ASCII code.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>asin( float_expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns angle (in radians) whose sine is the specified 
+        argument.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>atan( float_expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns angle (in radians) whose tangent is the 
+        specified argument.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>atn2( float_expression, 
+        float_expressioin)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns angle (in radians) whose tangent is 
+        <BR>argument1/argument1.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>avg([ All| Distinct] 
+        Expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Computes average of a column.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>binary_checksum(* | expression 
+        [,...n])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns binary checksum for list of expressions or row 
+        of a table.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>cast(Expression as <BR>Data 
+        Type)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts a valid SQL Server expression to the 
+        specified datatype. </P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM 
+      class=Filename>ceiling(numeric_expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns smallest integer greater than or equal to the 
+        argument.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM 
+class=Filename>char(integer_expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts a numeric ASCII code to a 
+character.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>charindex(expression1, expression2 
+        [, start_location])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns position of the first occurrence of a 
+        substring in a string.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>checksum(* | <BR>expression 
+        [,...n])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns checksum value (computed over row values or 
+        expressions provided).</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>checksum_agg([ALL | Distinct] 
+        expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns checksum of the values in group.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>coalesce(expression [,...n]) 
+        </EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the first non-NULL argument from a list of 
+        arguments.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>col_length(`table', 
+        `column')</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns column length in bytes.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>col_name(table_id, 
+        column_id)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns column name, given table ID and column 
+      ID.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>contains({column | }, 
+        `contains_search_condition'})</EM></P></TD>
+      <TD>
+        <P class=CellBody>Searches columns on exact or "fuzzy" matches of <EM 
+        class=Emphasis>contains_seach_criteria</EM>. It is an elaborate function 
+        used to perform full-text searches. Refer to the vendor documentation 
+        for more information.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>containsable(table, column, 
+        contains_search_condition)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns a table with exact and "fuzzy" matches of <EM 
+        class=Emphasis>contains_search_condition</EM>. It is an elaborate 
+        function used to perform full-text searches. Refer to the vendor 
+        documentation for more information.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>convert(data_type [(length)], 
+        expression <BR>[, style])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts data from one datatype to another.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>cos(float_expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns cosine.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>cot(float_expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns cotangent.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>count({[All | <BR>Distinct] 
+        expression]| *})</EM></P></TD>
+      <TD>
+        <P class=CellBody>Counts rows.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>count(*)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Computes the number of rows, including those with NULL 
+        values.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>count( DISTINCT expression 
+        )</EM></P></TD>
+      <TD>
+        <P class=CellBody>Calculates the number of distinct non-NULL values in a 
+        column or expression. Each group of rows with the same value of <EM 
+        class=Emphasis>expression </EM>adds 1 to the result.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>count( expression )</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the number of rows with non-NULL values in a 
+        certain column or expression.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>count_big([All | Distinct] 
+        expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Same as <EM class=Emphasis>count</EM> except returns 
+        big integer.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>current_timestamp</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns current date and time.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>current_user</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns username in the current database of the 
+        current session.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>datalength(expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns number of bytes in a character or binary 
+        string.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>databasepropertyex(database, 
+        property)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns database option or property.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>dateadd(datepart, number, 
+        date)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Adds a number of dateparts (e.g., days) to a datetime 
+        value.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>datediff(datepart, startdate, 
+        enddate)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Calculates difference between two datetime values 
+        expressed in certain dateparts.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>datename(datepart, 
+date)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns name of a datepart (e.g., month) of a datetime 
+        argument.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>datepart(datepart, 
+date)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns value of a datepart (e.g., hour) of a datetime 
+        argument.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>day(date)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns an integer value representing the day of the 
+        date provided as a parameter.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM 
+class=Filename>db_id(`[database_name]')</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns database ID and given name.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>db_name(database_id)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the database name.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM 
+      class=Filename>degrees(numeric_expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts radians to degrees.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>difference(character_expression, 
+        character_expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Compares how two arguments sound and returns a number 
+        from 0 to 4. Higher result indicates better phonetic match.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>exp(float_expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns exponential value.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM 
+      class=Filename>floor(numeric_expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns largest integer less than or equal to the 
+        argument.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>file_id(`file_name')</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the file ID for the logical 
+filename.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>file_name(file_id)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the logical filename for file ID.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>filegroup_id 
+        <BR>(`filegroup_name')</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns filegroup ID for the logical filegroup 
+        name.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>filegroup_name 
+        <BR>(filegroup_id)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the logical filegroup name for filegroup 
+        ID.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>filegroupproperty 
+        <BR>(filegroup_name, property)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns filegroup property value for the specified 
+        property.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>fileproperty <BR>(file, 
+        property)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns file property value for the specified 
+        property.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>fulltextcatalog 
+        <BR>property(catalog_name, property)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns full-text catalog properties.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>fulltextservice 
+        <BR>property(property)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns full-text service level properties.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>formatmessage <BR>(msg_number, 
+        param_value [,... n ])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Constructs a message from an existing message in <B 
+        class=EmphasisBold>SYSMESSAGES</B> table (similar to 
+    RAISERROR).</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>freetexttable(table <BR>{ column 
+        |*}, `freetext_string' [, top_n_by_rank]) </EM></P></TD>
+      <TD>
+        <P class=CellBody>Used for full-text search; returns a table with 
+        columns that match the meaning but don't exactly match value of <EM 
+        class=Emphasis>freetext_string</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>getdate( )</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns current date and time.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM 
+      class=Filename>getansinull([`database'])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns default nullability setting for new 
+        columns.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>getutcdate( )</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns Universal Time Coordinate (UTC) 
+date.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>grouping(column_name)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns 1 when the row is added by CUBE or ROLLUP; 
+        otherwise, returns 0.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>host_id( )</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns workstation ID of a given process.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>host_name( )</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns process hostname.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>ident_incr 
+        <BR>(`table_or_view')</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns identity-column increment value.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>ident_seed 
+        <BR>(`table_or_view')</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns identity seed value.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>ident_current 
+        <BR>(`table_name')</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the last identity value generated for the 
+        specified table.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>identity(data_type [, seed, 
+        increment]) As column_name</EM></P></TD>
+      <TD>
+        <P class=CellBody>Used in <EM class=Emphasis>SELECT INTO</EM> statement 
+        to insert an identity column into the destination table.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>index_col(`table', <BR>index_id, 
+        key_id)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns index column name, given table ID, index ID, 
+        and column sequential number in the index key.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>indexproperty(table_id, index, 
+        property)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns index property (such as Fillfactor).</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>isdate(expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Validates if a character string can be converted to 
+        DATETIME.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>is_member({`group' | 
+        `role'})</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns true or false (1 or 0) depending on whether 
+        user is a member of NT group or SQL Server role.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>is_srvrolemember <BR>(`role' 
+        [,'login'])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns true or false (1 or 0) depending on whether 
+        user is a member of specified server role.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>isnull(check_expression, 
+        replacement_value)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the first argument if it is not NULL; 
+        otherwise, returns the second argument.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>isnumeric(expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Validates if a character string can be converted to 
+        NUMERIC.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>left(character_expression, 
+        integer_expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns a portion of a character expression, starting 
+        at <EM class=Emphasis>integer_expression</EM> from left.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>len(string_expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the number of characters in the 
+      expression.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>log(float_expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns natural logarithm.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>log10(float_expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns base-10 logarithm.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM 
+      class=Filename>lower(character_expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts a string to lowercase.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM 
+      class=Filename>ltrim(character_expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Trims leading-space characters.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>max([All | Distinct] 
+        expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Finds maximum value in a column.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>min([All | Distinct] 
+        expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Finds minimum value in a column.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>month(date)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns month part of the date provided.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM 
+      class=Filename>nchar(integer_expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the unicode character with the given integer 
+        code.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>newid( )</EM></P></TD>
+      <TD>
+        <P class=CellBody>Creates a new unique identifier of type <EM 
+        class=Emphasis>uniqueidentifier</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>nullif(expression, 
+        expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns NULL if two specified expressions are 
+        equivalent.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>object_id(`object')</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns object ID and given name.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>object_name(object_id)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns object name and given ID.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>objectproperty <BR>(id, 
+        property)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns properties of objects in the current 
+        database.</P></TD></TR></TBODY></TABLE>
+  <H3 class=HeadB>MySQL-Supported Functions</H3>
+  <P class=Body><A class=XRef 
+  href="http://www.oreilly.com/catalog/sqlnut/chapter/ch04.html#39306">Table 
+  4-8</A> provides an alphabetical listing of MySQL-supported functions.</P>
+  <P>
+  <TABLE border=1>
+    <CAPTION><B class=TableLabel><A name=39306>Table 4-8:</A></B> <B 
+    class=TableTitle>MySQL-Supported Functions </B></CAPTION>
+    <TBODY>
+    <TR>
+      <TH>
+        <P class=CellHeading>Function</P></TH>
+      <TH>
+        <P class=CellHeading>Description</P></TH></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>abs(X)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the absolute value of <EM 
+        class=Emphasis>X</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>acos(X) </EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the arc cosine of <EM class=Emphasis>X</EM>, 
+        i.e., the value whose cosine is <EM class=Emphasis>X</EM>; returns NULL 
+        if <EM class=Emphasis>X</EM> is not in the range -1 to 1.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>ascii(str)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the ASCII code value of the leftmost character 
+        of the string <EM class=Emphasis>str</EM>; returns 0 if <EM 
+        class=Emphasis>str</EM> is the empty string; returns NULL if <EM 
+        class=Emphasis>str</EM> is NULL.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>asin(X) </EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the arc sine of <EM class=Emphasis>X</EM>, 
+        i.e., the value whose sine is <EM class=Emphasis>X</EM>; returns NULL if 
+        <EM class=Emphasis>X</EM> is not in the range -1 to 1.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>atan(X) </EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the arctangent of <EM class=Emphasis>X</EM>, 
+        i.e., the value whose tangent is <EM class=Emphasis>X</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>atan2(X,Y)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the arctangent of the two variables <EM 
+        class=Emphasis>X</EM> and <EM class=Emphasis>Y</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>avg(expr)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the average value of <EM 
+        class=Filename>expr.</EM></P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>benchmark(count,expr)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Executes the expression <EM class=Filename>expr</EM> 
+        <EM class=Emphasis>count</EM> times. It may be used to time how fast 
+        MySQL processes the expression. The result value is always 0.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>binary</EM></P></TD>
+      <TD>
+        <P class=CellBody>Casts the string following it to a binary 
+      string.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>bin(N) </EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns a string representation of the binary value of 
+        <EM class=Emphasis>N</EM>, where <EM class=Emphasis>N</EM> is a long 
+        (<EM class=Filename>BIGINT </EM>) number.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>bit_count(N)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the number of bits that are set in the 
+        argument <EM class=Filename>N.</EM></P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>bit_and(expr)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the bitwise <EM class=Filename>AND</EM> of all 
+        bits in <EM class=Filename>expr</EM>. The calculation is performed with 
+        64-bit (<EM class=Filename>BIGINT </EM>) precision.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>bit_or(expr)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the bitwise <EM class=Filename>OR</EM> of all 
+        bits in <EM class=Filename>expr</EM>. The calculation is performed with 
+        64-bit (<EM class=Filename>BIGINT </EM>) precision.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>CASE value WHEN [compare-value] 
+        THEN result [WHEN [compare-value] THEN result ...] [ELSE result] 
+        END</EM></P>
+        <P class=CellBody><EM class=Filename>CASE WHEN [condition] THEN result 
+        [WHEN [condition] THEN result ...] [ELSE result] END</EM></P></TD>
+      <TD>
+        <P class=CellBody>The first version returns the result where <EM 
+        class=Filename>value=compare-value</EM>. The second version returns the 
+        result for the first condition that is true. </P>
+        <P class=CellBody>If there is no matching result value, then the result 
+        after <EM class=Filename>ELSE</EM> is returned. If there is no <EM 
+        class=Filename>ELSE</EM> part, NULL is returned.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>ceiling(X)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the smallest integer value not less than <EM 
+        class=Filename>X</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>char(N,...)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Interprets the arguments as integers and returns a 
+        string consisting of the characters given by the ASCII code values of 
+        those integers. NULL values are skipped.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>coalesce(list)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns first non-NULL element in the list.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>concat(str1,str2,...)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the string that results from concatenating the 
+        arguments.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>concat_ws(separator, str1, 
+        str2,...)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Stands for CONCAT With Separator and is a special form 
+        of <EM class=Filename>CONCAT( ).</EM> The first argument is the 
+        separator for the rest of the arguments. The separator and the rest of 
+        the arguments can be a string. If the separator is NULL, the result is 
+        NULL. The function skips any NULLs and empty strings after the separator 
+        argument. The separator is added between the strings to be 
+        concatenated.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>connection_id( )</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the connection ID (<EM 
+        class=Filename>thread_id </EM>) for the connection. Every connection has 
+        its own unique ID.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM 
+      class=Filename>conv(N,from_base,to_base)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts numbers between different number bases; 
+        returns a string representation of the number <EM class=Emphasis>N</EM>, 
+        converted from base <EM class=Emphasis>from_base</EM> to base <EM 
+        class=Emphasis>to_base</EM> ; returns NULL if any argument is NULL. 
+      </P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>cos(X) </EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the cosine of <EM class=Emphasis>X</EM>, where 
+        <EM class=Emphasis>X</EM> is given in radians.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>cot(X) </EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the cotangent of <EM 
+      class=Emphasis>X</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>count(DISTINCT 
+        expr,[expr...])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns a count of the number of different 
+      values.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>count(expr)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns a count of the number of non-NULL values in 
+        the rows retrieved by a <EM class=Filename>SELECT</EM> 
+    statement.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>curdate( ) </EM></P>
+        <P class=CellBody><EM class=Filename>current_date</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns today's date as a value in `YYYY-MM-DD' or 
+        YYYYMMDD format, depending on whether the function is used in a string 
+        or numeric context.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>curtime( ) </EM></P>
+        <P class=CellBody><EM class=Filename>current_time</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the current time as a value in `HH:MM:SS' or 
+        HHMMSS format, depending on whether the function is used in a string or 
+        numeric context.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>database( )</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the current database name.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>date_add(date,INTERVAL expr type) 
+        </EM></P>
+        <P class=CellBody><EM class=Filename>date_sub(date,INTERVAL expr type) 
+        </EM></P>
+        <P class=CellBody><EM class=Filename>adddate(date,INTERVAL expr type) 
+        </EM></P>
+        <P class=CellBody><EM class=Filename>subdate(date,INTERVAL expr 
+        type)</EM></P></TD>
+      <TD>
+        <P class=CellBody>These functions perform date arithmetic. <EM 
+        class=Filename>ADDDATE( )</EM> and <EM class=Filename>SUBDATE( )</EM> 
+        are synonyms for <EM class=Filename>DATE_ADD( )</EM> and <EM 
+        class=Filename>DATE_ <BR>SUB( ). date</EM> is a <EM 
+        class=Filename>DATETIME</EM> or <EM class=Filename>DATE</EM> value 
+        specifying the starting date. <EM class=Filename>expr</EM> is an 
+        expression specifying the interval value to be added or subtracted from 
+        the starting date. <EM class=Filename>expr</EM> may start with a - for 
+        negative intervals. <EM class=Filename>type</EM> indicates how the 
+        expression should be interpreted.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>date_ format <BR>(date, 
+        format)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Formats the date value according to the format 
+        string.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>dayname(date)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the name of the weekday for date.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>dayofmonth(date)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the day of the month for date, in the range 1 
+        to 31.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>dayofweek(date)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the weekday index for date (1 = Sunday, 2 = 
+        Monday, . . . 7 = Saturday).</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>dayofyear(date)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the day of the year for date, in the range 1 
+        to 366.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>decode(crypt_str, 
+        <BR>pass_str)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Decrypts the encrypted string <EM 
+        class=Filename>crypt_str</EM> using <EM class=Filename>pass_str</EM> as 
+        the password. <EM class=Filename>crypt_str</EM> should be a string 
+        returned from <EM class=Filename>ENCODE( )</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>degrees(X)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the argument <EM class=Emphasis>X</EM>, 
+        converted from radians to degrees.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM 
+      class=Filename>elt(N,str1,str2,str3,...)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns <EM class=Emphasis>str1</EM> if <EM 
+        class=Emphasis>N</EM> = 1, <EM class=Emphasis>str2</EM> if <EM 
+        class=Emphasis>N</EM> = 2, and so on. Returns NULL if <EM 
+        class=Filename>N</EM> is less than 1 or greater than the number of 
+        arguments. <EM class=Filename>ELT( )</EM> is the complement of <EM 
+        class=Filename>FIELD( )</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>encode(str,pass_str)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Encrypts <EM class=Filename>str</EM> using <EM 
+        class=Filename>pass_str</EM> as the password. To decrypt the result, use 
+        <EM class=Filename>DECODE( ).</EM> The result is a binary string the 
+        same length as the string.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>encrypt(str[,salt])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Encrypts <EM class=Filename>str</EM> using the Unix 
+        <EM class=Filename>crypt( )</EM> system call. The <EM 
+        class=Filename>salt</EM> argument should be a string with two 
+        characters.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>exp(X)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the value of <EM class=Emphasis>e</EM> (the 
+        base of natural logarithms) raised to the power of <EM 
+        class=Emphasis>X</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>export_set 
+        <BR>(bits,on,off,[separator, <BR>[number_of_bits]])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns a string where every bit set in `bit' gets an 
+        `on' string and every reset bit gets an `off ' string. Each string is 
+        separated with `separator' (default `,') and only `number_of_bits' 
+        (default 64) of `bits' is used.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM 
+        class=Filename>field(str,str1,str2,str3,...)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the index of <EM class=Filename>str</EM> in 
+        the <EM class=Filename>str1</EM>, <EM class=Filename>str2</EM>, <EM 
+        class=Filename>str3</EM>, . . . list. Returns 0 if <EM 
+        class=Filename>str</EM> is not found. <EM class=Filename>FIELD( )</EM> 
+        is the complement of <EM class=Filename>ELT( )</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM 
+class=Filename>find_in_set(str,strlist)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns a value 1 to <EM class=Emphasis>N</EM> if the 
+        string <EM class=Emphasis>str</EM> is in the list <EM 
+        class=Emphasis>strlist</EM> consisting of <EM class=Emphasis>N</EM> 
+        substrings. A string list is a string composed of substrings separated 
+        by `,' characters. Returns 0 if <EM class=Filename>str</EM> is not in 
+        <EM class=Filename>strlist</EM> or if <EM class=Filename>strlist</EM> is 
+        the empty string. Returns NULL if either argument is NULL. This function 
+        does not work properly if the first argument contains a `,'.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>floor(X)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the largest integer value not greater than <EM 
+        class=Emphasis>X</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>format(X,D)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Formats the number <EM class=Filename>X</EM> to a 
+        format like `#,###,###.##', rounded to <EM class=Filename>D</EM> 
+        decimals. If <EM class=Filename>D</EM> is 0, the result has no decimal 
+        point or fractional part.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>from_days(N)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Given a daynumber <EM class=Filename>N</EM>, returns a 
+        <EM class=Filename>DATE</EM> value. Not intended for use with values 
+        that precede the advent of the Gregorian calendar (1582), due to the 
+        days lost when the calendar was changed.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM 
+        class=Filename>from_unixtime(unix_timestamp)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns a representation of the <EM 
+        class=Filename>unix_timestamp</EM> argument as a value in `YYYY-MM-DD 
+        HH:MM:SS' or YYYYMMDDHHMMSS format, depending on whether the function is 
+        used in a string or numeric context.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody>from_unixtime<EM 
+        class=Filename>(unix_timestamp,format)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns a string representation of the <EM 
+        class=Filename>unix_timestamp</EM>, formatted according to the format 
+        string. Format may contain the same specifiers as those listed in the 
+        entry for the <EM class=Filename>DATE_FORMAT( )</EM> function.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>get_lock(str,timeout)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Tries to obtain a lock with a name given by the string 
+        <EM class=Filename>str</EM>, with a timeout of <EM 
+        class=Emphasis>timeout</EM> seconds. Returns 1 if the lock is obtained 
+        successfully, 0 if the attempt times out, or NULL if an error 
+      occurs.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>greatest(X,Y,...)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the largest (maximum-valued) 
+    argument.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>hex(N) </EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns a string representation of the hexadecimal 
+        value of <EM class=Emphasis>N</EM>, where <EM class=Emphasis>N</EM> is a 
+        long (<EM class=Filename>BIGINT </EM>) number. This is equivalent to <EM 
+        class=Filename>CONV(N,10,16).</EM> Returns NULL if <EM 
+        class=Emphasis>N</EM> is NULL.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM 
+class=Filename>interval(N,N1,N2,N3,...)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns 0 if <EM class=Emphasis>N</EM> &lt; <EM 
+        class=Emphasis>N1</EM>, 1 if <EM class=Emphasis>N</EM> &lt; <EM 
+        class=Emphasis>N2</EM>, and so on. All arguments are treated as 
+        integers. It is required that <EM class=Emphasis>N1</EM> &lt; <EM 
+        class=Emphasis>N2</EM> &lt; <EM class=Emphasis>N3</EM> &lt; . . . 
+        <BR>&lt; <EM class=Emphasis>Nn</EM> for this function to work 
+        correctly.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>hour(time)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the hour for time, in the range 0 to 
+    23.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>if(expr1,expr2,expr3)</EM></P></TD>
+      <TD>
+        <P class=CellBody>If <EM class=Filename>expr1</EM> is TRUE (<EM 
+        class=Emphasis>expr1</EM> &lt;&gt; 0 and <EM class=Emphasis>expr1</EM> 
+        &lt;&gt; NULL), then <BR><EM class=Filename>IF( )</EM> returns <EM 
+        class=Filename>expr2</EM>, else it returns <EM 
+        class=Filename>expr3</EM>. <EM class=Filename>IF( )</EM> returns a 
+        numeric or string value, depending on the context in which it is used. 
+        </P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>ifnull(expr1,expr2)</EM></P></TD>
+      <TD>
+        <P class=CellBody>If <EM class=Filename>expr1</EM> is not NULL, <EM 
+        class=Filename>IFNULL( )</EM> returns <EM class=Emphasis>expr1</EM>; 
+        otherwise it returns <EM class=Filename>expr2</EM>. <EM 
+        class=Filename>IFNULL( )</EM> returns a numeric or string value, 
+        depending on the context in which it is used.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>isnull(expr)</EM></P></TD>
+      <TD>
+        <P class=CellBody>If <EM class=Emphasis>expr</EM> is NULL, <EM 
+        class=Filename>ISNULL( )</EM> returns 1; otherwise it returns 
+    0.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM 
+      class=Filename>insert(str,pos,len,newstr)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the string <EM class=Filename>str</EM>. The 
+        substring begins at position <EM class=Filename>pos</EM> and is 10 
+        characters long, replaced by the string <EM 
+        class=Filename>newstr</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>instr(str,substr)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the position of the first occurrence of 
+        substring <EM class=Filename>substr</EM> in string <EM 
+        class=Filename>str</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>last_insert_id([expr])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the last automatically generated value that 
+        was inserted into an <EM class=Filename>AUTO_INCREMENT</EM> 
+      column.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>lcase(str) </EM></P>
+        <P class=CellBody><EM class=Filename>lower(str)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the string <EM class=Filename>str</EM> with 
+        all characters changed to lowercase according to the current 
+        character-set mapping (default is ISO-8859-1 Latin1).</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>least(X,Y,...)</EM></P></TD>
+      <TD>
+        <P class=CellBody>With two or more arguments, returns the smallest 
+        (minimum-valued) argument.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>left(str,len)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the leftmost <EM class=Filename>len</EM> 
+        characters from the string <EM class=Filename>str</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>length(str)</EM></P>
+        <P class=CellBody><EM class=Filename>octet_length(str)</EM></P>
+        <P class=CellBody><EM class=Filename>char_length(str)</EM></P>
+        <P class=CellBody><EM class=Filename>character_length(str)</EM></P></TD>
+      <TD>
+        <P class=CellBody>These functions return the length of the string <EM 
+        class=Filename>str</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>load_ file(file_name)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Reads the file and returns the file contents as a 
+        string. The file must be on the server, and the user must specify the 
+        full pathname to the file and have the file privilege.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>locate(substr,str)</EM></P>
+        <P class=CellBody><EM class=Filename>position(substr IN str)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the position of the first occurrence of 
+        substring <EM class=Emphasis>substr</EM> in string <EM 
+        class=Filename>str</EM>. Returns 0 if <EM class=Filename>substr</EM> is 
+        not in <EM class=Filename>str</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>locate(substr,str,pos)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the position of the first occurrence of 
+        substring <EM class=Emphasis>substr</EM> in string <EM 
+        class=Filename>str</EM>, starting at position <EM 
+        class=Emphasis>pos</EM>; returns 0 if <EM class=Filename>substr</EM> is 
+        not in <EM class=Filename>str</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>log(X)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the natural logarithm of <EM 
+        class=Emphasis>X</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>log10(X)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the base-10 logarithm of <EM 
+        class=Emphasis>X</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>lpad(str,len,padstr)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the string <EM class=Filename>str</EM>, 
+        left-padded with the string <EM class=Filename>padstr</EM> until <EM 
+        class=Filename>str</EM> is 10 characters long.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>ltrim(str)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the string <EM class=Filename>str</EM> with 
+        leading-space characters removed.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>make_set(bits,str1,str2, . . . 
+        )</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns a set (a string containing substrings 
+        separated by `,' characters) consisting of the strings that have the 
+        corresponding bits in bit set. <EM class=Filename>str1</EM> corresponds 
+        to bit 0, <EM class=Filename>str2</EM> to bit 1, etc. NULL strings in 
+        <EM class=Filename>str1, str2,</EM> . . . are not appended to the 
+        result.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>md5(string)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Calculates a MD5 <EM class=Filename>checksum</EM> for 
+        the string. Value is returned as a 32-long hex number.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>min(expr) </EM></P>
+        <P class=CellBody><EM class=Filename>max(expr)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the minimum or maximum value of <EM 
+        class=Emphasis>expr</EM>. <EM class=Filename>MIN( ) </EM>and<EM 
+        class=Filename> MAX( )</EM> may take a string argument; in such cases 
+        they return the minimum or maximum string value.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>minute(time)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the minute for time, in the range 0 to 
+      59.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>mod(N,M)</EM></P></TD>
+      <TD>
+        <P class=CellBody>% Modulo (like the % operator in C); returns the 
+        remainder of <EM class=Emphasis>N</EM> divided by <EM 
+        class=Emphasis>M</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>month(date)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the month for date, in the range 1 to 
+      12.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>monthname(date)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the name of the month for date.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>now( ) </EM></P>
+        <P class=CellBody><EM class=Filename>sysdate( ) </EM></P>
+        <P class=CellBody><EM class=Filename>current_timestamp</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the current date and time as a value in 
+        `YYYY-MM-DD HH:MM:SS' or YYYYMMDDHHMMSS format, depending on whether the 
+        function is used in a string or numeric context.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>nullif(expr1,expr2)</EM></P></TD>
+      <TD>
+        <P class=CellBody>If <EM class=Filename>expr1 = expr2 </EM>is true, 
+        returns NULL; otherwise returns <EM class=Emphasis>expr1</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>oct(N) </EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns a string representation of the octal value of 
+        <EM class=Emphasis>N</EM>, where <EM class=Emphasis>N</EM> is a long 
+        number. This is equivalent to <EM class=Filename>CONV(N,10,8).</EM> 
+        Returns NULL if <EM class=Emphasis>N</EM> is NULL.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>ord(str) </EM></P></TD>
+      <TD>
+        <P class=CellBody>If the leftmost character of the string <EM 
+        class=Filename>str</EM> is a multibyte character, returns the code of 
+        multibyte character by returning the ASCII code value of the character 
+        in the format of:</P>
+        <P class=CellBody><CODE class=Literal>((first byte ASCII 
+        code)*256+(second byte ASCII code))[*256+third byte ASCII code...] 
+        </CODE></P>
+        <P class=CellBody>If the leftmost character is not a multibyte 
+        character, returns the same value as the <EM class=Filename>ASCII( 
+        )</EM> function does.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>password(str)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Calculates a password string from the plain-text 
+        password <EM class=Filename>str</EM>. This is the function that is used 
+        for encrypting MySQL passwords for storage in the <B 
+        class=EmphasisBold>Password</B> column of the user grant 
+table.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>period_add(P,N)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Adds <EM class=Filename>N</EM> months to period <EM 
+        class=Filename>P</EM> (in the format YYMM or YYYYMM). Returns a value in 
+        the format YYYYMM. Note that the period argument <EM 
+        class=Filename>P</EM> is not a date value.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>period_diff(P1,P2)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the number of months between periods <EM 
+        class=Filename>P1</EM> and <EM class=Filename>P2</EM>. <EM 
+        class=Filename>P1</EM> and <EM class=Filename>P2</EM> should be in the 
+        format YYMM or YYYYMM. Note that the period arguments <EM 
+        class=Filename>P1</EM> and <EM class=Filename>P2</EM> are not date 
+        values.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>pi( ) </EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the value of <EM class=Symbol><IMG 
+        src="SQL in a Nutshell Chapter 4 SQL Functions_files/pi.gif"></EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>pow(X,Y)</EM></P>
+        <P class=CellBody><EM class=Filename>power(X,Y)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the value of <EM class=Emphasis>X</EM> raised 
+        to the power of <EM class=Emphasis>Y</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>quarter(date)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the quarter of the year for date, in the range 
+        1 to 4.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>radians(X)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the argument <EM class=Emphasis>X</EM>, 
+        converted from degrees to radians.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>rand( )</EM></P>
+        <P class=CellBody><EM class=Filename>rand(N) </EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns a random floating-point value in the range 0 
+        to 1.0. </P>
+        <P class=CellBody>If an integer argument <EM class=Emphasis>N</EM> is 
+        specified, it is used as the seed value.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>release_lock(str)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Releases the lock named by the string <EM 
+        class=Emphasis>str</EM> that was obtained with <EM 
+        class=Filename>GET_LOCK( ).</EM> Returns 1 if the lock is released, 0 if 
+        the lock isn't locked by this thread (in which case the lock is not 
+        released), and NULL if the named lock doesn't exist.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>repeat(str,count)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns a string consisting of the string <EM 
+        class=Emphasis>str</EM> repeated <EM class=Emphasis>count</EM> times. If 
+        <EM class=Emphasis>count</EM> &lt;= 0, returns an empty string. Returns 
+        NULL if <EM class=Emphasis>str</EM> or <EM class=Emphasis>count</EM> are 
+        NULL.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>replace(str, 
+        from_str,to_str)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the string <EM class=Emphasis>str</EM> with 
+        all occurrences of the string <EM class=Filename>from_str</EM> replaced 
+        by the string <EM class=Filename>to_str</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>reverse(str)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the string <EM class=Filename>str</EM> with 
+        the order of the characters reversed.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>right(str,ten)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the rightmost 10 characters from the string 
+        <EM class=Filename>str</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>round(X)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the argument <EM class=Emphasis>X</EM>, 
+        rounded to an integer.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>round(X,D)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the argument <EM class=Emphasis>X</EM>, 
+        rounded to a number with <EM class=Emphasis>D</EM> decimals. If <EM 
+        class=Emphasis>D</EM> is 0, the result has no decimal point or 
+        fractional part.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>rpad(str,len,padstr)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the string <EM class=Filename>str</EM>, 
+        right-padded with the string <EM class=Filename>padstr</EM> until <EM 
+        class=Filename>str</EM> is ten characters long.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>rtrim(str)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the string <EM class=Filename>str</EM> with 
+        trailing space characters removed.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>sec_to_time(seconds)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the seconds argument, converted to hours, 
+        minutes, and seconds, as a value in `HH:MM:SS' or HHMMSS format, 
+        depending on whether the function is used in a string or numeric 
+        context.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>second(time)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the second for time, in the range 0 to 
+      59.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>sign(X)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the sign of the argument as -1, 0, or 1, 
+        depending on whether <EM class=Emphasis>X</EM> is negative, zero, or 
+        positive.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>sin(X) </EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the sine of <EM class=Emphasis>X</EM>, where 
+        <EM class=Emphasis>X</EM> is given in radians.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>soundex(str)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns a <EM class=Emphasis>soundex</EM> string from 
+        <EM class=Emphasis>str</EM>. Two strings that sound "about the same" 
+        should have identical <EM class=Emphasis>soundex</EM> strings. </P>
+        <P class=CellBody>A "standard" <EM class=Emphasis>soundex</EM> string is 
+        four characters long, but the <EM class=Filename>SOUNDEX( )</EM> 
+        function returns an arbitrarily long string. A <EM 
+        class=Filename>SUBSTRING( )</EM> can be used on the result to get a 
+        "standard" <EM class=Emphasis>soundex</EM> string. All non-alphanumeric 
+        characters are ignored in the given string. All international alphabetic 
+        characters outside the A-Z range are treated as vowels.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>space(N) </EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns a string consisting of <EM 
+        class=Emphasis>N</EM> space characters.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>sqrt(X) </EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the nonnegative square root of <EM 
+        class=Emphasis>X</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>std(expr) </EM></P>
+        <P class=CellBody><EM class=Filename>stddev(expr)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the standard deviation of <EM 
+        class=Emphasis>expr</EM>. The <EM class=Filename>STDDEV( ) </EM>form of 
+        this function is provided for Oracle compatability.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>strcmp(expr1,expr2)</EM></P></TD>
+      <TD>
+        <P class=CellBody><EM class=Filename>STRCMP( )</EM> returns 0 if the 
+        strings are the same, -1 if the first argument is smaller than the 
+        second according to the current sort order, and 1 otherwise.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>substring(str,pos,len)</EM></P>
+        <P class=CellBody><EM class=Filename>substring(str FROM <BR>pos FOR 
+        len)</EM></P>
+        <P class=CellBody><EM class=Filename>mid(str,pos,len)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns a substring 10 characters long from string <EM 
+        class=Emphasis>str</EM>, starting at position <EM 
+        class=Emphasis>pos</EM>. The variant form that uses <EM 
+        class=Filename>FROM</EM> is ANSI SQL92 syntax.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>substring_index 
+        <BR>(str,delim,count)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the substring from string <EM 
+        class=Emphasis>str</EM> after <EM class=Emphasis>count</EM> occurrences 
+        of the delimiter <EM class=Emphasis>delim</EM>. If <EM 
+        class=Emphasis>count</EM> is positive, everything to the left of the 
+        final delimiter (counting from the left) is returned. If <EM 
+        class=Emphasis>count</EM> is negative, everything to the right of the 
+        final delimiter (counting from the right) is returned.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>substring(str,pos)</EM></P>
+        <P class=CellBody><EM class=Filename>substring(str FROM pos)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns a substring from string <EM 
+        class=Filename>str</EM> starting at position <EM 
+        class=Filename>pos</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>sum(expr)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the sum of <EM class=Filename>expr</EM>. Note 
+        that if the return set has no rows, it returns NULL.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>tan(X).</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the tangent of <EM class=Emphasis>X</EM>, 
+        where <EM class=Emphasis>X</EM> is given in radians.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>time_ format <BR>(time, 
+        format)</EM></P></TD>
+      <TD>
+        <P class=CellBody>This is used like <EM class=Filename>DATE_FORMAT( 
+        ),</EM> but the format string may contain only those format specifiers 
+        that handle hours, minutes, and seconds. Other specifiers produce a NULL 
+        value or 0.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>time_to_sec(time)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the time argument, converted to 
+    seconds.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>to_days(date)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Given a date, returns a daynumber (the number of days 
+        since year 0).</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>trim([[BOTH | LEADING | TRAILING] 
+        [remstr] FROM] str)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the string <EM class=Filename>str</EM> with 
+        all <EM class=Filename>remstr</EM> prefixes and/or suffixes removed. If 
+        none of the specifiers <EM class=Filename>BOTH</EM>, <EM 
+        class=Filename>LEADING,</EM> or <EM class=Filename>TRAILING</EM> are 
+        given, <EM class=Filename>BOTH</EM> is assumed. If <EM 
+        class=Filename>remstr</EM> is not specified, spaces are 
+    removed.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>truncate(X,D)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the number <EM class=Emphasis>X</EM>, 
+        truncated to <EM class=Emphasis>D</EM> decimals. If <EM 
+        class=Emphasis>D</EM> is 0, the result has no decimal point or 
+        fractional part.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>ucase(str) </EM></P>
+        <P class=CellBody><EM class=Filename>upper(str)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the string <EM class=Emphasis>str</EM> with 
+        all characters changed to uppercase according to the current character 
+        set mapping (default is ISO-8859-1 Latin1).</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>unix_timestamp( ) </EM></P>
+        <P class=CellBody><EM class=Filename>unix_timestamp(date)</EM></P></TD>
+      <TD>
+        <P class=CellBody>If called with no argument, returns a Unix timestamp 
+        (seconds since `1970-01-01 00:00:00' GMT). If<EM class=Filename> 
+        UNIX_TIMESTAMP( ) </EM>is called with a date argument, it returns 
+        <BR>the value of the argument as seconds since `1970-01-01 00:00:00' 
+        GMT.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>user( ) </EM></P>
+        <P class=CellBody><EM class=Filename>system_user( ) </EM></P>
+        <P class=CellBody><EM class=Filename>session_user( )</EM></P></TD>
+      <TD>
+        <P class=CellBody>These functions return the current MySQL 
+      username.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>version( )</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns a string indicating the MySQL server 
+        version.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>week(date) </EM></P>
+        <P class=CellBody><EM class=Filename>week(date, first)</EM></P></TD>
+      <TD>
+        <P class=CellBody>With a single argument, returns the week for date, in 
+        the range 0 to 53. (The beginning of a week 53 is possible during some 
+        years.) The two-argument form of WEEK( ) allows the user to specify 
+        whether the week starts on Sunday (0) or Monday (1).</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>weekday(date)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the weekday index for date (0 = Monday, 1 = 
+        Tuesday, . . . 6 = Sunday).</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>year(date)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the year for date, in the range 1000 to 
+        9999.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>yearweek(date) </EM></P>
+        <P class=CellBody><EM class=Filename>yearweek(date, first)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns year and week for a date. The second argument 
+        works exactly like the second argument to<EM class=Filename> WEEK( 
+        ).</EM> Note that the year may be different from the year in the date 
+        argument for the first and the last week of the 
+  year.</P></TD></TR></TBODY></TABLE>
+  <H3 class=HeadB>Oracle SQL-Supported Functions</H3>
+  <P class=Body><A class=XRef 
+  href="http://www.oreilly.com/catalog/sqlnut/chapter/ch04.html#97789">Table 
+  4-9</A> provides an alphabetical listing of the SQL functions specific to 
+  Oracle.</P>
+  <P>
+  <TABLE border=1>
+    <CAPTION><B class=TableLabel><A name=97789>Table 4-9:</A></B> <B 
+    class=TableTitle>Oracle-Supported Functions </B></CAPTION>
+    <TBODY>
+    <TR>
+      <TH>
+        <P class=CellHeading>Function</P></TH>
+      <TH>
+        <P class=CellHeading>Description</P></TH></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>abs(number)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the absolute value of <EM 
+        class=Filename>number.</EM></P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>acos(number)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the arc cosine of <EM 
+        class=Filename>number</EM> ranging from -1 to 1. The result ranges from 
+        0 to <EM class=Symbol><IMG 
+        src="SQL in a Nutshell Chapter 4 SQL Functions_files/pi.gif"></EM> and 
+        is expressed in radians.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>add_months(date, int)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the date <EM class=Emphasis>date </EM>plus <EM 
+        class=Filename>int</EM><EM class=Emphasis> </EM>months.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>ascii(string)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the decimal value in the database character 
+        set of the first character of <EM class=Filename>string</EM>; returns an 
+        ASCII value when the database character set is 7-bit ASCII; returns 
+        EBCDIC values if the database character set is EBCDIC Code Page 
+      500.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>asin(number)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the arc sine of <EM 
+        class=Filename>number</EM><EM class=Emphasis> </EM>ranging from -1 to 1. 
+        The resulting value ranges from <EM class=Symbol>-<IMG 
+        src="SQL in a Nutshell Chapter 4 SQL Functions_files/pi.gif"></EM>/2 to 
+        <EM class=Symbol><IMG 
+        src="SQL in a Nutshell Chapter 4 SQL Functions_files/pi.gif"></EM> /2 
+        and is expressed in radians.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>atan(number)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the arctangent of any <EM 
+        class=Filename>number.</EM> The resulting value ranges from <EM 
+        class=Symbol>-<IMG 
+        src="SQL in a Nutshell Chapter 4 SQL Functions_files/pi.gif"></EM> /2 to 
+        p/2 and is expressed in radians.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>atan2(number,nbr) </EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the arctangent of <EM 
+        class=Filename>number</EM><EM class=Emphasis> </EM>and <EM 
+        class=Filename>nbr</EM><EM class=Emphasis>.</EM> The values for <EM 
+        class=Filename>number</EM> and <EM class=Filename>nbr</EM> are not 
+        restricted, but the results range from <EM class=Symbol>-<IMG 
+        src="SQL in a Nutshell Chapter 4 SQL Functions_files/pi.gif"> </EM>to 
+        <EM class=Symbol><IMG 
+        src="SQL in a Nutshell Chapter 4 SQL Functions_files/pi.gif"></EM> and 
+        are expressed in radians.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>avg([DISTINCT ] expression) over 
+        (analytics)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the average value of <EM 
+        class=Filename>expr</EM>. It can be used as an aggregate or analytic 
+        function (analytic functions are beyond the scope of this 
+    text).</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM 
+        class=Filename>bfilename(`directory','filename')</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns a <EM class=Filename>BFILE</EM> locator 
+        associated with a physical LOB binary <EM class=Filename>filename</EM> 
+        on the server's filesystem in <EM 
+    class=Filename>directory.</EM></P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>ceil(number)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns smallest integer greater than or equal to <EM 
+        class=Filename>number.</EM></P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>chartorowid(char)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts a value from a character datatype (<EM 
+        class=Filename>CHAR</EM> or <EM class=Filename>VARCHAR2</EM> datatype) 
+        to <EM class=Filename>ROWID</EM> datatype.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>chr(number [USING 
+        NCHAR_CS])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the character having the binary equivalent to 
+        <EM class=Filename>number </EM>in either the database character set (if 
+        <EM class=Filename>USING NCHAR_CS</EM> is not included) or the national 
+        character set (if <EM class=Filename>USING NCHAR_CS </EM>is 
+        included).</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>concat(string1, 
+string2)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns <EM class=Filename>string1</EM><EM 
+        class=Emphasis> </EM>concatenated with <EM class=Filename>string2</EM>. 
+        It is equivalent to the concatenation operator (||).</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>convert(char_value, 
+        target_char_set, source_char_set)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts a character string from one character set to 
+        another; returns the <EM class=Filename>char_value</EM> in the <EM 
+        class=Filename>target_char_set</EM> after converting <EM 
+        class=Filename>char_value</EM> from the <EM 
+        class=Filename>source_char_set.</EM></P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>corr(expression1, expression2) over 
+        (analytics)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the correlation coefficient of a set of 
+        numbered pairs (<EM class=Filename>expressions</EM> 1 and 2). It can be 
+        used as an aggregate or analytic function (analytic functions are beyond 
+        the scope of this text).</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>cos(number)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the cosine of <EM class=Filename>number</EM> 
+        as an angle expressed in radians.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>cosh(number)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the hyperbolic cosine of <EM 
+        class=Filename>number.</EM></P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>count</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the number of rows in the query; refer to the 
+        earlier section on <EM class=Filename>COUNT</EM> for more 
+        information.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>covar_pop(expression1, expression2) 
+        over <BR>(analytics)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the population covariance of a set of number 
+        pairs (<EM class=Filename>expressions</EM> 1 and 2). It can be used as 
+        an aggregate or analytic function (analytic functions are beyond the 
+        scope of this text).</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>covar_samp(expression1, 
+        expression2) over(analytics)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the sample covariance of a set of number pairs 
+        (<EM class=Filename>expressions</EM> 1 and 2). It can be used as an 
+        aggregate or analytic function (analytic functions are beyond the scope 
+        of this text).</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>cume_dist( ) ( [OVER (query)] ORDER 
+        BY...) </EM></P></TD>
+      <TD>
+        <P class=CellBody>The cumulative distribution function computes the 
+        relative position of a specified value in a group of values.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>decode</EM>(expr search , result 
+        [,. n] [,default])</P></TD>
+      <TD>
+        <P class=CellBody>Compares <EM class=Filename>expr</EM> to the search 
+        value; if <EM class=Filename>expr</EM> is equal to a search, returns the 
+        result. Without a match, <EM class=Filename>DECODE</EM> returns default, 
+        or <EM class=Filename>NULL</EM> if default is omitted. Refer to Oracle 
+        documentation for more details.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>dense_rank( ) ( [OVER (query)] 
+        ORDER BY...)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Computes the rank of each row returned from a query 
+        with respect to the other rows, based on the values of the <EM 
+        class=Filename>value_exprs</EM> in the <EM 
+        class=Filename>ORDER_BY_clause.</EM></P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>deref(expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the object reference of <EM 
+        class=Filename>expression</EM>, where <EM 
+        class=Filename>expression</EM><EM class=Emphasis> </EM>must return a <EM 
+        class=Filename>REF</EM> to an object.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>dump(expression [,return_ format [, 
+        starting_at [,length]]] )</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns a <EM class=Filename>VARCHAR2 </EM>value 
+        containing a datatype code, length in bytes, and internal representation 
+        of <EM class=Filename>expression</EM>. The resulting value is returned 
+        in the format of <EM class=Filename>return_ format</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>empth[B | C]lob( )</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns an empty LOB locator that can be used to 
+        initialize a LOB variable. It can also be used to initialize a LOB 
+        column or attribute to empty in an <EM class=Filename>INSERT</EM> or <EM 
+        class=Filename>UPDATE</EM> statement. </P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>exp(number)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns <EM class=Filename>E</EM> raised to the <EM 
+        class=Filename>number </EM>ed power, where <BR>E = 2.71828183.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>first_value( expression) over 
+        (analytics)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the first value in an ordered set of 
+        values.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>floor(number)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns largest integer equal to or less than <EM 
+        class=Filename>number.</EM></P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>greatest(expression 
+        [,...n])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the greatest of the list of <EM 
+        class=Filename>expressions</EM>. All <EM class=Filename>expressions</EM> 
+        after the first are implicitly converted to the datatype of the first 
+        <EM class=Filename>expression</EM><EM class=Emphasis> </EM>before the 
+        comparison.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>grouping(expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Distinguishes null cause by a super-aggregation in <EM 
+        class=Filename>GROUP BY</EM> extension from an actual null 
+    value.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>hextoraw(string)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts <EM class=Filename>string</EM><EM 
+        class=Emphasis> </EM>containing hexadecimal digits into a raw 
+      value.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>initcap(string)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns <EM class=Filename>string</EM>, with the first 
+        letter of each word in uppercase and all other letters in 
+      lowercase.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>instr(string1, string2, start_at, 
+        occurrence)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Searches one character string for another character 
+        string. <EM class=Filename>INSRT</EM> search <EM 
+        class=Filename>char1</EM><EM class=Emphasis> </EM>with a starting 
+        position of <EM class=Filename>start_at</EM> (an integer) looking for 
+        the numeric <EM class=Filename>occurrence</EM> within <EM 
+        class=Filename>string2</EM><EM class=Emphasis>.</EM> Returns the 
+        position of the character in <EM class=Filename>string1</EM><EM 
+        class=Emphasis> </EM>that is the first character of this occurrence. 
+      </P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>instrb(string1, string2, 
+        [start_a[t, occurrence]])</EM></P></TD>
+      <TD>
+        <P class=CellBody>The same as <EM class=Filename>INSTR</EM>, except that 
+        <EM class=Filename>start_at</EM><EM class=Emphasis> </EM>and the return 
+        value are expressed in bytes instead of characters.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>lag(expression [,offset][,default]) 
+        over(analytics)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Provides access to more than one row of a table at the 
+        same time without a self join; refer to the vendor documentation for 
+        more information.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>last_day(date)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the date of the last day of the month that 
+        contains <EM class=Filename>date.</EM></P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>last_value(expression) over 
+        (analytics)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the last value in an ordered set of values; 
+        refer to the vendor documentation for more information.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>lead(expression 
+        [,offset][,default]) over(analytics)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Provides access to more than one row of a table at the 
+        same time without a self join. Analytic functions are beyond the scope 
+        of this text.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>least(expression 
+      [,...n])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the least of the list of <EM 
+        class=Filename>expressions.</EM> </P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>length(string)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the integer length of <EM 
+        class=Filename>string</EM>, or null if <EM class=Filename>string</EM> is 
+        null. </P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>lengthb(string)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the length of <EM class=Filename>char</EM><EM 
+        class=Emphasis> </EM>in bytes; otherwise, the same as <EM 
+        class=Filename>LENGTH.</EM></P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>ln(number)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the natural logarithm of <EM 
+        class=Filename>number</EM>, where the <EM class=Filename>number</EM><EM 
+        class=Emphasis> </EM>is greater than 0.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>log(base_number, 
+number)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the logarithm of any <EM 
+        class=Filename>base_number</EM> of <EM class=Filename>number</EM>. 
+      </P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>lower(string)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns <EM class=Filename>string</EM> in the same 
+        datatype as it was supplied with all characters lowercase.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>lpad(string1, number 
+        [,string2])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns <EM class=Filename>string1</EM>, left-padded 
+        to length <EM class=Filename>number</EM><EM class=Emphasis> </EM>using 
+        characters in <EM class=Filename>string2</EM>; <EM 
+        class=Filename>string2</EM><EM class=Emphasis> </EM>defaults to a single 
+        blank.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>ltrim(string[, set])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Removes all characters in <EM class=Filename>set</EM> 
+        from the left of <EM class=Filename>string</EM>. <EM 
+        class=Filename>Set</EM><EM class=Emphasis> </EM>defaults to a single 
+        blank.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>make_ref({table_name | view_name} , 
+        key [,...n])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Creates a reference (<EM class=Filename>REF </EM>) to 
+        a row of an object view or a row in an object table whose object 
+        identifier is primary <BR>key-based.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>max([DISTINCT] expression) over 
+        (analytics)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns maximum value of <EM 
+        class=Filename>expression</EM>. It can be used as an aggregate or 
+        analytic function (analytic functions are beyond the scope of this 
+        text).</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>min([DISTINCT] expression) over 
+        (analytics)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns minimum value of <EM 
+        class=Filename>expression</EM>. It can be used as an aggregate or 
+        analytic function (analytic functions are beyond the scope of this 
+        text).</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>mod(dividend, divider)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns remainder of <EM 
+        class=Filename>dividend</EM><EM class=Emphasis> </EM>divided by <EM 
+        class=Filename>divider </EM>; returns the <EM 
+        class=Filename>dividend</EM><EM class=Emphasis> </EM>if <EM 
+        class=Filename>divider</EM><EM class=Emphasis> </EM>is 0.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>months_between <BR>(date1, 
+        date2)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns number of months between dates <EM 
+        class=Filename>date1</EM><EM class=Emphasis> </EM>and <EM 
+        class=Filename>date2</EM>. When <EM class=Filename>date1</EM><EM 
+        class=Emphasis> </EM>is later than <EM class=Filename>date2</EM>, the 
+        result is positive. If it is earlier, the result is negative.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>new_time(date, time_zone1, 
+        time_zone2)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the date and time in <EM 
+        class=Filename>time_zone2</EM><EM class=Emphasis> </EM>when date and 
+        time in <EM class=Filename>time_zone1</EM><EM class=Emphasis> </EM>are 
+        <EM class=Filename>date</EM>. <EM class=Filename>Time_zones</EM> 1 and 2 
+        may be any of these text strings:</P>
+        <UL>
+          <LI class=CellListBullet>AST, ADT: Atlantic Standard or Daylight Time 
+          <P></P>
+          <LI class=CellListBullet>BST, BDT: Bering Standard or Daylight Time 
+          <P></P>
+          <LI class=CellListBullet>CST, CDT: Central Standard or Daylight Time 
+          <P></P>
+          <LI class=CellListBullet>EST, EDT: Eastern Standard or Daylight Time 
+          <P></P>
+          <LI class=CellListBullet>GMT: Greenwich Mean Time 
+          <P></P>
+          <LI class=CellListBullet>HST, HDT: Alaska-Hawaii Standard Time or 
+          Daylight Time 
+          <P></P>
+          <LI class=CellListBullet>MST, MDT: Mountain Standard or Daylight Time 
+          <P></P>
+          <LI class=CellListBullet>NST: Newfoundland Standard Time 
+          <P></P>
+          <LI class=CellListBullet>PST, PDT: Pacific Standard or Daylight Time 
+          <P></P>
+          <LI class=CellListBullet>YST, YDT: Yukon Standard or Daylight Time 
+          <P></P></LI></UL></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>next_day(date, string)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the date of the first weekday named by <EM 
+        class=Filename>string</EM><EM class=Emphasis> </EM>that is later than 
+        <EM class=Filename>date</EM>. The argument <EM class=Filename>string 
+        </EM><EM class=Emphasis></EM>must be either the full name or the 
+        abbreviation of a day of the week in the date language of the 
+        session.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>nls_charset_decl_len(bytecnt, 
+        csid)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the declaration width (<EM 
+        class=Filename>bytecnt</EM>) of an <EM class=Filename>NCHAR</EM> column 
+        using the character set ID (<EM class=Filename>csid </EM>) of the 
+        column.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>nls_charset_id(text)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the NLS character set ID number corresponding 
+        to <EM class=Filename>text.</EM></P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM 
+class=Filename>nls_charset_name(number)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the <EM class=Filename>VARCHAR2 </EM>name for 
+        the NLS character set corresponding to the ID <EM 
+        class=Filename>number.</EM></P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>nls_initcap(string 
+        [,'nlsparameter'])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns <EM class=Filename>string</EM> with the first 
+        letter of each word in uppercase and all other letters in lowercase. The 
+        <EM class=Filename>nlsparameter</EM> offers special linguistic sorting 
+        features.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>nls_lower(string, 
+        [,'nlsparameter'])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns <EM class=Filename>string</EM> with all 
+        letters lowercase. The <EM class=Filename>nlsparameter</EM> offers 
+        special linguistic sorting features.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>nlssort(string 
+        [,'nlsparameter'])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the string of bytes used to sort <EM 
+        class=Filename>string</EM>. The <EM class=Filename>nlsparameter</EM> 
+        offers special linguistic sorting features.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>nls_upper string 
+        [,'nlsparameter'])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns <EM class=Filename>string</EM> with all 
+        letters uppercase. The <EM class=Filename>nlsparameter</EM> offers 
+        special linguistic sorting features.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>ntile(expression) over <BR>( 
+        query_partition ORDER BY...)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Divides an ordered data set into a number of buckets 
+        numbered 1 to <EM class=Filename>expression</EM><EM class=Emphasis> 
+        </EM>and assigns the appropriate bucket number to each row.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>numtodsinterval <BR>(number, 
+        `string')</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts <EM class=Filename>number</EM><EM 
+        class=Emphasis> </EM>to an <EM class=Filename>INTERVAL DAY TO 
+        SECOND</EM> literal, where <EM class=Filename>number</EM><EM 
+        class=Emphasis> </EM>is a number or an expression resolving to a number, 
+        such as a numeric datatype column.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>numtoyminterval <BR>(number, 
+        `string')</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts <EM class=Filename>number</EM><EM 
+        class=Emphasis> </EM>to an <EM class=Filename>INTERVAL DAY TO MONTH</EM> 
+        literal, where <EM class=Filename>number</EM><EM class=Emphasis> </EM>is 
+        a number or an expression resolving to a number, such as a numeric 
+        datatype column.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>nvl(expression1, 
+        expression2)</EM></P></TD>
+      <TD>
+        <P class=CellBody>If <EM class=Filename>expression1</EM><EM 
+        class=Emphasis> </EM>is null, <EM class=Filename>expression2</EM> is 
+        returned in the place of a null value. Otherwise, <EM 
+        class=Filename>expression1</EM> is returned. The expressions may be any 
+        datatype.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>nvl2(expression1, expression2, 
+        expression3)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Similar to <EM class=Filename>NLV</EM>, except that if 
+        <EM class=Filename>expression1</EM> is not null, <EM 
+        class=Filename>expression2 </EM>is returned. If <EM 
+        class=Filename>expression1</EM> is null, <EM 
+        class=Filename>expression3</EM> is returned. The expressions may be any 
+        datatype, except <EM class=Filename>LONG</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>percent_rank( ) over <BR>( 
+        query_partition ORDER BY...)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Similar to the <EM class=Filename>CUME_DIST 
+        </EM>analytical function. Rather than return the cumulative 
+        distribution, it returns the percentage rank of a row compared to the 
+        others in its result set. Refer to the vendor documentation for more 
+        assistance.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>power(number, power)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns <EM class=Filename>number </EM>raised to the 
+        nth <EM class=Filename>power</EM>. The base and the exponent can be any 
+        numbers, but if <EM class=Filename>number</EM><EM class=Emphasis> 
+        </EM>is negative, <EM class=Filename>power</EM><EM class=Emphasis> 
+        </EM>must be an integer.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>rank (value_expression) over ( 
+        query_partition ORDER BY ...)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Computes the rank of each row returned from a query 
+        with respect to the other rows returned by the query, based on the 
+        values of the <EM class=Filename>value_expression</EM> in the <EM 
+        class=Filename>ORDER_BY_clause</EM>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>ratio_to_report <BR>(value_exprs) 
+        over <BR>( query_partition)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Computes the ratio of a value to the sum of a set of 
+        values. If <EM class=Filename>values_expr</EM><EM class=Emphasis> 
+        </EM>is null, the ratio-to-report value also is null.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>rawtohex(raw)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts a <EM class=Filename>raw</EM><EM 
+        class=Emphasis> </EM>value to a string (character datatype) of its 
+        hexadecimal equivalent.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>ref(table_alias)</EM></P></TD>
+      <TD>
+        <P class=CellBody><EM class=Filename>REF</EM> takes a table alias 
+        associated with a row from a table or view. A special reference value is 
+        returned for the object instance that is bound to the variable or 
+        row.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>reftohex(expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts argument <EM class=Filename>expression 
+        </EM>to a character value containing its hexadecimal 
+    equivalent.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>regr_ xxx(expression1, expression2) 
+        over (analytics)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Linear regression functions fit an 
+        ordinary-least-squares regression line to a set of number pairs where 
+        <EM class=Filename>expression1</EM> is the dependent variable and <EM 
+        class=Filename>expression2</EM> is the independent variable. The linear 
+        regression functions are:</P>
+        <UL>
+          <LI class=CellListBullet>REGR_SLOPE: returns the slope of the line 
+          <P></P>
+          <LI class=CellListBullet>REGR_INTERCEPT: returns the y-intercept of 
+          the regression line 
+          <P></P>
+          <LI class=CellListBullet>REGR_COUNT: returns the number of non-null 
+          pairs fitting the regression line 
+          <P></P>
+          <LI class=CellListBullet>REGR_R2: returns the coefficient of 
+          determination for the regression 
+          <P></P>
+          <LI class=CellListBullet>REGR_AVGX: returns the average of the 
+          independent variable 
+          <P></P>
+          <LI class=CellListBullet>REGR_AVGY: returns the average of the 
+          dependent variable 
+          <P></P>
+          <LI class=CellListBullet>REGR_SXX: calculates <EM 
+          class=Filename>REGR_COUNT(exp1, exp2) * <BR>VAR_POP(exp2)</EM> 
+          <P></P>
+          <LI class=CellListBullet>REGR_SYY: calculates <EM 
+          class=Filename>REGR_COUNT(exp1, exp2) * <BR>VAR_POP(exp1)</EM> 
+          <P></P>
+          <LI class=CellListBullet>REGR_SXY: calculates <EM 
+          class=Filename>REGR_COUNT(exp1, exp2) * COVAR_POP(exp1, exp2)</EM> 
+          <P></P></LI></UL>
+        <P class=CellBody>These can be used as aggregate or analytic 
+        functions.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>replace(string, search_string 
+        [,replacement_string])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns <EM class=Filename>string</EM><EM 
+        class=Emphasis> </EM>with every occurrence of <EM 
+        class=Filename>search_string</EM><EM class=Emphasis> </EM>replaced with 
+        <EM class=Filename>replacement_string.</EM></P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>round (number, decimal)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns <EM class=Filename>number</EM><EM 
+        class=Emphasis> </EM>rounded to <EM class=Filename>decimal</EM><EM 
+        class=Emphasis> </EM>places right of the decimal point. When <EM 
+        class=Filename>decimal</EM><EM class=Emphasis> </EM>is omitted, <EM 
+        class=Filename>number</EM><EM class=Emphasis> </EM>is rounded to 0 
+        places. Note that <EM class=Filename>decimal</EM>, an integer, can be 
+        negative to round off digits left of the decimal point. </P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>round (date[, format])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the <EM class=Filename>date</EM><EM 
+        class=Emphasis> </EM>rounded to the unit specified by the format model 
+        <EM class=Filename>format</EM>. When <EM class=Filename>format</EM> is 
+        omitted, <EM class=Filename>date</EM><EM class=Emphasis> </EM>is rounded 
+        to the nearest day.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>row_number ( ) over <BR>( 
+        query_partition ORDER BY ... )</EM></P></TD>
+      <TD>
+        <P class=CellBody>Assigns a unique number to each row where it is 
+        applied in the ordered sequence of rows specified by the <EM 
+        class=Filename>ORDER_BY_clause</EM>, beginning with 1.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>rowidtochar(rowid)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts a <EM class=Filename>rowid</EM> value to <EM 
+        class=Filename>VARCHAR2</EM> datatype, 18 characters long.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>rpad(string1, number [, 
+        string2])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns <EM class=Filename>string1</EM>, right-padded 
+        to length <EM class=Filename>number</EM> with the value of <EM 
+        class=Filename>string2</EM>, repeated as needed. <EM 
+        class=Filename>String2</EM><EM class=Emphasis> </EM>defaults to a single 
+        blank. </P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>rtrim(string[,set])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns <EM class=Filename>string</EM>, with all the 
+        rightmost characters that appear in <EM class=Filename>set</EM><EM 
+        class=Emphasis> </EM>removed; <EM class=Filename>set</EM><EM 
+        class=Emphasis> </EM>defaults to a single blank.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>sign(number)</EM></P></TD>
+      <TD>
+        <P class=CellBody>When <EM class=Filename>number</EM> &lt; 0, returns 
+        -1. When <EM class=Filename>number</EM> = 0, returns 0. When <EM 
+        class=Filename>number</EM> &gt; 0, returns 1.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>sin(number)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the sine of <EM class=Filename>number</EM> as 
+        an angle expressed in radians.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>sinh(number)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the hyperbolic sine of <EM 
+        class=Filename>number.</EM></P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>soundex(string)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns a character string containing the phonetic 
+        representation of <EM class=Filename>string</EM>. This function allows 
+        words that are spelled differently but sound alike in English to be 
+        compared for equality.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>sqrt(number)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns square root of <EM class=Filename>number</EM>, 
+        a nonnegative number.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>stddev( [DISTINCT] expression) over 
+        (analytics)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns sample standard deviation of a set of numbers 
+        shown as<EM class=Filename> expression.</EM></P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>stdev_pop(expression) over 
+        (analytics)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Computes the population standard deviation and returns 
+        the square root of the population variance.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>seddev_samp(expression) over 
+        (analytics)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Computes the cumulative sample standard deviation and 
+        returns the square root of the sample variance.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>substr(extraction_string [FROM 
+        starting_position] [FOR length])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Refer to the earlier section on <EM 
+        class=Filename>SUBSTR.</EM></P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>substrb(extraction_string [FROM 
+        starting_position] [FOR length])</EM></P></TD>
+      <TD>
+        <P class=CellBody><EM class=Filename>SUBSTRB</EM> is the same as <EM 
+        class=Filename>SUBSTR</EM>, except that the arguments <EM 
+        class=Emphasis>m</EM><EM class=Filename> starting_position</EM><EM 
+        class=Emphasis> </EM>and <EM class=Filename>length</EM><EM 
+        class=Emphasis> </EM>are expressed in bytes, rather than in characters. 
+        </P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>sum([DISTINCT ] expression) over 
+        (analytics)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns sum of values of <EM class=Filename>expr 
+        </EM>; refer to vendor documentation for assistance with analytics and 
+        the <EM class=Filename>OVER</EM> subclause.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>sys_context 
+        <BR>(`namespace','attribute' <BR>[,length])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the value of <EM 
+        class=Filename>attribute</EM><EM class=Emphasis> </EM>associated with 
+        the context <EM class=Filename>namespace</EM>, usable in both SQL and 
+        PL/SQL statements.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>sys_guid( )</EM></P></TD>
+      <TD>
+        <P class=CellBody>Generates and returns a globally unique identifier 
+        <CODE class=Literal>(</CODE><EM class=Filename>RAW</EM> value) made up 
+        of 16 bytes.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>sysdate</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the current date and time, requiring no 
+        arguments.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>tan(number)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the tangent of <EM class=Filename>number 
+        </EM>as an angle expressed in radians.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>tanh(number)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the hyperbolic tangent of <EM 
+        class=Filename>number</EM></P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>to_char (date [, format <BR>[, 
+        `nls_parameter']])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts <EM class=Filename>date</EM><EM 
+        class=Emphasis> </EM>to a <EM class=Filename>VARCHAR2</EM> in the format 
+        specified by the date format <EM class=Filename>format</EM>. When <EM 
+        class=Filename>fmt</EM> is omitted, <EM class=Filename>date</EM><EM 
+        class=Emphasis> </EM>is converted to the default date format. The <EM 
+        class=Filename>nls_parameter</EM> option offers additional control over 
+        formatting options.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>to_char (number <BR>[, format [, 
+        `nls_parameter']])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts <EM class=Filename>number</EM><EM 
+        class=Emphasis> </EM>to a <EM class=Filename>VARCHAR2</EM> in the format 
+        specified by the number format <EM class=Filename>format</EM>. When <EM 
+        class=Filename>fmt</EM> is omitted, <EM class=Filename>number</EM><EM 
+        class=Emphasis> </EM>is converted to a string long enough to hold the 
+        <EM class=Filename>number</EM>. The <EM 
+        class=Filename>nls_parameter</EM> option offers additional control over 
+        formatting options.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>to_date(string [, format <BR>[, 
+        `nls_parameter']])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts <EM class=Filename>string</EM><EM 
+        class=Emphasis> </EM>(in <EM class=Filename>CHAR</EM> or <EM 
+        class=Filename>VARCHAR2) </EM>to a <EM class=Filename>DATE</EM> 
+        datatype. The <EM class=Filename>nls_parameter</EM> option offers 
+        additional control over formatting options.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>to_lob(long_column)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Usable only by <EM class=Filename>LONG</EM> or <EM 
+        class=Filename>LONG RAW</EM> expressions, it converts <EM 
+        class=Filename>LONG</EM> or <EM class=Filename>LONG RAW</EM> values in 
+        the column <EM class=Filename>long_column</EM><EM class=Emphasis> 
+        </EM>to LOB values. It is usable only in the <EM 
+        class=Filename>SELECT</EM> list of a subquery in an <EM 
+        class=Filename>INSERT</EM> statement.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>to_multi_byte(string)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns <EM class=Filename>string </EM>with all of its 
+        single-byte characters converted to their corresponding multi-byte 
+        characters.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>to_number(string [, format 
+        [,'nls_parameter']])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts a numeric <EM class=Filename>string</EM> (of 
+        <EM class=Filename>CHAR</EM> or <EM class=Filename>VARCHAR2</EM> 
+        datatype) to a value of a NUMBER datatype in the format specified by the 
+        optional format model <EM class=Filename>format</EM>. The <EM 
+        class=Filename>nls_parameter</EM> option offers additional control over 
+        formatting options.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>to_single_byte(string)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns <EM class=Filename>string</EM><EM 
+        class=Emphasis> </EM>with all of its multi-byte characters converted to 
+        their corresponding single-byte characters.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>translate(`char_value', 
+        `from_text', `to_text')</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns <EM class=Filename>char_value</EM><EM 
+        class=Emphasis> </EM>with all occurrences of each character in <EM 
+        class=Filename>from_text</EM><EM class=Emphasis> </EM>replaced by its 
+        corresponding character in <EM class=Filename>to_text</EM>; refer to the 
+        section "<A class=XRef 
+        href="http://www.oreilly.com/catalog/sqlnut/chapter/ch04.html#_Toc484170304">CONVERT 
+        and TRANSLATE</A>" earlier in this chapter for more information on <EM 
+        class=Filename>TRANSLATE.</EM></P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>translate (text USING [CHAR_CS | 
+        NCHAR_CS] )</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts <EM class=Filename>text</EM><EM 
+        class=Emphasis> </EM>into the character set specified for conversions 
+        between the database character set or the national character 
+    set.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>trim({[LEADING | TRAILING | BOTH] 
+        trim_char | trim_char }</EM></P>
+        <P class=CellBody><EM class=Filename>FROM trim_source} )</EM></P></TD>
+      <TD>
+        <P class=CellBody>Enables leading or trailing characters (or both) to be 
+        trimmed from a character string.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>trunc (base [, number])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns <EM class=Filename>base</EM><EM 
+        class=Emphasis> </EM>truncated to <EM class=Filename>number</EM><EM 
+        class=Emphasis> </EM>decimal places. When <EM 
+        class=Filename>number</EM><EM class=Emphasis> </EM>is omitted, <EM 
+        class=Filename>base</EM><EM class=Emphasis> </EM>is truncated to 0 
+        places. <EM class=Filename>Number</EM><EM class=Emphasis> </EM>can be 
+        negative to truncate (make zero) <EM class=Filename>number</EM><EM 
+        class=Emphasis> </EM>digits left of the decimal point.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>trunc (date [, format])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns <EM class=Filename>date </EM>with any time 
+        data truncated to the unit specified by <EM class=Filename>format</EM>. 
+        When <EM class=Filename>format</EM> is omitted, <EM 
+        class=Filename>date</EM><EM class=Emphasis> </EM>is truncated to the 
+        nearest whole day.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>uid</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns an integer that uniquely identifies the 
+        session user who logged on. No parameters are needed.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>upper(string)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns <EM class=Filename>string</EM> with all 
+        letters in uppercase.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>user</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the name of the session user who logged on in 
+        <EM class=Filename>VARCHAR2.</EM></P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>userenv(option)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns information about the current session in <EM 
+        class=Filename>VARCHAR2.</EM></P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>value(table_alias)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Takes as a table alias associated with a row in an 
+        object table and returns object instances stored within the object 
+        table.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>var_pop(expression) <BR>over 
+        (analytics)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the population variance of a set of numbers 
+        after discarding the nulls in the <EM class=Filename>expression 
+        </EM>number<EM class=Filename> </EM>set. Analytic functions are covered 
+        in the vendor documentation.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>var_samp(expression) over 
+        (analytics)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the sample variance of a set of numbers after 
+        discarding the nulls in the <EM class=Filename>expression </EM>number<EM 
+        class=Filename> </EM>set. Analytic functions are covered in the vendor 
+        documentation.</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>variance([DISTINCT] expression) 
+        over (analytics)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns variance of <EM class=Filename>expression</EM> 
+        calculated as follows:</P>
+        <UL>
+          <LI class=CellListBullet>0 if the number of rows in <EM 
+          class=Filename>expression</EM> = 1 
+          <P></P>
+          <LI class=CellListBullet><EM class=Filename>VAR_SAMP</EM> if the 
+          number of rows in <EM class=Filename>expression</EM> &gt; 1 
+          <P></P></LI></UL></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>vsize(expression)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns the number of bytes in the internal 
+        representation of <EM class=Filename>expression</EM>. When <EM 
+        class=Filename>expression</EM> is null, it returns 
+    null.</P></TD></TR></TBODY></TABLE>
+  <H3 class=HeadB>PostgreSQL-Supported Functions</H3>
+  <P class=Body><A class=XRef 
+  href="http://www.oreilly.com/catalog/sqlnut/chapter/ch04.html#17808">Table 
+  4-10</A> lists the functions specific to PostgreSQL.</P>
+  <P>
+  <TABLE border=1>
+    <CAPTION><B class=TableLabel><A name=17808>Table 4-10:</A></B> <B 
+    class=TableTitle>PostgreSQL-Supported Functions </B></CAPTION>
+    <TBODY>
+    <TR>
+      <TH>
+        <P class=CellHeading>Function</P></TH>
+      <TH>
+        <P class=CellHeading>Description</P></TH></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>abstime(timestamp)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts to abstime</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>abs(float8)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns absolute value</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>acos(float8)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns arccosine</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>age(timestamp)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Preserves months and years</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>age(timestamp,</EM> 
+        <BR><CLASS="CELLBODY"><EM class=Filename>timestamp)</EM> </P></TD>
+      <TD>
+        <P class=CellBody>Preserves months and years</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>area(object)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns area of item</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>asin(float8)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns arcsine</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>atan(float8)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns arctangent</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>atan2(float8,float8)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns arctangent</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>box(box,box)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns intersection box</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>box(circle)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts circle to box</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>box(point,point)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns points to box</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>box(polygon)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts polygon to box</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>broadcast(cidr)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Constructs broadcast address as text</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>broadcast(inet)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Constructs broadcast address as text</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>CASE WHEN expr THEN expr [...] ELSE 
+        expr END</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns expression for first true WHEN 
+clause</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>cbrt(float8)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns cube root</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>center(object)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns center of item</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>char(text)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts text to char type</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>char(varchar)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts varchar to char type</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>char_length(string)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns length of string</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM 
+class=Filename>character_length(string)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns length of string</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>circle(box)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts to circle</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>circle(point,float8)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts point to circle</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>COALESCE(list)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns first non-NULL value in list</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>cos(float8)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns cosine</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>cot(float8)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns cotangent</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM 
+      class=Filename>date_part(text,timestamp)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns portion of date</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM 
+class=Filename>date_part(text,interval)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns portion of time</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM 
+      class=Filename>date_trunc(text,timestamp)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Truncates date</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>degrees (float8)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts radians to degrees</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>diameter(circle)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns diameter of circle</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>exp(float8)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Raises e to the specified exponent</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>float(int)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts integer to floating point</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>float4(int)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts integer to floating point</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>height(box)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns vertical size of box</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>host(inet)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Extracts host address as text</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>initcap(text)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts first letter of each word to 
+    uppercase</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>interval(reltime)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts to interval</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>integer(float)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts floating point to integer</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>isclosed(path)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns a closed path</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>isopen(path)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns an open path</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>isfinite(timestamp)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns a finite time</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>isfinite(interval)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns a finite time</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>length(object)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns length of item</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>ln(float8)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns natural logarithm</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>log(float8)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns base-10 logarithm</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>lower(string)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts string to lowercase</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>lseg(box)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts box diagonal to lseg</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>lseg(point,point)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts points to lseg</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>lpad(text,int,text)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns left-pad string to specified length</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>ltrim(text,text)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns left-trim characters from text</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>masklen(cidr)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Calculates netmask length</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>masklen(inet)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Calculates netmask length</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>netmask(inet)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Constructs netmask as text</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>npoint(path)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns number of points</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>NULLIF(input,value)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns NULL if input = value, else returns input 
+      </P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>octet_length(string)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns storage length of string</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>path(polygon)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts polygon to path</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>pclose(path)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts path to closed</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>pi( )</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns fundamental constant</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>polygon(box)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns 12-point polygon</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>polygon(circle)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns 12-point polygon</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>polygon(npts,circle)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns npts polygon</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>polygon(path)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts path to polygon</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>point(circle)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns center</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>point(lseg,lseg)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns intersection</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>point(polygon)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns center</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>position(string in 
+      string)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns location of specified substring</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>pow (float8,float8)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Raises a number to the specified exponent</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>popen(path)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts path to open path</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>reltime(interval)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts to reltime</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>radians(float8)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts degrees to radians</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>radius(circle)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns radius of circle</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>round(float8)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Rounds to nearest integer</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>rpad(text,int,text)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts right pad string to specified 
+length</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>rtrim(text,text)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts right trim characters from text</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>sin(float8)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns sine</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>sqrt(float8)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns square root</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>substring(string [from int] [for 
+        int])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Extracts specified substring</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>substr(text,int[,int])</EM></P></TD>
+      <TD>
+        <P class=CellBody>Extracts specified substring</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>tan(float8)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns tangent</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>text(char)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts char to text type</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>text(varchar)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts varchar to text type</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>textpos(text,text)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Locates specified substring</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>timestamp(date)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts to timestamp</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>timestamp(date,time)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts to timestamp</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>to_char(timestamp, 
+text)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts timestamp to string</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>to_char(int, text)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts int4/int8 to string</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>to_char(float, text)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts float4/float8 to string</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>to_char(numeric, text)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts numeric to string</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>to_date(text, text)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts string to date</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>to_number(text, text)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts string to numeric</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>to_timestamp(text, 
+text)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts string to timestamp</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>translate(text,from,to)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts character in string</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>trim([leading|trailing| <BR>both] 
+        [string] from string)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Trims characters from string</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>trunc(float8)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Truncates (towards zero)</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>upper(text)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts text to uppercase</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>varchar(char)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts char to varchar type</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>varchar(text)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Converts text to varchar type</P></TD></TR>
+    <TR>
+      <TD>
+        <P class=CellBody><EM class=Filename>width(box)</EM></P></TD>
+      <TD>
+        <P class=CellBody>Returns horizontal 
+size</P></TD></TR></TBODY></TABLE></P></BLOCKQUOTE><!-- End of sample chapter -->
+<P><B>Back to: <A href="http://www.oreilly.com/catalog/sqlnut/noframes.html">SQL 
+in a Nutshell</A></B> <!-- O'Reilly Footer Begins Here -->
+<CENTER>
+<HR noShade SIZE=1>
+<FONT face="Verdana, Arial, Helvetica" size=1><A 
+href="http://www.oreilly.com/"><B>O'Reilly&nbsp;Home</B></A> <B>| </B><A 
+href="http://www.oreilly.com/sales/bookstores"><B>O'Reilly&nbsp;Bookstores</B></A> 
+<B>| </B><A 
+href="http://www.oreilly.com/order_new/"><B>How&nbsp;to&nbsp;Order</B></A> <B>| 
+</B><A 
+href="http://www.oreilly.com/oreilly/contact.html"><B>O'Reilly&nbsp;Contacts<BR></B></A><A 
+href="http://www.oreilly.com/international/"><B>International</B></A> <B>| 
+</B><A 
+href="http://www.oreilly.com/oreilly/about.html"><B>About&nbsp;O'Reilly</B></A> 
+<B>| </B><A 
+href="http://www.oreilly.com/affiliates.html"><B>Affiliated&nbsp;Companies</B></A>
+<P><EM>&copy; 2001, O'Reilly &amp; Associates, Inc.</EM><BR><A 
+href="mailto:webmaster@oreilly.com"><I>webmaster@oreilly.com</I></A> 
+</FONT></CENTER><!-- O'Reilly Footer Ends Here --></P></BODY></HTML>

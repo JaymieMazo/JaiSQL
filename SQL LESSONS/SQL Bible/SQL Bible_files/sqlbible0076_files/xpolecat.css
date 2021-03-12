@@ -1,0 +1,525 @@
+BODY {
+	FONT-SIZE: 11px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+TABLE {
+	FONT-SIZE: 11px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+A {
+	
+}
+#expando {
+	
+}
+#expando1 {
+	PADDING-LEFT: 0px; LIST-STYLE-IMAGE: url(images/b_arrowright.gif); MARGIN-LEFT: 0px; TEXT-ALIGN: left
+}
+#expando2 {
+	PADDING-LEFT: 0px; LIST-STYLE-IMAGE: url(images/b_redarrow.gif); MARGIN-LEFT: -25px; TEXT-ALIGN: left
+}
+.b24-title1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #800000
+}
+.b24-title2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #000000
+}
+.b24-title3 {
+	FONT-WEIGHT: bold; FONT-SIZE: 18px; COLOR: #000000
+}
+.b24-aside {
+	COLOR: #999999; FONT-STYLE: italic
+}
+.b24-skillsoft {
+	FONT-SIZE: 9px; FONT-FAMILY: Arial
+}
+.b24-bodyleft {
+	WIDTH: 50%; align: left
+}
+.b24-bodyright {
+	WIDTH: 50%; align: right
+}
+.b24-topic1 {
+	FONT-SIZE: 16px; TEXT-INDENT: -15px
+}
+.b24-topic2 {
+	FONT-SIZE: 14px; TEXT-INDENT: -15px
+}
+.b24-topic2-current {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; BACKGROUND: yellow; COLOR: maroon
+}
+.b24-toctitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; VERTICAL-ALIGN: middle; COLOR: #000000; HEIGHT: 35px
+}
+.b24-tocmenu {
+	BORDER-TOP: #000000 1px solid; FONT-SIZE: 11px; BACKGROUND: #ffffff; PADDING-BOTTOM: 4px; COLOR: #122eb2; PADDING-TOP: 4px; BORDER-BOTTOM: #000000 1px solid
+}
+.b24-toc {
+	FONT-WEIGHT: normal; FONT-SIZE: 10px; COLOR: black; FONT-FAMILY: arial, helvetica, verdana, sans-serif
+}
+.b24-toc0 {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #000000; font-decoration: none
+}
+.b24-toc0 A {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #000000; font-decoration: none
+}
+.b24-toc1 {
+	FONT-WEIGHT: normal; COLOR: #122eb2; font-decoration: none
+}
+.b24-toc1 A {
+	FONT-WEIGHT: normal; COLOR: #122eb2; font-decoration: none
+}
+.b24-toc2 {
+	FONT-WEIGHT: normal; FONT-SIZE: 10px; COLOR: #000000; font-decoration: non10e
+}
+.b24-toc2 A {
+	FONT-WEIGHT: normal; FONT-SIZE: 10px; COLOR: #000000; font-decoration: non10e
+}
+.b24-toc-newitem {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; BACKGROUND: #ffffff; COLOR: #ff0000; FONT-FAMILY: arial,verdana helvetica, sans-serif
+}
+.b24-chapternavigate {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; BACKGROUND: #336699; COLOR: #ffffff; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.b24-chapterbar {
+	BACKGROUND: #336699; PADDING-BOTTOM: 2px; BORDER-LEFT: #000000 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #000000 1px solid
+}
+.b24-chapternavigate-background {
+	BACKGROUND: #000000
+}
+.b24-chaptertitle {
+	PADDING-LEFT: 5px; FONT-WEIGHT: bold; FONT-SIZE: 10px; BACKGROUND: #336699; PADDING-BOTTOM: 3px; COLOR: #ffffff; PADDING-TOP: 3px; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.b24-chunknavigate {
+	FONT-SIZE: 10px; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.b24-chunktitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.b24-chaptertoc {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 0px; FONT-SIZE: 10px; BACKGROUND: #ffef99; PADDING-BOTTOM: 4px; COLOR: black
+}
+.b24-chaptertoc0 {
+	DISPLAY: none
+}
+.b24-chaptertoc1 {
+	BORDER-TOP: black thin solid; FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: maroon; BORDER-BOTTOM: black thin solid; FONT-FAMILY: arial,verdana; TEXT-ALIGN: center
+}
+.b24-chaptertoc2 {
+	FONT-SIZE: 10px; COLOR: #122eb2; FONT-FAMILY: arial,verdana
+}
+.b24-chaptertoc2-selected {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #000000; FONT-FAMILY: verdana,arial
+}
+.b24-chaptertoc3 {
+	FONT-SIZE: 10px; COLOR: #333333; FONT-FAMILY: arial,verdana
+}
+.b24-chaptertoctitle {
+	PADDING-LEFT: 5px; FONT-WEIGHT: bold; FONT-SIZE: 10px; BACKGROUND: #336699; PADDING-BOTTOM: 3px; WIDTH: 100%; COLOR: #ffffff; PADDING-TOP: 3px; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-ALIGN: center
+}
+.b24-bookbin {
+	BACKGROUND: #f0f0f0; xborder-top: solid #000000 1px; xborder-bottom: solid #000000 1px
+}
+.b24-bookbin-item {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px
+}
+.b24-topictrail-title {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: black
+}
+.b24-topictrail-title2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #6489c7
+}
+.b24-topictrail-item {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: black
+}
+.b24-topictrail-item2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #6489c7
+}
+.b24-topictrail-summary {
+	FONT-SIZE: 13px; COLOR: black; TEXT-ALIGN: right
+}
+.b24-hotbooktitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; TEXT-ALIGN: center
+}
+.b24-booksmore {
+	MARGIN-BOTTOM: 3px; MARGIN-LEFT: 50px; TEXT-ALIGN: left; margin_top: 3px
+}
+.b24-collectionlist {
+	
+}
+.b24-collectiontitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; FONT-FAMILY: Verdana, Arial, Helvetica
+}
+.b24-collectiontitle2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; FONT-FAMILY: Verdana, Arial, Helvetica
+}
+.b24-collectiondescription {
+	FONT-WEIGHT: normal; FONT-SIZE: 10px; FONT-FAMILY: Verdana, Arial, Helvetica
+}
+.b24-bookmeta {
+	FONT-SIZE: 12px
+}
+.b24-bookmetacompact {
+	FONT-SIZE: 12px; FONT-FAMILY: arial,helvetica,verdana,sans-serif
+}
+.b24-bookchaptertitle {
+	FONT-WEIGHT: bolder; FONT-SIZE: 15px; COLOR: #000000
+}
+.b24-bookhometitle {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: #000000
+}
+.b24-booktitle {
+	FONT-WEIGHT: bold
+}
+.b24-booktitle-no {
+	FONT-WEIGHT: bold; COLOR: #b22e12
+}
+.b24-bookisbn {
+	FONT-SIZE: 10px; FONT-FAMILY: arial,verdana,sans-serif
+}
+.b24-bookcwdate {
+	FONT-SIZE: 10px; FONT-FAMILY: arial,verdana,sans-serif
+}
+.b24-bookpages {
+	FONT-SIZE: 10px; FONT-FAMILY: arial,verdana,sans-serif
+}
+.b24-bookimprint {
+	COLOR: #000080
+}
+.b24-bookpublisher {
+	FONT-SIZE: 11px; COLOR: #122eb2
+}
+.b24-bookrights {
+	FONT-SIZE: 11px; COLOR: #122eb2
+}
+.b24-bookeditorial {
+	COLOR: #666666
+}
+.b24-bookeditorial-byline {
+	FONT-SIZE: 10px; COLOR: #666666; FONT-STYLE: italic
+}
+.b24-bookbackcover {
+	
+}
+.b24-bookbackcover-title {
+	FONT-WEIGHT: bold; COLOR: #000000; HEIGHT: 35px
+}
+.b24-booksynopsis {
+	
+}
+.b24-booksynopsis-title {
+	FONT-WEIGHT: bold; COLOR: #000000; HEIGHT: 35px
+}
+.b24-bookshelfdate {
+	FONT-FAMILY: arial, helvetica, sans-serif
+}
+.b24-bookarchived {
+	COLOR: #ff0000
+}
+.b24-companionweb {
+	
+}
+.b24-searchtitle1 {
+	PADDING-LEFT: 8px; FONT-WEIGHT: bold; FONT-SIZE: 11px; BACKGROUND: #336699; PADDING-BOTTOM: 2px; COLOR: #ffffff; PADDING-TOP: 2px; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-ALIGN: left
+}
+.b24-searchtitle2 {
+	PADDING-LEFT: 8px; FONT-WEIGHT: bold; PADDING-BOTTOM: 2px; COLOR: #000000; PADDING-TOP: 2px; TEXT-ALIGN: left
+}
+.b24-searchform {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 10px; FONT-SIZE: 12px; MARGIN-LEFT: 10px; FONT-FAMILY: Arial,Helvetica, sans-serif; TEXT-ALIGN: left
+}
+.b24-searchform .b24-searchform-instructions {
+	PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+.b24-searchtips {
+	FONT-SIZE: 9px; COLOR: #333333; FONT-FAMILY: Arial,Helvetica, sans-serif
+}
+.b24-searchhit {
+	COLOR: #000000; FONT-FAMILY: Arial, Helvetica; size: 10px
+}
+.b24-searchhit-title {
+	FONT-WEIGHT: bold; COLOR: #000000; FONT-FAMILY: Arial, Helvetica; size: 10px
+}
+.b24-bookmark {
+	COLOR: #000000; FONT-FAMILY: Arial, Helvetica; size: 10px
+}
+.b24-bookmark-title {
+	FONT-WEIGHT: bold; COLOR: #000000; FONT-FAMILY: Arial, Helvetica; size: 10px
+}
+.b24-leftmenutitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; BACKGROUND: #336699; PADDING-BOTTOM: 3px; COLOR: #ffffff; PADDING-TOP: 3px; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-ALIGN: center
+}
+.b24-hometitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; BACKGROUND: #336699; COLOR: #ffffff; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-ALIGN: center
+}
+.b24-hometitle1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #000000; TEXT-ALIGN: center
+}
+.b24-hometitle2 {
+	FONT-WEIGHT: bold; COLOR: #990000; TEXT-ALIGN: center
+}
+.b24-hometitle-red {
+	FONT-WEIGHT: bold; COLOR: #990000; TEXT-ALIGN: center
+}
+.b24-listmore {
+	FONT-WEIGHT: bold; MARGIN-BOTTOM: 3px; MARGIN-LEFT: 50px; TEXT-ALIGN: left; margin_top: 3px
+}
+.b24-form {
+	MARGIN-TOP: 0px; FONT-SIZE: 12px; BACKGROUND: #ffffff; MARGIN-BOTTOM: 0px; COLOR: #000000
+}
+.b24-formbg {
+	BACKGROUND: #cccccc
+}
+.b24-formtitle {
+	PADDING-LEFT: 5px; FONT-WEIGHT: bold; FONT-SIZE: 10px; BACKGROUND: #336699; COLOR: #ffffff; PADDING-TOP: 3px; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.b24-formtitle2 {
+	PADDING-LEFT: 5px; FONT-WEIGHT: bold; FONT-SIZE: 10px; PADDING-TOP: 3px; FONT-FAMILY: Verdana, Arial, Helvetica
+}
+.b24-formtitle3 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; FONT-FAMILY: Verdana, Arial, Helvetica
+}
+.b24-formdescription {
+	COLOR: #333333; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.b24-formelement {
+	FONT-SIZE: 12px; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.b24-formseparator {
+	BACKGROUND: #cccccc; WIDTH: 100%; COLOR: #666666; HEIGHT: 1px; size: 1px
+}
+.b24-forminput {
+	
+}
+.b24-forminputlabel {
+	FONT-SIZE: 12px
+}
+.b24-forminputhelp {
+	COLOR: #808080
+}
+.b24-formfineprint {
+	FONT-SIZE: 10px; COLOR: #404040; FONT-STYLE: italic; TEXT-ALIGN: center
+}
+.b24-formrequired {
+	FONT-STYLE: italic
+}
+.b24-tipslink {
+	FONT-SIZE: 10px; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-ALIGN: right
+}
+.b24-formrequired {
+	COLOR: #ff0000; FONT-STYLE: italic
+}
+.b24-topiclist {
+	
+}
+.b24-topictitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica
+}
+.b24-topictitle2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica
+}
+.b24-topicitem {
+	FONT-SIZE: 12px; COLOR: #122eb2; FONT-FAMILY: Arial, Helvetica
+}
+.b24-topicselected {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica
+}
+.b24-topiccount {
+	FONT-SIZE: 10px; COLOR: #666666; FONT-FAMILY: Arial, Helvetica
+}
+.b24-menutop {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica; TEXT-ALIGN: center; align: center
+}
+.b24-menutop-highlight {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FONT-SIZE: 13px; PADDING-BOTTOM: 0px; COLOR: #cc0000; PADDING-TOP: 0px; FONT-FAMILY: Arial, Helvetica; TEXT-ALIGN: center
+}
+.b24-menuabout {
+	
+}
+.b24-menucheck {
+	
+}
+.b24-highlight {
+	FONT-WEIGHT: bold; COLOR: #cc0000
+}
+.b24-aboutmenu {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px
+}
+.b24-aboutmenu-item {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.b24-aboutmenu-selected {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.b24-aboutmenu-title {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+.b24-smallmenu {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px
+}
+.b24-smallmenu-item {
+	FONT-WEIGHT: normal; FONT-SIZE: 10px; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.b24-smallmenu-selected {
+	FONT-WEIGHT: normal; FONT-SIZE: 10px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.b24-smallmenu-title {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+.b24-menu-centered {
+	TEXT-ALIGN: center
+}
+.b24-menu-item {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.b24-menu-item2 {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.b24-menu-selected {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.b24-menu-title {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+.b24-pagemenu2 A {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #cc0000; TEXT-DECORATION: none
+}
+.b24-pagemenu2 A:visited {
+	COLOR: #cc0000; TEXT-DECORATION: none
+}
+.b24-contentlink:visited {
+	COLOR: #cc0000; TEXT-DECORATION: none
+}
+.b24-pagemenu2 A:hover {
+	COLOR: #336699; TEXT-DECORATION: underline
+}
+.b24-contentlink:hover {
+	COLOR: #336699; TEXT-DECORATION: underline
+}
+.b24-pagemenu2 A:active {
+	COLOR: #cc0000; TEXT-DECORATION: none
+}
+.b24-contentlink:active {
+	COLOR: #cc0000; TEXT-DECORATION: none
+}
+.b24-pricetable {
+	
+}
+.b24-pricetable-title {
+	FONT-WEIGHT: bold; BORDER-BOTTOM: #000000 1px solid
+}
+.b24-pricetable-subtitle {
+	
+}
+.b24-pricetable-data {
+	
+}
+.b24-error {
+	FONT-WEIGHT: normal; FONT-SIZE: 13px; BACKGROUND: #ffffff; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica
+}
+.b24-errortext {
+	FONT-WEIGHT: bold; COLOR: #ff0000
+}
+.b24-errortextbig {
+	FONT-WEIGHT: bold; FONT-SIZE: 16px; COLOR: #ff0000
+}
+.b24-errorcode {
+	COLOR: #ff8080
+}
+.b24-warning {
+	FONT-WEIGHT: bold; BACKGROUND: yellow; COLOR: red
+}
+.highlight {
+	BACKGROUND: yellow
+}
+.bookcount {
+	FONT-SIZE: 1px
+}
+.b24-doc-title {
+	FONT-WEIGHT: bold; FONT-SIZE: 16px
+}
+.b24-doc-title-italic-centered {
+	FONT-WEIGHT: bold; FONT-SIZE: 18px; FONT-STYLE: italic; TEXT-ALIGN: center
+}
+.b24-doc-subtitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px
+}
+.b24-doc-subtitle-centered {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; TEXT-ALIGN: center
+}
+.b24-doc-subtitle-italic-centered {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; FONT-STYLE: italic; TEXT-ALIGN: center
+}
+.b24-doc-para {
+	FONT-SIZE: 12px
+}
+.b24-doc-para-browse {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; MARGIN-BOTTOM: 3px; PADDING-BOTTOM: 3px; MARGIN-LEFT: 50px; PADDING-TOP: 3px; TEXT-ALIGN: left; margin_top: 3px
+}
+.b24-doc-para-right {
+	FONT-SIZE: 12px; TEXT-ALIGN: right
+}
+.b24-doc-normal {
+	FONT-WEIGHT: normal
+}
+.b24-doc-menu {
+	
+}
+.b24-doc-ul {
+	
+}
+.b24-doc-ol {
+	
+}
+.b24-doc-listem {
+	
+}
+.b24-doc-dl {
+	
+}
+.b24-doc-dt {
+	FONT-WEIGHT: bold; MARGIN: 5px
+}
+.b24-doc-dd {
+	MARGIN: 5px
+}
+.debugwrite {
+	FONT-SIZE: 11px; BACKGROUND: #ffffff; COLOR: #336699; FONT-FAMILY: comic sans ms
+}
+.xmldebugwrite {
+	FONT-SIZE: 9px; BACKGROUND: #ffffff; COLOR: #339966; FONT-FAMILY: comic sans ms
+}
+.debugwriteform {
+	FONT-SIZE: 11px; BACKGROUND: #336699; COLOR: #ffffff; FONT-FAMILY: comic sans ms
+}
+.debugwritecookie {
+	FONT-SIZE: 11px; BACKGROUND: #993366; COLOR: #ffffff; FONT-FAMILY: comic sans ms
+}
+.alwayswrite {
+	FONT-SIZE: 11px; BACKGROUND: #ffffff; COLOR: #993366; FONT-FAMILY: comic sans ms
+}
+.bigbanner {
+	FONT-WEIGHT: bold; FONT-SIZE: 18px
+}
+.b24-browselinkbox {
+	BORDER-RIGHT: navy 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: navy 1px solid; PADDING-LEFT: 10px; BACKGROUND: #cad7e5; PADDING-BOTTOM: 10px; BORDER-LEFT: navy 1px solid; WIDTH: 50%; PADDING-TOP: 10px; BORDER-BOTTOM: navy 1px solid
+}
+.b24-homepagetitle {
+	PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; COLOR: #cc0000; PADDING-TOP: 0px; FONT-FAMILY: Verdana,Arial,Helvetica; TEXT-DECORATION: none; align: center
+}
+.b24-homepagetitleblack {
+	PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; COLOR: #000000; PADDING-TOP: 0px; FONT-FAMILY: Verdana,Arial,Helvetica; TEXT-DECORATION: none; align: center
+}
+TD.b24-homepagelink A {
+	PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 5px; COLOR: #336699; PADDING-TOP: 5px; FONT-FAMILY: Verdana,Arial,Helvetica; TEXT-DECORATION: none
+}
+TD.b24-homepagelink A:visited {
+	PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 5px; COLOR: #336699; PADDING-TOP: 5px; FONT-FAMILY: Verdana,Arial,Helvetica; TEXT-DECORATION: none
+}
+TD.b24-homepagelink A:hover {
+	PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 5px; COLOR: #cc0000; PADDING-TOP: 5px; FONT-FAMILY: Verdana,Arial,Helvetica; TEXT-DECORATION: underline
+}
+TD.b24-homepagelink A:active {
+	PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 5px; COLOR: #336699; PADDING-TOP: 5px; FONT-FAMILY: Verdana,Arial,Helvetica; TEXT-DECORATION: none
+}
+.b24-checkmark {
+	LIST-STYLE-IMAGE: url(images/checkmark.gif)
+}

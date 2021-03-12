@@ -1,0 +1,213 @@
+create table Student
+(
+snum int,
+sname varchar(20),
+major varchar(20),
+level varchar(10),
+age int
+primary key (snum)
+)
+-------------------------------------------
+create table Class
+(
+name VARCHAR(10),
+meets_at varchar(10),
+room varchar(10),
+fid int,
+
+primary key  (name),
+FOREIGN KEY (Fid) REFERENCES FACULTY (fid)
+)
+--------------------------------------------
+
+create table Enrolled
+(
+snum int,
+cname varchar(10),
+
+FOREIGN KEY (snum) REFERENCES Student (snum),
+FOREIGN KEY (cname) REFERENCES Class (name)
+)
+
+--------------------------------------------
+create table Faculty
+(
+fid int,
+fname varchar(10),
+dept_id INT,
+
+PRIMARY KEY (FID)
+)
+
+
+--------------------------------------------
+
+ALTER TABLE Class ALTER COLUMN name VARCHAR(20)
+
+
+ALTER TABLE Class DROP CONSTRAINT FK__Class__fid__71D1E811
+
+ALTER TABLE Class ADD  CONSTRAINT FK__Class__fid__72D1E811 PRIMARY KEY (NAME)
+
+
+------------------------------FACULTY-------------------------------------------------
+INSERT INTO Faculty (fid, fname, dept_id )
+VALUES (4, 'F4', 44)
+
+SELECT * FROM Faculty
+
+
+UPDATE Faculty 
+SET fname = 'IV. Teach'
+WHERE fid=4
+------------------------------STUDENTS-------------------------------------------------
+INSERT INTO Student  (snum, sname, major, level, age )
+VALUES (107, 'Rose Borja' , 'Math','SR', 21)
+
+SELECT * FROM Student
+
+
+UPDATE Student
+SET major= 'BS IT'
+WHERE snum = 102
+
+
+
+-------------------------------CLASS--------------------------------------------------
+
+INSERT INTO Class  (name, meets_at, room, fid )
+VALUES ('History 1','1:00 PM' , 'R128', 4)
+
+SELECT * FROM Class
+
+
+
+------------------------------ENROLLED-----------------------------------------------------
+
+INSERT INTO Enrolled  (snum, cname )
+VALUES (106,'History 3')
+
+SELECT * FROM Enrolled
+
+----------------------------QUESTION#1--------------------------------------------------------
+SELECT enrolled.snum, student.sname FROM Student 
+INNER JOIN Enrolled
+ON Student.snum=Enrolled.snum
+INNER JOIN Class
+ON Enrolled.cname=Class.name
+INNER JOIN Faculty
+ON class.fid=Faculty.fid
+WHERE student.level='JR' AND  faculty.fname='I.Teach'
+
+
+
+----------------------------QUESTION#2--------------------------------------------------------
+SELECT  TOP 1 sname, max(age) AS Age  FROM Student 
+
+INNER JOIN Enrolled
+ON Student.snum=Enrolled.snum
+INNER JOIN Class
+ON Enrolled.cname=Class.name
+INNER JOIN Faculty
+ON Class.fid=Faculty.fid
+WHERE  student.major='History' OR Faculty.fname='I.Teach'
+GROUP BY sname, AGE
+HAVING AGE=MAX(AGE)
+ORDER BY AGE DESC
+
+----------------------------QUESTION#3---------------------------------------------------
+SELECT name, count (Enrolled.snum) Students_Enrolled FROM Class
+INNER JOIN Enrolled
+ON Class.name=Enrolled.cname
+INNER JOIN Student
+ON Enrolled.snum=Student.snum
+
+WHERE room ='R128' OR CLASS.name IN (SELECT CNAME FROM Enrolled )
+GROUP BY name
+
+
+----------------------------QUESTION#4--------------------------------------------------------
+
+SELECT student.sname , count (enrolled.snum ) FROM  Enrolled
+INNER JOIN Student 
+ON Enrolled.snum=student.snum
+INNER JOIN Class
+ON Enrolled.cname=Class.name
+WHERE class.meets_at='3:00 PM'
+GROUP BY student.sname
+HAVING count(Enrolled.cname)=2
+
+----------------------------QUESTION#5---------------------------------------------------
+
+SELECT TOP 1 fname ,count (class.room) AS no_of_some_class  FROM Faculty 
+INNER JOIN Class
+ON Faculty.fid=class.fid
+GROUP BY faculty.fname ORDER BY no_of_some_class DESC
+
+----------------------------QUESTION#6---------------------------------------------------
+
+SELECT  fname, count(Enrolled.cname) AS Classes FROM Faculty 
+INNER JOIN Class
+ON faculty.fid=Class.fid
+INNER JOIN Enrolled
+ON Class.name=Enrolled.cname
+WHERE class.name IN (SELECT Enrolled.cname FROM Enrolled)  
+GROUP BY fname 
+HAVING count(Enrolled.cname)< 5
+
+
+
+----------------------------QUESTION#7--------------------------------------------------------
+
+SELECT level , avg(age) FROM Student
+GROUP BY level
+
+
+-----------------------------QUESTION#8--
+
+SELECT level , avg(age) FROM Student
+WHERE level !='JR'
+GROUP BY level
+
+-----------------------------QUESTION#9--
+SELECT fname , count (class.fid) AS  Total_Classes  FROM Faculty 
+INNER JOIN Class 
+ON faculty.fid=class.fid
+WHERE class.room='R128' 
+GROUP BY fname 
+-----------------------------QUESTION#10--
+
+SELECT TOP 1 student.snum , student.sname, count(student.snum) AS Number_of_Classes FROM Student
+INNER JOIN Enrolled
+ON student.snum=enrolled.snum
+INNER JOIN Class
+ON Enrolled.cname=Class.name
+WHERE student.snum IN (SELECT enrolled.snum FROM Enrolled WHERE enrolled.cname IN (SELECT name from Class)) 
+GROUP BY Student.snum, student.sname 
+HAVING count(student.snum)>1 ORDER BY  count(student.snum)  DESC 
+
+ 
+ ----OR
+
+SELECT TOP 1 STUDENT.SNAME,COUNT (Enrolled.snum) AS 'MAX CLASS' FROM Enrolled
+INNER JOIN Student
+ON EnrolleD.SNUM=STUDENT.snum
+GROUP BY STUDENT.sname
+ORDER BY MAX(ENROLLED.cname)   DESC
+-----------------------------QUESTION#11--
+SELECT sname FROM Student
+where snum NOT IN (SELECT snum FROM Enrolled)
+
+
+
+
+-----------------------------QUESTION#12--
+SELECT TOP 1 convert (VARCHAR(10), age  ) + ',  ' + level AS pair, count(age) AS Age_Count FROM Student 
+GROUP BY convert (VARCHAR(10), age) + ',  ' + level 
+ORDER BY Age_Count  DESC
+
+or
+
+SELECT TOP 1 convert (VARCHAR(10), age  ) + ',  ' + level AS pair FROM Student 
+GROUP BY convert (VARCHAR(10), age) + ',  ' + level 
+ORDER BY  count(age)   DESC

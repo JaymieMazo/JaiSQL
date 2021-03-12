@@ -1,0 +1,106 @@
+Renaming columns and calculations in the result set
+
+---no.1
+SELECT ram AS Mb, hd Gb
+FROM pc
+WHERE cd = '24x'; 
+
+Mb Gb 
+64 8 
+32 10 
+
+renames the ram column as Mb (megabytes) and the hd column as Gb (gigabytes). 
+This query will return the base memory amount and the hard drive storage on computers with a 24-speed CD-ROM:
+
+--no.2
+SELECT ram * 1024 AS Kb, hd Gb
+FROM Pc
+WHERE cd = '24x';
+
+Kb Gb 
+65536 8 
+32768 10 
+
+
+no.3
+SELECT ram, 'Mb' AS ram_units, hd, 'Gb' AS hd_units
+FROM pc
+WHERE cd = '24x';
+
+
+
+The LIKE predicate 
+compares the string specified in the first expression for calculating the string value, 
+which is refered to as a value to test, with the pattern that is defined in the second expression for calculating the string value. 
+The pattern may contain any combination of wildcards such as:
+
+a) Underline symbol (_), which can be used instead of any single character in the value to test. 
+b) Percent sign (%), which replaces any string of zero or more characters in the value to test.
+
+
+Pattern Description (tbl)
+ 'abc%' Any rows that begin with the characters "abc". 
+'abc_' The rows with the length of strictly 4 characters, the first characters of the string being "abc". 
+'%z' Any character sequence that necessarily ends with the character "z". 
+'%Rostov%' Any character sequence including the word "Rostov" at any position of the string. 
+
+
+ex.1
+Find all the ships the class names of those ends with the character '„€': SELECT *
+FROM Ships
+WHERE class LIKE '%o'; 
+
+result:
+name class launched 
+Haruna Kongo 1916 
+Hiei Kongo 1914 
+Kirishima Kongo 1915 
+Kongo Kongo 1913 
+Musashi Yamato 1942 
+Yamato Yamato 1941 
+
+
+
+ex.2 
+
+Find all the ships the class names ending with the character '„€' but not with the characters 'go': SELECT *
+FROM Ships
+WHERE class NOT LIKE '%go' AND class LIKE '%o'; 
+
+name class launched 
+Musashi Yamato 1942 
+Yamato Yamato 1941 
+
+
+If the string to search includes a wildcard as a character, then specify a control symbol the ESCAPE clause. This control symbol is to be used in the pattern prior to the wildcard to warn that the wildcard here should be considered as an ordinary character. For example, if the value to search includes the character "_", the pattern '%_%' results in returning all the record from the table. Hence, the pattern should be written as 
+
+'%#_%' ESCAPE '#' 
+
+To search the string "25%", the following predicate may be used: 
+
+LIKE '25|%' ESCAPE '|' 
+
+The truth value of LIKE predicate is assigned in accordance with the following rules: 
+
+a) If either value to test or the pattern, or control symbol is NULL, the truth value is UNKNOWN. 
+b) Otherwise, if the value to test and the pattern have zero-length, the truth value is TRUE. 
+c) Otherwise, if the value to test matches the pattern, LIKE predicate evaluates to TRUE. 
+d) If none of the above conditions is met, LIKE predicate evaluates to FALSE. 
+
+
+
+Using NULL value in the search conditions
+Predicate
+IS [NOT] NULL
+
+allows for checking the absence (availability) of value in the table columns. 
+In such cases, using ordinary comparison predicates can lead to incorrect results, because comparing with NULL value evaluates to UNKNOWN. 
+
+So, searching for no-price records in the PC table (typist errors) may be performed with the following operator: SELECT *
+FROM Pc
+WHERE price IS NULL; 
+
+
+
+
+

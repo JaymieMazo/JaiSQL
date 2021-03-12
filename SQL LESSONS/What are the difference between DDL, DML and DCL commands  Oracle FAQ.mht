@@ -1,0 +1,2400 @@
+From: <Saved by Windows Internet Explorer 8>
+Subject: What are the difference between DDL, DML and DCL commands? | Oracle FAQ
+Date: Wed, 31 Jul 2013 10:03:33 +0800
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0000_01CE8DD5.37610A20"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.3350
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0000_01CE8DD5.37610A20
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.orafaq.com/faq/what_are_the_difference_between_ddl_dml_and_dcl_commands
+
+=EF=BB=BF<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML dir=3Dltr xml:lang=3D"en" =
+xmlns=3D"http://www.w3.org/1999/xhtml"><HEAD=20
+profile=3D""><TITLE>What are the difference between DDL, DML and DCL =
+commands? | Oracle FAQ</TITLE>
+<META content=3D"text/html; charset=3Dutf-8" http-equiv=3DContent-Type>
+<META content=3Dtext/css http-equiv=3DContent-Style-Type><LINK =
+rel=3Dprev=20
+href=3D"/faq/sql"><LINK rel=3Dup href=3D"/faq/sql"><LINK rel=3Dnext=20
+href=3D"/faq/difference_between_truncate_delete_and_drop_commands"><LINK =
+
+rel=3D"shortcut icon" type=3Dimage/x-icon href=3D"/favicon.ico"><LINK =
+rel=3Dstylesheet=20
+type=3Dtext/css =
+href=3D"http://www.orafaq.com/modules/aggregator/aggregator.css?X"=20
+media=3Dall><LINK rel=3Dstylesheet type=3Dtext/css=20
+href=3D"http://www.orafaq.com/modules/book/book.css?X" media=3Dall><LINK =
+
+rel=3Dstylesheet type=3Dtext/css=20
+href=3D"http://www.orafaq.com/modules/hidden_captcha/hidden_captcha.css?X=
+"=20
+media=3Dall><LINK rel=3Dstylesheet type=3Dtext/css=20
+href=3D"http://www.orafaq.com/modules/node/node.css?X" media=3Dall><LINK =
+
+rel=3Dstylesheet type=3Dtext/css=20
+href=3D"http://www.orafaq.com/modules/system/defaults.css?X" =
+media=3Dall><LINK=20
+rel=3Dstylesheet type=3Dtext/css=20
+href=3D"http://www.orafaq.com/modules/system/system.css?X" =
+media=3Dall><LINK=20
+rel=3Dstylesheet type=3Dtext/css=20
+href=3D"http://www.orafaq.com/modules/system/system-menus.css?X" =
+media=3Dall><LINK=20
+rel=3Dstylesheet type=3Dtext/css=20
+href=3D"http://www.orafaq.com/modules/user/user.css?X" media=3Dall><LINK =
+
+rel=3Dstylesheet type=3Dtext/css=20
+href=3D"http://www.orafaq.com/modules/comment/comment.css?X" =
+media=3Dall><LINK=20
+rel=3Dstylesheet type=3Dtext/css=20
+href=3D"http://www.orafaq.com/themes/orafaq/style.css?X" media=3Dall>
+<SCRIPT>=0A=
+	google_ad_client =3D "ca-pub-7499460687650857";=0A=
+	google_ad_slot =3D "9005302109";=0A=
+	google_ad_width =3D 468;=0A=
+	google_ad_height =3D 60;=0A=
+  </SCRIPT>
+
+<META name=3DGENERATOR content=3D"MSHTML 8.00.6001.18702"></HEAD>
+<BODY>
+<DIV class=3Dhide><A accessKey=3D2 title=3D"Skip navigation."=20
+href=3D"http://www.orafaq.com/faq/what_are_the_difference_between_ddl_dml=
+_and_dcl_commands#content">Skip=20
+navigation</A>.</DIV>
+<TABLE id=3Dprimary-menu border=3D0 cellSpacing=3D0 cellPadding=3D0 =
+width=3D"100%"=20
+height=3D117>
+  <TBODY>
+  <TR>
+    <TD bgColor=3D#85a1c1 height=3D6></TD></TR>
+  <TR>
+    <TD height=3D111 =
+background=3Dhttp://www.orafaq.com/forum/banner/backgr.gif>
+      <TABLE border=3D0 cellSpacing=3D0 cellPadding=3D0 width=3D"100%">
+        <TBODY>
+        <TR>
+          <TD width=3D236><A href=3D"http://www.orafaq.com/"><IMG=20
+            src=3D"http://www.orafaq.com/forum/banner/logo.jpg" =
+width=3D236=20
+            height=3D111></A> </TD>
+          <TD=20
+          style=3D"BACKGROUND-IMAGE: url(/forum/banner/back2.jpg); =
+BACKGROUND-REPEAT: no-repeat; Xbackground-attachment: fixed"=20
+          vAlign=3Dcenter align=3Dmiddle>
+            <SCRIPT=20
+            =
+src=3D"http://pagead2.googlesyndication.com/pagead/show_ads.js"></SCRIPT>=
+
+          </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE style=3D"MIN-WIDTH: 400px" id=3Dcontent border=3D0 =
+cellSpacing=3D0 cellPadding=3D5=20
+width=3D"100%">
+  <TBODY>
+  <TR>
+    <TD id=3Dsidebar-left>
+      <DIV id=3Dblock-fudforum-0 class=3D"block block-fudforum">
+      <DIV class=3Dtitle>
+      <H3>User login</H3></DIV>
+      <DIV class=3Dcontent>
+      <FORM id=3Duser-login-form accept-charset=3DUTF-8 method=3Dpost=20
+      =
+action=3D/aggregator/www.oracle.com/corporate/press/2009/08/2007/12/10/20=
+11/2009/08/21/www.deloitte.com/us/www.webcenterinaction.com?destination=3D=
+aggregator%2Fwww.oracle.com%2Fcorporate%2Fpress%2F2009%2F08%2F2007%2F12%2=
+F10%2F2011%2F2009%2F08%2F21%2Fwww.deloitte.com%2Fus%2Fwww.webcenterinacti=
+on.com%3Fpage%3D88>
+      <DIV>
+      <DIV id=3Dedit-name-wrapper class=3Dform-item><LABEL =
+for=3Dedit-name>Login:=20
+      <SPAN class=3Dform-required title=3D"This field is =
+required.">*</SPAN></LABEL>=20
+      <INPUT id=3Dedit-name class=3D"form-text required" maxLength=3D30 =
+size=3D15=20
+      type=3Dtext name=3Dname> </DIV>
+      <DIV id=3Dedit-pass-wrapper class=3Dform-item><LABEL =
+for=3Dedit-pass>Password:=20
+      <SPAN class=3Dform-required title=3D"This field is =
+required.">*</SPAN></LABEL>=20
+      <INPUT id=3Dedit-pass class=3D"form-text required" maxLength=3D16 =
+size=3D15=20
+      type=3Dpassword name=3Dpass> </DIV><INPUT id=3Dedit-submit =
+class=3Dform-submit value=3DLogin type=3Dsubmit name=3Dop>=20
+      <BR>[ <A href=3D"http://www.orafaq.com/forum/re/0/">Register</A> ] =
+[ <A=20
+      href=3D"http://www.orafaq.com/forum/rst/0/">Forgot password</A> =
+]<INPUT=20
+      id=3Dform-838696914695a1d6c4f6835fc22aa5b1=20
+      value=3Dform-838696914695a1d6c4f6835fc22aa5b1 type=3Dhidden=20
+      name=3Dform_build_id> <INPUT id=3Dedit-fudforum-login-form=20
+      value=3Dfudforum_login_form type=3Dhidden name=3Dform_id>=20
+      </DIV></FORM></DIV></DIV>
+      <DIV id=3Dblock-menu-menu-site-navigation class=3D"block =
+block-menu">
+      <DIV class=3Dtitle>
+      <H3>Site navigation</H3></DIV>
+      <DIV class=3Dcontent>
+      <UL class=3Dmenu>
+        <LI class=3D"collapsed first"><A title=3D""=20
+        href=3D"http://www.orafaq.com/about">About</A></LI>
+        <LI class=3Dcollapsed><A title=3D"Local blog posts"=20
+        href=3D"http://www.orafaq.com/articles">Blogs</A></LI>
+        <LI class=3Dcollapsed><A title=3D"Oracle Blog aggregator"=20
+        href=3D"http://www.orafaq.com/aggregator">Feed =
+aggregator</A></LI>
+        <LI class=3Dcollapsed><A =
+href=3D"http://www.orafaq.com/books">Books</A></LI>
+        <LI class=3Dleaf><A=20
+href=3D"http://www.orafaq.com/links">Directories</A></LI>
+        <LI class=3Dleaf><A=20
+        href=3D"http://www.orafaq.com/wiki/Events">Events</A></LI>
+        <LI class=3Dleaf><A=20
+        =
+href=3D"http://www.orafaq.com/wiki/Category:Frequently_Asked_Questions">F=
+AQ's</A></LI>
+        <LI class=3Dleaf><A =
+href=3D"http://www.orafaq.com/forum">Forums</A></LI>
+        <LI class=3Dleaf><A=20
+        href=3D"http://www.orafaq.com/wiki/Mailing_lists">Mailing =
+Lists</A></LI>
+        <LI class=3Dleaf><A=20
+        href=3D"http://www.orafaq.com/wiki/Papers">Papers</A></LI>
+        <LI class=3Dleaf><A=20
+        href=3D"http://www.orafaq.com/wiki/Scripts">Scripts</A></LI>
+        <LI class=3Dcollapsed><A =
+href=3D"http://www.orafaq.com/tools">Tools</A></LI>
+        <LI class=3Dleaf><A =
+href=3D"http://www.orafaq.com/wiki/Usenet">USENET=20
+        News</A></LI>
+        <LI class=3Dleaf><A=20
+        href=3D"http://www.orafaq.com/wiki/Main_Page">Wiki</A></LI>
+        <LI class=3D"leaf last"><A=20
+        href=3D"http://www.orafaq.com/wiki/XML/RSS_Newsfeeds">XML=20
+      Feeds</A></LI></UL></DIV></DIV></TD>
+    <TD vAlign=3Dtop>
+      <DIV id=3Dmain>
+      <DIV class=3Dbreadcrumb><A =
+href=3D"http://www.orafaq.com/">Home</A> =C2=BB <A=20
+      href=3D"http://www.orafaq.com/faq">Oracle FAQ Knowledge Base</A> =
+=C2=BB <A=20
+      href=3D"http://www.orafaq.com/faq/sql_and_pl_sql">SQL and =
+PL/SQL</A> =C2=BB <A=20
+      href=3D"http://www.orafaq.com/faq/sql">SQL</A></DIV>
+      <H1 class=3Dtitle>What are the difference between DDL, DML and DCL =
+
+      commands?</H1><!-- start main content -->
+      <DIV class=3Dnode><SPAN class=3Dsubmitted>Submitted by admin on =
+Wed,=20
+      2004-08-04 13:49</SPAN> <SPAN class=3Dtaxonomy></SPAN>
+      <DIV class=3Dpicture></DIV>
+      <DIV class=3Dcontent>
+      <P>
+      <H3><A name=3DDDL>DDL</A></H3><BR><SPAN style=3D"FONT-WEIGHT: =
+bold">Data=20
+      Definition Language</SPAN> (DDL) statements are used to define the =
+
+      database structure or schema. Some examples:
+      <P></P>
+      <UL style=3D"LIST-STYLE-TYPE: circle" class=3Dbb-list>
+        <LI>CREATE - to create objects in the database</LI>
+        <LI>ALTER - alters the structure of the database</LI>
+        <LI>DROP - delete objects from the database</LI>
+        <LI>TRUNCATE - remove all records from a table, including all =
+spaces=20
+        allocated for the records are removed</LI>
+        <LI>COMMENT - add comments to the data dictionary</LI>
+        <LI>RENAME - rename an object</LI></UL>
+      <P>
+      <H3><A name=3DDML>DML</A></H3><BR><SPAN style=3D"FONT-WEIGHT: =
+bold">Data=20
+      Manipulation Language</SPAN> (DML) statements are used for =
+managing data=20
+      within schema objects. Some examples:
+      <P></P>
+      <UL style=3D"LIST-STYLE-TYPE: circle" class=3Dbb-list>
+        <LI>SELECT - retrieve data from the a database</LI>
+        <LI>INSERT - insert data into a table</LI>
+        <LI>UPDATE - updates existing data within a table</LI>
+        <LI>DELETE - deletes all records from a table, the space for the =
+records=20
+        remain</LI>
+        <LI>MERGE - UPSERT operation (insert or update)</LI>
+        <LI>CALL - call a PL/SQL or Java subprogram</LI>
+        <LI>EXPLAIN PLAN - explain access path to data</LI>
+        <LI>LOCK TABLE - control concurrency</LI></UL>
+      <P>
+      <H3><A name=3DDCL>DCL</A></H3><BR><SPAN style=3D"FONT-WEIGHT: =
+bold">Data=20
+      Control Language</SPAN> (DCL) statements. Some examples:
+      <P></P>
+      <UL style=3D"LIST-STYLE-TYPE: circle" class=3Dbb-list>
+        <LI>GRANT - gives user's access privileges to database</LI>
+        <LI>REVOKE - withdraw access privileges given with the GRANT=20
+      command</LI></UL>
+      <P>
+      <H3><A name=3DTCL>TCL</A></H3><BR><SPAN=20
+      style=3D"FONT-WEIGHT: bold">Transaction Control</SPAN> (TCL) =
+statements are=20
+      used to manage the changes made by DML statements. It allows =
+statements to=20
+      be grouped together into logical transactions.
+      <P></P>
+      <UL style=3D"LIST-STYLE-TYPE: circle" class=3Dbb-list>
+        <LI>COMMIT - save work done</LI>
+        <LI>SAVEPOINT - identify a point in a transaction to which you =
+can later=20
+        roll back</LI>
+        <LI>ROLLBACK - restore database to original since the last =
+COMMIT</LI>
+        <LI>SET TRANSACTION - Change transaction options like isolation =
+level=20
+        and what rollback segment to use</LI></UL>
+      <DIV id=3Dbook-navigation-104 class=3Dbook-navigation>
+      <DIV class=3D"page-links clear-block"><A class=3Dpage-previous=20
+      title=3D"Go to previous page" =
+href=3D"http://www.orafaq.com/faq/sql">=E2=80=B9 SQL</A>=20
+      <A class=3Dpage-up title=3D"Go to parent page"=20
+      href=3D"http://www.orafaq.com/faq/sql">up</A> <A class=3Dpage-next =
+
+      title=3D"Go to next page"=20
+      =
+href=3D"http://www.orafaq.com/faq/difference_between_truncate_delete_and_=
+drop_commands">Difference=20
+      between TRUNCATE, DELETE and DROP commands =E2=80=BA</A> =
+</DIV></DIV></DIV>
+      <DIV class=3Dlinks>=C2=BB=20
+      <UL class=3D"links inline">
+        <LI class=3D"comment_forbidden first last"><SPAN><A=20
+        =
+href=3D"http://www.orafaq.com/user/login?destination=3Dnode%2F476%23comme=
+nt-form">Login</A>=20
+        to post comments</SPAN></LI></UL></DIV></DIV>
+      <DIV id=3Dcomments><A id=3Dcomment-291></A>
+      <DIV class=3D"comment comment-published">
+      <H3 class=3Dtitle><A class=3Dactive=20
+      =
+href=3D"http://www.orafaq.com/faq/what_are_the_difference_between_ddl_dml=
+_and_dcl_commands#comment-291"></A></H3>
+      <DIV class=3Dsubmitted>Submitted by madhuker (not verified) on =
+Wed,=20
+      2005-04-06 03:20.</DIV>
+      <DIV class=3Dcontent>
+      <P>DML statements can be rollbacked where DDL are =
+autocommit.</P></DIV><!-- BEGIN: links -->
+      <DIV class=3Dlinks>=C2=BB=20
+      <UL class=3Dlinks>
+        <LI class=3D"comment_forbidden first last"><SPAN><A=20
+        =
+href=3D"http://www.orafaq.com/user/login?destination=3Dnode%2F476%23comme=
+nt-form">Login</A>=20
+        to post comments</SPAN></LI></UL></DIV><!-- END: links --></DIV>
+      <DIV class=3Dindented><A id=3Dcomment-578></A>
+      <DIV class=3D"comment comment-published">
+      <H3 class=3Dtitle><A class=3Dactive=20
+      =
+href=3D"http://www.orafaq.com/faq/what_are_the_difference_between_ddl_dml=
+_and_dcl_commands#comment-578">DML=20
+      commands can't be</A></H3>
+      <DIV class=3Dsubmitted>Submitted by ramakrishna (not verified) on =
+Thu,=20
+      2006-01-05 09:35.</DIV>
+      <DIV class=3Dcontent>
+      <P>DML commands can't be rollback when a DDL command is executed=20
+      immediately after a DML. DDL after DML means "auto commit". The =
+changes=20
+      will return on disk not on the buffer. If the changes return on =
+the buffer=20
+      it is possible to rollback not from the disk. </P></DIV><!-- =
+BEGIN: links -->
+      <DIV class=3Dlinks>=C2=BB=20
+      <UL class=3Dlinks>
+        <LI class=3D"comment_forbidden first last"><SPAN><A=20
+        =
+href=3D"http://www.orafaq.com/user/login?destination=3Dnode%2F476%23comme=
+nt-form">Login</A>=20
+        to post comments</SPAN></LI></UL></DIV><!-- END: links =
+--></DIV></DIV><A=20
+      id=3Dcomment-292></A>
+      <DIV class=3D"comment comment-published">
+      <H3 class=3Dtitle><A class=3Dactive=20
+      =
+href=3D"http://www.orafaq.com/faq/what_are_the_difference_between_ddl_dml=
+_and_dcl_commands#comment-292"></A></H3>
+      <DIV class=3Dsubmitted>Submitted by R. SATISH KUMAR (not verified) =
+on Wed,=20
+      2005-04-13 03:09.</DIV>
+      <DIV class=3Dcontent>
+      <P>DEAR SIR,</P>
+      <P>Let me tell you the difference between DDL,DML,TCL and DCL:</P>
+      <P><SPAN style=3D"FONT-WEIGHT: bold">DDL=20
+      COMMANDS:</SPAN><BR>CREATE,ALTER,DROP AND TRUNCATE ARE CALLED DDL=20
+      COMMANDS. They are called Data Definition since they are used for =
+defining=20
+      the data. That is the structure of the data is known through these =
+DDL=20
+      commands.</P>
+      <P><SPAN style=3D"FONT-WEIGHT: bold">DML COMMANDS:</SPAN><BR>DML =
+commands=20
+      are used for data manipulation. Some of the DML=20
+      commands<BR>insert,select,update,delete etc. Even though select is =
+not=20
+      exactly a DML language command oracle still recommends you to =
+consider=20
+      SELECT as an DML command.</P>
+      <P><SPAN style=3D"FONT-WEIGHT: bold">TCL:</SPAN><BR>For revoking =
+the=20
+      transactions and to make the data commit to the database we use =
+TCL. Some=20
+      of the TCL commands are:<BR>1. ROLLBACK<BR>2. COMMIT</P>
+      <P>ROLLBACK is used for revoking the transactions until last=20
+      commit.<BR>COMMIT is used for commiting the transactions to the=20
+      database.<BR>Once we commit we cannot rollback. Once we rollback =
+we cannot=20
+      commit.<BR>Commit and Rollback are generally used to commit or =
+revoke the=20
+      transactions that are with regard to DML commands.</P>
+      <P><SPAN style=3D"FONT-WEIGHT: bold">DCL:</SPAN><BR>Data Control =
+Language is=20
+      used for the control of data. That is a user can access any data =
+based on=20
+      the priveleges given to him. This is done through DATA CONTROL =
+LANGUAGE.=20
+      Some of the DCL Commands are:<BR>1. GRANT<BR>2. REVOKE.</P>
+      <P>"THESE ARE REFERRED FROM THE BOOK 'ORACLE 9i complete =
+Reference'=20
+      written by Kooch and George. This is an Oracle Press Release." If =
+you want=20
+      further details about this topic I can give you. Since I don't =
+know your=20
+      e-mail address I am not able to send you the complete information. =
+I will=20
+      give my e-mail address. That is,
+      <SCRIPT =
+type=3Dtext/javascript>eval(unescape('%64%6f%63%75%6d%65%6e%74%2e%77%72%6=
+9%74%65%28%27%3c%61%20%68%72%65%66%3d%22%6d%61%69%6c%74%6f%3a%73%61%74%69=
+%73%68%5f%73%61%74%68%79%61%31%39%38%33%40%79%61%68%6f%6f%2e%63%6f%2e%69%=
+6e%22%3e%73%61%74%69%73%68%5f%73%61%74%68%79%61%31%39%38%33%40%79%61%68%6=
+f%6f%2e%63%6f%2e%69%6e%3c%2f%61%3e%27%29%3b'))</SCRIPT>
+       . You can send your email address to my email and i will discuss =
+about=20
+      this topic with you. If you can send me your email address I can =
+send you=20
+      an complete attachment of this topic. </P>
+      <P>Thanking you,</P>
+      <P>SATISH KUMAR.</P></DIV><!-- BEGIN: links -->
+      <DIV class=3Dlinks>=C2=BB=20
+      <UL class=3Dlinks>
+        <LI class=3D"comment_forbidden first last"><SPAN><A=20
+        =
+href=3D"http://www.orafaq.com/user/login?destination=3Dnode%2F476%23comme=
+nt-form">Login</A>=20
+        to post comments</SPAN></LI></UL></DIV><!-- END: links =
+--></DIV><A=20
+      id=3Dcomment-294></A>
+      <DIV class=3D"comment comment-published">
+      <H3 class=3Dtitle><A class=3Dactive=20
+      =
+href=3D"http://www.orafaq.com/faq/what_are_the_difference_between_ddl_dml=
+_and_dcl_commands#comment-294"></A></H3>
+      <DIV class=3Dsubmitted>Submitted by Marcel van Oosterhout (not =
+verified) on=20
+      Wed, 2005-10-12 03:13.</DIV>
+      <DIV class=3Dcontent>
+      <P>SQL statements are often divided into three categories:</P>
+      <P>DML (Data Manipulation Language). These SQL statements are used =
+to=20
+      retrieve and manipulate data. This category encompasses the most=20
+      fundamental commands including DELETE, INSERT, SELECT, and UPDATE. =
+DML SQL=20
+      statements have only minor differences between SQL variations. DML =
+SQL=20
+      commands include the following:</P>
+      <UL style=3D"LIST-STYLE-TYPE: circle" class=3Dbb-list>
+        <LI>DELETE to remove rows. </LI>
+        <LI>INSERT to add a row. </LI>
+        <LI>SELECT to retrieve row. </LI>
+        <LI>UPDATE to change data in specified columns.</LI></UL>
+      <P>DDL (Data Definition Language). These SQL statements define the =
+
+      structure of a database, including rows, columns, tables, indexes, =
+and=20
+      database specifics such as file locations. DDL SQL statements are =
+more=20
+      part of the DBMS and have large differences between the SQL =
+variations.=20
+      DML SQL commands include the following:</P>
+      <UL style=3D"LIST-STYLE-TYPE: circle" class=3Dbb-list>
+        <LI>CREATE to make a new database, table, index, or stored =
+query. </LI>
+        <LI>DROP to destroy an existing database, table, index, or =
+view.</LI>
+        <LI>DBCC (Database Console Commands) statements check the =
+physical and=20
+        logical consistency of a database.</LI></UL>
+      <P>DCL (Data Control Language). These SQL statements control the =
+security=20
+      and permissions of the objects or parts of the database(s). DCL =
+SQL=20
+      statements are also more part of the DBMS and have large =
+differences=20
+      between the SQL variations. DML SQL commands include the =
+following:</P>
+      <UL style=3D"LIST-STYLE-TYPE: circle" class=3Dbb-list>
+        <LI>GRANT to allow specified users to perform specified tasks. =
+</LI>
+        <LI>DENY to disallow specified users from performing specified =
+tasks.=20
+        </LI>
+        <LI>REVOKE to cancel previously granted or denied=20
+      permissions.</LI></UL></DIV><!-- BEGIN: links -->
+      <DIV class=3Dlinks>=C2=BB=20
+      <UL class=3Dlinks>
+        <LI class=3D"comment_forbidden first last"><SPAN><A=20
+        =
+href=3D"http://www.orafaq.com/user/login?destination=3Dnode%2F476%23comme=
+nt-form">Login</A>=20
+        to post comments</SPAN></LI></UL></DIV><!-- END: links =
+--></DIV><A=20
+      id=3Dcomment-6160></A>
+      <DIV class=3D"comment comment-published">
+      <H3 class=3Dtitle><A class=3Dactive=20
+      =
+href=3D"http://www.orafaq.com/faq/what_are_the_difference_between_ddl_dml=
+_and_dcl_commands#comment-6160">Which=20
+      's the fastest command</A></H3>
+      <DIV class=3Dsubmitted>Submitted by slib on Tue, 2010-02-23 =
+22:54.</DIV>
+      <DIV class=3Dcontent>
+      <P>What is the fastest command type from the 3 command types: DDL, =
+DML and=20
+      DCL?</P></DIV><!-- BEGIN: links -->
+      <DIV class=3Dlinks>=C2=BB=20
+      <UL class=3Dlinks>
+        <LI class=3D"comment_forbidden first last"><SPAN><A=20
+        =
+href=3D"http://www.orafaq.com/user/login?destination=3Dnode%2F476%23comme=
+nt-form">Login</A>=20
+        to post comments</SPAN></LI></UL></DIV><!-- END: links =
+--></DIV></DIV><!-- end main content --></DIV><!-- main =
+--></TD></TR></TBODY></TABLE>
+<TABLE id=3Dfooter-menu border=3D0 cellSpacing=3D0 summary=3D"Navigation =
+elements."=20
+cellPadding=3D0 width=3D"100%">
+  <TBODY>
+  <TR>
+    <TD vAlign=3Dcenter align=3Dmiddle>
+      <DIV class=3Dsecondary-links>.:: <A title=3D"User blogs and blog =
+aggregator"=20
+      href=3D"http://www.orafaq.com/">Blogger Home</A> :: <A=20
+      title=3D"The Oracle Wiki" href=3D"http://www.orafaq.com/wiki">Wiki =
+Home</A> ::=20
+      <A title=3D"Oracle discussion forums"=20
+      href=3D"http://www.orafaq.com/forum">Forum Home</A> :: <A=20
+      title=3D"This site's privacy policy"=20
+      =
+href=3D"http://www.orafaq.com/wiki/Oracle_FAQ:Privacy_policy">Privacy</A>=
+ ::=20
+      <A title=3D"Contact us" =
+href=3D"http://www.orafaq.com/feedback">Contact</A>=20
+      ::. </DIV></TD></TR></TBODY></TABLE></BODY></HTML>
+
+------=_NextPart_000_0000_01CE8DD5.37610A20
+Content-Type: image/jpeg
+Content-Transfer-Encoding: base64
+Content-Location: http://www.orafaq.com/forum/banner/logo.jpg
+
+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
+/9k=
+
+------=_NextPart_000_0000_01CE8DD5.37610A20
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.orafaq.com/forum/banner/backgr.gif
+
+R0lGODlhAgBvAKUmAHKWunuVvXWbvHucvYSdvYSdxIucvIKiw4Wivoehwoaiw4KmwYqixImmx5Cl
+xYyqxZSqzJOtxZyuxZutzpaxy6K1zp26z6S8zaS71Ku7zqq62qu+1a6+2KzEzKzF4rPF1rPE3bPM
+3e/v9fPz9/3+9/v/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////yH+FUNyZWF0ZWQgd2l0aCBUaGUgR0lN
+UAAh+QQBCgA/ACwAAAAAAgBvAAAGbEASqUQsmUwjUSYzaA4UCkZiSq1ar9isFlooOBybDsbSJBA2
+ms0GgWhiKpwP5OEkTCSgD8QREEAiIB8SEgAADw0fHxUVUwQFCQdXZgsIFxccHAUGAwEWFYlfAQEU
+FCEeEQ9mVgVQUFqvsLGxQQA7
+
+------=_NextPart_000_0000_01CE8DD5.37610A20
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: 7bit
+Content-Location: http://www.orafaq.com/modules/aggregator/aggregator.css?X
+
+#aggregator .feed-source .feed-title {
+	MARGIN-TOP: 0px
+}
+#aggregator .feed-source .feed-image IMG {
+	MARGIN-BOTTOM: 0.75em
+}
+#aggregator .feed-source .feed-icon {
+	DISPLAY: block; FLOAT: right
+}
+#aggregator .feed-item {
+	MARGIN-BOTTOM: 1.5em
+}
+#aggregator .feed-item-title {
+	MARGIN-BOTTOM: 0px; FONT-SIZE: 1.3em
+}
+#aggregator .feed-item-meta {
+	MARGIN-BOTTOM: 0.5em
+}
+#aggregator .feed-item-body {
+	MARGIN-BOTTOM: 0.5em
+}
+#aggregator .feed-item-categories {
+	FONT-SIZE: 0.9em
+}
+#aggregator TD {
+	VERTICAL-ALIGN: bottom
+}
+#aggregator TD.categorize-item {
+	WHITE-SPACE: nowrap
+}
+#aggregator .categorize-item .news-item .body {
+	MARGIN-TOP: 0px
+}
+#aggregator .categorize-item H3 {
+	MARGIN-TOP: 0px; MARGIN-BOTTOM: 1em
+}
+
+------=_NextPart_000_0000_01CE8DD5.37610A20
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.orafaq.com/modules/book/book.css?X
+
+.book-navigation .menu {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 3em; PADDING-RIGHT: 0px; BORDER-TOP: =
+#888 1px solid; PADDING-TOP: 1em
+}
+.book-navigation .page-links {
+	BORDER-BOTTOM: #888 1px solid; TEXT-ALIGN: center; PADDING-BOTTOM: =
+0.5em; PADDING-LEFT: 0.5em; PADDING-RIGHT: 0.5em; BORDER-TOP: #888 1px =
+solid; PADDING-TOP: 0.5em
+}
+.book-navigation .page-previous {
+	TEXT-ALIGN: left; WIDTH: 42%; DISPLAY: block; FLOAT: left
+}
+.book-navigation .page-up {
+	MARGIN: 0px 5%; WIDTH: 4%; DISPLAY: block; FLOAT: left
+}
+.book-navigation .page-next {
+	TEXT-ALIGN: right; WIDTH: 42%; DISPLAY: block; FLOAT: right
+}
+#book-outline {
+	MIN-WIDTH: 56em
+}
+.book-outline-form .form-item {
+	MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px
+}
+#edit-book-bid-wrapper .description {
+	CLEAR: both
+}
+#book-admin-edit SELECT {
+	MARGIN-RIGHT: 24px
+}
+#book-admin-edit SELECT.progress-disabled {
+	MARGIN-RIGHT: 0px
+}
+#book-admin-edit TR.ahah-new-content {
+	BACKGROUND-COLOR: #ffd
+}
+#book-admin-edit .form-item {
+	FLOAT: left
+}
+
+------=_NextPart_000_0000_01CE8DD5.37610A20
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: 7bit
+Content-Location: http://www.orafaq.com/modules/hidden_captcha/hidden_captcha.css?X
+
+.hidden-captcha {
+	DISPLAY: none
+}
+.container-inline DIV.hidden-captcha {
+	DISPLAY: none
+}
+
+------=_NextPart_000_0000_01CE8DD5.37610A20
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.orafaq.com/modules/node/node.css?X
+
+.node-unpublished {
+	BACKGROUND-COLOR: #fff4f4
+}
+.preview .node {
+	BACKGROUND-COLOR: #ffffea
+}
+#node-admin-filter UL {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: =
+0px; WIDTH: 100%; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#node-admin-buttons {
+	FLOAT: left; MARGIN-LEFT: 0.5em; CLEAR: right
+}
+TD.revision-current {
+	BACKGROUND: #ffc
+}
+.node-form .form-text {
+	WIDTH: 95%; DISPLAY: block
+}
+.node-form .container-inline .form-text {
+	WIDTH: auto; DISPLAY: inline
+}
+.node-form .standard {
+	CLEAR: both
+}
+.node-form TEXTAREA {
+	WIDTH: 95%; DISPLAY: block
+}
+.node-form .attachments FIELDSET {
+	DISPLAY: block; FLOAT: none
+}
+.terms-inline {
+	DISPLAY: inline
+}
+
+------=_NextPart_000_0000_01CE8DD5.37610A20
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.orafaq.com/modules/system/defaults.css?X
+
+FIELDSET {
+	PADDING-BOTTOM: 0.5em; PADDING-LEFT: 0.5em; PADDING-RIGHT: 0.5em; =
+MARGIN-BOTTOM: 1em; PADDING-TOP: 0.5em
+}
+FORM {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+HR {
+	BORDER-BOTTOM: gray 1px solid; BORDER-LEFT: gray 1px solid; HEIGHT: =
+1px; BORDER-TOP: gray 1px solid; BORDER-RIGHT: gray 1px solid
+}
+IMG {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: =
+0px
+}
+TABLE {
+	BORDER-COLLAPSE: collapse
+}
+TH {
+	BORDER-BOTTOM: #ccc 3px solid; TEXT-ALIGN: left; PADDING-RIGHT: 1em
+}
+.clear-block:after {
+	DISPLAY: block; HEIGHT: 0px; VISIBILITY: hidden; CLEAR: both; CONTENT: =
+"."
+}
+.clear-block {
+	DISPLAY: inline-block
+}
+* HTML .clear-block {
+	HEIGHT: 1%
+}
+.clear-block {
+	DISPLAY: block
+}
+
+------=_NextPart_000_0000_01CE8DD5.37610A20
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.orafaq.com/modules/system/system.css?X
+
+BODY.drag {
+	CURSOR: move
+}
+TH.active IMG {
+	DISPLAY: inline
+}
+TR.even {
+	BORDER-BOTTOM: #ccc 1px solid; PADDING-BOTTOM: 0.1em; BACKGROUND-COLOR: =
+#eee; PADDING-LEFT: 0.6em; PADDING-RIGHT: 0.6em; PADDING-TOP: 0.1em
+}
+TR.odd {
+	BORDER-BOTTOM: #ccc 1px solid; PADDING-BOTTOM: 0.1em; BACKGROUND-COLOR: =
+#eee; PADDING-LEFT: 0.6em; PADDING-RIGHT: 0.6em; PADDING-TOP: 0.1em
+}
+TR.drag {
+	BACKGROUND-COLOR: #fffff0
+}
+TR.drag-previous {
+	BACKGROUND-COLOR: #ffd
+}
+TD.active {
+	BACKGROUND-COLOR: #ddd
+}
+TD.checkbox {
+	TEXT-ALIGN: center
+}
+TH.checkbox {
+	TEXT-ALIGN: center
+}
+TBODY {
+	BORDER-TOP: #ccc 1px solid
+}
+TBODY TH {
+	BORDER-BOTTOM: #ccc 1px solid
+}
+THEAD TH {
+	BORDER-BOTTOM: #ccc 3px solid; TEXT-ALIGN: left; PADDING-RIGHT: 1em
+}
+.breadcrumb {
+	PADDING-BOTTOM: 0.5em
+}
+DIV.indentation {
+	PADDING-BOTTOM: 0.42em; MARGIN: -0.4em 0.2em -0.4em -0.4em; =
+PADDING-LEFT: 0.6em; WIDTH: 20px; PADDING-RIGHT: 0px; FLOAT: left; =
+HEIGHT: 1.7em; PADDING-TOP: 0.42em
+}
+DIV.tree-child {
+	BACKGROUND: url(../../misc/tree.png) no-repeat 11px center
+}
+DIV.tree-child-last {
+	BACKGROUND: url(../../misc/tree-bottom.png) no-repeat 11px center
+}
+DIV.tree-child-horizontal {
+	BACKGROUND: url(../../misc/tree.png) no-repeat -11px center
+}
+.error {
+	COLOR: #e55
+}
+DIV.error {
+	BORDER-BOTTOM: #d77 1px solid; BORDER-LEFT: #d77 1px solid; BORDER-TOP: =
+#d77 1px solid; BORDER-RIGHT: #d77 1px solid
+}
+DIV.error {
+	PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; BACKGROUND: =
+#fcc; COLOR: #200; PADDING-TOP: 2px
+}
+TR.error {
+	PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; BACKGROUND: =
+#fcc; COLOR: #200; PADDING-TOP: 2px
+}
+.warning {
+	COLOR: #e09010
+}
+DIV.warning {
+	BORDER-BOTTOM: #f0c020 1px solid; BORDER-LEFT: #f0c020 1px solid; =
+BORDER-TOP: #f0c020 1px solid; BORDER-RIGHT: #f0c020 1px solid
+}
+DIV.warning {
+	PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; BACKGROUND: =
+#ffd; COLOR: #220; PADDING-TOP: 2px
+}
+TR.warning {
+	PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; BACKGROUND: =
+#ffd; COLOR: #220; PADDING-TOP: 2px
+}
+.ok {
+	COLOR: #008000
+}
+DIV.ok {
+	BORDER-BOTTOM: #00aa00 1px solid; BORDER-LEFT: #00aa00 1px solid; =
+BORDER-TOP: #00aa00 1px solid; BORDER-RIGHT: #00aa00 1px solid
+}
+DIV.ok {
+	PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; BACKGROUND: =
+#dfd; COLOR: #020; PADDING-TOP: 2px
+}
+TR.ok {
+	PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; BACKGROUND: =
+#dfd; COLOR: #020; PADDING-TOP: 2px
+}
+.item-list .icon {
+	PADDING-LEFT: 0.25em; FLOAT: right; COLOR: #555; CLEAR: right
+}
+.item-list .title {
+	FONT-WEIGHT: bold
+}
+.item-list UL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0.75em; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.item-list UL LI {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: disc; MARGIN: 0px 0px 0.25em =
+1.5em; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+OL.task-list LI.active {
+	FONT-WEIGHT: bold
+}
+.form-item {
+	MARGIN-TOP: 1em; MARGIN-BOTTOM: 1em
+}
+TR.odd .form-item {
+	MARGIN-TOP: 0px; WHITE-SPACE: nowrap; MARGIN-BOTTOM: 0px
+}
+TR.even .form-item {
+	MARGIN-TOP: 0px; WHITE-SPACE: nowrap; MARGIN-BOTTOM: 0px
+}
+TR.merge-down {
+	BORDER-BOTTOM-WIDTH: 0px !important
+}
+TR.merge-down TD {
+	BORDER-BOTTOM-WIDTH: 0px !important
+}
+TR.merge-down TH {
+	BORDER-BOTTOM-WIDTH: 0px !important
+}
+TR.merge-up {
+	BORDER-TOP-WIDTH: 0px !important
+}
+TR.merge-up TD {
+	BORDER-TOP-WIDTH: 0px !important
+}
+TR.merge-up TH {
+	BORDER-TOP-WIDTH: 0px !important
+}
+.form-item INPUT.error {
+	BORDER-BOTTOM: red 2px solid; BORDER-LEFT: red 2px solid; BORDER-TOP: =
+red 2px solid; BORDER-RIGHT: red 2px solid
+}
+.form-item TEXTAREA.error {
+	BORDER-BOTTOM: red 2px solid; BORDER-LEFT: red 2px solid; BORDER-TOP: =
+red 2px solid; BORDER-RIGHT: red 2px solid
+}
+.form-item SELECT.error {
+	BORDER-BOTTOM: red 2px solid; BORDER-LEFT: red 2px solid; BORDER-TOP: =
+red 2px solid; BORDER-RIGHT: red 2px solid
+}
+.form-item .description {
+	FONT-SIZE: 0.85em
+}
+.form-item LABEL {
+	DISPLAY: block; FONT-WEIGHT: bold
+}
+.form-item LABEL.option {
+	DISPLAY: inline; FONT-WEIGHT: normal
+}
+.form-checkboxes {
+	MARGIN: 1em 0px
+}
+.form-radios {
+	MARGIN: 1em 0px
+}
+.form-checkboxes .form-item {
+	MARGIN-TOP: 0.4em; MARGIN-BOTTOM: 0.4em
+}
+.form-radios .form-item {
+	MARGIN-TOP: 0.4em; MARGIN-BOTTOM: 0.4em
+}
+.marker {
+	COLOR: #f00
+}
+.form-required {
+	COLOR: #f00
+}
+.more-link {
+	TEXT-ALIGN: right
+}
+.more-help-link {
+	TEXT-ALIGN: right; FONT-SIZE: 0.85em
+}
+.nowrap {
+	WHITE-SPACE: nowrap
+}
+.item-list .pager {
+	TEXT-ALIGN: center; CLEAR: both
+}
+.item-list .pager LI {
+	BACKGROUND-IMAGE: none; PADDING-BOTTOM: 0.5em; LIST-STYLE-TYPE: none; =
+PADDING-LEFT: 0.5em; PADDING-RIGHT: 0.5em; DISPLAY: inline; PADDING-TOP: =
+0.5em
+}
+.pager-current {
+	FONT-WEIGHT: bold
+}
+.tips {
+	PADDING-BOTTOM: 0px; MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; FONT-SIZE: =
+0.9em; PADDING-TOP: 0px
+}
+DL.multiselect DD.b {
+	WIDTH: 14em; FONT-FAMILY: inherit; FONT-SIZE: inherit
+}
+DL.multiselect DD.b .form-item {
+	WIDTH: 14em; FONT-FAMILY: inherit; FONT-SIZE: inherit
+}
+DL.multiselect DD.b SELECT {
+	WIDTH: 14em; FONT-FAMILY: inherit; FONT-SIZE: inherit
+}
+DL.multiselect DD.a {
+	WIDTH: 10em
+}
+DL.multiselect DD.a .form-item {
+	WIDTH: 10em
+}
+DL.multiselect DT {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.75em; MARGIN: 0px 1em 0px 0px; =
+PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 0px
+}
+DL.multiselect DD {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.75em; MARGIN: 0px 1em 0px 0px; =
+PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 0px
+}
+DL.multiselect .form-item {
+	MARGIN: 0px; HEIGHT: 1.75em
+}
+.container-inline DIV {
+	DISPLAY: inline
+}
+.container-inline LABEL {
+	DISPLAY: inline
+}
+UL.primary {
+	BORDER-BOTTOM: #bbb 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: =
+normal; LIST-STYLE-TYPE: none; MARGIN: 5px; PADDING-LEFT: 1em; =
+PADDING-RIGHT: 0px; BORDER-COLLAPSE: collapse; WHITE-SPACE: nowrap; =
+HEIGHT: auto; LIST-STYLE-IMAGE: none; PADDING-TOP: 0px
+}
+UL.primary LI {
+	DISPLAY: inline
+}
+UL.primary LI A {
+	BORDER-BOTTOM: #bbb 1px; BORDER-LEFT: #bbb 1px solid; PADDING-BOTTOM: =
+0px; BACKGROUND-COLOR: #ddd; PADDING-LEFT: 1em; PADDING-RIGHT: 1em; =
+HEIGHT: auto; BORDER-TOP: #bbb 1px solid; MARGIN-RIGHT: 0.5em; =
+BORDER-RIGHT: #bbb 1px solid; TEXT-DECORATION: none; PADDING-TOP: 0px
+}
+UL.primary LI.active A {
+	BORDER-BOTTOM: #fff 1px solid; BORDER-LEFT: #bbb 1px solid; =
+BACKGROUND-COLOR: #fff; BORDER-TOP: #bbb 1px solid; BORDER-RIGHT: #bbb =
+1px solid
+}
+UL.primary LI A:hover {
+	BORDER-BOTTOM-COLOR: #eee; BACKGROUND-COLOR: #eee; BORDER-TOP-COLOR: =
+#ccc; BORDER-RIGHT-COLOR: #ccc; BORDER-LEFT-COLOR: #ccc
+}
+UL.secondary {
+	BORDER-BOTTOM: #bbb 1px solid; PADDING-BOTTOM: 0.5em; MARGIN: 5px; =
+PADDING-LEFT: 1em; PADDING-RIGHT: 1em; PADDING-TOP: 0.5em
+}
+UL.secondary LI {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 1em; PADDING-RIGHT: 1em; DISPLAY: =
+inline; BORDER-RIGHT: #ccc 1px solid; PADDING-TOP: 0px
+}
+UL.secondary A {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; =
+TEXT-DECORATION: none; PADDING-TOP: 0px
+}
+UL.secondary A.active {
+	BORDER-BOTTOM: #999 4px solid
+}
+#autocomplete {
+	Z-INDEX: 100; BORDER-BOTTOM: 1px solid; POSITION: absolute; =
+BORDER-LEFT: 1px solid; OVERFLOW: hidden; BORDER-TOP: 1px solid; =
+BORDER-RIGHT: 1px solid
+}
+#autocomplete UL {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: =
+0px; PADDING-RIGHT: 0px; LIST-STYLE-IMAGE: none; PADDING-TOP: 0px
+}
+#autocomplete LI {
+	WHITE-SPACE: pre; BACKGROUND: #fff; COLOR: #000; CURSOR: default
+}
+#autocomplete LI.selected {
+	BACKGROUND: #0072b9; COLOR: #fff
+}
+HTML.js INPUT.form-autocomplete {
+	BACKGROUND-IMAGE: url(../../misc/throbber.gif); BACKGROUND-REPEAT: =
+no-repeat; BACKGROUND-POSITION: 100% 2px
+}
+HTML.js INPUT.throbbing {
+	BACKGROUND-POSITION: 100% -18px
+}
+HTML.js FIELDSET.collapsed {
+	BORDER-RIGHT-WIDTH: 0px; MARGIN-BOTTOM: 0px; BORDER-BOTTOM-WIDTH: 0px; =
+HEIGHT: 1em; BORDER-LEFT-WIDTH: 0px
+}
+HTML.js FIELDSET.collapsed * {
+	DISPLAY: none
+}
+HTML.js FIELDSET.collapsed LEGEND {
+	DISPLAY: block
+}
+HTML.js FIELDSET.collapsible LEGEND A {
+	PADDING-LEFT: 15px; BACKGROUND: url(../../misc/menu-expanded.png) =
+no-repeat 5px 75%
+}
+HTML.js FIELDSET.collapsed LEGEND A {
+	BACKGROUND-IMAGE: url(../../misc/menu-collapsed.png); =
+BACKGROUND-POSITION: 5px 50%
+}
+* HTML.js FIELDSET.collapsed LEGEND {
+	DISPLAY: inline
+}
+* HTML.js FIELDSET.collapsed LEGEND * {
+	DISPLAY: inline
+}
+* HTML.js FIELDSET.collapsed TABLE * {
+	DISPLAY: inline
+}
+HTML.js FIELDSET.collapsible {
+	POSITION: relative
+}
+HTML.js FIELDSET.collapsible LEGEND A {
+	DISPLAY: block
+}
+HTML.js FIELDSET.collapsible .fieldset-wrapper {
+	OVERFLOW: auto
+}
+.resizable-textarea {
+	WIDTH: 95%
+}
+.resizable-textarea .grippie {
+	BORDER-BOTTOM: #ddd 1px solid; BORDER-LEFT: #ddd 1px solid; BACKGROUND: =
+url(../../misc/grippie.png) #eee no-repeat center 2px; HEIGHT: 9px; =
+OVERFLOW: hidden; BORDER-TOP: #ddd 0px solid; CURSOR: s-resize; =
+BORDER-RIGHT: #ddd 1px solid
+}
+HTML.js .resizable-textarea TEXTAREA {
+	WIDTH: 100%; DISPLAY: block; MARGIN-BOTTOM: 0px
+}
+.draggable A.tabledrag-handle {
+	PADDING-BOTTOM: 0.42em; MARGIN: -0.4em 0px -0.4em -0.5em; PADDING-LEFT: =
+0.5em; PADDING-RIGHT: 1.5em; FLOAT: left; HEIGHT: 1.7em; CURSOR: move; =
+TEXT-DECORATION: none; PADDING-TOP: 0.42em
+}
+A.tabledrag-handle:hover {
+	TEXT-DECORATION: none
+}
+A.tabledrag-handle .handle {
+	MARGIN-TOP: 4px; WIDTH: 13px; BACKGROUND: url(../../misc/draggable.png) =
+no-repeat 0px 0px; HEIGHT: 13px
+}
+A.tabledrag-handle-hover .handle {
+	BACKGROUND-POSITION: 0px -20px
+}
+.joined + .grippie {
+	BACKGROUND-POSITION: center 1px; MARGIN-BOTTOM: -2px; HEIGHT: 5px
+}
+.teaser-checkbox {
+	PADDING-TOP: 1px
+}
+DIV.teaser-button-wrapper {
+	MARGIN: 0px; PADDING-RIGHT: 5%; FLOAT: right
+}
+.teaser-checkbox DIV.form-item {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 5% 0px 0px; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0px; FLOAT: right; PADDING-TOP: 0px
+}
+TEXTAREA.teaser {
+	DISPLAY: none
+}
+HTML.js .no-js {
+	DISPLAY: none
+}
+.progress {
+	FONT-WEIGHT: bold
+}
+.progress .bar {
+	BORDER-BOTTOM: #00375a 1px solid; BORDER-LEFT: #00375a 1px solid; =
+MARGIN: 0px 0.2em; BACKGROUND: url(../../misc/progress.gif) #fff; =
+HEIGHT: 1.5em; BORDER-TOP: #00375a 1px solid; BORDER-RIGHT: #00375a 1px =
+solid
+}
+.progress .filled {
+	BORDER-BOTTOM: #004a73 0.5em solid; WIDTH: 0%; BACKGROUND: #0072b9; =
+HEIGHT: 1em
+}
+.progress .percentage {
+	FLOAT: right
+}
+.progress-disabled {
+	FLOAT: left
+}
+.ahah-progress {
+	FLOAT: left
+}
+.ahah-progress .throbber {
+	MARGIN: 2px; WIDTH: 15px; BACKGROUND: url(../../misc/throbber.gif) =
+no-repeat 0px -18px; FLOAT: left; HEIGHT: 15px
+}
+TR .ahah-progress .throbber {
+	MARGIN: 0px 2px
+}
+.ahah-progress-bar {
+	WIDTH: 16em
+}
+#first-time STRONG {
+	PADDING-BOTTOM: 0.5em; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: =
+block; PADDING-TOP: 1.5em
+}
+TR.selected TD {
+	BACKGROUND: #ffc
+}
+TABLE.sticky-header {
+	MARGIN-TOP: 0px; BACKGROUND: #fff
+}
+.install#clean-url {
+	DISPLAY: none
+}
+HTML.js .js-hide {
+	DISPLAY: none
+}
+#system-modules DIV.incompatible {
+	FONT-WEIGHT: bold
+}
+#system-themes-form DIV.incompatible {
+	FONT-WEIGHT: bold
+}
+SPAN.password-strength {
+	VISIBILITY: hidden
+}
+INPUT.password-field {
+	MARGIN-RIGHT: 10px
+}
+DIV.password-description {
+	PADDING-BOTTOM: 0px; MARGIN: 4px 0px 0px; PADDING-LEFT: 2px; =
+PADDING-RIGHT: 2px; MAX-WIDTH: 500px; FONT-SIZE: 0.85em; PADDING-TOP: =
+0px
+}
+DIV.password-description UL {
+	MARGIN-BOTTOM: 0px
+}
+.password-parent {
+	MARGIN: 0px
+}
+INPUT.password-confirm {
+	MARGIN-RIGHT: 10px
+}
+.confirm-parent {
+	MARGIN: 5px 0px 0px
+}
+SPAN.password-confirm {
+	VISIBILITY: hidden
+}
+SPAN.password-confirm SPAN {
+	FONT-WEIGHT: normal
+}
+
+------=_NextPart_000_0000_01CE8DD5.37610A20
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.orafaq.com/modules/system/system-menus.css?X
+
+UL.menu {
+	BORDER-BOTTOM: medium none; TEXT-ALIGN: left; BORDER-LEFT: medium none; =
+LIST-STYLE-TYPE: none; BORDER-TOP: medium none; LIST-STYLE-IMAGE: none; =
+BORDER-RIGHT: medium none
+}
+UL.menu LI {
+	MARGIN: 0px 0px 0px 0.5em
+}
+LI.expanded {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: circle; MARGIN: 0px; =
+PADDING-LEFT: 0px; PADDING-RIGHT: 0.5em; LIST-STYLE-IMAGE: =
+url(../../misc/menu-expanded.png); PADDING-TOP: 0.2em
+}
+LI.collapsed {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: disc; MARGIN: 0px; PADDING-LEFT: =
+0px; PADDING-RIGHT: 0.5em; LIST-STYLE-IMAGE: =
+url(../../misc/menu-collapsed.png); PADDING-TOP: 0.2em
+}
+LI.leaf {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: square; MARGIN: 0px; =
+PADDING-LEFT: 0px; PADDING-RIGHT: 0.5em; LIST-STYLE-IMAGE: =
+url(../../misc/menu-leaf.png); PADDING-TOP: 0.2em
+}
+LI A.active {
+	COLOR: #000
+}
+TD.menu-disabled {
+	BACKGROUND: #ccc
+}
+UL.links {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+UL.inline.links {
+	DISPLAY: inline
+}
+UL.links LI {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; PADDING-LEFT: 0.5em; =
+PADDING-RIGHT: 0.5em; DISPLAY: inline; PADDING-TOP: 0px
+}
+.block UL {
+	PADDING-BOTTOM: 0.25em; MARGIN: 0px; PADDING-LEFT: 1em; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+
+------=_NextPart_000_0000_01CE8DD5.37610A20
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.orafaq.com/modules/user/user.css?X
+
+#permissions TD.module {
+	FONT-WEIGHT: bold
+}
+#permissions TD.permission {
+	PADDING-LEFT: 1.5em
+}
+#access-rules .access-type {
+	FLOAT: left; MARGIN-RIGHT: 1em
+}
+#access-rules .rule-type {
+	FLOAT: left; MARGIN-RIGHT: 1em
+}
+#access-rules .access-type .form-item {
+	MARGIN-TOP: 0px
+}
+#access-rules .rule-type .form-item {
+	MARGIN-TOP: 0px
+}
+#access-rules .mask {
+	CLEAR: both
+}
+#user-login-form {
+	TEXT-ALIGN: center
+}
+#user-admin-filter UL {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: =
+0px; WIDTH: 100%; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#user-admin-buttons {
+	FLOAT: left; MARGIN-LEFT: 0.5em; CLEAR: right
+}
+#user-admin-settings FIELDSET .description {
+	PADDING-BOTTOM: 0.5em; FONT-SIZE: 0.85em
+}
+.profile {
+	MARGIN: 1em 0px; CLEAR: both
+}
+.profile .picture {
+	MARGIN: 0px 1em 1em 0px; FLOAT: right
+}
+.profile H3 {
+	BORDER-BOTTOM: #ccc 1px solid
+}
+.profile DL {
+	MARGIN: 0px 0px 1.5em
+}
+.profile DT {
+	MARGIN: 0px 0px 0.2em; FONT-WEIGHT: bold
+}
+.profile DD {
+	MARGIN: 0px 0px 1em
+}
+
+------=_NextPart_000_0000_01CE8DD5.37610A20
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: 7bit
+Content-Location: http://www.orafaq.com/modules/comment/comment.css?X
+
+.indented {
+	MARGIN-LEFT: 25px
+}
+.comment-unpublished {
+	BACKGROUND-COLOR: #fff4f4
+}
+.preview .comment {
+	BACKGROUND-COLOR: #ffffea
+}
+
+------=_NextPart_000_0000_01CE8DD5.37610A20
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.orafaq.com/themes/orafaq/style.css?X
+
+HTML {
+	FONT-SIZE: 100%
+}
+BODY {
+	PADDING-BOTTOM: 0px; BACKGROUND-COLOR: #fff; MARGIN: 0px; PADDING-LEFT: =
+0px; PADDING-RIGHT: 0px; COLOR: #000; PADDING-TOP: 0px
+}
+BODY {
+	FONT-FAMILY: "Trebuchet MS", Geneva, Arial, Helvetica, SunSans-Regular, =
+Verdana, sans-serif; COLOR: #333
+}
+TD {
+	FONT-FAMILY: "Trebuchet MS", Geneva, Arial, Helvetica, SunSans-Regular, =
+Verdana, sans-serif; COLOR: #333
+}
+LI {
+	FONT-FAMILY: "Trebuchet MS", Geneva, Arial, Helvetica, SunSans-Regular, =
+Verdana, sans-serif; COLOR: #333
+}
+UL {
+	FONT-FAMILY: "Trebuchet MS", Geneva, Arial, Helvetica, SunSans-Regular, =
+Verdana, sans-serif; COLOR: #333
+}
+OL {
+	FONT-FAMILY: "Trebuchet MS", Geneva, Arial, Helvetica, SunSans-Regular, =
+Verdana, sans-serif; COLOR: #333
+}
+IMG.bb-image {
+	MAX-WIDTH: 100%
+}
+H1 {
+	MARGIN: 0px; FONT-FAMILY: "Trebuchet MS", Geneva, Arial, Helvetica, =
+SunSans-Regular, Verdana, sans-serif
+}
+H2 {
+	MARGIN: 0px; FONT-FAMILY: "Trebuchet MS", Geneva, Arial, Helvetica, =
+SunSans-Regular, Verdana, sans-serif
+}
+H3 {
+	MARGIN: 0px; FONT-FAMILY: "Trebuchet MS", Geneva, Arial, Helvetica, =
+SunSans-Regular, Verdana, sans-serif
+}
+H4 {
+	MARGIN: 0px; FONT-FAMILY: "Trebuchet MS", Geneva, Arial, Helvetica, =
+SunSans-Regular, Verdana, sans-serif
+}
+H5 {
+	MARGIN: 0px; FONT-FAMILY: "Trebuchet MS", Geneva, Arial, Helvetica, =
+SunSans-Regular, Verdana, sans-serif
+}
+H6 {
+	MARGIN: 0px; FONT-FAMILY: "Trebuchet MS", Geneva, Arial, Helvetica, =
+SunSans-Regular, Verdana, sans-serif
+}
+H1 {
+	COLOR: #369; FONT-SIZE: 1.5em
+}
+H1.title {
+	LETTER-SPACING: -1.1pt; FONT-SIZE: 1.7em; FONT-WEIGHT: bold
+}
+H1.subtitle {
+	FONT-SIZE: 1.2em
+}
+TR.odd TD {
+	PADDING-BOTTOM: 0.2em; PADDING-LEFT: 0.2em; PADDING-RIGHT: 0.2em; =
+PADDING-TOP: 0.2em
+}
+TR.even TD {
+	PADDING-BOTTOM: 0.2em; PADDING-LEFT: 0.2em; PADDING-RIGHT: 0.2em; =
+PADDING-TOP: 0.2em
+}
+A:link {
+	COLOR: #ff8c00; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #c96; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff4500; FONT-WEIGHT: bold; TEXT-DECORATION: underline
+}
+A:active {
+	COLOR: #ff4500; FONT-WEIGHT: bold; TEXT-DECORATION: underline
+}
+FIELDSET {
+	BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; BORDER-TOP: =
+#ccc 1px solid; BORDER-RIGHT: #ccc 1px solid
+}
+P {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 0px 1.2em; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+BLOCKQUOTE {
+	TEXT-ALIGN: left; BORDER-LEFT: #69c 4px solid; PADDING-BOTTOM: 0px; =
+LINE-HEIGHT: 1.4em; MARGIN: 25px 100px 25px 50px; PADDING-LEFT: 15px; =
+PADDING-RIGHT: 15px; FONT-FAMILY: "Trebuchet MS", Geneva, Arial, =
+Helvetica, SunSans-Regular, Verdana, sans-serif; COLOR: #696969; =
+FONT-SIZE: 1em; PADDING-TOP: 0px
+}
+PRE {
+	BORDER-BOTTOM: #bfd0d9 1px solid; BORDER-LEFT: #bfd0d9 4px solid; =
+PADDING-BOTTOM: 0.5em; LINE-HEIGHT: 1.5em; MIN-HEIGHT: 3em; =
+PADDING-LEFT: 0.5em; WIDTH: 100%; PADDING-RIGHT: 0.5em; FONT-FAMILY: =
+"Bitstream Vera Sans Mono", Courier New, monospace; WHITE-SPACE: pre; =
+BACKGROUND: #f8fbfc; COLOR: #000; CLEAR: both; FONT-SIZE: 0.75em; =
+OVERFLOW: auto; BORDER-TOP: #bfd0d9 1px solid; BORDER-RIGHT: #bfd0d9 1px =
+solid; PADDING-TOP: 0.5em; _overflow-x: scroll; _overflow-y: hidden
+}
+.form-item {
+	MARGIN-TOP: 1em
+}
+.form-item LABEL {
+	COLOR: #369
+}
+.item-list .title {
+	COLOR: #369; FONT-SIZE: 0.85em
+}
+#primary-menu {
+	BORDER-BOTTOM: #69c 3px solid; BACKGROUND-COLOR: #e0edfb; =
+BORDER-COLLAPSE: separate
+}
+#primary-menu TR {
+	BACKGROUND: url(header-a.jpg) left bottom
+}
+TD#home A:hover IMG {
+	WIDTH: 144px; HEIGHT: 63px
+}
+.primary-links {
+	COLOR: #369
+}
+.primary-links A:link {
+	COLOR: #369
+}
+.primary-links A:visited {
+	COLOR: #369
+}
+.primary-links A:hover {
+	COLOR: #000
+}
+#primary-menu .primary-links {
+	BACKGROUND: url(header-b.jpg) no-repeat left top; FONT-SIZE: 0.79em
+}
+#primary-menu .primary-links H1 {
+	COLOR: #369; FONT-SIZE: 2.3em
+}
+#primary-menu .primary-links H2 {
+	COLOR: #369; FONT-SIZE: 2.3em
+}
+#primary-menu .primary-links H3 {
+	COLOR: #369; FONT-SIZE: 2.3em
+}
+#secondary-menu {
+	BORDER-BOTTOM: #69c 3px solid; BACKGROUND-COLOR: #369; BORDER-COLLAPSE: =
+separate
+}
+.secondary-links {
+	COLOR: #e4e9eb
+}
+.secondary-links A:link {
+	COLOR: #e4e9eb
+}
+.secondary-links A:visited {
+	COLOR: #e4e9eb
+}
+.secondary-links A:hover {
+	COLOR: #fff; TEXT-DECORATION: underline
+}
+#secondary-menu .secondary-links {
+	FONT-SIZE: 0.85em
+}
+.tabs {
+	MARGIN: 15px 0px
+}
+.tabs UL.primary {
+	BORDER-BOTTOM: #336699 2px solid; PADDING-BOTTOM: 3px; LINE-HEIGHT: =
+normal; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 10px; =
+PADDING-RIGHT: 0px; BORDER-COLLAPSE: collapse; WHITE-SPACE: nowrap; =
+HEIGHT: auto; LIST-STYLE-IMAGE: none; PADDING-TOP: 0px
+}
+.tabs UL.primary LI {
+	DISPLAY: inline
+}
+.tabs UL.primary LI A {
+	BORDER-BOTTOM: #6699cc 2px; BORDER-LEFT: #6699cc 2px; PADDING-BOTTOM: =
+3px; TEXT-TRANSFORM: lowercase; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; =
+BACKGROUND: url(tabs-off.png) #fff no-repeat left top; HEIGHT: auto; =
+BORDER-TOP: #6699cc 2px; MARGIN-RIGHT: 10px; BORDER-RIGHT: #6699cc 2px =
+solid; TEXT-DECORATION: none; PADDING-TOP: 3px
+}
+.tabs UL.primary LI.active A {
+	BACKGROUND: url(tabs-on.png) #336699 no-repeat left top; COLOR: #fff; =
+BORDER-RIGHT: #336699 2px solid
+}
+.tabs UL.primary LI A:hover {
+	BACKGROUND-COLOR: #fffaf0; COLOR: #ff4500
+}
+.tabs UL.secondary {
+	BORDER-BOTTOM: medium none; PADDING-BOTTOM: 10px; LINE-HEIGHT: normal; =
+LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 100%; =
+PADDING-RIGHT: 0px; BORDER-COLLAPSE: collapse; WHITE-SPACE: nowrap; =
+HEIGHT: auto; LIST-STYLE-IMAGE: none; PADDING-TOP: 10px
+}
+.tabs UL.secondary LI {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; DISPLAY: =
+inline; HEIGHT: auto; BORDER-RIGHT: medium none; TEXT-DECORATION: none; =
+PADDING-TOP: 0px
+}
+.tabs UL.secondary LI A {
+	PADDING-BOTTOM: 10px; MARGIN: 0px; PADDING-LEFT: 25px; PADDING-RIGHT: =
+0px; BACKGROUND: url(tabs-option-off.png) #fff no-repeat left center; =
+PADDING-TOP: 10px
+}
+.tabs UL.secondary LI A.active {
+	BORDER-BOTTOM: medium none; BACKGROUND: url(tabs-option-on.png) #fff =
+no-repeat left center; COLOR: #369
+}
+.tabs UL.secondary LI A:hover {
+	BACKGROUND: url(tabs-option-hover.png) #fff no-repeat left center; =
+COLOR: #ff4500
+}
+#content {
+	BACKGROUND-COLOR: #fff
+}
+#contentstart {
+	BACKGROUND-COLOR: #fff
+}
+#menu {
+	TEXT-ALIGN: right; PADDING-BOTTOM: 0px; PADDING-LEFT: 0.5em; =
+PADDING-RIGHT: 0.5em; VERTICAL-ALIGN: middle; PADDING-TOP: 0.5em
+}
+#search .form-text {
+	BORDER-BOTTOM: #369 1px solid; BORDER-LEFT: #369 1px solid; MARGIN: =
+0.2em; FONT-SIZE: 0.85em; BORDER-TOP: #369 1px solid; BORDER-RIGHT: #369 =
+1px solid
+}
+#search .form-submit {
+	BORDER-BOTTOM: #369 1px solid; BORDER-LEFT: #369 1px solid; MARGIN: =
+0.2em; FONT-SIZE: 0.85em; BORDER-TOP: #369 1px solid; BORDER-RIGHT: #369 =
+1px solid
+}
+#search .form-text {
+	WIDTH: 9em
+}
+#search .form-submit {
+	HEIGHT: 1.5em
+}
+#mission {
+	BORDER-BOTTOM: #dcdcdc 2px solid; PADDING-BOTTOM: 10px; =
+BACKGROUND-COLOR: #fff; MARGIN: 20px 35px 0px; PADDING-LEFT: 10px; =
+PADDING-RIGHT: 10px; FONT-FAMILY: "Trebuchet MS", Geneva, Arial, =
+Helvetica, SunSans-Regular, Verdana, sans-serif; COLOR: #696969; =
+FONT-SIZE: 1.1em; BORDER-TOP: #dcdcdc 2px solid; FONT-WEIGHT: normal; =
+PADDING-TOP: 10px
+}
+#site-info {
+	BACKGROUND-IMAGE: url(header-c.png); BACKGROUND-COLOR: #bdd3ea; =
+FONT-FAMILY: "Trebuchet MS", Geneva, Arial, Helvetica, SunSans-Regular, =
+Verdana, sans-serif
+}
+.site-name {
+	FONT-SIZE: 1.2em
+}
+.site-name A:link {
+	COLOR: #fff
+}
+.site-name A:visited {
+	COLOR: #fff
+}
+.site-name A:hover {
+	COLOR: #ff8c00; TEXT-DECORATION: none
+}
+.site-slogan {
+	FONT-SIZE: 0.8em; FONT-WEIGHT: bold
+}
+#main {
+	POSITION: relative; MIN-WIDTH: 354px; PADDING-BOTTOM: 30px; =
+PADDING-LEFT: 5px; PADDING-RIGHT: 20px; PADDING-TOP: 2px
+}
+#mission {
+	LINE-HEIGHT: 1.4
+}
+.node .content {
+	LINE-HEIGHT: 1.4
+}
+.comment .content {
+	LINE-HEIGHT: 1.4
+}
+#help {
+	MARGIN-BOTTOM: 1em; FONT-SIZE: 0.9em
+}
+.breadcrumb {
+	MARGIN-BOTTOM: 0.1em; FONT-SIZE: 0.65em
+}
+.messages {
+	BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; =
+PADDING-BOTTOM: 0.3em; BACKGROUND-COLOR: #eee; PADDING-LEFT: 0.3em; =
+PADDING-RIGHT: 0.3em; MARGIN-BOTTOM: 1em; BORDER-TOP: #ccc 1px solid; =
+BORDER-RIGHT: #ccc 1px solid; PADDING-TOP: 0.3em
+}
+.error {
+	BORDER-BOTTOM-COLOR: red; BORDER-TOP-COLOR: red; BORDER-RIGHT-COLOR: =
+red; BORDER-LEFT-COLOR: red
+}
+.nav {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+#sidebar-left {
+	PADDING-BOTTOM: 70px; PADDING-LEFT: 5px; WIDTH: 170px; PADDING-RIGHT: =
+2px; BACKGROUND: #fffaf0; FONT-SIZE: 0.75em; VERTICAL-ALIGN: top; =
+PADDING-TOP: 5px
+}
+#sidebar-right {
+	PADDING-BOTTOM: 70px; PADDING-LEFT: 5px; WIDTH: 170px; PADDING-RIGHT: =
+5px; BACKGROUND: #fffaf0; FONT-SIZE: 0.7em; VERTICAL-ALIGN: top; =
+FONT-WEIGHT: normal; TEXT-DECORATION: none; PADDING-TOP: 25px
+}
+#sidebar-left {
+	BORDER-RIGHT: #f5f5f5 3px solid
+}
+#sidebar-right {
+	BORDER-LEFT: #f5f5f5 3px solid
+}
+#sidebar-left LI {
+	FONT-SIZE: 1em
+}
+#sidebar-right LI {
+	FONT-SIZE: 1em
+}
+.node .content {
+	TEXT-ALIGN: left; LINE-HEIGHT: 1.5; FONT-SIZE: 0.8em
+}
+.comment .content {
+	TEXT-ALIGN: left; LINE-HEIGHT: 1.2; FONT-SIZE: 0.75em
+}
+#footer-message {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 30px; PADDING-LEFT: 100px; =
+PADDING-RIGHT: 100px; COLOR: #aaa; FONT-SIZE: 0.85em; PADDING-TOP: 15px
+}
+TABLE#footer-menu {
+	BORDER-BOTTOM: #6699cc 3px solid; BACKGROUND-COLOR: #369; COLOR: =
+#e4e9eb; BORDER-TOP: #6699cc 3px solid
+}
+#footer-menu TD {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FONT-SIZE: =
+0.75em; PADDING-TOP: 5px
+}
+#footer-menu .primary-links {
+	COLOR: #e4e9eb
+}
+#footer-menu A:link {
+	COLOR: #e4e9eb
+}
+#footer-menu A:visited {
+	COLOR: #e4e9eb
+}
+#footer-menu A:hover {
+	COLOR: #fff; TEXT-DECORATION: underline
+}
+#footer-menu .primary-links H1 {
+	COLOR: #e4e9eb; FONT-SIZE: 1.3em
+}
+#footer-menu .primary-links H2 {
+	COLOR: #e4e9eb; FONT-SIZE: 1.3em
+}
+#footer-menu .primary-links H3 {
+	COLOR: #e4e9eb; FONT-SIZE: 1.3em
+}
+#content .title {
+	COLOR: #369
+}
+#content .subtitle {
+	COLOR: #369
+}
+#content .title A {
+	COLOR: #369
+}
+#content .subtitle A {
+	COLOR: #369
+}
+.content H1 {
+	COLOR: #369; FONT-SIZE: 1.9em
+}
+.content H2 {
+	COLOR: #58b; FONT-SIZE: 1.7em
+}
+.content H3 {
+	COLOR: #69c; FONT-SIZE: 1.5em
+}
+.content H4 {
+	COLOR: #8be; FONT-SIZE: 1.3em
+}
+.content H5 {
+	COLOR: #96c6f6; FONT-SIZE: 1.15em
+}
+.submitted {
+	COLOR: #999; FONT-SIZE: 0.72em
+}
+.links {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; COLOR: #ff8c00; FONT-SIZE: 0.8em; PADDING-TOP: 0px
+}
+.links A {
+	FONT-WEIGHT: bold
+}
+.box {
+	PADDING-BOTTOM: 1.5em; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; =
+PADDING-TOP: 0px
+}
+.box {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+.box H2 {
+	FONT-SIZE: 9px
+}
+.block .title H3 {
+	BORDER-BOTTOM: #6699cc 2px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: =
+30px; PADDING-RIGHT: 5px; MARGIN-BOTTOM: 0.25em; BACKGROUND: =
+url(icon-database.png) no-repeat left center; COLOR: #369; FONT-SIZE: =
+18px; FONT-WEIGHT: bold; PADDING-TOP: 15px; XXXbackground-size: 150% =
+auto
+}
+.block .content {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; =
+PADDING-TOP: 5px
+}
+.block {
+	MARGIN-BOTTOM: 1.5em
+}
+.box .title {
+	FONT-SIZE: 1.1em
+}
+.node {
+	MARGIN: 0.5em 0px 1.5em
+}
+.node .content {
+	MARGIN: 0.5em 0px
+}
+.comment .content {
+	MARGIN: 0.5em 0px
+}
+.node .taxonomy {
+	PADDING-BOTTOM: 1.5em; PADDING-LEFT: 1.5em; PADDING-RIGHT: 1.5em; =
+COLOR: #999; FONT-SIZE: 0.83em; PADDING-TOP: 1.5em
+}
+.node .picture {
+	BORDER-BOTTOM: #fff 1px solid; BORDER-LEFT: #fff 1px solid; MARGIN: =
+0.1em; FLOAT: left; BORDER-TOP: #fff 1px solid; BORDER-RIGHT: #fff 1px =
+solid
+}
+.comment {
+	BORDER-BOTTOM: #abc 1px solid; BORDER-LEFT: #abc 1px solid; =
+PADDING-BOTTOM: 0.5em; PADDING-LEFT: 0.5em; PADDING-RIGHT: 0.5em; =
+MARGIN-BOTTOM: 1em; BORDER-TOP: #abc 1px solid; BORDER-RIGHT: #abc 1px =
+solid; PADDING-TOP: 0.5em
+}
+.comment .title {
+	FONT-SIZE: 1em; XXXbackground: transparent url(icon-comment.png) left =
+center no-repeat
+}
+.comment .new {
+	COLOR: red; MARGIN-LEFT: 2px; FONT-SIZE: 1em; FONT-WEIGHT: bold
+}
+.comment .picture {
+	BORDER-BOTTOM: #fff 1px solid; BORDER-LEFT: #fff 1px solid; MARGIN: =
+10px; FLOAT: right; BORDER-TOP: #fff 1px solid; BORDER-RIGHT: #fff 1px =
+solid
+}
+#edit-comment {
+	WIDTH: 100%
+}
+.comment:hover {
+	BACKGROUND-COLOR: #fffaf0
+}
+.links {
+	FONT-SIZE: 0.75em
+}
+.links .prev {
+	FONT-SIZE: 1.15em
+}
+.links .next {
+	FONT-SIZE: 1.15em
+}
+.links .up {
+	FONT-SIZE: 1.15em
+}
+.titles .prev {
+	COLOR: #444; FONT-SIZE: 0.85em; FONT-WEIGHT: bold
+}
+.titles .next {
+	COLOR: #444; FONT-SIZE: 0.85em; FONT-WEIGHT: bold
+}
+.hide {
+	DISPLAY: none
+}
+.nav .links .next A:link {
+	PADDING-BOTTOM: 17px; PADDING-LEFT: 0px; PADDING-RIGHT: 17px; =
+BACKGROUND: url(arrow-next.png) no-repeat right center; PADDING-TOP: =
+17px
+}
+.nav .links .next A:visited {
+	PADDING-BOTTOM: 17px; PADDING-LEFT: 0px; PADDING-RIGHT: 17px; =
+BACKGROUND: url(arrow-next-visited.png) no-repeat right center; =
+PADDING-TOP: 17px
+}
+.nav .links .next A:hover {
+	PADDING-BOTTOM: 17px; PADDING-LEFT: 0px; PADDING-RIGHT: 17px; =
+BACKGROUND: url(arrow-next-hover.png) no-repeat right center; =
+PADDING-TOP: 17px
+}
+.nav .links .prev A:link {
+	PADDING-BOTTOM: 17px; PADDING-LEFT: 17px; PADDING-RIGHT: 0px; =
+BACKGROUND: url(arrow-prev.png) no-repeat left center; PADDING-TOP: 17px
+}
+.nav .links .prev A:visited {
+	PADDING-BOTTOM: 17px; PADDING-LEFT: 17px; PADDING-RIGHT: 0px; =
+BACKGROUND: url(arrow-prev-visited.png) no-repeat left center; =
+PADDING-TOP: 17px
+}
+.nav .links .prev A:hover {
+	PADDING-BOTTOM: 17px; PADDING-LEFT: 17px; PADDING-RIGHT: 0px; =
+BACKGROUND: url(arrow-prev-hover.png) no-repeat left center; =
+PADDING-TOP: 17px
+}
+.nav .links .up A:link {
+	PADDING-BOTTOM: 17px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; =
+BACKGROUND: url(arrow-up.png) no-repeat center top; PADDING-TOP: 11px
+}
+.nav .links .up A:visited {
+	PADDING-BOTTOM: 17px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; =
+BACKGROUND: url(arrow-up-visited.png) no-repeat center top; PADDING-TOP: =
+11px
+}
+.nav .links .up A:hover {
+	PADDING-BOTTOM: 17px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; =
+BACKGROUND: url(arrow-up-hover.png) no-repeat center top; PADDING-TOP: =
+11px
+}
+.content .active {
+	COLOR: #369
+}
+#aggregator {
+	FONT-SIZE: 0.8em
+}
+#aggregator .feed-source {
+	BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; =
+PADDING-BOTTOM: 1em; BACKGROUND-COLOR: #eee; MARGIN: 1em 0px; =
+PADDING-LEFT: 1em; PADDING-RIGHT: 1em; BORDER-TOP: #ccc 1px solid; =
+BORDER-RIGHT: #ccc 1px solid; PADDING-TOP: 1em
+}
+#aggregator .news-item .source {
+	FONT-STYLE: italic; COLOR: #999; FONT-SIZE: 0.85em
+}
+#aggregator .title {
+	FONT-SIZE: 1em
+}
+#aggregator H3 A {
+	MARGIN-TOP: 1em; COLOR: #369
+}
+#tracker TH {
+	BORDER-BOTTOM: #ddd 1px solid; TEXT-ALIGN: center; BORDER-LEFT: #fafafa =
+1px solid; BACKGROUND-COLOR: #f5f5f5; BORDER-RIGHT: #ddd 1px solid
+}
+#tracker TH IMG {
+	FLOAT: right
+}
+#tracker TR.even {
+	BACKGROUND-COLOR: #fff
+}
+#tracker TR.odd {
+	BACKGROUND-COLOR: #fff
+}
+#tracker TD {
+	BORDER-BOTTOM: #bbb 1px solid; PADDING-BOTTOM: 1em; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 1em; VERTICAL-ALIGN: top; PADDING-TOP: 1em
+}
+.block-forum H3 {
+	MARGIN-BOTTOM: 0.5em
+}
+.book-navigation .menu {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0.5em; PADDING-RIGHT: 0px; =
+PADDING-TOP: 1em
+}
+.book-navigation LI.collapsed {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: disc; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0.2em; LIST-STYLE-IMAGE: url(bullet-plus.png); =
+PADDING-TOP: 0.2em
+}
+.book-navigation LI.leaf {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: disc; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0.2em; LIST-STYLE-IMAGE: url(bullet-dot.png); =
+PADDING-TOP: 0.2em
+}
+#user-login-form {
+	TEXT-ALIGN: left
+}
+.top-left {
+	BACKGROUND-IMAGE: url(corners1280x18.gif); HEIGHT: 9px; FONT-SIZE: 2px
+}
+.top-right {
+	BACKGROUND-IMAGE: url(corners1280x18.gif); HEIGHT: 9px; FONT-SIZE: 2px
+}
+.bottom-left {
+	BACKGROUND-IMAGE: url(corners1280x18.gif); HEIGHT: 9px; FONT-SIZE: 2px
+}
+.bottom-right {
+	BACKGROUND-IMAGE: url(corners1280x18.gif); HEIGHT: 9px; FONT-SIZE: 2px
+}
+.top-left {
+	MARGIN-RIGHT: 9px
+}
+.bottom-left {
+	MARGIN-RIGHT: 9px
+}
+.top-right {
+	MARGIN-TOP: -9px; MARGIN-LEFT: 9px
+}
+.bottom-right {
+	MARGIN-TOP: -9px; MARGIN-LEFT: 9px
+}
+.top-right {
+	BACKGROUND-POSITION: 100% 0px
+}
+.bottom-left {
+	BACKGROUND-POSITION: 0px -9px
+}
+.bottom-right {
+	BACKGROUND-POSITION: 100% -9px
+}
+.inside {
+	BORDER-LEFT: #c00000 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: =
+10px; BACKGROUND: #efefef; COLOR: #000000; BORDER-RIGHT: #c00000 1px =
+solid
+}
+.notopgap {
+	MARGIN-TOP: 0px
+}
+.nobottomgap {
+	PADDING-BOTTOM: 1px; MARGIN-BOTTOM: -1px
+}
+
+------=_NextPart_000_0000_01CE8DD5.37610A20
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://pagead2.googlesyndication.com/pagead/show_ads.js
+
+(function(){var aa=3Dfunction(a,b,c){return =
+a.call.apply(a.bind,arguments)},ba=3Dfunction(a,b,c){if(!a)throw =
+Error();if(2<arguments.length){var =
+d=3DArray.prototype.slice.call(arguments,2);return function(){var =
+c=3DArray.prototype.slice.call(arguments);Array.prototype.unshift.apply(c=
+,d);return a.apply(b,c)}}return function(){return =
+a.apply(b,arguments)}},f=3Dfunction(a,b,c){f=3DFunction.prototype.bind&&-=
+1!=3DFunction.prototype.bind.toString().indexOf("native =
+code")?aa:ba;return f.apply(null,arguments)};var h=3D(new =
+Date).getTime();var k=3Dfunction(a){a=3DparseFloat(a);return =
+isNaN(a)||1<a||0>a?0:a},ca=3D/^([\w-]+\.)*([\w-]{2,})(\:[0-9]+)?$/,da=3Df=
+unction(a,b){if(!a)return b;var c=3Da.match(ca);return c?c[0]:b};var =
+ea=3Dk("0.15"),fa=3Dk("0.005"),ga=3Dk("1.0"),ha=3Dk("0.005"),ia=3Dk("0.00=
+1"),ja=3Dk("0.0");var ma=3D/^true$/.test("false")?!0:!1;var =
+na=3Dfunction(){return da("","pagead2.googlesyndication.com")};var =
+oa=3D/&/g,pa=3D/</g,qa=3D/>/g,ra=3D/\"/g,m=3D{"\x00":"\\0","\b":"\\b","\f=
+":"\\f","\n":"\\n","\r":"\\r","\t":"\\t","\x0B":"\\x0B",'"':'\\"',"\\":"\=
+\\\"},n=3D{"'":"\\'"};var =
+sa=3Dwindow,r,ta=3Dnull,s=3Ddocument.getElementsByTagName("script");s&&s.=
+length&&(ta=3Ds[s.length-1].parentNode);r=3Dta;na();var =
+ua=3Dfunction(a,b){for(var c in =
+a)Object.prototype.hasOwnProperty.call(a,c)&&b.call(null,a[c],c,a)},u=3Df=
+unction(a){return!!a&&"function"=3D=3Dtypeof =
+a&&!!a.call},va=3Dfunction(a,b){if(!(2>arguments.length))for(var =
+c=3D1,d=3Darguments.length;c<d;++c)a.push(arguments[c])};function =
+wa(a,b){xa(a,"load",b)}=0A=
+var xa=3Dfunction(a,b,c,d){return =
+a.addEventListener?(a.addEventListener(b,c,d||!1),!0):a.attachEvent?(a.at=
+tachEvent("on"+b,c),!0):!1},ya=3Dfunction(a,b,c,d){c=3Df(d,c);return =
+xa(a,b,c,void =
+0)?c:null},za=3Dfunction(a,b,c){a.removeEventListener?a.removeEventListen=
+er(b,c,!1):a.detachEvent&&a.detachEvent("on"+b,c)},v=3Dfunction(a,b){if(!=
+(1E-4>Math.random())){var c=3DMath.random();if(c<b)return =
+a[Math.floor(c/b*a.length)]}return =
+null},Aa=3Dfunction(a){try{return!!a.location.href||""=3D=3D=3Da.location=
+.href}catch(b){return!1}};var Ba=3Dnull,Ca=3Dfunction(){if(!Ba){for(var =
+a=3Dwindow,b=3Da,c=3D0;a!=3Da.parent;)if(a=3Da.parent,c++,Aa(a))b=3Da;els=
+e break;Ba=3Db}return Ba};var =
+w,x=3Dfunction(a){this.c=3D[];this.b=3Da||window;this.a=3D0;this.d=3Dnull=
+},Da=3Dfunction(a,b){this.k=3Da;this.win=3Db};x.prototype.o=3Dfunction(a,=
+b){0!=3Dthis.a||0!=3Dthis.c.length||b&&b!=3Dwindow?this.g(a,b):(this.a=3D=
+2,this.f(new =
+Da(a,window)))};x.prototype.g=3Dfunction(a,b){this.c.push(new =
+Da(a,b||this.b));Ea(this)};x.prototype.p=3Dfunction(a){this.a=3D1;a&&(thi=
+s.d=3Dthis.b.setTimeout(f(this.e,this),a))};x.prototype.e=3Dfunction(){1=3D=
+=3Dthis.a&&(null!=3Dthis.d&&(this.b.clearTimeout(this.d),this.d=3Dnull),t=
+his.a=3D0);Ea(this)};=0A=
+x.prototype.q=3Dfunction(){return!0};x.prototype.nq=3Dx.prototype.o;x.pro=
+totype.nqa=3Dx.prototype.g;x.prototype.al=3Dx.prototype.p;x.prototype.rl=3D=
+x.prototype.e;x.prototype.sz=3Dx.prototype.q;var =
+Ea=3Dfunction(a){a.b.setTimeout(f(a.n,a),0)};x.prototype.n=3Dfunction(){i=
+f(0=3D=3Dthis.a&&this.c.length){var =
+a=3Dthis.c.shift();this.a=3D2;a.win.setTimeout(f(this.f,this,a),0);Ea(thi=
+s)}};x.prototype.f=3Dfunction(a){this.a=3D0;a.k()};=0A=
+var Fa=3Dfunction(a){try{return =
+a.sz()}catch(b){return!1}},Ga=3Dfunction(a){return!!a&&("object"=3D=3Dtyp=
+eof a||"function"=3D=3Dtypeof =
+a)&&Fa(a)&&u(a.nq)&&u(a.nqa)&&u(a.al)&&u(a.rl)},Ha=3Dfunction(){if(w&&Fa(=
+w))return w;var a=3DCa(),b=3Da.google_jobrunner;return =
+Ga(b)?w=3Db:a.google_jobrunner=3Dw=3Dnew =
+x(a)},Ia=3Dfunction(a,b){Ha().nq(a,b)},Ja=3Dfunction(a,b){Ha().nqa(a,b)};=
+var Ka=3D/MSIE [2-7]|PlayStation|Gecko\/20090226|Android =
+2\./i,La=3D/Android|Opera/;var =
+Ma=3Dfunction(a,b,c){c||(c=3Dma?"https":"http");return[c,"://",a,b].join(=
+"")};var Na=3Dfunction(){},Pa=3Dfunction(a,b,c){switch(typeof b){case =
+"string":Oa(b,c);break;case =
+"number":c.push(isFinite(b)&&!isNaN(b)?b:"null");break;case =
+"boolean":c.push(b);break;case "undefined":c.push("null");break;case =
+"object":if(null=3D=3Db){c.push("null");break}if(b instanceof Array){var =
+d=3Db.length;c.push("[");for(var =
+e=3D"",g=3D0;g<d;g++)c.push(e),Pa(a,b[g],c),e=3D",";c.push("]");break}c.p=
+ush("{");d=3D"";for(e in =
+b)b.hasOwnProperty(e)&&(g=3Db[e],"function"!=3Dtypeof =
+g&&(c.push(d),Oa(e,c),c.push(":"),Pa(a,g,c),=0A=
+d=3D","));c.push("}");break;case "function":break;default:throw =
+Error("Unknown type: "+typeof =
+b);}},Qa=3D{'"':'\\"',"\\":"\\\\","/":"\\/","\b":"\\b","\f":"\\f","\n":"\=
+\n","\r":"\\r","\t":"\\t","\x0B":"\\u000b"},Ra=3D/\uffff/.test("\uffff")?=
+/[\\\"\x00-\x1f\x7f-\uffff]/g:/[\\\"\x00-\x1f\x7f-\xff]/g,Oa=3Dfunction(a=
+,b){b.push('"');b.push(a.replace(Ra,function(a){if(a in Qa)return =
+Qa[a];var =
+b=3Da.charCodeAt(0),e=3D"\\u";16>b?e+=3D"000":256>b?e+=3D"00":4096>b&&(e+=
+=3D"0");return Qa[a]=3De+b.toString(16)}));b.push('"')};var =
+y=3D"google_ad_block google_ad_channel google_ad_client google_ad_format =
+google_ad_height google_ad_host google_ad_host_channel =
+google_ad_host_tier_id google_ad_output google_ad_override =
+google_ad_region google_ad_section google_ad_slot google_ad_type =
+google_ad_width google_adtest google_allow_expandable_ads =
+google_alternate_ad_url google_alternate_color =
+google_analytics_domain_name google_analytics_uacct google_bid =
+google_city google_color_bg google_color_border google_color_line =
+google_color_link google_color_text google_color_url google_container_id =
+google_contents google_country google_cpm google_ctr_threshold =
+google_cust_age google_cust_ch google_cust_criteria google_cust_gender =
+google_cust_id google_cust_interests google_cust_job google_cust_l =
+google_cust_lh google_cust_u_url google_disable_video_autoplay google_ed =
+google_eids google_enable_ose google_encoding =
+google_floating_ad_position google_font_face google_font_size =
+google_frame_id google_gl google_hints google_image_size google_kw =
+google_kw_type google_lact google_language google_loeid =
+google_max_num_ads google_max_radlink_len google_mtl google_num_radlinks =
+google_num_radlinks_per_unit google_num_slots_to_rotate =
+google_only_ads_with_video google_only_pyv_ads =
+google_only_userchoice_ads google_override_format google_page_url =
+google_previous_watch google_previous_searches google_referrer_url =
+google_region google_reuse_colors google_rl_dest_url google_rl_filtering =
+google_rl_mode google_rt google_safe google_sc_id google_scs google_sui =
+google_skip google_tag_info google_targeting google_tdsma google_tfs =
+google_tl google_ui_features google_ui_version google_video_doc_id =
+google_video_product_type google_video_url_to_fetch google_with_pyv_ads =
+google_yt_pt google_yt_up".split(" "),=0A=
+Sa=3Dfunction(){var =
+a=3Dz;a.google_page_url&&(a.google_page_url=3DString(a.google_page_url));=
+var b=3D[];ua(a,function(a,d){if(null!=3Da){var e;try{var g=3D[];Pa(new =
+Na,a,g);e=3Dg.join("")}catch(p){}e&&va(b,d,"=3D",e,";")}});return =
+b.join("")};var =
+Ta=3D/\.((google(|groups|mail|images|print))|gmail)\./,Ua=3Dfunction(){va=
+r =
+a=3DA,b=3DTa.test(a.location.host);return!(!a.postMessage||!a.localStorag=
+e||!a.JSON||b)};var =
+Va=3Dfunction(a){this.b=3Da;a.google_iframe_oncopy||(a.google_iframe_onco=
+py=3D{handlers:{}});this.l=3Da.google_iframe_oncopy},Xa;var B=3D"var =
+i=3Dthis.id,s=3Dwindow.google_iframe_oncopy,H=3Ds&&s.handlers,h=3DH&&H[i]=
+,w=3Dthis.contentWindow,d;try{d=3Dw.document}catch(e){}if(h&&d&&(!d.body|=
+|!d.body.firstChild)){if(h.call){setTimeout(h,0)}else =
+if(h.match){w.location.replace(h)}}";=0A=
+/[&<>\"]/.test(B)&&(-1!=3DB.indexOf("&")&&(B=3DB.replace(oa,"&amp;")),-1!=
+=3DB.indexOf("<")&&(B=3DB.replace(pa,"&lt;")),-1!=3DB.indexOf(">")&&(B=3D=
+B.replace(qa,"&gt;")),-1!=3DB.indexOf('"')&&(B=3DB.replace(ra,"&quot;")))=
+;Xa=3DB;Va.prototype.set=3Dfunction(a,b){this.l.handlers[a]=3Db;this.b.ad=
+dEventListener&&!/MSIE/.test(navigator.userAgent)&&this.b.addEventListene=
+r("load",f(this.m,this,a),!1)};Va.prototype.m=3Dfunction(a){a=3Dthis.b.do=
+cument.getElementById(a);var =
+b=3Da.contentWindow.document;if(a.onload&&b&&(!b.body||!b.body.firstChild=
+))a.onload()};var Ya=3Dfunction(){var a=3D"script";return["<",a,' =
+src=3D"',Ma(na(),"/pagead/js/r20130725/r20130206/show_ads_impl.js",""),'"=
+></',a,">"].join("")},Za=3Dfunction(a,b,c,d){return function(){var =
+e=3D!1;d&&Ha().al(3E4);try{if(Aa(a.document.getElementById(b).contentWind=
+ow)){var =
+g=3Da.document.getElementById(b).contentWindow,p=3Dg.document;p.body&&p.b=
+ody.firstChild||(p.open(),=0A=
+g.google_async_iframe_close=3D!0,p.write(c))}else{var =
+N=3Da.document.getElementById(b).contentWindow,ka;g=3Dc;g=3DString(g);if(=
+g.quote)ka=3Dg.quote();else{for(var p=3D['"'],O=3D0;O<g.length;O++){var =
+P=3Dg.charAt(O),Wa=3DP.charCodeAt(0),Yb=3Dp,Zb=3DO+1,la;if(!(la=3Dm[P])){=
+var C;if(31<Wa&&127>Wa)C=3DP;else{var q=3DP;if(q in n)C=3Dn[q];else if(q =
+in m)C=3Dn[q]=3Dm[q];else{var =
+l=3Dq,t=3Dq.charCodeAt(0);if(31<t&&127>t)l=3Dq;else{if(256>t){if(l=3D"\\x=
+",16>t||256<t)l+=3D"0"}else =
+l=3D"\\u",4096>t&&(l+=3D"0");l+=3Dt.toString(16).toUpperCase()}C=3Dn[q]=3D=
+l}}la=3D=0A=
+C}Yb[Zb]=3Dla}p.push('"');ka=3Dp.join("")}N.location.replace("javascript:=
+"+ka)}e=3D!0}catch(nc){N=3DCa().google_jobrunner,Ga(N)&&N.rl()}e&&(new =
+Va(a)).set(b,Za(a,b,c,!1))}},$a=3Dfunction(){var =
+a=3D["<iframe"];ua(D,function(b,c){a.push(" =
+"+c+'=3D"'+(null=3D=3Db?"":b)+'"')});a.push("></iframe>");return =
+a.join("")},cb=3Dfunction(a,b){var =
+c=3Dab,d=3Db?'"':"",e=3Dd+"0"+d;a.width=3Dd+bb+d;a.height=3Dd+c+d;a.frame=
+border=3De;a.marginwidth=3De;a.marginheight=3De;a.vspace=3De;a.hspace=3De=
+;a.allowtransparency=3Dd+"true"+d;a.scrolling=3Dd+"no"+d},db=3DMath.floor=
+(1E6*=0A=
+Math.random()),eb=3Dfunction(a){for(var =
+b=3Da.data.split("\n"),c=3D{},d=3D0;d<b.length;d++){var =
+e=3Db[d].indexOf("=3D");-1!=3De&&(c[b[d].substr(0,e)]=3Db[d].substr(e+1))=
+}b=3Dc[3];if(c[1]=3D=3Ddb&&(window.google_top_js_status=3D4,a.source=3D=3D=
+top&&0=3D=3Db.indexOf(a.origin)&&(window.google_top_values=3Dc,window.goo=
+gle_top_js_status=3D5),window.google_top_js_callbacks)){for(a=3D0;a<windo=
+w.google_top_js_callbacks.length;a++)window.google_top_js_callbacks[a]();=
+window.google_top_js_callbacks.length=3D0}};var =
+fb=3Dfunction(a,b,c){this.x=3Da;this.y=3Db;this.z=3Dc},gb=3Dfunction(a,b,=
+c){this.beta=3Da;this.gamma=3Db;this.alpha=3Dc},ib=3Dfunction(){var =
+a=3DE,b=3Dhb;this.deviceAccelerationWithGravity=3Dthis.deviceAcceleration=
+WithoutGravity=3Dnull;this.deviceMotionEventCallbacks=3D[];this.deviceOri=
+entation=3Dnull;this.deviceOrientationEventCallbacks=3D[];this.isDeviceOr=
+ientationEventListenerRegistered=3Dthis.isDeviceMotionEventListenerRegist=
+ered=3Dthis.didDeviceOrientationCallbacksTimeoutExpire=3Dthis.didDeviceMo=
+tionCallbacksTimeoutExpire=3D!1;=0A=
+this.registeredMozOrientationEventListener=3Dthis.registeredDeviceOrienta=
+tionEventListener=3Dthis.registeredDeviceMotionEventListener=3Dnull;this.=
+sensorsExperiment=3Db;this.stopTimeStamp=3Dthis.startTimeStamp=3Dnull;thi=
+s.win=3Da},F=3Dfunction(a){this.a=3Da;this.a.win.DeviceOrientationEvent?(=
+this.a.registeredDeviceOrientationEventListener=3Dya(this.a.win,"deviceor=
+ientation",this,this.i),this.a.isDeviceOrientationEventListenerRegistered=
+=3D!0):this.a.win.OrientationEvent&&(this.a.registeredMozOrientationEvent=
+Listener=3Dya(this.a.win,=0A=
+"MozOrientation",this,this.j),this.a.isDeviceOrientationEventListenerRegi=
+stered=3D!0);this.a.win.DeviceMotionEvent&&(this.a.registeredDeviceMotion=
+EventListener=3Dya(this.a.win,"devicemotion",this,this.h),this.a.isDevice=
+MotionEventListenerRegistered=3D!0)};=0A=
+F.prototype.h=3Dfunction(a){a.acceleration&&(this.a.deviceAccelerationWit=
+houtGravity=3Dnew =
+fb(a.acceleration.x,a.acceleration.y,a.acceleration.z));a.accelerationInc=
+ludingGravity&&(this.a.deviceAccelerationWithGravity=3Dnew =
+fb(a.accelerationIncludingGravity.x,a.accelerationIncludingGravity.y,a.ac=
+celerationIncludingGravity.z));jb(this.a.deviceMotionEventCallbacks);za(t=
+his.a.win,"devicemotion",this.a.registeredDeviceMotionEventListener)};=0A=
+F.prototype.i=3Dfunction(a){this.a.deviceOrientation=3Dnew =
+gb(a.beta,a.gamma,a.alpha);jb(this.a.deviceOrientationEventCallbacks);za(=
+this.a.win,"deviceorientation",this.a.registeredDeviceOrientationEventLis=
+tener)};F.prototype.j=3Dfunction(a){this.a.deviceOrientation=3Dnew =
+gb(-90*a.y,90*a.x,null);jb(this.a.deviceOrientationEventCallbacks);za(thi=
+s.a.win,"MozOrientation",this.a.registeredMozOrientationEventListener)};v=
+ar jb=3Dfunction(a){for(var =
+b=3D0;b<a.length;++b)a[b]();a.length=3D0};(function(a){"google_onload_fir=
+ed"in =
+a||(a.google_onload_fired=3D!1,wa(a,function(){a.google_onload_fired=3D!0=
+}))})(window);=0A=
+if(!window.google_top_experiment){var =
+kb=3Dwindow;if(2!=3D=3D(kb.top=3D=3Dkb?0:Aa(kb.top)?1:2))window.google_to=
+p_js_status=3D0;else if(top.postMessage){var =
+lb;try{lb=3Dsa.top.frames.google_top_static_frame?!0:!1}catch(mb){lb=3D!1=
+}if(lb){if(window.google_top_experiment=3Dv(["jp_c","jp_zl"],ea)||"jp_wfp=
+mr","jp_zl"=3D=3D=3Dwindow.google_top_experiment||"jp_wfpmr"=3D=3D=3Dwind=
+ow.google_top_experiment){xa(window,"message",eb);window.google_top_js_st=
+atus=3D3;var nb=3D{0:"google_loc_request",1:db},ob=3D[],pb;for(pb in =
+nb)ob.push(pb+"=3D"+nb[pb]);=0A=
+top.postMessage(ob.join("\n"),"*")}}else =
+window.google_top_js_status=3D2}else window.google_top_js_status=3D1}var =
+G=3Dvoid =
+0,G=3DG||window,qb=3D!1;if(G.navigator&&G.navigator.userAgent)var =
+rb=3DG.navigator.userAgent,qb=3D0!=3Drb.indexOf("Opera")&&-1!=3Drb.indexO=
+f("WebKit")&&-1!=3Drb.indexOf("Mobile");=0A=
+if(qb){var =
+E=3Dwindow,sb;if(sb=3D!/Android/.test(E.navigator.userAgent)){var =
+tb=3DE.google_unique_id;sb=3D0=3D=3D("number"=3D=3Dtypeof =
+tb?tb:0)&&!E.google_sensors}if(sb){var =
+hb,ub=3Dnull,vb=3DE;vb.google_top_experiment&&"jp_c"!=3Dvb.google_top_exp=
+eriment||(ub=3Dv(["ds_c","ds_zl","ds_wfea"],ja));if(hb=3Dub)E.google_sens=
+ors=3Dnew ib,"ds_c"!=3Dhb&&new F(E.google_sensors)}}void =
+0=3D=3D=3Dwindow.google_always_use_delayed_impressions_experiment&&(windo=
+w.google_always_use_delayed_impressions_experiment=3Dv(["C","E"],ia));var=
+ wb;=0A=
+if(!(wb=3D!1=3D=3D=3Dwindow.google_enable_async)){var xb;var =
+yb=3Dnavigator.userAgent;Ka.test(yb)?xb=3D!1:(void =
+0!=3D=3Dwindow.google_async_for_oa_experiment||(!La.test(navigator.userAg=
+ent)||Ka.test(navigator.userAgent))||(window.google_async_for_oa_experime=
+nt=3Dv(["C","E"],ha)),xb=3DLa.test(yb)?"E"=3D=3D=3Dwindow.google_async_fo=
+r_oa_experiment:!0);wb=3D!xb||window.google_container_id||window.google_a=
+d_output&&"html"!=3Dwindow.google_ad_output}=0A=
+if(wb)window.google_loader_used=3D"sb",window.google_start_time=3Dh,docum=
+ent.write(Ya());else{var =
+zb=3Dwindow;zb.google_unique_id?++zb.google_unique_id:zb.google_unique_id=
+=3D1;for(var A=3Dwindow,z,Ab=3D{},Bb=3D0,Cb=3Dy.length;Bb<Cb;Bb++){var =
+Db=3Dy[Bb];null!=3DA[Db]&&(Ab[Db]=3DA[Db])}z=3DAb;z.google_loader_used=3D=
+"sa";for(var Eb=3D0,Fb=3Dy.length;Eb<Fb;Eb++)A[y[Eb]]=3Dnull;var =
+bb=3Dz.google_ad_width,ab=3Dz.google_ad_height,H=3D{};cb(H,!0);H.onload=3D=
+'"'+Xa+'"';for(var =
+I,Gb=3Dz,Hb=3DA.document,J=3DH.id,Ib=3D0;!J||Hb.getElementById(J);)J=3D"a=
+swift_"+=0A=
+Ib++;H.id=3DJ;H.name=3DJ;var =
+Jb=3DGb.google_ad_width,Kb=3DGb.google_ad_height,K=3D["<iframe"],L;for(L =
+in =
+H)H.hasOwnProperty(L)&&va(K,L+"=3D"+H[L]);K.push('style=3D"left:0;positio=
+n:absolute;top:0;"');K.push("></iframe>");var =
+Lb=3D"border:none;height:"+Kb+"px;margin:0;padding:0;position:relative;vi=
+sibility:visible;width:"+Jb+"px";Hb.write(['<ins =
+style=3D"display:inline-table;',Lb,'"><ins id=3D"',H.id+"_anchor",'" =
+style=3D"display:block;',Lb,'">',K.join(" =
+"),"</ins></ins>"].join(""));I=3DH.id;var =
+Mb=3DSa(),M=3Dz,Nb=3DM.google_ad_output,=0A=
+Q=3DM.google_ad_format;Q||"html"!=3DNb&&null!=3DNb||(Q=3DM.google_ad_widt=
+h+"x"+M.google_ad_height);var =
+Ob=3D!M.google_ad_slot||M.google_override_format||"aa"=3D=3DM.google_load=
+er_used,Q=3DQ&&Ob?Q.toLowerCase():"";M.google_ad_format=3DQ;var =
+Pb,R=3Dz||sa,Qb=3D[R.google_ad_slot,R.google_ad_format,R.google_ad_type,R=
+.google_ad_width,R.google_ad_height];if(r){var S;if(r){for(var =
+Rb=3D[],Sb=3D0,T=3Dr;T&&25>Sb;T=3DT.parentNode,++Sb)Rb.push(9!=3DT.nodeTy=
+pe&&T.id||"");S=3DRb.join()}else S=3D"";S&&Qb.push(S)}var =
+Tb=3D0;if(Qb){var Ub=3DQb.join(":"),=0A=
+Vb=3DUb.length;if(0=3D=3DVb)Tb=3D0;else{for(var =
+U=3D305419896,Wb=3D0;Wb<Vb;Wb++)U^=3D(U<<5)+(U>>2)+Ub.charCodeAt(Wb)&4294=
+967295;Tb=3D0<U?U:4294967296+U}}Pb=3DTb.toString();var =
+V,Xb=3DUa(),$b=3D3=3D=3D({visible:1,hidden:2,prerender:3,preview:4}[A.doc=
+ument.webkitVisibilityState||A.document.mozVisibilityState||A.document.vi=
+sibilityState||""]||0);Xb&&(!$b&&void =
+0=3D=3D=3DA.google_ad_handling_experiment)&&(A.google_ad_handling_experim=
+ent=3Dv(["XN","EI"],fa)||v(["PC"],ga));V=3DA.google_ad_handling_experimen=
+t?String(A.google_ad_handling_experiment):=0A=
+null;var ac;var =
+bc=3Dz;if(Ua()&&1=3D=3DA.google_unique_id&&"XN"!=3DV){var =
+cc=3D"zrt_ads_frame"+A.google_unique_id,dc,ec=3Dbc.google_page_url;if(!ec=
+){var W;e:{var =
+X=3DA.document,fc=3Dbb||A.google_ad_width,gc=3Dab||A.google_ad_height;if(=
+A.top=3D=3DA)W=3D!1;else{var Y=3DX.documentElement;if(fc&&gc){var =
+Z=3D1,$=3D1;A.innerHeight?(Z=3DA.innerWidth,$=3DA.innerHeight):Y&&Y.clien=
+tHeight?(Z=3DY.clientWidth,$=3DY.clientHeight):X.body&&(Z=3DX.body.client=
+Width,$=3DX.body.clientHeight);if($>2*gc||Z>2*fc){W=3D!1;break =
+e}}W=3D!0}}ec=3DW?A.document.referrer:A.document.URL}dc=3D=0A=
+encodeURIComponent(ec);var =
+hc=3Dnull;"PC"!=3DV&&"EI"!=3DV||(hc=3D("PC"=3D=3DV?"K":"I")+"-"+(dc+"/"+P=
+b+"/"+A.google_unique_id));var =
+D=3D{};cb(D,!1);D.style=3D"display:none";var =
+ic=3Dhc;D.id=3Dcc;D.name=3Dcc;D.src=3DMa(da("","googleads.g.doubleclick.n=
+et"),["/pagead/html/r20130725/r20130206/zrt_lookup.html",ic?"#"+encodeURI=
+Component(ic):""].join(""));ac=3D$a()}else ac=3Dnull;var jc=3D(new =
+Date).getTime(),kc=3DA.google_top_experiment,=0A=
+lc=3DA.google_async_for_oa_experiment,mc=3DA.google_always_use_delayed_im=
+pressions_experiment,oc=3D["<!doctype =
+html><html><body>",ac,"<script>",Mb,"google_show_ads_impl=3Dtrue;google_u=
+nique_id=3D",A.google_unique_id,';google_async_iframe_id=3D"',I,'";google=
+_ad_unit_key=3D"',Pb,'";google_start_time=3D',h,";",kc?'google_top_experi=
+ment=3D"'+kc+'";':"",V?'google_ad_handling_experiment=3D"'+V+'";':"",lc?'=
+google_async_for_oa_experiment=3D"'+lc+'";':"",mc?'google_always_use_dela=
+yed_impressions_experiment=3D"'+mc+'";':"","google_bpp=3D",=0A=
+jc>h?jc-h:1,";\x3c/script>",Ya(),"</body></html>"].join("");(A.document.g=
+etElementById(I)?Ia:Ja)(Za(A,I,oc,!0))};})();=0A=
+
+------=_NextPart_000_0000_01CE8DD5.37610A20--

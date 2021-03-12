@@ -1,0 +1,9 @@
+Renaming columns and calculations in the result set
+
+
+SELECT ram AS Mb, hd Gb
+FROM pc
+WHERE cd = '24x'; 
+
+renames the ram column as Mb (megabytes) and the hd column as Gb (gigabytes). 
+This query will return the base memory amount and the hard drive storage on computers with a 24-speed CD-ROM:
